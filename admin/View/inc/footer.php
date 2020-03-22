@@ -21,6 +21,10 @@
   <!-- nice scroll -->
   <script src="<?=ROOT_URL?>static/js/jquery.scrollTo.min.js"></script>
   <script src="<?=ROOT_URL?>static/js/jquery.nicescroll.js" type="text/javascript"></script>
+  <!-- jquery validate js -->
+  <script type="text/javascript" src="<?=ROOT_URL?>static/js/jquery.validate.min.js"></script>
+  <!-- custom form validation script for this page-->
+  <script src="<?=ROOT_URL?>static/js/form-validation-script.js"></script>
   <!--custome script for all page-->
   <script src="<?=ROOT_URL?>static/js/scripts.js"></script>
 
