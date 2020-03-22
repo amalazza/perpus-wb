@@ -2,7 +2,7 @@
       </section>
     </section>
     <!--main content end-->
-    <div class="text-right">
+    <div class="text-center">
       <div class="credits">
           <!--
             All the links in the footer should remain intact.

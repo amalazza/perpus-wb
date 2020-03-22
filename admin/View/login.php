@@ -10,7 +10,7 @@
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Login Page 2 | Creative - Bootstrap 3 Responsive Admin Template</title>
+  <title>Login Admin</title>
 
   <!-- Bootstrap CSS -->
   <link href="<?=ROOT_URL?>static/css/bootstrap.min.css" rel="stylesheet">
@@ -38,12 +38,12 @@
     ======================================================= -->
 </head>
 
-<body class="login-img3-body">
+<body class="login-img3-body" style="background: url('<?=ROOT_URL?>static//img/bg-4.jpg') no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
 
   <div class="container">
-	</form>
     <form class="login-form" action="" method="post">
       <div class="login-wrap">
+        <h1><center>Login Admin</h1>
         <p class="login-img"><i class="icon_lock_alt"></i></p>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_profile"></i></span>
@@ -57,7 +57,7 @@
         <a href="register.php" class="btn btn-info btn-lg btn-block">Sign Up</a>
       </div>
     </form>
-    <div class="text-right">
+    <div class="text-center">
       <div class="credits">
           <!--
             All the links in the footer should remain intact.
