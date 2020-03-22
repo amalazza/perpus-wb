@@ -54,7 +54,7 @@
           <input type="password" class="form-control" placeholder="Password" name="password" id="password" >
         </div>
         <button class="btn btn-primary btn-lg btn-block" type="submit">Login *ngaco</button>
-        <button class="btn btn-info btn-lg btn-block" type="submit">Signup *belom</button>
+        <a href="register.php" class="btn btn-info btn-lg btn-block">Sign Up</a>
       </div>
     </form>
     <div class="text-right">
