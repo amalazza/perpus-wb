@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2020 at 11:33 AM
+-- Generation Time: Mar 22, 2020 at 03:44 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `id_admin` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(11) NOT NULL
+  `password` char(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -39,8 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
-(1, 'amalazza', 'malacantik'),
-(4, 'mala', 'cantik');
+(5, 'mala', '$2y$14$kefF6aqkuOEWo7CIFduNf.7O8BuGR4uWrIAFcHWm2u99OcLPDFWOe');
 
 -- --------------------------------------------------------
 
@@ -52,13 +51,20 @@ CREATE TABLE `anggota` (
   `no_anggota` varchar(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `posisi` varchar(50) NOT NULL,
+  `kelas` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `no_telpon` varchar(15) NOT NULL,
   `alamat` varchar(100) NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `foto` varchar(200) NOT NULL
+  `foto` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `anggota`
+--
+
+INSERT INTO `anggota` (`no_anggota`, `nama`, `password`, `kelas`, `email`, `no_telpon`, `alamat`, `foto`) VALUES
+('4817040347', 'Nurul Amala Azza', 'malacantik', 'CCIT 6B', 'mala@gmail.com', '0895332220388', 'Citayam', 0x6164612d2074696e6767616c2067616e746920746970652064617461),
+('4817040348', 'Tendo Kairi', 'pacarnyamala', 'CCIT 6B', 'tendo@gmail.com', '045678933', 'Jepang', 0x7365737561696b616e207469706520646174612e);
 
 -- --------------------------------------------------------
 
@@ -125,9 +131,21 @@ CREATE TABLE `koleksi` (
 --
 
 CREATE TABLE `kunjungan` (
+  `no_kunjungan` int(11) NOT NULL,
   `waktu_kunjungan` datetime NOT NULL,
   `no_anggota` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kunjungan`
+--
+
+INSERT INTO `kunjungan` (`no_kunjungan`, `waktu_kunjungan`, `no_anggota`) VALUES
+(18, '2020-03-22 02:51:31', '4817040348'),
+(19, '2020-03-22 02:53:12', '4817040348'),
+(22, '2020-03-22 03:37:43', '4817040348'),
+(23, '2020-03-22 03:38:18', '4817040348'),
+(24, '2020-03-22 03:38:26', '4817040347');
 
 -- --------------------------------------------------------
 
@@ -182,6 +200,18 @@ CREATE TABLE `perpanjangan` (
   `batas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `siswa`
+--
+
+CREATE TABLE `siswa` (
+  `nis` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `kelas` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -222,7 +252,7 @@ ALTER TABLE `koleksi`
 -- Indexes for table `kunjungan`
 --
 ALTER TABLE `kunjungan`
-  ADD PRIMARY KEY (`waktu_kunjungan`),
+  ADD PRIMARY KEY (`no_kunjungan`),
   ADD KEY `no_anggota` (`no_anggota`);
 
 --
@@ -255,7 +285,13 @@ ALTER TABLE `peminjaman`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `kunjungan`
+--
+ALTER TABLE `kunjungan`
+  MODIFY `no_kunjungan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
