@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2020 at 03:44 AM
+-- Generation Time: Mar 23, 2020 at 05:08 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -50,7 +50,7 @@ INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
 CREATE TABLE `anggota` (
   `no_anggota` varchar(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` char(60) NOT NULL,
   `kelas` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `no_telpon` varchar(15) NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE `anggota` (
 --
 
 INSERT INTO `anggota` (`no_anggota`, `nama`, `password`, `kelas`, `email`, `no_telpon`, `alamat`, `foto`) VALUES
-('4817040347', 'Nurul Amala Azza', 'malacantik', 'CCIT 6B', 'mala@gmail.com', '0895332220388', 'Citayam', 0x6164612d2074696e6767616c2067616e746920746970652064617461),
+('4817040347', 'Nurul Amala Azza', '$2y$14$kefF6aqkuOEWo7CIFduNf.7O8BuGR4uWrIAFcHWm2u99OcLPDFWOe', 'CCIT 6B', 'mala@gmail.com', '0895332220388', 'Citayam', 0x6164612d2074696e6767616c2067616e746920746970652064617461),
 ('4817040348', 'Tendo Kairi', 'pacarnyamala', 'CCIT 6B', 'tendo@gmail.com', '045678933', 'Jepang', 0x7365737561696b616e207469706520646174612e);
 
 -- --------------------------------------------------------
