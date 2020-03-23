@@ -48,7 +48,7 @@
               <?php foreach ($this->oKunjungan as $oKunjungan): ?>
               <tr>
                 <td><?=htmlspecialchars($oKunjungan->no_anggota)?></td>
-                <td>nanti</td>
+                <td><?=$oKunjungan->nama?></td>
                 <td><?=$oKunjungan->waktu_kunjungan?></td>
                 <td>
                   <div class="btn-group">

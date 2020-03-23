@@ -13,7 +13,7 @@ class Kunjungan
 
     public function get($iOffset, $iLimit)
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM kunjungan ORDER BY waktu_kunjungan DESC LIMIT :offset, :limit');
+        $oStmt = $this->oDb->prepare('SELECT * FROM kunjungan INNER JOIN anggota USING (no_anggota) ORDER by waktu_kunjungan DESC LIMIT :offset, :limit');
         $oStmt->bindParam(':offset', $iOffset, \PDO::PARAM_INT);
         $oStmt->bindParam(':limit', $iLimit, \PDO::PARAM_INT);
         $oStmt->execute();
