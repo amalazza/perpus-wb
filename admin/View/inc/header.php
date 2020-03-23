@@ -112,7 +112,7 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="form_component.html">Admin</a></li>
+              <li><a class="" href="<?=ROOT_URL?>?p=Admin&amp;a=add_admin">Admin</a></li>
               <li><a class="" href="form_validation.html">Anggota</a></li>
               <li><a class="" href="<?=ROOT_URL?>?p=kunjungan&amp;a=kunjungan">Kunjungan</a></li>
             </ul>
