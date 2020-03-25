@@ -77,8 +77,8 @@
                         </a>
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
-              <li class="eborder-top">
-                <a href="#"><i class="icon_profile"></i> My Profile</a>
+              <li class="eborder-top" id="my" name="my">
+                <a href="<?=ROOT_URL?>?p=Admincrud&amp;a=my_profile"><i class="icon_profile"></i> My Profile</a>
               </li>
               <li>
               	<?php if (!empty($_SESSION['is_logged'])): ?>
@@ -112,7 +112,7 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="<?=ROOT_URL?>?p=Admin&amp;a=add_admin">Admin</a></li>
+              <li><a class="" href="<?=ROOT_URL?>?p=Admincrud&amp;a=p_admin">Admin</a></li>
               <li><a class="" href="form_validation.html">Anggota</a></li>
               <li><a class="" href="<?=ROOT_URL?>?p=kunjungan&amp;a=kunjungan">Kunjungan</a></li>
             </ul>

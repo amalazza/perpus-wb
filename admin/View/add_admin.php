@@ -22,15 +22,40 @@
       </header>
       <div class="panel-body">
 
-		<form class="form-inline" role="form" action="" method="post">
+		<form class="form-inline" role="form" action="" enctype='multipart/form-data' method="post">
 
-		    <p><label  class="sr-only" for="username">Username :</label><br />
+        <p><label  >Nama :</label><br />
+            <input class="form-control"  placeholder="Nama" type="text" name="nama" id="nama" required="required" />
+        </p>
+
+        <p><label  >Nomer Telephone :</label><br />
+            <input class="form-control"  placeholder="Nomer Telephone" type="text" name="notlp" id="notlp" required="required" />
+        </p>
+
+        <p><label >Email :</label><br />
+            <input class="form-control"  placeholder="Email" type="email" name="email" id="email" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
+        </p>
+
+        <p><label>Alamat :</label><br />
+            <input class="form-control"  placeholder="Alamat" type="text" name="alamat" id="alamat" required="required" />
+        </p>
+
+        <p>
+            <input class="form-control" type="hidden" value="admin" name="role" id="role" />
+        </p>
+
+		    <p><label  >Username :</label><br />
 		        <input class="form-control"  placeholder="Username" type="text" name="username" id="username" required="required" />
 		    </p>
 
-        <p><label  class="sr-only" for="password">Password :</label><br />
+        <p><label >Password :</label><br />
             <input class="form-control"  placeholder="Password" type="password" name="password" id="password" required="required" />
         </p>
+
+        <div>
+        <p><label  >Upload foto :</label><br />
+              <input id="foto" name="foto" type="file" required /><br>
+        </div>
 
 		    <p><input type="submit" name="add_submitA" value="Submit" class="btn btn-primary"/></p>
 		</form>

@@ -41,7 +41,7 @@ class Kunjungan
 
         $this->oUtil->getView('kunjungan');
     }
-
+    
     public function notFound()
     {
         $this->oUtil->getView('not_found');

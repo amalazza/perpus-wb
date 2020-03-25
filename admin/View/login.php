@@ -53,8 +53,7 @@
           <span class="input-group-addon"><i class="icon_key_alt"></i></span>
           <input type="password" class="form-control" placeholder="Password" name="password" id="password" >
         </div>
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Login *ngaco</button>
-        <a href="register.php" class="btn btn-info btn-lg btn-block">Sign Up</a>
+        <button id="btnLogin" name="btnLogin" class="btn btn-primary btn-lg btn-block" type="submit">Login *ngaco</button>
       </div>
     </form>
     <div class="text-center">
