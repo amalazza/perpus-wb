@@ -51,7 +51,17 @@ class Anggota
         $this->oUtil->getView('not_found');
     }
     
+	public function dropdown()
+    {
+		//echo $_POST['nis'];
+        
+			echo json_encode($this->oUtil->oData = $this->oModel->getDataById($_POST['nis']));
+		
+		//$this->oUtil->oAnggota = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
 
+        //$this->oUtil->getView('anggota');
+    }
+	
     public function addSiswa(){
 		$file_mimes = array('application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 		if (!empty($_POST['add_file']))
@@ -110,7 +120,10 @@ class Anggota
             }
         }
 
-        $this->oUtil->getView('add_anggota');
+        //get nis from database
+		$this->oUtil->oNIS = $this->oModel->getNIS();
+		
+		$this->oUtil->getView('add_anggota');
     }
 
     /* public function edit()

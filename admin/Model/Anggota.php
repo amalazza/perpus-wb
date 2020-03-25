@@ -23,6 +23,20 @@ class Anggota
         $oStmt = $this->oDb->query('SELECT * FROM anggota');
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
+	
+	public function getNIS()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM siswa WHERE nis NOT IN(SELECT no_anggota FROM anggota)');
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+	
+	public function getDataById($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM siswa WHERE nis = :nis LIMIT 1');
+        $oStmt->bindParam(':nis', $iId, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
 
      public function add(array $aData)
     {

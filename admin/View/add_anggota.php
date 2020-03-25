@@ -28,19 +28,24 @@
                     <div class="form-group ">
                       <label for="nis" class="control-label col-lg-2">NIS <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="nis" name="nis" type="text" />
+                        <select class="form-control m-bot15" id="searchNIS" name="nis">
+						<option value="" selected="" disabled="">isi</option>
+						<?php foreach ($this->oNIS as $oNIS): ?>
+						<option value="<?=$oNIS->nis?>"><?=$oNIS->nis?></option>
+						<?php endforeach ?>
+						</select>
                       </div>
                     </div>
 					<div class="form-group ">
                       <label for="nama" class="control-label col-lg-2">Nama <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="nama" name="nama" type="text" />
+                        <input class=" form-control" value="" id="nama" name="nama" type="text" disabled />
                       </div>
                     </div>
 					<div class="form-group ">
                       <label for="kelas" class="control-label col-lg-2">Kelas <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="kelas" name="kelas" type="text" />
+                        <input class=" form-control" id="kelas" name="kelas" type="text" disabled  />
                       </div>
                     </div>
                     <div class="form-group ">
@@ -91,6 +96,25 @@
           </div>
         </div>
         <!-- page end-->
-    
+  <script type="text/javascript">
+  //search dropdown
+  $("#searchNIS").chosen();
+  //autofill input
+  
+  $("#searchNIS").on('change', function(){
+	  var nis = $("#searchNIS").val();
+		  $.ajax({
+			  url: 'http://localhost/perpus-wb/admin/?p=anggota&a=dropdown',
+			  data: {nis:nis},
+			  method:'post',
+			  dataType: 'json'
+		  }).done(function(Data){
+			  //console.log(Data);
+			  $('#nama').val(Data.nama);
+			  $('#kelas').val(Data.kelas);
+		  });
+  });
+  //$("#searchKlasifikasi").chosen();
+  </script>
 
 <?php require 'inc/footer.php' ?>

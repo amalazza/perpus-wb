@@ -131,16 +131,7 @@
         <!-- page end-->
     
 <!--search dropdown-->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.7.0/chosen.min.css" rel="stylesheet" />
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.7.0/chosen.jquery.min.js"></script>
   <script type="text/javascript">
-  /* $(document).ready(function() {
-  $('#searchKoleksi').each(function() {
-    $(this).chosen();
-  });
-}); */
-
   $("#searchKoleksi").chosen();
   $("#searchKlasifikasi").chosen();
   </script>
