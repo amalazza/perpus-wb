@@ -22,6 +22,15 @@
 	  <!-- Custom styles -->
 	  <link href="<?=ROOT_URL?>static/css/style.css" rel="stylesheet">
 	  <link href="<?=ROOT_URL?>static/css/style-responsive.css" rel="stylesheet" />
+	  <!--jquery-->
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	  <!--jquery UI-->
+	  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> 
+	  <!-- chosen jquery-->
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css"/>
+	  
 
 	  <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
 	  <!--[if lt IE 9]>
@@ -113,7 +122,7 @@
                       </a>
             <ul class="sub">
               <li><a class="" href="<?=ROOT_URL?>?p=Admincrud&amp;a=p_admin">Admin</a></li>
-              <li><a class="" href="form_validation.html">Anggota</a></li>
+              <li><a class="" href="<?=ROOT_URL?>?p=anggota&amp;a=anggota">Anggota</a></li>
               <li><a class="" href="<?=ROOT_URL?>?p=kunjungan&amp;a=kunjungan">Kunjungan</a></li>
             </ul>
           </li>
@@ -126,7 +135,7 @@
             <ul class="sub">
               <li><a class="" href="profile.html">Koleksi</a></li>
               <li><a class="" href="login.html"><span>Klasifikasi</span></a></li>
-              <li><a class="" href="contact.html"><span>Katalog</span></a></li>
+              <li><a class="" href="<?=ROOT_URL?>?p=katalog&amp;a=katalog"><span>Katalog</span></a></li>
             </ul>
           </li>
           <li>

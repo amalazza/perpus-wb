@@ -10,7 +10,7 @@
             <ol class="breadcrumb">
               <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
               <li><i class="icon_document_alt"></i>Pengguna</li>
-              <li><i class="fa fa-files-o"></i>Anggota</li>
+              <li><i class="fa fa-files-o"></i>Siswa</li>
             </ol>
           </div>
         </div>
@@ -20,14 +20,14 @@
           <div class="col-lg-12">
             <section class="panel">
               <header class="panel-heading">
-                Tabel Anggota
+                siswa
               </header>
               <div class="panel-body">
                 <div class="form">
                   <form class="form-validate form-horizontal " enctype="multipart/form-data" role="form" method="post" action="">
                     
 					<div class="form-group ">
-                      <label for="berkas_excel" class="control-label col-lg-2">Foto Profil <span class="required">*</span></label>
+                      <label for="berkas_excel" class="control-label col-lg-2">Upload Data Siswa <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class=" form-control" id="berkas_excel" name="berkas_excel" type="file" />
                       </div>

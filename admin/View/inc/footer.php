@@ -27,9 +27,11 @@
   <script src="<?=ROOT_URL?>static/js/form-validation-script.js"></script>
   <!--custome script for all page-->
   <script src="<?=ROOT_URL?>static/js/scripts.js"></script>
+  
 
 
 </body>
+
 
 </html>
 

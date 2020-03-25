@@ -73,7 +73,6 @@
 				<td><div class="activity-body act-in"><?php echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($oAnggota->foto))."' width='75' height='75'/>";?></div></td>
                 <td>
                   <div class="btn-group">
-                    <button class="btn btn-primary" onclick="window.location='<?=ROOT_URL?>?p=anggota&amp;a=edit&amp;id=<?=$oAnggota->no_anggota?>'">Edit</button> &nbsp;
                     <form action="<?=ROOT_URL?>?p=anggota&amp;a=delete&amp;id=<?=$oAnggota->no_anggota?>" method="post" style="display: inline">
                         <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin mennghapus data ingin?');">Hapus</button>
                     </form>

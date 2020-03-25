@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2020 at 10:52 AM
+-- Generation Time: Mar 25, 2020 at 11:22 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -123,6 +123,14 @@ CREATE TABLE `klasifikasi` (
   `nama_klasifikasi` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `klasifikasi`
+--
+
+INSERT INTO `klasifikasi` (`no_klasifikasi`, `nama_klasifikasi`) VALUES
+('1', 'buku referensi'),
+('2', 'buku non referensi');
+
 -- --------------------------------------------------------
 
 --
@@ -133,6 +141,14 @@ CREATE TABLE `koleksi` (
   `no_koleksi` varchar(4) NOT NULL,
   `jenis_koleksi` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `koleksi`
+--
+
+INSERT INTO `koleksi` (`no_koleksi`, `jenis_koleksi`) VALUES
+('1', 'biografi'),
+('2', 'fiksi');
 
 -- --------------------------------------------------------
 
@@ -217,7 +233,7 @@ CREATE TABLE `perpanjangan` (
 --
 
 CREATE TABLE `siswa` (
-  `nis` int(11) NOT NULL,
+  `nis` bigint(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `kelas` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -286,6 +302,12 @@ ALTER TABLE `peminjaman`
   ADD PRIMARY KEY (`no_peminjaman`),
   ADD KEY `no_anggota` (`no_anggota`),
   ADD KEY `no_katalog` (`no_katalog`);
+
+--
+-- Indexes for table `siswa`
+--
+ALTER TABLE `siswa`
+  ADD PRIMARY KEY (`nis`);
 
 --
 -- AUTO_INCREMENT for dumped tables

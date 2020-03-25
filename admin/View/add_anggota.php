@@ -20,7 +20,7 @@
           <div class="col-lg-12">
             <section class="panel">
               <header class="panel-heading">
-                Tabel Anggota
+                Anggota
               </header>
               <div class="panel-body">
                 <div class="form">
