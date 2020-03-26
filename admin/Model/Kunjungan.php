@@ -26,6 +26,12 @@ class Kunjungan
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
+    public function getAnggota()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM anggota');
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
     public function add(array $aData)
     {
         $oStmt = $this->oDb->prepare('INSERT INTO kunjungan (no_anggota, waktu_kunjungan) VALUES(:no_anggota, :waktu_kunjungan)');

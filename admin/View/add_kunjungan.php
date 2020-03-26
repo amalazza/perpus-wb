@@ -24,10 +24,21 @@
 
 		<form class="form-inline" role="form" action="" method="post">
 
-		    <p><label  class="sr-only" for="no_anggota">No Anggota:</label><br />
+      <div class="form-group ">
+          <label for="no_anggota" class="control-label col-lg-8">Nomor-Nama Anggota <span class="required">*</span></label>
+            <div class="col-lg-10">
+                <select id="searchAnggota" class="form-control m-bot15" name="anggota">
+                  <?php foreach ($this->oAnggota as $oAnggota): ?>
+                  <option value="<?=$oAnggota->no_anggota?>"><?=$oAnggota->no_anggota?> - <?=$oAnggota->nama?></option>
+                  <?php endforeach ?>
+                </select>
+            </div>
+      </div>
+
+		    <!-- <p><label  class="sr-only" for="no_anggota">No Anggota:</label><br />
 		        <input class="form-control" type="text" name="no_anggota" id="no_anggota" required="required" />
 		    </p>
-
+ -->
 		    <p><input type="submit" name="add_submit" value="Submit" class="btn btn-primary"/></p>
 		</form>
 

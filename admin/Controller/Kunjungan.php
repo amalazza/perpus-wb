@@ -67,7 +67,7 @@ class Kunjungan
         {
             if (isset($_POST['no_anggota']) <= 15) // Allow a maximum of 50 characters
             {
-                $aData = array('no_anggota' => $_POST['no_anggota'], 'waktu_kunjungan' => date('Y-m-d H:i:s'));
+                $aData = array('no_anggota' => $_POST['anggota'], 'waktu_kunjungan' => date('Y-m-d H:i:s'));
 
                 if ($this->oModel->add($aData))
                      header('Location: ' . ROOT_URL  . '?p=kunjungan&a=kunjungan');
@@ -79,6 +79,9 @@ class Kunjungan
                 $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
             }
         }
+
+        //get anggota id from database
+        $this->oUtil->oAnggota = $this->oModel->getAnggota();
 
         $this->oUtil->getView('add_kunjungan');
     }
