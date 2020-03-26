@@ -53,7 +53,7 @@ class Admins
 
     public function addA(array $aData)
     {
-        $oStmt = $this->oDb->prepare('INSERT INTO admin (nama, notlp, email, alamat, role, username, password, foto) VALUES(:nama, :notlp, :email, :alamat, :role, :username, :password, :foto)');
+        $oStmt = $this->oDb->prepare('INSERT INTO admin (nama, notlp, email, alamat, role, username, password, mime, foto) VALUES(:nama, :notlp, :email, :alamat, :role, :username, :password, :mime, :foto)');
         return $oStmt->execute($aData);
     }
 

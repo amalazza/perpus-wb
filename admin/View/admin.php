@@ -54,7 +54,7 @@
               $potong = substr($oAdd_Admin->alamat, 0, 25) . '...';
               ?>
               <tr>
-                <td><img src="data:image/jpeg;base64,<?=base64_encode($oAdd_Admin->foto); ?>" width="100"/></td>
+                <td><img src="data:<?=$oAdd_Admin->mime?>;base64,<?=base64_encode($oAdd_Admin->foto); ?>" width="100" height="100"/></td>
                 <td><?=$oAdd_Admin->nama?></td>
                 <td><?=htmlspecialchars($oAdd_Admin->username)?></td>
                 <td><?=$oAdd_Admin->email?></td>

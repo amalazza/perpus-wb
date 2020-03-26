@@ -37,7 +37,7 @@ class Admincrud
 
     public function p_admin()
     {
-        $this->oUtil->oAdd_Admin = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
+        $this->oUtil->oAdd_Admin = $this->oModel->getAll(0, self::MAX_POSTS); // Get only the latest X posts
 
         $this->oUtil->getView('admin');
     }
@@ -85,15 +85,15 @@ class Admincrud
                 $user = $_POST['username'];
                 $pass = $_POST['password'];
                 $p_crypt = sha1($pass);
-                $foto = addslashes(file_get_contents($_FILES['foto']['tmp_name']));
+                $type = $_FILES['foto']['type'];
+                $foto = file_get_contents($_FILES['foto']['tmp_name']);
 
-                $aData = array('nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt, 'foto' => $foto);
+                $aData = array('nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt, 'mime' => $type, 'foto' => $foto);
 
-                if ($this->oModel->addA($aData))
+                 if ($this->oModel->addA($aData))
                      header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
                 else
                     $this->oUtil->sErrMsg = 'Data new admin gagal ditambahkan.';
-            }
             else
             {
                 $this->oUtil->sErrMsg = 'username dan password harus diisi.';

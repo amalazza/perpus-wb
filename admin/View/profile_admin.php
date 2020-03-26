@@ -31,9 +31,10 @@
             <div style="">
             <h4>Nama : <?=$data->nama?></h4>
             <h4>Email : <?=$data->email?></h4>
-            <h4>No Telephone :<?=$data->notlp?></h4>
+            <h4>No Telephone : <?=$data->notlp?></h4>
             <div style="max-width: 800px;">
-              <h4>Alamat : <?php echo $potong; ?></h4>
+              <h4>Alamat : </h4>
+              <h4><?php echo $potong; ?></h4>
             </div>
             </div>
           </div>
