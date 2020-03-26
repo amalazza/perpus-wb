@@ -94,7 +94,7 @@ class Admincrud
                      header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
                 else
                     $this->oUtil->sErrMsg = 'Data new admin gagal ditambahkan.';
-            else
+            }else
             {
                 $this->oUtil->sErrMsg = 'username dan password harus diisi.';
             }
