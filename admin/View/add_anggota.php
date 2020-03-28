@@ -29,7 +29,7 @@
                       <label for="nis" class="control-label col-lg-2">NIS <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <select class="form-control m-bot15" id="searchNIS" name="nis">
-						<option value="" selected="" disabled="">isi</option>
+						<option value="" selected="" disabled="">--nomor induk siswa--</option>
 						<?php foreach ($this->oNIS as $oNIS): ?>
 						<option value="<?=$oNIS->nis?>"><?=$oNIS->nis?></option>
 						<?php endforeach ?>
@@ -39,13 +39,13 @@
 					<div class="form-group ">
                       <label for="nama" class="control-label col-lg-2">Nama <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" value="" id="nama" name="nama" type="text" disabled />
+                        <input class=" form-control" value="" id="nama" name="nama" type="text" readonly="true" />
                       </div>
                     </div>
 					<div class="form-group ">
                       <label for="kelas" class="control-label col-lg-2">Kelas <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="kelas" name="kelas" type="text" disabled  />
+                        <input class=" form-control" id="kelas" name="kelas" type="text" readonly="true"  />
                       </div>
                     </div>
                     <div class="form-group ">

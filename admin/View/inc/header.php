@@ -10,6 +10,8 @@
 	  <link rel="shortcut icon" href="img/favicon.png">
 
 	  <title>Blank | Creative - Bootstrap 3 Responsive Admin Template</title>
+	  
+	  
 
 	  <!-- Bootstrap CSS -->
 	  <link href="<?=ROOT_URL?>static/css/bootstrap.min.css" rel="stylesheet">
@@ -30,6 +32,7 @@
 	  <!-- chosen jquery-->
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css"/>
+	  
 	  
 	  
 

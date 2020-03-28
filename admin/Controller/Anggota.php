@@ -53,13 +53,14 @@ class Anggota
     
 	public function dropdown()
     {
-		//echo $_POST['nis'];
         
 			echo json_encode($this->oUtil->oData = $this->oModel->getDataById($_POST['nis']));
-		
-		//$this->oUtil->oAnggota = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
-
-        //$this->oUtil->getView('anggota');
+    }
+	
+	public function detailAnggota()
+    {
+        
+			echo json_encode($this->oUtil->oData = $this->oModel->getById($_POST['id']));
     }
 	
     public function addSiswa(){
@@ -88,14 +89,14 @@ class Anggota
 				
 				$sData = array('nis' => $nis, 'nama' => $nama, 'kelas' => $kelas);
 				if ($this->oModel->addSiswa($sData))
-                     header('Location: ' . ROOT_URL  . '?p=anggota&a=anggota');
+                 header('Location: ' . ROOT_URL  . '?p=anggota&a=anggota');
+				 //$this->oUtil->sErrMsg = 'Data berhasil Ditambahkan.';
                 else
                     $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
 			}
 			
 		}
         }
-		$this->oUtil->getView('add_siswa');
 	}
 	
 	public function add()

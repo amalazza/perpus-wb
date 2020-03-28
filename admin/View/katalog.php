@@ -40,41 +40,22 @@
             <tbody>
               <tr>
                 <th>No Katalog</th>
-                <th>Klasifikasi </th>
-                <th>Koleksi</th>
 				<th>Judul</th>
-				<th>Pengarang</th>
-				<th>Penerbit</th>
-				<th>Kota Terbit</th>
-				<th>Tahun Terbit</th>
-				<th>ISBN</th>
-				<th>lokasi</th>
-				<th>abstrak</th>
-				<th>Tanggal Masuk</th>
-				<th>e-book</th>
-				<th>cover</th>
 				<th>stok</th>
+				<th>Detail</th>
+				<th>cover</th>
                 <th>Action</th>
               </tr> 
 			  
               <?php foreach ($this->oKatalog as $oKatalog): ?>
               <tr>
                 <td><?=htmlspecialchars($oKatalog->no_katalog)?></td>
-                <td><?=$oKatalog->no_klasifikasi?></td>
-                <td><?=$oKatalog->no_koleksi?></td>
 				<td><?=$oKatalog->judul?></td>
-				<td><?=$oKatalog->pengarang?></td>
-				<td><?=$oKatalog->penerbit?></td>
-				<td><?=$oKatalog->kota_terbit?></td>
-				<td><?=$oKatalog->tahun_terbit?></td>
-				<td><?=$oKatalog->isbn?></td>
-				<td><?=$oKatalog->lokasi?></td>
-				<td><?=$oKatalog->absktrak?></td>
-				<td><?=$oKatalog->tanggal_masuk?></td>
-				<td><button class="btn btn-primary" onclick="window.location='<?=ROOT_URL?>?p=katalog&amp;a=view&amp;id=<?=$oKatalog->no_katalog?>'">PDF</button> &nbsp;</td>
+				<td><?=$oKatalog->stok ?></td>
+				<td>
+				<button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#detailAnggota" data-id="<?=$oKatalog->no_katalog?>">detail</button>
 				</td>
 				<td><div class="activity-body act-in"><?php echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($oKatalog->cover))."' width='75' height='75'/>";?></div></td>
-                <td><?=$oKatalog->stok ?></td>
 				<td>
                   <div class="btn-group">
                     <button class="btn btn-primary" onclick="window.location='<?=ROOT_URL?>?p=katalog&amp;a=edit&amp;id=<?=$oKatalog->no_katalog?>'">Edit</button> &nbsp;
@@ -91,8 +72,125 @@
         </section>
       </div>
     </div>
+	<?php endif ?>
     <!-- page end-->
-    
-<?php endif ?>
+	
+	<!-- Modal Detail Katalog-->
+	<div id="detailAnggota" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Detail Katalog</h4>
+		  </div>
+		  <div class="modal-body">
+		  <div id="foto"></div>
+			<table class="table table-striped table-advance table-hover">
+				<tbody>
+					<tr>
+						<th>No Katalog</th>
+						<td><span id="no_katalog"></span></td>
+					</tr>
+					<tr>
+						<th>No Klasifikasi</th>
+						<td><span id="no_klasifikasi"></span></td>
+					</tr>
+					<tr>
+						<th>No koleksi</th>
+						<td><span id="no_koleksi"></span></td>
+					</tr>
+					<tr>
+						<th>Judul</th>
+						<td><span id="judul"></span></td>
+					</tr>
+					<tr>
+						<th>stok</th>
+						<td><span id="stok"></span></td>
+					</tr>
+					<tr>
+						<th>Pengarang</th>
+						<td><span id="pengarang"></span></td>
+					</tr>
+					<tr>
+						<th>Penerbit</th>
+						<td><span id="penerbit"></span></td>
+					</tr>
+					<tr>
+						<th>Kota Terbit</th>
+						<td><span id="kota_terbit"></span></td>
+					</tr>
+					<tr>
+						<th>Tahun Terbit</th>
+						<td><span id="tahun_terbit"></span></td>
+					</tr>
+					<tr>
+						<th>ISBN</th>
+						<td><span id="isbn"></span></td>
+					</tr>
+					<tr>
+						<th>Lokasi</th>
+						<td><span id="lokasi"></span></td>
+					</tr>
+					<tr>
+						<th>Abstrak</th>
+						<td><span id="abstrak"></span></td>
+					</tr>
+					<tr>
+						<th>Tanggal Masuk</th>
+						<td><span id="tanggal_masuk"></span></td>
+					</tr>
+					<tr>
+						<th>e-book</th>
+						<td>
+						<form class="form-validate form-horizontal " role="form" method="post" action="<?=ROOT_URL?>?p=katalog&amp;a=view">
+						<input type="hidden" name="id" id="id"/> 
+						<input type="submit" name="view" value="PDF" class="btn btn-primary"/> 
+						</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+
+	  </div>
+	</div> 
+	
+    <script type="text/javascript">
+  //detailKatalog
+  $(function(){
+	  $(".detail").on("click", function(){
+		  const id = $(this).data('id');
+		  $.ajax({
+			  url: 'http://localhost/perpus-wb/admin/?p=katalog&a=detailKatalog',
+			  data: {id:id},
+			  method:'post',
+			  dataType: 'json'
+		  }).done(function(Data){
+			  //console.log(Data.nama);
+			  $('#no_katalog').text(Data.no_katalog); 
+			  $('#id').val(Data.no_katalog); 
+			  $('#no_klasifikasi').text(Data.nama_klasifikasi);
+			  $('#no_koleksi').text(Data.jenis_koleksi); 
+			  $('#judul').text(Data.judul);
+			  $('#stok').text(Data.stok);
+			  $('#pengarang').text(Data.pengarang); 
+			  $('#penerbit').text(Data.penerbit);
+			  $('#kota_terbit').text(Data.kota_terbit);
+			  $('#tahun_terbit').text(Data.tahun_terbit);
+			  $('#isbn').text(Data.isbn);
+			  $('#abstrak').text(Data.absktrak);
+			  $('#lokasi').text(Data.lokasi);
+			  $('#tanggal_masuk').text(Data.tanggal_masuk);
+		  });
+	  });
+  });
+  </script>
+
 <?php require 'inc/footer.php' ?>
 

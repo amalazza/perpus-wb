@@ -51,13 +51,31 @@ class Katalog
         $this->oUtil->getView('not_found');
     }
 	
+	public function detailKatalog()
+    {
+			$idKatalog = $_POST['id'];
+			echo json_encode($this->oUtil->oData = $this->oModel->getById($idKatalog));
+    }
+	
 	//fungsi view pdf
 	public function view()
     {
+		if (!empty($_POST['view']))
+        {
 		
-        $this->oUtil->oView = $this->oModel->getPDFById($this->_iId);
+		$this->oUtil->oView = $this->oModel->getPDFById($_POST['id']);
 
         $this->oUtil->getView('view');
+		}
+    }
+	
+	public function viewPDF()
+    {
+	
+		$this->oUtil->oView = $this->oModel->getPDF($this->_iId);
+
+        $this->oUtil->getView('view');
+		
     }
 	
 	public function add()
@@ -91,18 +109,18 @@ class Katalog
 		$this->oUtil->getView('add_katalog');
     }
 
-    /* public function edit()
+     public function edit()
     {
         if (!$this->isLogged()) exit;
 
         if (!empty($_POST['edit_submit']))
         {
-            if (isset($_POST['no_anggota']))
+            if (isset($_POST['no_katalog']))
             {
-                $aData = array('no_kunjungan' => $this->_iId, 'no_anggota' => $_POST['no_anggota']);
+                $aData = array('no_katalog' => $_POST['no_katalog'], 'no_klasifikasi' => $_POST['klasifikasi'], 'no_koleksi' => $_POST['koleksi'],'judul' => $_POST['judul'],'pengarang' => $_POST['pengarang'],'penerbit' => $_POST['penerbit'],'kota_terbit' => $_POST['kota_terbit'],'tahun_terbit' => $_POST['tahun_terbit'],'isbn' => $_POST['isbn'],'lokasi' => $_POST['lokasi'],'absktrak' => $_POST['abstrak'],'tanggal_masuk' => date('Y-m-d H:i:s'),'e_book' => file_get_contents($_FILES['e_book']['tmp_name']),'cover' => addslashes(file_get_contents($_FILES['cover']['tmp_name'])), 'stok'=> $_POST['stok']);
 
                 if ($this->oModel->update($aData))
-                    $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+                    header('Location: ' . ROOT_URL  . '?p=katalog&a=katalog');
                 else
                     $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
             }
@@ -112,11 +130,16 @@ class Katalog
             }
         }
 
-        /* Get the data of the post 
-        $this->oUtil->oKunjungan = $this->oModel->getById($this->_iId);
+        // Get the data of the post 
+        $this->oUtil->oKatalog = $this->oModel->getAllById($this->_iId);
+		//get klasifikasi id from database
+		$this->oUtil->oKlasifikasi = $this->oModel->getKlasifikasi();
+		
+		//get koleksi id from database
+		$this->oUtil->oKoleksi = $this->oModel->getKoleksi();
 
-        $this->oUtil->getView('edit_kunjungan');
-    } */
+        $this->oUtil->getView('edit_katalog');
+    } 
 
     public function delete()
     {
