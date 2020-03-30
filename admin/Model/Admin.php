@@ -57,7 +57,7 @@ class Admins
 
     public function getAll()
     {
-        $oStmt = $this->oDb->query('SELECT * FROM admin ORDER BY username DESC');
+        $oStmt = $this->oDb->query('SELECT * FROM admin ORDER BY timestamp DESC');
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
@@ -67,12 +67,26 @@ class Admins
         return $oStmt->execute($aData);
     }
 
+        public function addAlog(array $aLog)
+    {
+        $oStmt = $this->oDb->prepare('INSERT INTO logadmin (id_admin, activity) VALUES(:id_admin, :activity)');
+        return $oStmt->execute($aLog);
+    }
+
     public function getById($iId)
     {
         $oStmt = $this->oDb->prepare('SELECT * FROM admin WHERE id_admin = :id_admin LIMIT 1');
         $oStmt->bindParam(':id_admin', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
+        public function getaLog($iIdku)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM logadmin WHERE id_admin = :id_admin ORDER BY tanggal DESC');
+        $oStmt->bindParam(':id_admin', $iIdku, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
     public function update(array $aData)

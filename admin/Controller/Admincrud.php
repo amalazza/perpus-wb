@@ -63,6 +63,7 @@ class Admincrud
         if (!$this->isLogged()) exit;
 
         $this->oUtil->oAdd_Admins = $this->oModel->getById($_SESSION['id']);
+        $this->oUtil->oAlog = $this->oModel->getaLog($_SESSION['id']);
 
         $this->oUtil->getView('profile_admin');
     }
@@ -87,10 +88,13 @@ class Admincrud
                 $p_crypt = sha1($pass);
                 $type = $_FILES['foto']['type'];
                 $foto = file_get_contents($_FILES['foto']['tmp_name']);
+                $idku = $_SESSION['id'];
+                $act = $_SESSION['nama'].' menambahkan admin '.$_POST['nama'];
 
                 $aData = array('nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt, 'mime' => $type, 'foto' => $foto);
+                $aLog = array('id_admin' => $idku, 'activity' => $act );
 
-                 if ($this->oModel->addA($aData))
+                 if ($this->oModel->addA($aData) && $this->oModel->addAlog($aLog))
                      header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
                 else
                     $this->oUtil->sErrMsg = 'Data new admin gagal ditambahkan.';
@@ -101,53 +105,6 @@ class Admincrud
         }
 
         $this->oUtil->getView('add_admin');
-    }
-
- 
-    public function edit2()
-    {
-        if (!$this->isLogged()) exit;
-
-        if (!empty($_POST['edit_submit']))
-        {
-            if (isset($_POST['edit_submit']))
-            {
-                $id_admin = $_SESSION['id'];
-                $nama = $_POST['nama'];
-                $notlp = $_POST['notlp'];
-                $email = $_POST['email'];
-                $alamat = $_POST['alamat'];
-                $role = $_POST['role'];
-                $user = $_POST['username'];
-                $pass = $_POST['password'];
-                $p_crypt = sha1($pass);
-                $mime = $_FILES['foto']['type'];
-                $foto = file_get_contents($_FILES['foto']['tmp_name']);
-                $oldmime = $_FILES['oldoto']['type'];
-                $oldfoto = file_get_contents($_FILES['foto']['tmp_name']);
-
-                if (!empty($foto)) {
-                    $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt, 'mime' => $mime, 'foto' => $foto);
-
-                if ($this->oModel->update($aData))
-                         header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
-                else
-                    $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';
-                } else {
-                    
-                }
-                
-            }
-            else
-            {
-                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
-            }
-        }
-
-        /* Get the data of the post */
-        $this->oUtil->oEdit = $this->oModel->getById($this->_iId);
-
-        $this->oUtil->getView('edit_admin');
     }
 
         public function edit()
@@ -171,19 +128,23 @@ class Admincrud
                 $foto = file_get_contents($_FILES['foto']['tmp_name']);
                 $oldfoto = $_POST['oldFoto'];
                 $oldmime = $_POST['oldMime'];
+                $idku = $_SESSION['id'];
+                $act = $_SESSION['nama'].' mengubah data profile admin '.$_POST['nama'];
 
                 if (empty($foto)) {
                     $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt, 'mime' => $oldmime, 'foto' => $oldfoto);
+                    $aLog = array('id_admin' => $idku, 'activity' => $act );
 
-                    if ($this->oModel->update($aData))
+                    if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog))
                          header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
                     else
                     $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';    
                 } else {
                     /* ini masih salah */
                     $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt, 'mime' => $mime, 'foto' => $foto);
+                    $aLog = array('id_admin' => $idku, 'activity' => $act );
 
-                    if ($this->oModel->update($aData))
+                    if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog))
                          header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
                     else
                     $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';                    }                                
@@ -205,7 +166,12 @@ class Admincrud
     {
         if (!$this->isLogged()) exit;
 
-        if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId))
+        $idku = $_SESSION['id'];
+        $act = $_SESSION['nama'].' menghapus data profile admin '.$_POST['nama'];
+
+        $aLog = array('id_admin' => $idku, 'activity' => $act );
+
+        if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId) && $this->oModel->addAlog($aLog))
             header('Location: ' . ROOT_URL . '?p=Admincrud&a=p_admin');
         else
             exit('Kunjungan tidak bisa dihapus.');

@@ -21,7 +21,7 @@
             Data Diri
           </header>
 
-          <?php if (empty($this->oAdd_Admins)): ?>
+          <?php if (empty($this->oAdd_Admins) && empty($this->oAlog)): ?>
             <?php else: ?>
             <?php $data = $this->oAdd_Admins;
             $potong = substr($data->alamat, 0, 350) . '...';
@@ -45,17 +45,23 @@
 
     <div class="row">
       <div class="col-lg-12">
-        <section class="panel">
+        <section class="panel">           
           <header class="panel-heading" style="font-size: 35px;">
             My History 
           </header>
-
           <table class="table table-striped table-advance table-hover">
             <tbody>
               <tr>
                 <th>Aktifitas</th>
                 <th>Tanggal</th>
               </tr>
+              <?php foreach ($this->oAlog as $oAlog): 
+             ?>
+              <tr>
+                <td><?=$oAlog->activity?></td>
+                <td><?=$oAlog->tanggal?></td>
+              </tr>
+             <?php endforeach ?>
             </tbody>
           </table>
         </section>
