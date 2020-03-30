@@ -1,39 +1,17 @@
 <?php require 'inc/header.php' ?>
-  <!-- Bootstrap CSS -->
-  <link href="<?=ROOT_URL?>static/other/css/bootstrap.min.css" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="<?=ROOT_URL?>static/other/css/bootstrap-theme.css" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="<?=ROOT_URL?>static/other/css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="<?=ROOT_URL?>static/other/css/font-awesome.min.css" rel="stylesheet" />
-  <!-- Custom styles -->
-  <link href="<?=ROOT_URL?>static/other/css/style.css" rel="stylesheet">
-  <link href="<?=ROOT_URL?>static/other/css/style-responsive.css" rel="stylesheet" />
+
 
 
  <!--main content start-->
-    <section id="main-content">
-      <section class="wrapper">
-        <div class="row">
-          <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa-user-md"></i> Profile</h3>
-            <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-              <li><i class="icon_documents_alt"></i>Pages</li>
-              <li><i class="fa fa-user-md"></i>Profile</li>
-            </ol>
-          </div>
-        </div>
         <div class="row">
           <!-- profile-widget -->
           <div class="col-lg-12">
-            <div class="profile-widget profile-widget-info">
+            <div class="profile-widget profile-widget-info" style="background-color: #1abc9c;">
               <div class="panel-body">
                 <div class="col-lg-2 col-sm-2">
                   <h4>Jenifer Smith</h4>
                   <div class="follow-ava">
-                    <img src="img/profile-widget-avatar.jpg" alt="">
+                    <img src="<?=ROOT_URL?>static/img/avataaars.svg" alt="">
                   </div>
                   <h6>Administrator</h6>
                 </div>
@@ -48,7 +26,7 @@
                                 </h6>
                 </div>
                 <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                  <ul>
+                  <ul style="background-color: #1abc9c;">
                     <li class="active">
 
                       <i class="fa fa-comments fa-2x"> </i><br> Contrary to popular belief, Lorem Ipsum is not simply
@@ -57,7 +35,7 @@
                   </ul>
                 </div>
                 <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                  <ul>
+                  <ul style="background-color: #1abc9c;">
                     <li class="active">
 
                       <i class="fa fa-bell fa-2x"> </i><br> Contrary to popular belief, Lorem Ipsum is not simply
@@ -66,7 +44,7 @@
                   </ul>
                 </div>
                 <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                  <ul>
+                  <ul style="background-color: #1abc9c;">
                     <li class="active">
 
                       <i class="fa fa-tachometer fa-2x"> </i><br> Contrary to popular belief, Lorem Ipsum is not simply
@@ -81,22 +59,22 @@
         <!-- page start-->
         <div class="row">
           <div class="col-lg-12">
-            <section class="panel">
+            <section class="panel" >
               <header class="panel-heading tab-bg-info">
                 <ul class="nav nav-tabs">
-                  <li class="active">
+                  <li class="active" style="background-color: #1abc9c;">
                     <a data-toggle="tab" href="#recent-activity">
                                           <i class="icon-home"></i>
                                           Daily Activity
                                       </a>
                   </li>
-                  <li>
+                  <li style="background-color: #1abc9c;">
                     <a data-toggle="tab" href="#profile">
                                           <i class="icon-user"></i>
                                           Profile
                                       </a>
                   </li>
-                  <li class="">
+                  <li class="" style="background-color: #1abc9c;">
                     <a data-toggle="tab" href="#edit-profile">
                                           <i class="icon-envelope"></i>
                                           Edit Profile
@@ -327,10 +305,6 @@
           </div>
         </div>
 
-        <!-- page end-->
-      </section>
-    </section>
-    <!--main content end-->
 
         <!-- javascripts -->
   <script src="<?=ROOT_URL?>static/other/js/jquery.js"></script>

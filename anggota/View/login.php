@@ -1,9 +1,21 @@
 <?php require 'inc/msg.php' ?>
 <?php require 'inc/header.php' ?>
 
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center">
+
+      <!-- Masthead Avatar Image -->
+      <img class="masthead-avatar" src="<?=ROOT_URL?>static/img/avataaars.svg" alt="">
+
+      <!-- Masthead Heading -->
+      <h1 class="masthead-heading text-uppercase mb-0">Perpustakaan Online Wira Buana</h1>
+
+
+    </div>
+  </header>
 
   <!-- Contact Section -->
-  <section class="page-section" id="contact">
+  <section class="page-section" id="contact" style="background-color: white">
     <div class="container">
 
       <!-- Contact Section Heading -->
@@ -38,7 +50,11 @@
             </div>
             <br>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
+              <center>
+                <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Login</button>
+                <br><br>
+                <p>Belum Punya Akun? Daftar <a href="<?=ROOT_URL?>?p=anggota&a=daftar">Disini</a>
+              </center>
             </div>
           </form>
         </div>

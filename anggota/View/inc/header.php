@@ -20,6 +20,18 @@
   <!-- Theme CSS -->
   <link href="<?=ROOT_URL?>static/css/freelancer.min.css" rel="stylesheet">
 
+    <!-- Bootstrap CSS -->
+  <link href="<?=ROOT_URL?>static/other/css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="<?=ROOT_URL?>static/other/css/bootstrap-theme.css" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="<?=ROOT_URL?>static/other/css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="<?=ROOT_URL?>static/other/css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Custom styles -->
+  <link href="<?=ROOT_URL?>static/other/css/style.css" rel="stylesheet">
+  <link href="<?=ROOT_URL?>static/other/css/style-responsive.css" rel="stylesheet" />
+
 
 </head>
 
@@ -64,33 +76,13 @@
               <a href="<?=ROOT_URL?>?p=anggota&amp;a=login" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">Login</a>
             <?php endif ?>
           </li>
-          </div>
         </ul>
       </div>
     </div>
   </nav>
-
-    <!-- Masthead -->
-  <header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex align-items-center flex-column">
-
-      <!-- Masthead Avatar Image -->
-      <img class="masthead-avatar mb-5" src="img/avataaars.svg" alt="">
-
-      <!-- Masthead Heading -->
+<!--  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center">
       <h1 class="masthead-heading text-uppercase mb-0">Perpustakaan Online</h1>
 
-      <!-- Icon Divider -->
-      <div class="divider-custom divider-light">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon">
-          <i class="fas fa-star"></i>
-        </div>
-        <div class="divider-custom-line"></div>
-      </div>
-
-      <!-- Masthead Subheading -->
-      <p class="masthead-subheading font-weight-light mb-0">SMP Wira Buana - SMK Wira Buana 1 - SMK Wira Buana 2</p>
-
     </div>
-  </header>
+  </header> -->

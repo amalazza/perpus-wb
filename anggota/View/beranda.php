@@ -1,4 +1,17 @@
 <?php require 'inc/header.php' ?>
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center">
+
+      <!-- Masthead Avatar Image -->
+      <img class="masthead-avatar" src="<?=ROOT_URL?>static/img/avataaars.svg" alt="">
+
+      <!-- Masthead Heading -->
+      <h1 class="masthead-heading text-uppercase mb-0">Perpustakaan Online Wira Buana</h1>
+
+
+    </div>
+  </header>
+
 
 
     <!-- Portfolio Section -->

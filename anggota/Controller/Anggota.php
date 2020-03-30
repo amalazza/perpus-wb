@@ -69,7 +69,7 @@ class Anggota extends Beranda
     }
 
 
-    public function add()
+    public function daftar()
     {
         // if (!$this->isLogged()) exit;
 

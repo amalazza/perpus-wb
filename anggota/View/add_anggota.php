@@ -1,14 +1,38 @@
 <?php require 'inc/header.php' ?>
 <?php require 'inc/msg.php' ?>
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center">
+
+      <!-- Masthead Avatar Image -->
+      <img class="masthead-avatar" src="<?=ROOT_URL?>static/img/avataaars.svg" alt="">
+
+      <!-- Masthead Heading -->
+      <h1 class="masthead-heading text-uppercase mb-0">Perpustakaan Online Wira Buana</h1>
+
+
+    </div>
+  </header>
 
  <!-- Form validations -->
+   <!-- Contact Section -->
+  <section class="page-section" id="contact" style="background-color: white">
+    <div class="container">
+
+      <!-- Contact Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Daftar</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
         
         <div class="row">
           <div class="col-lg-12">
             <section class="panel">
-              <header class="panel-heading">
-                Anggota
-              </header>
               <div class="panel-body">
                 <div class="form">
                   <form class="form-validate form-horizontal " enctype="multipart/form-data" role="form" method="post" action="">
@@ -89,5 +113,8 @@
           </div>
         </div>
         <!-- page end-->
+
+    </div>
+  </section>
 
 <?php require 'inc/footer.php' ?>
