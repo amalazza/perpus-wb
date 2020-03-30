@@ -21,10 +21,11 @@
             Data Diri
           </header>
 
-          <?php if (empty($this->oAdd_Admins) && empty($this->oAlog)): ?>
+          <?php 
+
+          if (empty($this->oAdd_Admins) && empty($this->oAlog)): ?>
             <?php else: ?>
             <?php $data = $this->oAdd_Admins;
-            $potong = substr($data->alamat, 0, 350) . '...';
              ?>
           <div class="panel-body">
             <img src="data:<?=$data->mime?>;base64,<?=base64_encode($data->foto); ?>" width="200" style="float:left; margin-right: 20px;"/>
@@ -34,10 +35,16 @@
             <h4>No Telephone : <?=$data->notlp?></h4>
             <div style="max-width: 800px;">
               <h4>Alamat : </h4>
-              <h4><?php echo $potong; ?></h4>
+              <h4><?=$data->alamat?></h4>
             </div>
             </div>
+            <div style="float:right;"">
+              <form action="<?=ROOT_URL?>?p=Admincrud&amp;a=edit&amp;id=<?=$data->id_admin?>?>" method="post">
+                <button class="btn btn-danger" type="submit" name="edit" value="1" style="width: 120px;">Edit Profile</button>
+              </form>
           </div>
+          </div>
+          
           <?php endif ?>
       </section>
      </div>

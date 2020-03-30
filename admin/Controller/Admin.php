@@ -23,17 +23,19 @@ class Admin extends Kunjungan
             $sHashPassword =  $this->oModel->login($u);
             $idku = $this->oModel->ambil_id($u);
             $namaku = $this->oModel->ambil_nama($u);
+            $roleku = $this->oModel->roleku($u);
 
             $compare = strcmp($p_crypt, $sHashPassword);
 
             if ($compare == 0)
             {   
-                $_SESSION['is_logged'] = 1; // Admin is logged now
+                $_SESSION['is_logged'] = 1; // Master Admin is logged now
                 $_SESSION['id'] = $idku;
                 $_SESSION['nama'] = $namaku;
+                $_SESSION['role'] = $roleku;
                 header('Location: ' . ROOT_URL . '?p=kunjungan&a=index');
                 exit;
-            }
+            }          
             else
             {
                 $this->oUtil->sErrMsg = 'Incorrect Login!';

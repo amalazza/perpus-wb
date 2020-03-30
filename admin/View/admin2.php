@@ -18,19 +18,6 @@
       <div class="col-lg-12">
         <section class="panel">
           <header class="panel-heading">
-            Tambah Admin
-          </header>
-          <div class="panel-body">
-            <button type="button" onclick="window.location='<?=ROOT_URL?>?p=Admincrud&amp;a=add'" class="btn btn-primary">Tambah Admin Baru</button>
-          </div>
-      </section>
-     </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-12">
-        <section class="panel">
-          <header class="panel-heading">
             Tabel Admin
           </header>
 
@@ -47,7 +34,6 @@
                 <th>Email</th>
                 <th>No Tlp</th>
                 <th>Alamat</th>
-                <th id="thAct">Action</th>
               </tr>
               <?php foreach ($this->oAdd_Admin as $oAdd_Admin): 
 
@@ -59,18 +45,7 @@
                 <td><?=htmlspecialchars($oAdd_Admin->username)?></td>
                 <td><?=$oAdd_Admin->email?></td>
                 <td><?=$oAdd_Admin->notlp?></td>
-                <td><?php echo $potong; ?></td>
-                <td >
-                  <div class="btn-group">
-                    <!-- <button class="btn btn-primary" onclick="window.location='<?=ROOT_URL?>?p=kunjungan&amp;a=edit&amp;id=<?=$oKunjungan->no_kunjungan?>'">Edit</button> &nbsp; -->
-                    <form action="<?=ROOT_URL?>?p=Admincrud&amp;a=edit&amp;id=<?=$oAdd_Admin->id_admin?>" method="post" style="display: inline">
-                        <button class="btn btn-danger" type="submit" name="edit" value="1" >edit</button>
-                    </form>
-                    <form action="<?=ROOT_URL?>?p=Admincrud&amp;a=delete&amp;id=<?=$oAdd_Admin->id_admin?>" method="post" style="display: inline">
-                        <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin mennghapus data ingin?');">Hapus</button>
-                    </form>
-                  </div>
-                </td>                
+                <td><?php echo $potong; ?></td>               
               </tr>
               <?php endforeach ?>
              

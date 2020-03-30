@@ -84,7 +84,7 @@
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
                             </span>
-                            <span class="username">|| <?php echo $_SESSION['nama']; ?> ||</span>
+                            <span class="username">|| <?php echo $_SESSION['nama'].' ('.$_SESSION['role'].')'; ?> ||</span>
                             <b class="caret"></b>
                         </a>
             <ul class="dropdown-menu extended logout">

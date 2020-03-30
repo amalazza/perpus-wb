@@ -34,6 +34,15 @@ class Admin extends Kunjungan
         return @$oRow->nama; // Use the PHP 5.5 password function
     }
 
+        public function roleku($username)
+    {
+        $oStmt = $this->oDb->prepare('SELECT username,role FROM admin WHERE username = :username LIMIT 1');
+        $oStmt->bindValue(':username', $username, \PDO::PARAM_STR);
+        $oStmt->execute();
+        $oRow = $oStmt->fetch(\PDO::FETCH_OBJ);
+
+        return @$oRow->role; // Use the PHP 5.5 password function
+    }
 }
 
 /* Model Table Admin */

@@ -28,7 +28,7 @@ class Admincrud
 
     /***** Front end *****/
     // Homepage
-    public function index()
+    public function indexA()
     {
         $this->oUtil->oAdd_Admin = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
 
@@ -38,8 +38,13 @@ class Admincrud
     public function p_admin()
     {
         $this->oUtil->oAdd_Admin = $this->oModel->getAll(0, self::MAX_POSTS); // Get only the latest X posts
-
-        $this->oUtil->getView('admin');
+        $test = strcmp($_SESSION['role'], 'master');
+        $test2 = strcmp($_SESSION['role'], 'admin');
+        if ($test == 0) {
+            $this->oUtil->getView('admin');
+        } elseif ($test2 == 0) {
+            $this->oUtil->getView('admin2');
+        }
     }
 
     public function notFound()
