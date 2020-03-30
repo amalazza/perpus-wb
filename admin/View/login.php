@@ -53,7 +53,7 @@
           <span class="input-group-addon"><i class="icon_key_alt"></i></span>
           <input type="password" class="form-control" placeholder="Password" name="password" id="password" >
         </div>
-        <button id="btnLogin" name="btnLogin" class="btn btn-primary btn-lg btn-block" type="submit">Login *ngaco</button>
+        <button id="btnLogin" name="btnLogin" class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
       </div>
     </form>
     <div class="text-center">

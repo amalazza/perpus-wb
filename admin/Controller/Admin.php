@@ -22,6 +22,7 @@ class Admin extends Kunjungan
 
             $sHashPassword =  $this->oModel->login($u);
             $idku = $this->oModel->ambil_id($u);
+            $namaku = $this->oModel->ambil_nama($u);
 
             $compare = strcmp($p_crypt, $sHashPassword);
 
@@ -29,6 +30,7 @@ class Admin extends Kunjungan
             {   
                 $_SESSION['is_logged'] = 1; // Admin is logged now
                 $_SESSION['id'] = $idku;
+                $_SESSION['nama'] = $namaku;
                 header('Location: ' . ROOT_URL . '?p=kunjungan&a=index');
                 exit;
             }

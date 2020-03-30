@@ -24,6 +24,16 @@ class Admin extends Kunjungan
         return @$oRow->id_admin; // Use the PHP 5.5 password function
     }
 
+    public function ambil_nama($username)
+    {
+        $oStmt = $this->oDb->prepare('SELECT username,nama FROM admin WHERE username = :username LIMIT 1');
+        $oStmt->bindValue(':username', $username, \PDO::PARAM_STR);
+        $oStmt->execute();
+        $oRow = $oStmt->fetch(\PDO::FETCH_OBJ);
+
+        return @$oRow->nama; // Use the PHP 5.5 password function
+    }
+
 }
 
 /* Model Table Admin */
@@ -67,12 +77,20 @@ class Admins
 
     public function update(array $aData)
     {
-        $oStmt = $this->oDb->prepare('UPDATE admin SET username = :username, password = :password WHERE id_admin = :id_admin LIMIT 1');
+        $oStmt = $this->oDb->prepare('UPDATE admin SET nama = :nama, notlp = :notlp, email = :email, alamat = :alamat, role = :role, username = :username, password = :password, mime = :mime, foto = :foto WHERE id_admin = :id_admin LIMIT 1');
+        $oStmt->bindValue(':nama', $aData['nama']);
+        $oStmt->bindValue(':notlp', $aData['notlp']);
+        $oStmt->bindValue(':email', $aData['email']);
+        $oStmt->bindValue(':alamat', $aData['alamat']);
+        $oStmt->bindValue(':role', $aData['role']);
         $oStmt->bindValue(':username', $aData['username']);
         $oStmt->bindValue(':password', $aData['password']);
+        $oStmt->bindValue(':mime', $aData['mime']);
+        $oStmt->bindValue(':foto', $aData['foto']);
         $oStmt->bindValue(':id_admin', $aData['id_admin']);
-        return $oStmt->execute();
+        return $oStmt->execute($aData);
     }
+
 
     public function delete($iId)
     {

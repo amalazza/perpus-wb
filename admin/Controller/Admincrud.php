@@ -103,7 +103,8 @@ class Admincrud
         $this->oUtil->getView('add_admin');
     }
 
-    public function edit()
+ 
+    public function edit2()
     {
         if (!$this->isLogged()) exit;
 
@@ -111,17 +112,31 @@ class Admincrud
         {
             if (isset($_POST['edit_submit']))
             {
-                $idA = $_POST['idA'];
+                $id_admin = $_SESSION['id'];
+                $nama = $_POST['nama'];
+                $notlp = $_POST['notlp'];
+                $email = $_POST['email'];
+                $alamat = $_POST['alamat'];
+                $role = $_POST['role'];
                 $user = $_POST['username'];
                 $pass = $_POST['password'];
                 $p_crypt = sha1($pass);
+                $mime = $_FILES['foto']['type'];
+                $foto = file_get_contents($_FILES['foto']['tmp_name']);
+                $oldmime = $_FILES['oldoto']['type'];
+                $oldfoto = file_get_contents($_FILES['foto']['tmp_name']);
 
-                $aData = array('username' => $user, 'password' => $p_crypt, 'id_admin' => $idA);
+                if (!empty($foto)) {
+                    $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt, 'mime' => $mime, 'foto' => $foto);
 
                 if ($this->oModel->update($aData))
                          header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
                 else
                     $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';
+                } else {
+                    
+                }
+                
             }
             else
             {
@@ -130,10 +145,61 @@ class Admincrud
         }
 
         /* Get the data of the post */
-        $this->oUtil->oKunjungan = $this->oModel->getById($this->_iId);
+        $this->oUtil->oEdit = $this->oModel->getById($this->_iId);
 
         $this->oUtil->getView('edit_admin');
     }
+
+        public function edit()
+    {
+        if (!$this->isLogged()) exit;
+
+        if (!empty($_POST['edit_submit']))
+        {
+            if (isset($_POST['edit_submit']))
+            {
+                $id_admin = $_GET['id'];
+                $nama = $_POST['nama'];
+                $notlp = $_POST['notlp'];
+                $email = $_POST['email'];
+                $alamat = $_POST['alamat'];
+                $role = $_POST['role'];
+                $user = $_POST['username'];
+                $pass = $_POST['password'];
+                $p_crypt = sha1($pass);
+                $mime = $_FILES['foto']['type'];
+                $foto = file_get_contents($_FILES['foto']['tmp_name']);
+                $oldfoto = $_POST['oldFoto'];
+                $oldmime = $_POST['oldMime'];
+
+                if (empty($foto)) {
+                    $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt, 'mime' => $oldmime, 'foto' => $oldfoto);
+
+                    if ($this->oModel->update($aData))
+                         header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                    else
+                    $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';    
+                } else {
+                    /* ini masih salah */
+                    $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt, 'mime' => $mime, 'foto' => $foto);
+
+                    if ($this->oModel->update($aData))
+                         header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                    else
+                    $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';                    }                                
+            }
+            else
+            {
+                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+            }
+        }
+
+        /* Get the data of the post */
+        $this->oUtil->oEdit = $this->oModel->getById($this->_iId);
+
+        $this->oUtil->getView('edit_admin');
+    }
+
 
     public function delete()
     {

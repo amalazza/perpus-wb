@@ -27,7 +27,7 @@
             $potong = substr($data->alamat, 0, 350) . '...';
              ?>
           <div class="panel-body">
-            <img src="data:image/jpeg;base64,<?=base64_encode($data->foto) ?>" width="200" style="float:left; margin-right: 20px;"/>
+            <img src="data:<?=$data->mime?>;base64,<?=base64_encode($data->foto); ?>" width="200" style="float:left; margin-right: 20px;"/>
             <div style="">
             <h4>Nama : <?=$data->nama?></h4>
             <h4>Email : <?=$data->email?></h4>

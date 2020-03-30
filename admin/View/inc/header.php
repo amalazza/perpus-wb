@@ -83,9 +83,8 @@
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/avatar1_small.jpg">
                             </span>
-                            <span class="username">ADMIN</span>
+                            <span class="username">|| <?php echo $_SESSION['nama']; ?> ||</span>
                             <b class="caret"></b>
                         </a>
             <ul class="dropdown-menu extended logout">
