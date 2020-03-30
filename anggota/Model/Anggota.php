@@ -13,4 +13,13 @@ class Anggota extends Beranda
 
         return @$oRow->password; // Use the PHP 5.5 password function
     }
+
+    public function get($iOffset, $iLimit)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM anggota');
+        $oStmt->bindParam(':offset', $iOffset, \PDO::PARAM_INT);
+        $oStmt->bindParam(':limit', $iLimit, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
 }

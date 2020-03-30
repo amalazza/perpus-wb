@@ -20,6 +20,7 @@
   <!-- Theme CSS -->
   <link href="<?=ROOT_URL?>static/css/freelancer.min.css" rel="stylesheet">
 
+
 </head>
 
 <body id="page-top">
@@ -40,13 +41,30 @@
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?=ROOT_URL?>?p=buku&amp;a=ebook">E-book</a>
           </li>
-          <li class="nav-item mx-0 mx-lg-1">
+          <!-- <li class="nav-item mx-0 mx-lg-1">
             <?php if (!empty($_SESSION['is_logged'])): ?>
               <a href="<?=ROOT_URL?>?p=anggota&amp;a=logout" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"><i class="icon_key_alt"></i> Log Out</a>
               <?php else: ?>
                 <a href="<?=ROOT_URL?>?p=anggota&amp;a=login" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">Login</a>
               <?php endif ?>
+          </li> -->
+          <!-- Example single danger button -->
+          <li class="nav-item mx-0 mx-lg-1">
+            <?php if (!empty($_SESSION['is_logged'])): ?>
+              <div class="btn-group">
+                <button type="button" class="btn btn-info dropdown-toggle nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  PROFILE
+                </button>
+                <div class="dropdown-menu" style="color: black;">
+                  <a style="color: #1abc9c;" class="dropdown-item nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?=ROOT_URL?>?p=anggota&amp;a=profile">Profile Saya</a>
+                  <a style="color: #1abc9c;" class="dropdown-item nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?=ROOT_URL?>?p=anggota&amp;a=logout">Logout</a>
+                </div>
+              </div>
+            <?php else: ?>
+              <a href="<?=ROOT_URL?>?p=anggota&amp;a=login" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">Login</a>
+            <?php endif ?>
           </li>
+          </div>
         </ul>
       </div>
     </div>

@@ -48,4 +48,12 @@ class Anggota extends Beranda
         header('Location: ' . ROOT_URL);
         exit;
     }
+
+        // Homepage
+    public function profile()
+    {
+        $this->oUtil->oAnggota = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
+
+        $this->oUtil->getView('profile');
+    }
 }

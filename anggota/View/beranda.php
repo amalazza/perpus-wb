@@ -28,11 +28,13 @@
               <tr>
                 <th>No Anggota</th>
                 <th>Nama Anggota *nanti</th>
+                <th>Action</th>
               </tr>
               <?php foreach ($this->oBeranda as $oBeranda): ?>
               <tr>
                 <td><?=htmlspecialchars($oBeranda->no_anggota)?></td>
-                <td><?=$oBeranda->nama?></td>               
+                <td><?=$oBeranda->nama?></td>
+                <td><button class="btn btn-primary" onclick="window.location='<?=ROOT_URL?>?p=detail_katalog&amp;a=index&amp;id=<?=$oDe_katalog->no_katalog?>'">Edit</button></td>               
               </tr>
               <?php endforeach ?>
              
