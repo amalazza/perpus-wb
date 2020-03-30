@@ -68,6 +68,7 @@ class Anggota extends Beranda
         exit;
     }
 
+<<<<<<< HEAD
     public function add()
     {
         // if (!$this->isLogged()) exit;
@@ -94,5 +95,13 @@ class Anggota extends Beranda
         // $this->oUtil->oNIS = $this->oModel->getNIS();
         
         $this->oUtil->getView('add_anggota');
+=======
+        // Homepage
+    public function profile()
+    {
+        $this->oUtil->oAnggota = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
+
+        $this->oUtil->getView('profile');
+>>>>>>> d1f473958da18d82c41e071b5855c7dedb29ffc3
     }
 }

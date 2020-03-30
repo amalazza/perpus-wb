@@ -28,6 +28,8 @@
   <!-- Custom scripts for this template -->
   <script src="<?=ROOT_URL?>static/js/freelancer.min.js"></script>
 
+
+
 </body>
 
 </html>
