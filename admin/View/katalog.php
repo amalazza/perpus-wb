@@ -41,9 +41,9 @@
               <tr>
                 <th>No Katalog</th>
 				<th>Judul</th>
-				<th>stok</th>
+				<th>Stok</th>
+				<th>Cover</th>
 				<th>Detail</th>
-				<th>cover</th>
                 <th>Action</th>
               </tr> 
 			  
@@ -52,10 +52,11 @@
                 <td><?=htmlspecialchars($oKatalog->no_katalog)?></td>
 				<td><?=$oKatalog->judul?></td>
 				<td><?=$oKatalog->stok ?></td>
-				<td>
-				<button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#detailAnggota" data-id="<?=$oKatalog->no_katalog?>">detail</button>
+				<td><div class="activity-body act-in"><?php echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($oKatalog->cover))."' width='75' height='75'/>";?></div>
 				</td>
-				<td><div class="activity-body act-in"><?php echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($oKatalog->cover))."' width='75' height='75'/>";?></div></td>
+				<td>
+				<button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#detailAnggota" data-id="<?=$oKatalog->no_katalog?>">Detail</button>
+				</td>
 				<td>
                   <div class="btn-group">
                     <button class="btn btn-primary" onclick="window.location='<?=ROOT_URL?>?p=katalog&amp;a=edit&amp;id=<?=$oKatalog->no_katalog?>'">Edit</button> &nbsp;

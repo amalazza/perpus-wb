@@ -54,7 +54,7 @@
                   <div class="btn-group">
                     <!-- <button class="btn btn-primary" onclick="window.location='<?=ROOT_URL?>?p=kunjungan&amp;a=edit&amp;id=<?=$oKunjungan->no_kunjungan?>'">Edit</button> &nbsp; -->
                     <form action="<?=ROOT_URL?>?p=kunjungan&amp;a=delete&amp;id=<?=$oKunjungan->no_kunjungan?>" method="post" style="display: inline">
-                        <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin mennghapus data ingin?');">Hapus</button>
+                        <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin mennghapus data ini?');">Hapus</button>
                     </form>
                   </div>
                 </td>                

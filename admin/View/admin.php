@@ -64,7 +64,7 @@
                   <div class="btn-group">
                     <!-- <button class="btn btn-primary" onclick="window.location='<?=ROOT_URL?>?p=kunjungan&amp;a=edit&amp;id=<?=$oKunjungan->no_kunjungan?>'">Edit</button> &nbsp; -->
                     <form action="<?=ROOT_URL?>?p=Admincrud&amp;a=edit&amp;id=<?=$oAdd_Admin->id_admin?>" method="post" style="display: inline">
-                        <button class="btn btn-danger" type="submit" name="edit" value="1" >edit</button>
+                        <button class="btn btn-primary" type="submit" name="edit" value="1" >Edit</button>
                     </form>
                     <form action="<?=ROOT_URL?>?p=Admincrud&amp;a=delete&amp;id=<?=$oAdd_Admin->id_admin?>" method="post" style="display: inline">
                         <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin mennghapus data ingin?');">Hapus</button>
