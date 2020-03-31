@@ -24,7 +24,7 @@
               </header>
               <div class="panel-body">
                 <div class="form">
-                  <form class="form-validate form-horizontal " enctype="multipart/form-data" role="form" method="post" action="">
+                  <form class="form-validate form-horizontal register_form" enctype="multipart/form-data" role="form" method="post" action="">
                     <div class="form-group ">
                       <label for="no_katalog" class="control-label col-lg-2">No Katalog <span class="required">*</span></label>
                       <div class="col-lg-10">
@@ -78,7 +78,7 @@
 					<div class="form-group ">
                       <label for="tahun_terbit" class="control-label col-lg-2">Tahun Terbit <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="tahun_terbit" name="tahun_terbit" type="text" />
+                        <input class=" form-control" id="tahun_terbit" name="tahun_terbit" type="text" onkeypress="return isNumber(event)"/>
                       </div>
                     </div>
 					<div class="form-group ">
@@ -114,7 +114,7 @@
 					<div class="form-group ">
                       <label for="stok" class="control-label col-lg-2">Stok <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="stok" name="stok" type="text" />
+                        <input class=" form-control" id="stok" name="stok" type="text" onkeypress="return isNumber(event)"/>
                       </div>
                     </div>
                     <div class="form-group">
@@ -134,6 +134,16 @@
   <script type="text/javascript">
   $("#searchKoleksi").chosen();
   $("#searchKlasifikasi").chosen();
+  
+  //stok hanya menerima angka
+  function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
   </script>
   
 <?php require 'inc/footer.php' ?>

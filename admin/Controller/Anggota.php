@@ -108,7 +108,7 @@ class Anggota
             if (isset($_POST['nis']) <= 15) // Allow a maximum of 50 characters
             {
 				
-				$aData = array('no_anggota' => $_POST['nis'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => $_POST['confirm_password'],'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
+				$aData = array('no_anggota' => $_POST['nis'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => sha1($_POST['confirm_password']),'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
 
                 if ($this->oModel->add($aData))
                      header('Location: ' . ROOT_URL  . '?p=anggota&a=anggota');

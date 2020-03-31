@@ -1,21 +1,23 @@
 var Script = function () {
 
-    $.validator.setDefaults({
-        submitHandler: function() { alert("submitted!"); }
-    });
+    
 
     $().ready(function() {
         // validate the comment form when it is submitted
         $("#feedback_form").validate();
 
         // validate signup form on keyup and submit
-        $("#register_form").validate({
+        $(".register_form").validate({
             rules: {
                 fullname: {
                     required: true,
                     minlength: 6
                 },
-                address: {
+				no_telpon: {
+                    required: true,
+                    minlength: 10
+                },
+                alamat: {
                     required: true,
                     minlength: 10
                 },
@@ -36,6 +38,32 @@ var Script = function () {
                     required: true,
                     email: true
                 },
+				judul: {
+                    required: true
+                },
+				pengarang: {
+                    required: true
+                },
+				penerbit: {
+                    required: true
+                },
+				kota_terbit: {
+                    required: true
+                },
+				isbn: {
+                    required: true
+                },
+				lokasi: {
+                    required: true
+                },
+				stok: {
+                    required: true
+                },
+				tahun_terbit: {
+                    required: true,
+					minlength:4,
+					maxlength:4
+                },
                 topic: {
                     required: "#newsletter:checked",
                     minlength: 2
@@ -47,24 +75,40 @@ var Script = function () {
                     required: "Please enter a Full Name.",
                     minlength: "Your Full Name must consist of at least 6 characters long."
                 },
-                address: {
-                    required: "Please enter a Address.",
-                    minlength: "Your Address must consist of at least 10 characters long."
+				no_telpon: {
+                    required: "masukkan nomor telepon.",
+                    minlength: "nomor telepon yang dimasukkan minimal 10 huruf."
+                },
+                alamat: {
+                    required: "masukkan alamat.",
+                    minlength: "alamat yang dimasukkan minimal 10 huruf."
                 },
                 username: {
                     required: "Please enter a Username.",
                     minlength: "Your username must consist of at least 5 characters long."
                 },
                 password: {
-                    required: "Please provide a password.",
-                    minlength: "Your password must be at least 5 characters long."
+                    required: "masukkan password",
+                    minlength: "password minimal 5 huruf"
                 },
                 confirm_password: {
-                    required: "Please provide a password.",
-                    minlength: "Your password must be at least 5 characters long.",
-                    equalTo: "Please enter the same password as above."
+                    required: "masukkan konfirmasi password",
+                    minlength: "password minimal 5 huruf",
+                    equalTo: "masukkan password yang sama"
                 },
-                email: "Please enter a valid email address.",
+				tahun_terbit: {
+                    required: "masukkan tahun buku terbit",
+					minlength:"tahun terbit terdiri dari 4 angka",
+					maxlength:"tahun terbit terdiri dari 4 angka"
+                },
+                email: "masukkan alamat email",
+				judul: "masukkan judul buku",
+				pengarang: "masukkan nama pengarang",
+				penerbit: "masukkan penerbit buku",
+				kota_terbit: "masukkan kota buku terbit",
+				isbn: "masukkan nomor isbn",
+				lokasi: "masukkan lokasi penyimpanan buku",
+				stok: "masukkan stok buku",
                 agree: "Please accept our terms & condition."
             }
         });

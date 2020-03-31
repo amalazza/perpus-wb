@@ -59,7 +59,9 @@
 				</td>
 				<td>
                   <div class="btn-group">
-                    <button class="btn btn-primary" onclick="window.location='<?=ROOT_URL?>?p=katalog&amp;a=edit&amp;id=<?=$oKatalog->no_katalog?>'">Edit</button> &nbsp;
+				  <form action="<?=ROOT_URL?>?p=katalog&amp;a=edit&amp;id=<?=$oKatalog->no_katalog?>" method="post" style="display: inline">
+                        <button class="btn btn-primary" type="submit" name="edit" value="1" >Edit</button>
+                    </form>
                     <form action="<?=ROOT_URL?>?p=katalog&amp;a=delete&amp;id=<?=$oKatalog->no_katalog?>" method="post" style="display: inline">
                         <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin mennghapus data ingin?');">Hapus</button>
                     </form>

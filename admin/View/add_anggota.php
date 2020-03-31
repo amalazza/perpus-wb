@@ -24,7 +24,7 @@
               </header>
               <div class="panel-body">
                 <div class="form">
-                  <form class="form-validate form-horizontal " enctype="multipart/form-data" role="form" method="post" action="">
+                  <form class="form-validate form-horizontal register_form" enctype="multipart/form-data" role="form" method="post" action="">
                     <div class="form-group ">
                       <label for="nis" class="control-label col-lg-2">NIS <span class="required">*</span></label>
                       <div class="col-lg-10">
@@ -57,7 +57,7 @@
 					<div class="form-group ">
                       <label for="no_telpon" class="control-label col-lg-2">No. Telepon <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="no_telpon" name="no_telpon" type="text" />
+                        <input class=" form-control" id="no_telpon" name="no_telpon" type="text" onkeypress="return isNumber(event)"/>
                       </div>
                     </div>
                     <div class="form-group ">
@@ -114,7 +114,16 @@
 			  $('#kelas').val(Data.kelas);
 		  });
   });
-  //$("#searchKlasifikasi").chosen();
+  
+  //nomor telepon hanya menerima angka
+  function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
   </script>
 
 <?php require 'inc/footer.php' ?>
