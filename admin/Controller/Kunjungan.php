@@ -58,6 +58,12 @@ class Kunjungan
         $this->oUtil->getView('kunjungan');
     }
 
+    public function detailKunjungan()
+    {
+        
+            echo json_encode($this->oUtil->oData = $this->oModel->getAnggotaById($_POST['id']));
+    }
+
 
     public function add()
     {
@@ -70,9 +76,14 @@ class Kunjungan
                 $aData = array('no_anggota' => $_POST['anggota'], 'waktu_kunjungan' => date('Y-m-d H:i:s'));
 
                 if ($this->oModel->add($aData))
-                     header('Location: ' . ROOT_URL  . '?p=kunjungan&a=kunjungan');
+                {
+                    echo '<div class="alert alert-success">Data kunjungan berhasil ditambahkan.</div>';
+                    header("Refresh: 3; URL=?p=kunjungan&a=kunjungan");
+                }
                 else
+                {
                     $this->oUtil->sErrMsg = 'Data kunjungan gagal ditambahkan.';
+                }
             }
             else
             {

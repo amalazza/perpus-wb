@@ -26,6 +26,14 @@ class Kunjungan
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
+    public function getAnggotaById($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT no_anggota, nama, kelas, alamat, no_telpon, email FROM anggota WHERE no_anggota = :id LIMIT 1');
+        $oStmt->bindParam(':id', $iId, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
     public function getAnggota()
     {
         $oStmt = $this->oDb->query('SELECT * FROM anggota');

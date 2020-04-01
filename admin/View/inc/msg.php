@@ -6,5 +6,7 @@
 <?php endif ?>
 
 <?php if (!empty($this->sSuccMsg)): ?>
-    <p class="success"><?=$this->sSuccMsg?></p>
+	<div class="alert alert-success" role="alert">
+	  <?=$this->sSuccMsg?>
+	</div>
 <?php endif ?>
