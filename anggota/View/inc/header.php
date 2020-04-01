@@ -53,36 +53,44 @@
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?=ROOT_URL?>?p=buku&amp;a=ebook">E-book</a>
           </li>
-          <!-- <li class="nav-item mx-0 mx-lg-1">
-            <?php if (!empty($_SESSION['is_logged'])): ?>
-              <a href="<?=ROOT_URL?>?p=anggota&amp;a=logout" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"><i class="icon_key_alt"></i> Log Out</a>
+        </ul>
+
+        <div class="top-nav notification-row collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto navbar-right pull-right top-menu">
+            <li class="nav-item mx-0 mx-lg-1">
+              <form class="form-inline ml-auto">
+                <div class="md-form my-0">
+                  <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                </div>
+                <button href="#!" class="btn btn-outline-white btn-md my-0 ml-sm-2" type="submit"></button>
+              </form>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1 dropdown">
+              <?php if (!empty($_SESSION['is_logged'])): ?>
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <span class="profile-ava">
+                    <img alt="" src="<?=ROOT_URL?>static/img/avatar1_small.jpg">
+                </span>
+                <span class="username">
+                  Jenifer Smith
+                </span>
+              </a>
+              <ul class="dropdown-menu extended logout">
+                <div class="log-arrow-up"></div>
+                <li class="eborder-top">
+                  <a  href="<?=ROOT_URL?>?p=anggota&amp;a=profile"><i class="icon_profile"></i> Profile Saya</a>
+                </li>
+                <li>
+                  <a  href="<?=ROOT_URL?>?p=anggota&amp;a=logout"><i class="icon_key_alt"></i> Log Out</a>
+                </li>
+              </ul>
+            </li>
               <?php else: ?>
                 <a href="<?=ROOT_URL?>?p=anggota&amp;a=login" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">Login</a>
               <?php endif ?>
-          </li> -->
-          <!-- Example single danger button -->
-          <li class="nav-item mx-0 mx-lg-1">
-            <?php if (!empty($_SESSION['is_logged'])): ?>
-              <div class="btn-group">
-                <button type="button" class="btn btn-info dropdown-toggle nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  PROFILE
-                </button>
-                <div class="dropdown-menu" style="color: black;">
-                  <a style="color: #1abc9c;" class="dropdown-item nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?=ROOT_URL?>?p=anggota&amp;a=profile">Profile Saya</a>
-                  <a style="color: #1abc9c;" class="dropdown-item nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?=ROOT_URL?>?p=anggota&amp;a=logout">Logout</a>
-                </div>
-              </div>
-            <?php else: ?>
-              <a href="<?=ROOT_URL?>?p=anggota&amp;a=login" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">Login</a>
-            <?php endif ?>
-          </li>
-        </ul>
+          </ul>
+        </div>
+
       </div>
     </div>
   </nav>
-<!--  <header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex align-items-center">
-      <h1 class="masthead-heading text-uppercase mb-0">Perpustakaan Online</h1>
-
-    </div>
-  </header> -->

@@ -95,16 +95,18 @@
                         <input class="form-control " id="confirm_password" name="confirm_password" type="password" />
                       </div>
                     </div> -->
-					<div class="form-group ">
+					           <div class="form-group ">
                       <label for="foto" class="control-label col-lg-2">Foto Profil <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class=" form-control" id="foto" name="foto" type="file" />
                       </div>
                     </div>
                     <div class="form-group">
-                      <div class="col-lg-offset-2 col-lg-10">
+                      <center>
                         <input type="submit" name="add_submit" value="Submit" class="btn btn-primary"/> 
-                      </div>
+                        <br><br>
+                        <p>Sudah Punya Akun? Masuk <a href="<?=ROOT_URL?>?p=anggota&a=login">Disini</a>
+                      </center>
                     </div>
                   </form>
                 </div>
