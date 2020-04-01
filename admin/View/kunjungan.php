@@ -111,6 +111,10 @@
             <th>Email</th>
             <td><span id="email"></span></td>
           </tr>
+          <tr>
+            <th>Waktu Kunjungan</th>
+            <td><span id="waktu_kunjungan"></span></td>
+          </tr>
         </tbody>
       </table>
                     
@@ -141,6 +145,7 @@
         $('#alamat').text(Data.alamat);
         $('#no_telpon').text(Data.no_telpon); 
         $('#email').text(Data.email);
+        $('#waktu_kunjungan').text(Data.waktu_kunjungan);
          
         
       });
