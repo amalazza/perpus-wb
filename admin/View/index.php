@@ -1,4 +1,5 @@
 <?php require 'inc/header.php' ?>
+<?php require 'inc/msg.php' ?>
 <!--main content start-->
 <section id="main-content">
   <section class="wrapper">

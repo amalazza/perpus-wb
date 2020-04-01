@@ -1,4 +1,5 @@
 <?php require 'inc/header.php' ?>
+<?php require 'inc/msg.php' ?>
   <header class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center">
 

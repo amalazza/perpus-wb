@@ -2,7 +2,9 @@
 
 ?>
 <?php if (!empty($this->sErrMsg)): ?>
-    <p class="error"><?=$this->sErrMsg?></p>
+	<div class="alert alert-danger" role="alert">
+	  <?=$this->sErrMsg?>
+	</div>
 <?php endif ?>
 
 <?php if (!empty($this->sSuccMsg)): ?>
