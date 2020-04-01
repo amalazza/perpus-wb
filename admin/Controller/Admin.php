@@ -8,7 +8,7 @@ class Admin extends Kunjungan
     public function login()
     {
         if ($this->isLogged())
-            header('Location: ' . ROOT_URL . '?p=kunjungan&a=index');
+            header('Location: ' . ROOT_URL . '?p=kunjungan&a=kunjungan');
 
         if (isset($_POST['btnLogin']))
         {
@@ -33,7 +33,7 @@ class Admin extends Kunjungan
                 $_SESSION['id'] = $idku;
                 $_SESSION['nama'] = $namaku;
                 $_SESSION['role'] = $roleku;
-                header('Location: ' . ROOT_URL . '?p=kunjungan&a=index');
+                header('Location: ' . ROOT_URL . '?p=kunjungan&a=kunjungan');
                 exit;
             }          
             else

@@ -81,7 +81,7 @@
                   <a  href="<?=ROOT_URL?>?p=anggota&amp;a=profile"><i class="icon_profile"></i> Profile Saya</a>
                 </li>
                 <li>
-                  <a  href="<?=ROOT_URL?>?p=anggota&amp;a=logout"><i class="icon_key_alt"></i> Log Out</a>
+                  <a  href="<?=ROOT_URL?>?p=anggota&amp;a=logout"><i class="icon_key_alt"></i> Keluar</a>
                 </li>
               </ul>
             </li>
