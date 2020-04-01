@@ -3,12 +3,12 @@
 
 namespace TestProject\Controller;
 
-class Admin extends Kunjungan
+class Admin extends Dashboard
 {
     public function login()
     {
         if ($this->isLogged())
-            header('Location: ' . ROOT_URL . '?p=kunjungan&a=kunjungan');
+            header('Location: ' . ROOT_URL . '?p=dashboard&a=all');
 
         if (isset($_POST['btnLogin']))
         {
@@ -33,7 +33,7 @@ class Admin extends Kunjungan
                 $_SESSION['id'] = $idku;
                 $_SESSION['nama'] = $namaku;
                 $_SESSION['role'] = $roleku;
-                header('Location: ' . ROOT_URL . '?p=kunjungan&a=kunjungan');
+                header('Location: ' . ROOT_URL . '?p=dashboard&a=all');
                 exit;
             }          
             else

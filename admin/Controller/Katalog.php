@@ -36,10 +36,20 @@ class Katalog
 
     
     // Fungsi Tampil
-    
+    public function index()
+    {
+        if (!$this->isLogged()) 
+        header('Location: ' . ROOT_URL . '?p=admin&a=login');
+        exit;
+
+        $this->oUtil->oKatalog = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
+
+        $this->oUtil->getView('index');
+    }
 
     public function katalog()
     {
+        if (!$this->isLogged()) exit;
 		
         $this->oUtil->oKatalog = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
 
@@ -60,6 +70,7 @@ class Katalog
 	//fungsi view pdf
 	public function view()
     {
+        if (!$this->isLogged()) exit;
 		if (!empty($_POST['view']))
         {
 		
@@ -71,6 +82,7 @@ class Katalog
 	
 	public function viewPDF()
     {
+        if (!$this->isLogged()) exit;
 	
 		$this->oUtil->oView = $this->oModel->getPDF($this->_iId);
 

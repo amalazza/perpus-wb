@@ -37,9 +37,20 @@ class Anggota
     
     // Fungsi Tampil
     
+    public function index()
+    {
+        if (!$this->isLogged()) 
+        header('Location: ' . ROOT_URL . '?p=admin&a=login');
+        exit;
+
+        $this->oUtil->oAnggota = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
+
+        $this->oUtil->getView('index');
+    }
 
     public function anggota()
     {
+        if (!$this->isLogged()) exit;
 		
         $this->oUtil->oAnggota = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
 

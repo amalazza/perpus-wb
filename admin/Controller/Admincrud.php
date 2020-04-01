@@ -30,6 +30,10 @@ class Admincrud
     // Homepage
     public function indexA()
     {
+        if (!$this->isLogged()) 
+        header('Location: ' . ROOT_URL . '?p=admin&a=login');
+        exit;
+
         $this->oUtil->oAdd_Admin = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
 
         $this->oUtil->getView('index');
@@ -37,6 +41,7 @@ class Admincrud
 
     public function p_admin()
     {
+        if (!$this->isLogged()) exit;
         $this->oUtil->oAdd_Admin = $this->oModel->getAll(0, self::MAX_POSTS); // Get only the latest X posts
         $test = strcmp($_SESSION['role'], 'master');
         $test2 = strcmp($_SESSION['role'], 'admin');

@@ -109,7 +109,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="">
-            <a class="" href="<?=ROOT_URL?>?p=kunjungan&amp;a=index">
+            <a class="" href="<?=ROOT_URL?>?p=dashboard&amp;a=all">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
