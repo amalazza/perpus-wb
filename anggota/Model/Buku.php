@@ -2,7 +2,7 @@
 
 namespace TestProject\Model;
 
-class Beranda
+class Buku
 {
     protected $oDb;
 
