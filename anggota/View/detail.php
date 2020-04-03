@@ -2,7 +2,15 @@
 <?php require 'inc/msg.php' ?>
 
 
-
+<?php if (empty($this->oBuku)): ?>
+    <p class="error">Buku tidak dapat ditemukan!</p>
+    <?php foreach ($this->oBuku as $oBuku): ?>
+    <h2>
+                    <?=htmlspecialchars($this->oBuku->judul)?>
+                    <?=$this->oBuku->judul?>
+                  </h2>
+                  <?php endforeach ?>
+<?php else: ?>
  <!--main content start-->
         <div class="row">
           <!-- profile-widget -->
@@ -10,49 +18,58 @@
             <div class="profile-widget profile-widget-info" style="background-color: #1abc9c;">
               <div class="panel-body">
                 <div class="col-lg-2 col-sm-2">
-                  <h4>Jenifer Smith</h4>
-                  <div class="follow-ava">
-                    <img src="<?=ROOT_URL?>static/img/avataaars.svg" alt="">
+                  <div class="follow-ava" style="-webkit-border-radius: 0%;">
+                    <img src="<?=ROOT_URL?>static/img/cover_buku.png" alt="" style="height: 100%; width: 100%; -webkit-border-radius: 0%;">
                   </div>
-                  <h6>Administrator</h6>
                 </div>
                 <div class="col-lg-4 col-sm-4 follow-info">
-                  <p>Hello I’m Jenifer Smith, a leading expert in interactive and creative design.</p>
-                  <p>@jenifersmith</p>
-                  <p><i class="fa fa-twitter">jenifertweet</i></p>
-                  <h6>
-                                    <span><i class="icon_clock_alt"></i>11:05 AM</span>
-                                    <span><i class="icon_calendar"></i>25.10.13</span>
-                                    <span><i class="icon_pin_alt"></i>NY</span>
-                                </h6>
+                  <h2>
+                    <?=htmlspecialchars($this->oBuku->judul)?>
+                    <?=$this->oBuku->judul?>
+                  </h2>
+                  <h3>
+                    <i class="fa fa-user"></i>  <?=$this->oBuku->pengarang?>
+                  </h3>
+                  <h4> 
+                    <i class="fa fa-eye"></i>  22 <span>Dibaca</span> *BELOM DITAMBAHIN DIKATALOG
+                  </h4>
+                  <h4> 
+                    <i class="icon_star"></i>  3,5 <span>/5 Penilaian</span> BELOM DITAMBAHIN DIKATALOG
+                  </h4>
                 </div>
-                <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                  <ul style="background-color: #1abc9c;">
-                    <li class="active">
+                
+                <div class="col-lg">
+                  <div class="col-lg-2 col-sm-6 follow-info weather-category">
+                    <h2>
+                      INGIN MELIHAT LEBIH JAUH?
+                    </h2>
+                  </div>
+                  <div class="col-lg-2 col-sm-6 follow-info weather-category">
+                    <ul style="background-color: #1abc9c;">
+                      <li class="active">
+                        <h3>
+                          <i class="fa fa-bell fa-2x"> </i><br> 
+                          <button style="background-color: #2c3e50!important; color: white; border-color: white; border-width: thin;">PINJAM</button>
+                        </h3>
+                        Kini, pinjam buku di Wira Buana bisa order dulu
+                      </li>
 
-                      <i class="fa fa-comments fa-2x"> </i><br> Contrary to popular belief, Lorem Ipsum is not simply
-                    </li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-2 col-sm-6 follow-info weather-category">
+                    <ul style="background-color: #1abc9c;">
+                      <li class="active">
+                        <h3>
+                          <i class="fa fa-bell fa-2x"> </i><br> 
+                          <button style="background-color: #2c3e50!important; color: white; border-color: white; border-width: thin;">BACA</button>
+                        </h3>
+                        Buku-buku elektronik yang bisa dibaca dimana dan kapan saja
+                      </li>
 
-                  </ul>
+                    </ul>
+                  </div>
                 </div>
-                <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                  <ul style="background-color: #1abc9c;">
-                    <li class="active">
 
-                      <i class="fa fa-bell fa-2x"> </i><br> Contrary to popular belief, Lorem Ipsum is not simply
-                    </li>
-
-                  </ul>
-                </div>
-                <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                  <ul style="background-color: #1abc9c;">
-                    <li class="active">
-
-                      <i class="fa fa-tachometer fa-2x"> </i><br> Contrary to popular belief, Lorem Ipsum is not simply
-                    </li>
-
-                  </ul>
-                </div>
               </div>
             </div>
           </div>
@@ -305,6 +322,8 @@
             </section>
           </div>
         </div>
+
+  <?php endif ?>
 
 
         <!-- javascripts -->

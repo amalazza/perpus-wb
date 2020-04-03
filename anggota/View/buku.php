@@ -48,7 +48,7 @@
               <tr>
                 <td><?=htmlspecialchars($oBuku->no_katalog)?></td>
                 <td><?=$oBuku->judul?></td>
-                <td><a href="<?=ROOT_URL?>?p=detail&amp;a=view&amp;id=<?=$oBuku->no_katalog?>">Want to see more?</a> 
+                <td><a href="<?=ROOT_URL?>?p=buku&amp;a=post&amp;id=<?=$oBuku->no_katalog?>">Want to see more?</a> 
                 
               </tr>
               <?php endforeach ?>
