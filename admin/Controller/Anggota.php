@@ -119,9 +119,13 @@ class Anggota
             if (isset($_POST['nis']) <= 15) // Allow a maximum of 50 characters
             {
 				
-				$aData = array('no_anggota' => $_POST['nis'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => sha1($_POST['confirm_password']),'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
+                $idku = $_SESSION['id'];
+                $act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
 
-                if ($this->oModel->add($aData))
+				$aData = array('no_anggota' => $_POST['nis'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => sha1($_POST['confirm_password']),'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
+                $aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                if ($this->oModel->add($aData) && $this->oModel->addAlog($aLog))
                      header('Location: ' . ROOT_URL  . '?p=anggota&a=anggota');
                 else
                     $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';

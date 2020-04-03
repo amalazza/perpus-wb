@@ -32,6 +32,7 @@
                   <option value="<?=$oAnggota->no_anggota?>"><?=$oAnggota->no_anggota?> - <?=$oAnggota->nama?></option>
                   <?php endforeach ?>
                 </select>
+                <input type="hidden" name="nAnggota" id="nAnggota" value="<?=$oAnggota->nama?>">
             </div>
       </div>
 

@@ -78,9 +78,13 @@ class Kunjungan
         {
             if (isset($_POST['no_anggota']) <= 15) // Allow a maximum of 50 characters
             {
-                $aData = array('no_anggota' => $_POST['anggota'], 'waktu_kunjungan' => date('Y-m-d H:i:s'));
+                $idku = $_SESSION['id'];
+                $act = $_POST['nAnggota'].' berkunjung ke perpus dan dilayani oleh admin '.$_SESSION['nama'];
 
-                if ($this->oModel->add($aData))
+                $aData = array('no_anggota' => $_POST['anggota']);
+                $aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                if ($this->oModel->add($aData) && $this->oModel->addAlog($aLog))
                 {
                     echo '<div class="alert alert-success">Data kunjungan berhasil ditambahkan.</div>';
                     header("Refresh: 3; URL=?p=kunjungan&a=kunjungan");

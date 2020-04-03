@@ -42,10 +42,15 @@ class Kunjungan
 
     public function add(array $aData)
     {
-        $oStmt = $this->oDb->prepare('INSERT INTO kunjungan (no_anggota, waktu_kunjungan) VALUES(:no_anggota, :waktu_kunjungan)');
+        $oStmt = $this->oDb->prepare('INSERT INTO kunjungan (no_anggota) VALUES(:no_anggota)');
         return $oStmt->execute($aData);
     }
 
+        public function addAlog(array $aLog)
+    {
+        $oStmt = $this->oDb->prepare('INSERT INTO logadmin (id_admin, activity) VALUES(:id_admin, :activity)');
+        return $oStmt->execute($aLog);
+    }
     public function getById($iId)
     {
         $oStmt = $this->oDb->prepare('SELECT * FROM kunjungan WHERE no_kunjungan = :no_kunjungan LIMIT 1');

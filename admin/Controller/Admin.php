@@ -1,5 +1,4 @@
 <?php
-a
 
 namespace TestProject\Controller;
 
