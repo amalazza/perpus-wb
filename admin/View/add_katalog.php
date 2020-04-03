@@ -26,7 +26,7 @@
                 <div class="form">
                   <form class="form-validate form-horizontal register_form" enctype="multipart/form-data" role="form" method="post" action="">
                     <div class="form-group ">
-                      <label for="no_katalog" class="control-label col-lg-2">No Katalog <span class="required">*</span></label>
+                      <label for="no_katalog" class="control-label col-lg-2">No Buku <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class=" form-control" id="no_katalog" name="no_katalog" type="text" />
                       </div>
@@ -35,6 +35,7 @@
                       <label for="no_klasifikasi" class="control-label col-lg-2">Nama Klasifikasi <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <select id="searchKlasifikasi" class="form-control m-bot15" name="klasifikasi">
+						<option value="" selected="" disabled="">--Klasifikasi Buku--</option>
 						<?php foreach ($this->oKlasifikasi as $oKlasifikasi): ?>
 						<option value="<?=$oKlasifikasi->no_klasifikasi?>"><?=$oKlasifikasi->no_klasifikasi?> - <?=$oKlasifikasi->nama_klasifikasi?></option>
 						<?php endforeach ?>
@@ -45,9 +46,21 @@
                       <label for="no_koleksi" class="control-label col-lg-2">Jenis Koleksi <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <select class="form-control m-bot15" id="searchKoleksi" name="koleksi">
+						<option value="" selected="" disabled="">--Jenis Koleksi Buku--</option>
 						<?php foreach ($this->oKoleksi as $oKoleksi): ?>
 						<option value="<?=$oKoleksi->no_koleksi?>"><?=$oKoleksi->no_koleksi?> - <?=$oKoleksi->jenis_koleksi?></option>
 						<?php endforeach ?>
+						</select>
+                      </div>
+                    </div>
+					<div class="form-group ">
+                      <label for="jenis_katalog" class="control-label col-lg-2">Jenis Buku <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <select class="form-control m-bot15" id="searchJenisKatalog" name="jenis_katalog" onchange="showEbook(this)">
+						<option value="" selected="" disabled="">--Jenis Buku--</option>
+						<option value="Buku Fisik">Buku Fisik</option>
+						<option value="E-Book">E-book</option>
+						<option value="Buku Fisik dan E-Book">Buku Fisik dan E-book</option>
 						</select>
                       </div>
                     </div>
@@ -100,6 +113,12 @@
                       </div>
                     </div>
 					<div class="form-group ">
+                      <label for="stok" class="control-label col-lg-2">Stok <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class=" form-control" id="stok" name="stok" type="text" onkeypress="return isNumber(event)"/>
+                      </div>
+                    </div>
+					<div class="form-group " id="add_ebook" style="display:none;">
                       <label for="e_book" class="control-label col-lg-2">E-book <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class=" form-control" id="e_book" name="e_book" type="file" />
@@ -109,12 +128,6 @@
                       <label for="cover" class="control-label col-lg-2">Cover <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class=" form-control" id="cover" name="cover" type="file" />
-                      </div>
-                    </div>
-					<div class="form-group ">
-                      <label for="stok" class="control-label col-lg-2">Stok <span class="required">*</span></label>
-                      <div class="col-lg-10">
-                        <input class=" form-control" id="stok" name="stok" type="text" onkeypress="return isNumber(event)"/>
                       </div>
                     </div>
                     <div class="form-group">
@@ -134,16 +147,27 @@
   <script type="text/javascript">
   $("#searchKoleksi").chosen();
   $("#searchKlasifikasi").chosen();
+  $("#searchJenisKatalog").chosen();
   
   //stok hanya menerima angka
   function isNumber(evt) {
-    evt = (evt) ? evt : window.event;
-    var charCode = (evt.which) ? evt.which : evt.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-        return false;
-    }
-    return true;
-}
+		evt = (evt) ? evt : window.event;
+		var charCode = (evt.which) ? evt.which : evt.keyCode;
+		if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+			return false;
+		}
+		return true;
+	}
+	function showEbook(select){
+   if(select.value== 'E-Book'){
+    document.getElementById('add_ebook').style.display = "block";
+   }
+   else if(select.value== 'Buku Fisik dan E-Book'){
+    document.getElementById('add_ebook').style.display = "block";
+   } 
+   else{
+    document.getElementById('add_ebook').style.display = "none";
+	}}
   </script>
   
 <?php require 'inc/footer.php' ?>

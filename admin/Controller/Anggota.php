@@ -101,7 +101,6 @@ class Anggota
 				$sData = array('nis' => $nis, 'nama' => $nama, 'kelas' => $kelas);
 				if ($this->oModel->addSiswa($sData))
                  header('Location: ' . ROOT_URL  . '?p=anggota&a=anggota');
-				 //$this->oUtil->sErrMsg = 'Data berhasil Ditambahkan.';
                 else
                     $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
 			}
@@ -125,10 +124,13 @@ class Anggota
 				$aData = array('no_anggota' => $_POST['nis'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => sha1($_POST['confirm_password']),'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
                 $aLog = array('id_admin' => $idku, 'activity' => $act );
 
-                if ($this->oModel->add($aData) && $this->oModel->addAlog($aLog))
-                     header('Location: ' . ROOT_URL  . '?p=anggota&a=anggota');
-                else
+                if ($this->oModel->add($aData) && $this->oModel->addAlog($aLog)){
+                    echo '<div class="alert alert-success">Data Anggota berhasil ditambahkan.</div>';
+                    header("Refresh: 3; URL=?p=anggota&a=anggota");
+				}
+                else{
                     $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+				}
             }
             else
             {

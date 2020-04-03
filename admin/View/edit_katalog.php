@@ -38,8 +38,9 @@
                       <label for="no_klasifikasi" class="control-label col-lg-2">Nama Klasifikasi <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <select id="searchKlasifikasi" class="form-control m-bot15" name="klasifikasi">
+						<option value="" selected="" disabled="">--Klasifikasi Buku--</option>
 						<?php foreach ($this->oKlasifikasi as $oKlasifikasi): ?>
-						<option value="<?=$oKlasifikasi->no_klasifikasi?>"><?=$oKlasifikasi->no_klasifikasi?> - <?=$oKlasifikasi->nama_klasifikasi?></option>
+						<option value="<?=$oKlasifikasi->no_klasifikasi?>" <?php if($this->oKatalog->no_klasifikasi == $oKlasifikasi->no_klasifikasi) echo 'selected="selected"'?>><?=$oKlasifikasi->no_klasifikasi?> - <?=$oKlasifikasi->nama_klasifikasi?></option>
 						<?php endforeach ?>
 						</select>
                       </div>
@@ -48,9 +49,21 @@
                       <label for="no_koleksi" class="control-label col-lg-2">Jenis Koleksi <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <select class="form-control m-bot15" id="searchKoleksi" name="koleksi">
+						<option value="" selected="" disabled="">--Jenis Koleksi Buku--</option>
 						<?php foreach ($this->oKoleksi as $oKoleksi): ?>
-						<option value="<?=$oKoleksi->no_koleksi?>"><?=$oKoleksi->no_koleksi?> - <?=$oKoleksi->jenis_koleksi?></option>
+						<option value="<?=$oKoleksi->no_koleksi?>" <?php if($this->oKatalog->no_koleksi == $oKoleksi->no_koleksi) echo 'selected="selected"'?>><?=$oKoleksi->no_koleksi?> - <?=$oKoleksi->jenis_koleksi?></option>
 						<?php endforeach ?>
+						</select>
+                      </div>
+                    </div>
+					<div class="form-group ">
+                      <label for="jenis_katalog" class="control-label col-lg-2">Jenis Buku <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <select class="form-control m-bot15" id="searchJenisKatalog" name="jenis_katalog" onchange="showEbook(this)">
+						<option value="" selected="" disabled="">--Jenis Buku--</option>
+						<option value="Buku Fisik" <?php if($this->oKatalog->jenis_katalog == "Buku Fisik") echo 'selected="selected"'?>>Buku Fisik</option>
+						<option value="E-Book" <?php if($this->oKatalog->jenis_katalog == "E-Book") echo 'selected="selected"'?>>E-book</option>
+						<option value="Buku Fisik dan E-Book" <?php if($this->oKatalog->jenis_katalog == "Buku Fisik dan E-Book") echo 'selected="selected"'?>>Buku Fisik dan E-book</option>
 						</select>
                       </div>
                     </div>
@@ -102,7 +115,7 @@
 						<textarea class=" form-control" name="abstrak"><?=$this->oKatalog->absktrak?></textarea>
                       </div>
                     </div>
-					<div class="form-group ">
+					<div class="form-group " id="add_ebook" style="display:none;">
                       <label for="e_book" class="control-label col-lg-2">E-book <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class=" form-control" id="e_book" name="e_book" type="file" />
@@ -111,7 +124,15 @@
 					<div class="form-group ">
                       <label for="cover" class="control-label col-lg-2">Cover <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="cover" name="cover" type="file" />
+                        <input class=" form-control" id="cover" name="cover" type="file" onchange='readURL(this);'/>
+						<br>
+						<?php
+                                    if (empty($_FILES)){
+                                        echo "<img id='blah' class='card-img-top' style='height: 100px; width: 100px;' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($this->oKatalog->cover))."'/>";
+                                    }
+                                    else if (! empty($_FILES)){
+                                    echo "<img id='blah'/>";}
+						?>
                       </div>
                     </div>
 					<div class="form-group ">
@@ -138,6 +159,32 @@
   <script type="text/javascript">
   $("#searchKoleksi").chosen();
   $("#searchKlasifikasi").chosen();
+  $("#searchJenisKatalog").chosen();
+  
+	function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(500)
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+    }
+	function showEbook(select){
+	   if(select.value== 'E-Book'){
+		document.getElementById('add_ebook').style.display = "block";
+	   }
+	   else if(select.value== 'Buku Fisik dan E-Book'){
+		document.getElementById('add_ebook').style.display = "block";
+	   } 
+	   else{
+		document.getElementById('add_ebook').style.display = "none";
+		}}
   </script>
   
 <?php require 'inc/footer.php' ?>

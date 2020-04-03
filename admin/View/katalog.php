@@ -1,4 +1,5 @@
 <?php require 'inc/header.php' ?>
+<?php require 'inc/msg.php' ?>
 <!--main content start-->
 <section id="main-content">
   <section class="wrapper">
@@ -99,12 +100,16 @@
 						<td><span id="no_katalog"></span></td>
 					</tr>
 					<tr>
-						<th>No Klasifikasi</th>
+						<th>Klasifikasi</th>
 						<td><span id="no_klasifikasi"></span></td>
 					</tr>
 					<tr>
-						<th>No koleksi</th>
+						<th>koleksi</th>
 						<td><span id="no_koleksi"></span></td>
+					</tr>
+					<tr>
+						<th>Jenis Buku</th>
+						<td><span id="jenis_katalog"></span></td>
 					</tr>
 					<tr>
 						<th>Judul</th>
@@ -146,7 +151,7 @@
 						<th>Tanggal Masuk</th>
 						<td><span id="tanggal_masuk"></span></td>
 					</tr>
-					<tr>
+					<tr class="ebook">
 						<th>e-book</th>
 						<td>
 						<form class="form-validate form-horizontal " role="form" method="post" action="<?=ROOT_URL?>?p=katalog&amp;a=view">
@@ -181,7 +186,8 @@
 			  $('#no_katalog').text(Data.no_katalog); 
 			  $('#id').val(Data.no_katalog); 
 			  $('#no_klasifikasi').text(Data.nama_klasifikasi);
-			  $('#no_koleksi').text(Data.jenis_koleksi); 
+			  $('#no_koleksi').text(Data.jenis_koleksi);
+			  $('#jenis_katalog').text(Data.jenis_katalog);			  
 			  $('#judul').text(Data.judul);
 			  $('#stok').text(Data.stok);
 			  $('#pengarang').text(Data.pengarang); 
@@ -192,6 +198,15 @@
 			  $('#abstrak').text(Data.absktrak);
 			  $('#lokasi').text(Data.lokasi);
 			  $('#tanggal_masuk').text(Data.tanggal_masuk);
+			  
+			  var test = document.getElementById("jenis_katalog").innerText;
+			  if(test == 'Buku Fisik'){
+				  $('tr.ebook').hide();
+			  }
+			  else{
+				  $('tr.ebook').show();				  
+			  }
+			  
 		  });
 	  });
   });
