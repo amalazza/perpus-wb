@@ -98,13 +98,19 @@ class Katalog
         {
             if (isset($_POST['no_katalog']) <= 15) // Allow a maximum of 50 characters
             {
-				
-				$aData = array('no_katalog' => $_POST['no_katalog'], 'no_klasifikasi' => $_POST['klasifikasi'], 'no_koleksi' => $_POST['koleksi'],'judul' => $_POST['judul'],'pengarang' => $_POST['pengarang'],'penerbit' => $_POST['penerbit'],'kota_terbit' => $_POST['kota_terbit'],'tahun_terbit' => $_POST['tahun_terbit'],'isbn' => $_POST['isbn'],'lokasi' => $_POST['lokasi'],'absktrak' => $_POST['abstrak'],'tanggal_masuk' => date('Y-m-d H:i:s'),'e_book' => file_get_contents($_FILES['e_book']['tmp_name']),'cover' => addslashes(file_get_contents($_FILES['cover']['tmp_name'])), 'stok'=> $_POST['stok']);
+				if(!empty($_FILES['e_book']['tmp_name'])){
+					$e_book = file_get_contents($_FILES['e_book']['tmp_name']);
+				}else{
+				$e_book = "";}
+				$aData = array('no_katalog' => $_POST['no_katalog'], 'no_klasifikasi' => $_POST['klasifikasi'], 'no_koleksi' => $_POST['koleksi'],'jenis_katalog'=>$_POST['jenis_katalog'],'judul' => $_POST['judul'],'pengarang' => $_POST['pengarang'],'penerbit' => $_POST['penerbit'],'kota_terbit' => $_POST['kota_terbit'],'tahun_terbit' => $_POST['tahun_terbit'],'isbn' => $_POST['isbn'],'lokasi' => $_POST['lokasi'],'absktrak' => $_POST['abstrak'],'tanggal_masuk' => date('Y-m-d H:i:s'),'e_book' => $e_book,'cover' => addslashes(file_get_contents($_FILES['cover']['tmp_name'])), 'stok'=> $_POST['stok']);
 
-                if ($this->oModel->add($aData))
-                     header('Location: ' . ROOT_URL  . '?p=katalog&a=katalog');
-                else
-                    $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                if ($this->oModel->add($aData)){
+					echo '<div class="alert alert-success">Data katalog berhasil ditambahkan.</div>';
+                    header("Refresh: 3; URL=?p=katalog&a=katalog");
+				}
+                else{
+					$this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+				}
             }
             else
             {
@@ -129,16 +135,23 @@ class Katalog
         {
             if (isset($_POST['no_katalog']))
             {
+				if(!empty($_FILES['cover']['tmp_name'])){
+					$cover = file_get_contents($_FILES['cover']['tmp_name']);
+				}else{
+				$e_book = "";}
                 $aData = array('no_katalog' => $_POST['no_katalog'], 'no_klasifikasi' => $_POST['klasifikasi'], 'no_koleksi' => $_POST['koleksi'],'judul' => $_POST['judul'],'pengarang' => $_POST['pengarang'],'penerbit' => $_POST['penerbit'],'kota_terbit' => $_POST['kota_terbit'],'tahun_terbit' => $_POST['tahun_terbit'],'isbn' => $_POST['isbn'],'lokasi' => $_POST['lokasi'],'absktrak' => $_POST['abstrak'],'tanggal_masuk' => date('Y-m-d H:i:s'),'e_book' => file_get_contents($_FILES['e_book']['tmp_name']),'cover' => addslashes(file_get_contents($_FILES['cover']['tmp_name'])), 'stok'=> $_POST['stok']);
 
-                if ($this->oModel->update($aData))
-                    header('Location: ' . ROOT_URL  . '?p=katalog&a=katalog');
-                else
-                    $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                if ($this->oModel->update($aData)){
+					echo '<div class="alert alert-success">Data katalog berhasil diedit.</div>';
+                    header("Refresh: 3; URL=?p=katalog&a=katalog");
+				}
+                else{
+					$this->oUtil->sErrMsg = 'Data katalog gagal diedit.';
+				}
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                $this->oUtil->sErrMsg = 'Nomor katalog harus diisi.';
             }
         }
 
@@ -157,10 +170,13 @@ class Katalog
     {
         if (!$this->isLogged()) exit;
 
-        if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId))
-            header('Location: ' . ROOT_URL . '?p=katalog&a=katalog');
-        else
-            exit('Anggota tidak bisa dihapus.');
+        if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId)){
+			echo '<div class="alert alert-danger">Data katalog berhasil dihapus.</div>';
+                    header("Refresh: 3; URL=?p=katalog&a=katalog");
+		}
+        else{
+			exit('Katalog tidak bisa dihapus.');	
+		}
     }
 
     protected function isLogged()
