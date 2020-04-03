@@ -43,15 +43,15 @@
     <div class="row">
       <div class="col-lg-12">
         <section class="panel">
-          <header class="panel-heading">
+          <header class="panel-heading" style="font-size: 20px;">
             Tabel Anggota
           </header>
 
           <?php if (empty($this->oAnggota)): ?>
             <?php else: ?>
             
-
-          <table class="table table-striped table-advance table-hover">
+        <div  style="position: relative; height: 500px; overflow: auto; display: block;">
+        	<table class="table table-striped table-advance table-hover">
             <tbody>
               <tr>
                 <th>No Anggota</th>
@@ -83,6 +83,7 @@
              
             </tbody>
           </table>
+        </div>
         </section>
       </div>
     </div>

@@ -56,12 +56,15 @@
           <header class="panel-heading" style="font-size: 35px;">
             My History 
           </header>
-          <table class="table table-striped table-advance table-hover">
-            <tbody>
+          <div  style="position: relative; height: 300px; overflow: auto; display: block;">
+            <table class="table table-striped table-advance table-hover">
+            <thead>
               <tr>
                 <th>Aktifitas</th>
                 <th>Tanggal</th>
               </tr>
+            </thead>
+            <tbody>              
               <?php foreach ($this->oAlog as $oAlog): 
              ?>
               <tr>
@@ -71,6 +74,8 @@
              <?php endforeach ?>
             </tbody>
           </table>
+          </div>
+          
         </section>
       </div>
     </div>

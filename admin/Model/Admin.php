@@ -90,6 +90,14 @@ class Admins
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
 
+        public function getByIdku($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT nama, username, email, notlp, alamat FROM admin WHERE id_admin = :id LIMIT 1');
+        $oStmt->bindParam(':id', $iId, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
         public function getaLog($iIdku)
     {
         $oStmt = $this->oDb->prepare('SELECT * FROM logadmin WHERE id_admin = :id_admin ORDER BY tanggal DESC');

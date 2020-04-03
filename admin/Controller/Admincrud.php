@@ -78,6 +78,10 @@ class Admincrud
         $this->oUtil->getView('profile_admin');
     }
 
+    public function detailAdmin()
+    {     
+            echo json_encode($this->oUtil->oData = $this->oModel->getByIdku($_POST['id']));
+    }
 
     public function add()
     {
