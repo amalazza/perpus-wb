@@ -43,28 +43,25 @@
               <tr>
                 <th>Profile</th>
                 <th>Nama</th>
-                <th>Username</th>
                 <th>Email</th>
                 <th>No Tlp</th>
-                <th>Alamat</th>
+                <th>Detail</th>
                 <th id="thAct">Action</th>
               </tr>
               <?php foreach ($this->oAdd_Admin as $oAdd_Admin): 
-
-              $potong = substr($oAdd_Admin->alamat, 0, 25) . '...';
               ?>
               <tr>
                 <td><img src="data:<?=$oAdd_Admin->mime?>;base64,<?=base64_encode($oAdd_Admin->foto); ?>" width="100" height="100"/></td>
                 <td><?=$oAdd_Admin->nama?></td>
-                <td><?=htmlspecialchars($oAdd_Admin->username)?></td>
                 <td><?=$oAdd_Admin->email?></td>
                 <td><?=$oAdd_Admin->notlp?></td>
-                <td><?php echo $potong; ?></td>
-                <td >
-                  <div class="btn-group">
-                    <form style="display: inline">
+                <td>
+                  <form style="display: inline">
                       <button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#detailAdmin" data-id="<?=$oAdd_Admin->id_admin?>" >Detail</button>
                     </form>
+                </td>
+                <td >
+                  <div class="btn-group">
                     <form action="<?=ROOT_URL?>?p=Admincrud&amp;a=edit&amp;id=<?=$oAdd_Admin->id_admin?>" method="post" style="display: inline">
                         <button class="btn btn-primary detail" type="submit" name="edit" value="1" >Edit</button>
                     </form>

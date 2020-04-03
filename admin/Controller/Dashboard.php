@@ -73,11 +73,21 @@ class Dashboard
     public function all()
     {
         if (!$this->isLogged()) exit;
-        $this->oUtil->oDashboardAnggota = $this->oModel->getAnggota(0, self::MAX_POSTS); // Get only the latest X posts
-        $this->oUtil->oDashboardKunjungan = $this->oModel->getKunjungan(0, self::MAX_POSTS); // Get only the latest X posts
-        $this->oUtil->oDashboardKatalog = $this->oModel->getKatalog(0, self::MAX_POSTS); // Get only the latest X posts
+        //$this->oUtil->oKunjungan = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
+        $this->oUtil->oData = $this->oModel->getAnggota();
+        $this->oUtil->oDataKun = $this->oModel->getKunjungan();
+        $this->oUtil->oDataKat = $this->oModel->getKatalog();
 
         $this->oUtil->getView('dashboard');
+    }
+
+    public function my_profile()
+    {
+        if (!$this->isLogged()) exit;
+        $this->oUtil->oAdd_Admins = $this->oModel->getById($_SESSION['id']);
+        $this->oUtil->oAlog = $this->oModel->getaLog($_SESSION['id']);
+
+        $this->oUtil->getView('profile_admin');
     }
 
     protected function isLogged()

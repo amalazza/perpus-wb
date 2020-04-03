@@ -1,5 +1,4 @@
 <?php
-
 namespace TestProject\Model;
 
 class Dashboard
@@ -22,20 +21,29 @@ class Dashboard
 
     public function getAnggota()
     {
-        $oStmt = $this->oDb->query('SELECT COUNT(*) as total FROM anggota');
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+        $oStmt = $this->oDb->prepare('SELECT COUNT(*) FROM anggota');
+        $oStmt->execute(); 
+        $number_of_rows = $oStmt->fetchColumn(); 
+
+        return $number_of_rows;
     }
 
     public function getKunjungan()
     {
-        $oStmt = $this->oDb->query('SELECT COUNT(*) as total FROM kunjungan');
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+        $oStmt = $this->oDb->prepare('SELECT COUNT(*) FROM kunjungan');
+        $oStmt->execute(); 
+        $number_of_rows = $oStmt->fetchColumn(); 
+
+        return $number_of_rows;
     }
 
     public function getKatalog()
     {
-        $oStmt = $this->oDb->query('SELECT COUNT(*) as total FROM katalog');
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+        $oStmt = $this->oDb->prepare('SELECT COUNT(*) FROM katalog');
+        $oStmt->execute(); 
+        $number_of_rows = $oStmt->fetchColumn(); 
+
+        return $number_of_rows;
     }
 
   

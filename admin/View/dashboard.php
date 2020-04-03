@@ -15,43 +15,46 @@
         </div>
 
         <div class="row">
-          <?php if (empty($this->oDashboardAnggota)): ?>
+          <?php if (empty($this->oData)): ?>
             <?php else: ?>
-            <?php $oDashboardAnggota = $this->oDashboardAnggota; ?>
+            <?php $dataku = $this->oData; ?>
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box blue-bg">
               <i class="fa fa-cloud-download"></i>
-             <!--  <div class="count"><?=$oDashboardAnggota->total?></div> -->
+             <div class="count"><?=$dataku?></div>
               <div class="title">Jumlah Anggota</div>
             </div>
             <!--/.info-box-->
-            <?php endif ?>
           </div>
+          <?php endif ?>
           <!--/.col-->
 
+          <?php if (empty($this->oDataKun)): ?>
+            <?php else: ?>
+            <?php $dataku2 = $this->oDataKun; ?>
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            <?php  if (empty($this->oDashboardAnggota)): 
-              echo $this->oDashboardAnggota->total;?>
             <div class="info-box brown-bg">
               <i class="fa fa-shopping-cart"></i>
-            <?php else: 
-            echo $this->oDashboardAnggota->total;?>
-            <?php endif ?>
-              <div class="count">7.538</div>
+              <div class="count"><?=$dataku2?></div>
               <div class="title">Jumlah Kunjungan</div>
             </div>
             <!--/.info-box-->
           </div>
+          <?php endif ?>
           <!--/.col-->
 
+          <?php if (empty($this->oDataKat)): ?>
+            <?php else: ?>
+            <?php $dataku3 = $this->oDataKat; ?>
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box dark-bg">
               <i class="fa fa-thumbs-o-up"></i>
-              <div class="count">4.362</div>
+              <div class="count"><?=$dataku3?></div>
               <div class="title">Jumlah Katalog</div>
             </div>
             <!--/.info-box-->
           </div>
+          <?php endif ?>
           <!--/.col-->
 
         </div>
