@@ -2,7 +2,7 @@
 
 namespace TestProject\Controller;
 
-class Beranda
+class Buku
 {
     const MAX_POSTS = 5;
 
@@ -18,8 +18,8 @@ class Beranda
         $this->oUtil = new \TestProject\Engine\Util;
 
         /** Get the Model class in all the controller class **/
-        $this->oUtil->getModel('Beranda');
-        $this->oModel = new \TestProject\Model\Beranda;
+        $this->oUtil->getModel('Buku');
+        $this->oModel = new \TestProject\Model\Buku;
 
         /** Get the Post ID in the constructor in order to avoid the duplication of the same code **/
         $this->_iId = (int) (!empty($_GET['id']) ? $_GET['id'] : 0);
@@ -30,21 +30,21 @@ class Beranda
     // Homepage
     public function index()
     {
-        $this->oUtil->oBeranda = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
+        $this->oUtil->oBuku = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
 
-        $this->oUtil->getView('beranda');
+        $this->oUtil->getView('buku');
     }
 
     public function beranda()
     {
-        $this->oUtil->oBeranda = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
+        $this->oUtil->oBuku = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
 
-        $this->oUtil->getView('beranda');
+        $this->oUtil->getView('buku');
     }
 
     public function detail()
     {
-        $this->oUtil->oBeranda = $this->oModel->getById($this->_iId); // Get the data of the post
+        $this->oUtil->oBuku = $this->oModel->getById($this->_iId); // Get the data of the post
 
         $this->oUtil->getView('detail');
     }
@@ -60,7 +60,7 @@ class Beranda
     {
         if (!$this->isLogged()) exit;
 
-        $this->oUtil->oBeranda = $this->oModel->getAll();
+        $this->oUtil->oBuku = $this->oModel->getAll();
 
         $this->oUtil->getView('beranda');
     }

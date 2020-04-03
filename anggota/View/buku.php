@@ -20,7 +20,7 @@
     <div class="container">
 
       <!-- Portfolio Section Heading -->
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">BUKU/ KATALOG</h2>
 
       <!-- Icon Divider -->
       <div class="divider-custom">
@@ -33,7 +33,7 @@
 
       <!-- Portfolio Grid Items -->
       <div class="row">
-        <?php if (empty($this->oBeranda)): ?>
+        <?php if (empty($this->oBuku)): ?>
         <?php else: ?>
             
 
@@ -44,16 +44,12 @@
                 <th>Nama Anggota *nanti</th>
                 <th>Action</th>
               </tr>
-              <?php foreach ($this->oBeranda as $oBeranda): ?>
+              <?php foreach ($this->oBuku as $oBuku): ?>
               <tr>
-                <td><?=htmlspecialchars($oBeranda->no_katalog)?></td>
-                <td><?=$oBeranda->judul?></td>
-                <?php if (empty($this->oDetail)): ?>
-                <?php else: ?>
-                <?php foreach ($this->oDetail as $oDetail): ?>
-                <td><a href="<?=ROOT_URL?>?p=detail&amp;a=view&amp;id=<?=$oDetail->no_katalog?>">Want to see more?</a> 
-                <?php endforeach ?>    
-                <?php endif ?> 
+                <td><?=htmlspecialchars($oBuku->no_katalog)?></td>
+                <td><?=$oBuku->judul?></td>
+                <td><a href="<?=ROOT_URL?>?p=detail&amp;a=view&amp;id=<?=$oBuku->no_katalog?>">Want to see more?</a> 
+                
               </tr>
               <?php endforeach ?>
              
