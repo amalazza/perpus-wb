@@ -171,8 +171,7 @@ class Katalog
         if (!$this->isLogged()) exit;
 
         if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId)){
-			echo '<div class="alert alert-danger">Data katalog berhasil dihapus.</div>';
-                    header("Refresh: 3; URL=?p=katalog&a=katalog");
+			header('Location: ' . ROOT_URL . '?p=katalog&a=katalog');
 		}
         else{
 			exit('Katalog tidak bisa dihapus.');	
