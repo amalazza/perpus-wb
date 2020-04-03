@@ -78,10 +78,11 @@ class Katalog
 
     public function update(array $aData)
     {
-        $oStmt = $this->oDb->prepare('UPDATE katalog SET no_klasifikasi = :no_klasifikasi, no_koleksi = :no_koleksi, judul = :judul, pengarang = :pengarang, penerbit = :penerbit, kota_terbit = :kota_terbit, tahun_terbit = :tahun_terbit, isbn = :isbn, lokasi = :lokasi, absktrak = :absktrak, e_book = :e_book, cover = :cover, stok = :stok WHERE no_katalog = :no_katalog LIMIT 1');
+        $oStmt = $this->oDb->prepare('UPDATE katalog SET no_klasifikasi = :no_klasifikasi, no_koleksi = :no_koleksi, jenis_katalog = :jenis_katalog, judul = :judul, pengarang = :pengarang, penerbit = :penerbit, kota_terbit = :kota_terbit, tahun_terbit = :tahun_terbit, isbn = :isbn, lokasi = :lokasi, absktrak = :absktrak, e_book = :e_book, cover = :cover, stok = :stok WHERE no_katalog = :no_katalog LIMIT 1');
         $oStmt->bindValue(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
         $oStmt->bindValue(':no_klasifikasi', $aData['no_klasifikasi']);
 		$oStmt->bindValue(':no_koleksi', $aData['no_koleksi']);
+		$oStmt->bindValue(':jenis_katalog', $aData['jenis_katalog']);
 		$oStmt->bindValue(':judul', $aData['judul']);
 		$oStmt->bindValue(':pengarang', $aData['pengarang']);
 		$oStmt->bindValue(':penerbit', $aData['penerbit']);

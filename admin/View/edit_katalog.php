@@ -115,7 +115,7 @@
 						<textarea class=" form-control" name="abstrak"><?=$this->oKatalog->absktrak?></textarea>
                       </div>
                     </div>
-					<div class="form-group ">
+					<div class="form-group " id="add_ebook" style="display:none;">
                       <label for="e_book" class="control-label col-lg-2">E-book <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class=" form-control" id="e_book" name="e_book" type="file" />
@@ -161,7 +161,7 @@
   $("#searchKlasifikasi").chosen();
   $("#searchJenisKatalog").chosen();
   
-  function readURL(input) {
+	function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
@@ -174,7 +174,17 @@
 
                 reader.readAsDataURL(input.files[0]);
             }
-        }
+    }
+	function showEbook(select){
+	   if(select.value== 'E-Book'){
+		document.getElementById('add_ebook').style.display = "block";
+	   }
+	   else if(select.value== 'Buku Fisik dan E-Book'){
+		document.getElementById('add_ebook').style.display = "block";
+	   } 
+	   else{
+		document.getElementById('add_ebook').style.display = "none";
+		}}
   </script>
   
 <?php require 'inc/footer.php' ?>
