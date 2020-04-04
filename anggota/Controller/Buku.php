@@ -49,12 +49,6 @@ class Buku
         $this->oUtil->getView('detail');
     }
 
-    public function post()
-    {
-        $this->oUtil->oBuku = $this->oModel->getByIdd($this->_iId); // Get the data of the post
-
-        $this->oUtil->getView('detail2');
-    }
 
     public function notFound()
     {

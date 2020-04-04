@@ -20,18 +20,10 @@ class Buku
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
-    public function getById($idKatalog)
-    {
-        //console.log($idKatalog);
-        $oStmt = $this->oDb->prepare('SELECT * FROM katalog a inner join klasifikasi b on b.no_klasifikasi = a.no_klasifikasi inner join koleksi c on c.no_koleksi = a. no_koleksi WHERE no_katalog = :id LIMIT 1');
-        $oStmt->bindParam(':id', $idKatalog);
-        $oStmt->execute();
-        return $oStmt->fetch(\PDO::FETCH_OBJ);
-    }
 
-        public function getByIdd($iId)
+    public function getById($iId)
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM katalog WHERE no_katalog = :postId LIMIT 1');
+        $oStmt = $this->oDb->prepare('SELECT * FROM katalog a inner join klasifikasi b on b.no_klasifikasi = a.no_klasifikasi inner join koleksi c on c.no_koleksi = a. no_koleksi WHERE no_katalog = :postId LIMIT 1');
         $oStmt->bindParam(':postId', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
