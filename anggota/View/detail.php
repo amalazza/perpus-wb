@@ -127,13 +127,8 @@
                           </div>
                           <div>
                             <p><span>Bentuk Buku</span>: <input type="text" value="<?=$this->oBuku->jenis_katalog?>" id="jenis_katalog"></p>
-                            
-                              <!-- INI FAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH -->
-                            <?php foreach ($this->oBuku as $oBuku): ?>
-                            <input type="text" value="<?=$oBuku->jenis_katalog?>" id="jen">
-                            <div id="fisik">Fisik</div>
-                            <div id="ebook">Ebook</div>
-                            <?php endforeach ?>
+                            <div id="fisik" style="display:none;">Fisik</div>
+                            <div id="ebook" style="display:none;">Ebook</div>
                           </div>
                         </div>
                     </div>
@@ -148,10 +143,18 @@
     </div>
 
 <script type="text/javascript">
-  $(document).ready(function() {
-    if($("#jen").val() == "Buku Fisik"){
-       document.getElementById('ebook').style.display = "none";
+var jenis = document.getElementById('jenis_katalog').value;
+  $(function() {
+	  
+	  
+	  alert(jenis);
+    if( jenis == 'Buku Fisik'){
+       //document.getElementById('fisik').style.display = "block";
+	   //alert(jenis);
     }
+	else{
+		document.getElementById('ebook').style.display = "block";
+	}
   });
 </script>
 

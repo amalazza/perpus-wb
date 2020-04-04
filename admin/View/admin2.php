@@ -20,7 +20,11 @@
           <header class="panel-heading">
             Tabel Admin
           </header>
-
+		  <br>
+		  <div class="col-lg-12">
+		  <input class=" form-control" id="search" name="search" type="text" autocomplete="off" placeholder="search admin"/>
+		  </div>
+		  <br>
           <?php if (empty($this->oAdd_Admin)): ?>
             <?php else: ?>
             
@@ -126,6 +130,32 @@
       });
     });
   });
+  
+  //search table
+  $(document).ready(function(){  
+           $('#search').keyup(function(){  
+                search_table($(this).val());  
+           });  
+           function search_table(value){  
+                $('#tableMaster tr:not(:first-child)').each(function(){  
+                     var found = 'false';  
+                     $(this).each(function(){  
+                          if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)  
+                          {  
+                               found = 'true';  
+                          }  
+                     });  
+                     if(found == 'true')  
+                     {  
+						  $(this).show();  
+                     }  
+                     else  
+                     {  
+						  $(this).hide();  
+                     }  
+                });  
+           }  
+      }); 
   </script> 
 
 <?php endif ?>

@@ -99,10 +99,11 @@ class Anggota
 				$kelas = $sheetData[$i]['2'];
 				
 				$sData = array('nis' => $nis, 'nama' => $nama, 'kelas' => $kelas);
-				if ($this->oModel->addSiswa($sData))
-                 header('Location: ' . ROOT_URL  . '?p=anggota&a=anggota');
-                else
-                    $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+				if ($this->oModel->addSiswa($sData)){
+                 echo '<div class="alert alert-success">Data S berhasil ditambahkan.</div>';
+				header("Refresh: 3; URL=?p=anggota&a=anggota");}
+                else{
+				$this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';}
 			}
 			
 		}

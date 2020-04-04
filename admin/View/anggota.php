@@ -46,12 +46,16 @@
           <header class="panel-heading" style="font-size: 20px;">
             Tabel Anggota
           </header>
-
+		  <br>
+		  <div class="col-lg-12">
+		  <input class=" form-control" id="search" name="search" type="text" autocomplete="off" placeholder="search anggota"/>
+		  </div>
+		  <br>
           <?php if (empty($this->oAnggota)): ?>
             <?php else: ?>
             
         <div  style="position: relative; height: 500px; overflow: auto; display: block;">
-        	<table class="table table-striped table-advance table-hover">
+        	<table class="table table-striped table-advance table-hover" id="anggota">
             <tbody>
               <tr>
                 <th>No Anggota</th>
@@ -193,6 +197,32 @@
 		  });
 	  });
   });
+  
+  //search table
+  $(document).ready(function(){  
+           $('#search').keyup(function(){  
+                search_table($(this).val());  
+           });  
+           function search_table(value){  
+                $('#anggota tr:not(:first-child)').each(function(){  
+                     var found = 'false';  
+                     $(this).each(function(){  
+                          if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)  
+                          {  
+                               found = 'true';  
+                          }  
+                     });  
+                     if(found == 'true')  
+                     {  
+						  $(this).show();  
+                     }  
+                     else  
+                     {  
+						  $(this).hide();  
+                     }  
+                });  
+           }  
+      }); 
   </script>	
 <?php endif ?>
 <?php require 'inc/footer.php' ?>

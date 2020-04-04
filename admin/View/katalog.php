@@ -33,12 +33,16 @@
           <header class="panel-heading" style="font-size: 20px;">
             Tabel Buku
           </header>
-
+		  <br>
+		  <div class="col-lg-12">
+		  <input class=" form-control" id="search" name="search" type="text" autocomplete="off" placeholder="search katalog"/>
+		  </div>
+		  <br>
           <?php if (empty($this->oKatalog)): ?>
             <?php else: ?> 
   
   		<div  style="position: relative; height: 500px; overflow: auto; display: block;">
-  			<table class="table table-striped table-advance table-hover">
+  			<table class="table table-striped table-advance table-hover" id="katalog">
             <tbody>
               <tr>
                 <th>No Katalog</th>
@@ -210,6 +214,32 @@
 		  });
 	  });
   });
+  
+  //search table
+  $(document).ready(function(){  
+           $('#search').keyup(function(){  
+                search_table($(this).val());  
+           });  
+           function search_table(value){  
+                $('#katalog tr:not(:first-child)').each(function(){  
+                     var found = 'false';  
+                     $(this).each(function(){  
+                          if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)  
+                          {  
+                               found = 'true';  
+                          }  
+                     });  
+                     if(found == 'true')  
+                     {  
+						  $(this).show();  
+                     }  
+                     else  
+                     {  
+						  $(this).hide();  
+                     }  
+                });  
+           }  
+      }); 
   </script>
 
 <?php require 'inc/footer.php' ?>
