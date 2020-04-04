@@ -29,6 +29,14 @@ class Buku
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
 
+    public function getPDFById($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM katalog WHERE no_katalog = :no_katalog LIMIT 1');
+        $oStmt->bindParam(':no_katalog', $iId, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
 
     // public function getAll()
     // {

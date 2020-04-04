@@ -49,6 +49,16 @@ class Buku
         $this->oUtil->getView('detail');
     }
 
+    public function view()
+    {
+
+        if (!$this->isLogged()) exit;
+        
+        $this->oUtil->oView = $this->oModel->getPDFById($this->_iId);
+
+        $this->oUtil->getView('view');
+    }
+
 
     public function notFound()
     {

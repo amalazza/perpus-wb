@@ -42,7 +42,7 @@
                     </h2>
                 </div>
               </div>
-              <div class="col-lg-2 col-sm-6 follow-info weather-category">
+              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
                 <ul style="background-color: #1abc9c;">
                   <li class="active">
                     <h3>
@@ -59,7 +59,7 @@
                   <li class="active">
                     <h3>
                       <i class="fa fa-bell fa-2x"> </i><br> 
-                      <input type="submit" name="baca" value="BACA" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;"/>
+                      <button  id="ebook"  type="submit" name="baca" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=view&amp;id=<?=$this->oBuku->no_katalog?>'">BACA</button>
                     </h3>
                     Buku-buku elektronik yang bisa dibaca dimana dan kapan saja
                   </li>
@@ -126,7 +126,14 @@
                             <p><span>Stok </span>: <?=$this->oBuku->stok?></p>
                           </div>
                           <div>
-                            <p><span>Bentuk Buku</span>: <?=$this->oBuku->jenis_katalog?></p>
+                            <p><span>Bentuk Buku</span>: <input type="text" value="<?=$this->oBuku->jenis_katalog?>" id="jenis_katalog"></p>
+                            
+                              <!-- INI FAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH -->
+                            <?php foreach ($this->oBuku as $oBuku): ?>
+                            <input type="text" value="<?=$oBuku->jenis_katalog?>" id="jen">
+                            <div id="fisik">Fisik</div>
+                            <div id="ebook">Ebook</div>
+                            <?php endforeach ?>
                           </div>
                         </div>
                     </div>
@@ -140,7 +147,17 @@
     </div>
     </div>
 
+<script type="text/javascript">
+  $(document).ready(function() {
+    if($("#jen").val() == "Buku Fisik"){
+       document.getElementById('ebook').style.display = "none";
+    }
+  });
+</script>
+
 <?php endif ?>
+
+
 
 
 
