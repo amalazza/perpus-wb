@@ -35,32 +35,33 @@
       <div class="row">
         <?php if (empty($this->oBuku)): ?>
         <?php else: ?>
-            
-
-          <table class="table table-striped table-advance table-hover">
-            <tbody>
-              <tr>
-                <th>No Anggota</th>
-                <th>Nama Anggota *nanti</th>
-                <th>Action</th>
-              </tr>
-              <?php foreach ($this->oBuku as $oBuku): ?>
-              <tr>
-                <td><?=htmlspecialchars($oBuku->no_katalog)?></td>
-                <td><?=$oBuku->judul?></td>
-                <td><a href="<?=ROOT_URL?>?p=buku&amp;a=detail&amp;id=<?=$oBuku->no_katalog?>">Want to see more?</a> 
-                
-              </tr>
-              <?php endforeach ?>
-             
-            </tbody>
-          </table>
+        <?php foreach ($this->oBuku as $oBuku): ?>
+          <a href="<?=ROOT_URL?>?p=buku&amp;a=detail&amp;id=<?=$oBuku->no_katalog?>">
+            <div class="portfolio-item mx-auto  shadow p-3 mb-5 rounded" data-toggle="modal" data-target="#portfolioModal1" style="width: 90%; height: 95%">
+              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100" >
+                <div class="portfolio-item-caption-content text-center text-white" >
+                  <h3><?=$oBuku->judul?></h3>
+                  <h4><?=$oBuku->pengarang?></h4>
+                  <!-- <h4><?=$oBuku->klasifikasi?></h4> -->
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <!-- <img class="img-fluid" src="<?=ROOT_URL?>static/img/cover_buku.png" alt=""> -->
+              <div style="max-height: 100%; max-width: 100%">
+              <?php echo "<img class='img-fluid' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($oBuku->cover))."'/>";?>
+              
+            </div>
+              <br>
+              <button class="btn btn-primary center" style="background-color: #2c3e50; color: white; border-color: white;"><?=$oBuku->jenis_katalog?></button>
+            </div>
+          </a>
+          <?php endforeach ?>
+          <?php endif ?>
 
     </div>
   </section>
 
 
     
-<?php endif ?>
-<?php require 'inc/footer.php' ?>
 
+<?php require 'inc/footer.php' ?>
