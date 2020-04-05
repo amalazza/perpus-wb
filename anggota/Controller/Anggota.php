@@ -58,6 +58,22 @@ class Anggota extends Beranda
 
         $this->oUtil->getView('login');
     }
+	
+	public function my_profile()
+    {
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+
+        $this->oUtil->oAdd_Admins = $this->oModel->getById($_SESSION['id']);
+        $this->oUtil->oAlog = $this->oModel->getaLog($_SESSION['id']);
+
+        $this->oUtil->getView('profile_admin');
+    }
+    }
     
     public function logout()
     {
@@ -109,9 +125,46 @@ class Anggota extends Beranda
         // Homepage
     public function profile()
     {
-        $this->oUtil->oAnggota = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+
+        $this->oUtil->oAnggota = $this->oModel->getById($_SESSION['id']);
+        //$this->oUtil->oAlog = $this->oModel->getaLog($_SESSION['id']);
 
         $this->oUtil->getView('profile');
 
+    }
+	}
+	
+	public function edit()
+    {
+        if (!$this->isLogged()) exit;
+
+        if (!empty($_POST['edit_submit']))
+        {
+            if (isset($_POST['no_anggota']))
+            {
+                $aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
+
+                if ($this->oModel->update($aData)){
+                $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+				header("Refresh: 3; URL=?p=anggota&a=profile");}
+                else{
+				$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+            }
+            else
+            {
+                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+            }
+        }
+
+        // Get the data of the post 
+        $this->oUtil->oAnggota = $this->oModel->getById($this->_iId);
+
+        $this->oUtil->getView('edit_anggota');
     }
 }

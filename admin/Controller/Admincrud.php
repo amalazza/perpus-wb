@@ -166,11 +166,13 @@ class Admincrud
                 $foto = file_get_contents($_FILES['foto']['tmp_name']);
                 $oldfoto = $_POST['oldFoto'];
                 $oldmime = $_POST['oldMime'];
+                $oldPass = $_POST['Opassword'];
                 $idku = $_SESSION['id'];
                 $act = $_SESSION['nama'].' mengubah data profile admin '.$_POST['nama'];
+                $compare = strcmp($pass, $oldPass);
 
-                if (empty($foto)) {
-                    $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt, 'mime' => $oldmime, 'foto' => $oldfoto);
+                if ($compare == 0) {
+                    $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $oldPass, 'mime' => $mime, 'foto' => $foto);
                     $aLog = array('id_admin' => $idku, 'activity' => $act );
 
                     if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog))

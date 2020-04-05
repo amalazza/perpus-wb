@@ -54,7 +54,7 @@
 
                 </ul>
               </div>
-              <div class="col-lg-2 col-sm-6 follow-info weather-category">
+              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="ebookButton">
                 <ul style="background-color: #1abc9c;">
                   <li class="active">
                     <h3>
@@ -126,9 +126,7 @@
                             <p><span>Stok </span>: <?=$this->oBuku->stok?></p>
                           </div>
                           <div>
-                            <p><span>Bentuk Buku</span>: <input type="text" value="<?=$this->oBuku->jenis_katalog?>" id="jenis_katalog"></p>
-                            <div id="fisik" style="display:none;">Fisik</div>
-                            <div id="ebook" style="display:none;">Ebook</div>
+                            <p><span>Bentuk Buku</span>: <span id="jenis_katalog"><?=$this->oBuku->jenis_katalog?></span></p>
                           </div>
                         </div>
                     </div>
@@ -143,19 +141,18 @@
     </div>
 
 <script type="text/javascript">
-var jenis = document.getElementById('jenis_katalog').value;
-  $(function() {
+var jenis = document.getElementById("jenis_katalog").innerText
 	  
+	  //alert(jenis);
 	  
-	  alert(jenis);
-    if( jenis == 'Buku Fisik'){
-       //document.getElementById('fisik').style.display = "block";
+    if( jenis == "Buku Fisik"){
+      document.getElementById('ebookButton').style.display = "none";
 	   //alert(jenis);
     }
 	else{
 		document.getElementById('ebook').style.display = "block";
+		//alert(jenis);
 	}
-  });
 </script>
 
 <?php endif ?>

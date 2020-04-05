@@ -39,4 +39,24 @@ class Anggota extends Beranda
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
+	public function getById($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM anggota WHERE no_anggota = :no_anggota LIMIT 1');
+        $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+	
+	public function update(array $aData)
+    {
+        $oStmt = $this->oDb->prepare('UPDATE anggota SET nama = :nama, kelas = :kelas, no_telpon = :no_telpon, email = :email, alamat = :alamat, foto = :foto WHERE no_anggota = :no_anggota LIMIT 1');
+        $oStmt->bindValue(':nama', $aData['nama']);
+		$oStmt->bindValue(':kelas', $aData['kelas']);
+        $oStmt->bindValue(':no_telpon', $aData['no_telpon']);
+        $oStmt->bindValue(':email', $aData['email']);
+        $oStmt->bindValue(':alamat', $aData['alamat']);
+        $oStmt->bindValue(':foto', $aData['foto']);
+        $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
+        return $oStmt->execute($aData);
+    }
 }

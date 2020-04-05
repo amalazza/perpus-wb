@@ -41,7 +41,28 @@ class Katalog
         $oStmt = $this->oDb->prepare('INSERT INTO katalog (no_katalog, no_klasifikasi, no_koleksi, jenis_katalog, judul, pengarang, penerbit, kota_terbit, tahun_terbit, isbn, lokasi, absktrak, tanggal_masuk, e_book, cover, stok ) VALUES(:no_katalog, :no_klasifikasi, :no_koleksi, :jenis_katalog, :judul, :pengarang, :penerbit, :kota_terbit, :tahun_terbit, :isbn, :lokasi, :absktrak, :tanggal_masuk, :e_book, :cover, :stok)');
         return $oStmt->execute($aData);
     }
+
+    public function addthnTerbit($tahun)
+    {
+        $oStmt = $this->oDb->prepare('INSERT INTO tahunterbit (id_thn, thn_terbit) VALUES (:id_thn, :thn_terbit)');
+        return $oStmt->execute($tahun);
+    }
 	
+    public function addAlog(array $aLog)
+    {
+        $oStmt = $this->oDb->prepare('INSERT INTO logadmin (id_admin, activity) VALUES(:id_admin, :activity)');
+        return $oStmt->execute($aLog);
+    }
+
+    public function sDuplikat($aDup)
+    {
+        $oStmt = $this->oDb->prepare('SELECT COUNT(*) duplikat FROM tahunterbit WHERE thn_terbit = :thn_terbit GROUP BY thn_terbit HAVING duplikat > 1 ');
+        $oStmt->bindParam(':thn_terbit', $aDup);
+        $oStmt->execute(); 
+        $number_of_rows = $oStmt->fetchColumn();
+        return $number_of_rows;
+    }
+
 	public function getPDFById($iId)
     {
         $oStmt = $this->oDb->prepare('SELECT * FROM katalog WHERE no_katalog = :no_katalog LIMIT 1');
