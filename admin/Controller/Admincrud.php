@@ -41,7 +41,12 @@ class Admincrud
 
     public function p_admin()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
         $this->oUtil->oAdd_Admin = $this->oModel->getAll(0, self::MAX_POSTS); // Get only the latest X posts
         $test = strcmp($_SESSION['role'], 'master');
         $test2 = strcmp($_SESSION['role'], 'admin');
@@ -50,6 +55,7 @@ class Admincrud
         } elseif ($test2 == 0) {
             $this->oUtil->getView('admin2');
         }
+    }
     }
 
     public function notFound()
@@ -61,21 +67,33 @@ class Admincrud
     /***** For Admin (Back end) *****/
     public function all()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
 
         $this->oUtil->oAdd_Admins = $this->oModel->getAll();
 
         $this->oUtil->getView('admin');
     }
+    }
 
     public function my_profile()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
 
         $this->oUtil->oAdd_Admins = $this->oModel->getById($_SESSION['id']);
         $this->oUtil->oAlog = $this->oModel->getaLog($_SESSION['id']);
 
         $this->oUtil->getView('profile_admin');
+    }
     }
 
     public function detailAdmin()
@@ -85,7 +103,12 @@ class Admincrud
 
     public function add()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
 
         if (!empty($_POST['add_submitA']))
         {
@@ -120,10 +143,16 @@ class Admincrud
 
         $this->oUtil->getView('add_admin');
     }
+    }
 
-        public function edit()
+    public function edit()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
 
         if (!empty($_POST['edit_submit']))
         {
@@ -174,11 +203,17 @@ class Admincrud
 
         $this->oUtil->getView('edit_admin');
     }
+    }
 
 
     public function delete()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
 
         $idku = $_SESSION['id'];
         $act = $_SESSION['nama'].' menghapus data profile admin '.$_POST['nama'];
@@ -190,6 +225,7 @@ class Admincrud
         else
             exit('Kunjungan tidak bisa dihapus.');
     }
+}
 
     protected function isLogged()
     {

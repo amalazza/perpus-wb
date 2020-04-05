@@ -41,26 +41,44 @@ class Dashboard
 
     public function anggota()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL . '?p=admin&a=login');
+           exit; 
+        }
+        else{
         $this->oUtil->oDashboardAnggota = $this->oModel->getAnggota(0, self::MAX_POSTS); // Get only the latest X posts
 
         $this->oUtil->getView('dashboard');
     }
+    }
 
     public function kunjungan()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL . '?p=admin&a=login');
+           exit; 
+        }
+        else{
         $this->oUtil->oDashboardKunjungan = $this->oModel->getKunjungan(0, self::MAX_POSTS); // Get only the latest X posts
 
         $this->oUtil->getView('dashboard');
     }
+    }
 
     public function katalog()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL . '?p=admin&a=login');
+           exit; 
+        }
+        else{
         $this->oUtil->oDashboardKatalog = $this->oModel->getKatalog(0, self::MAX_POSTS); // Get only the latest X posts
 
         $this->oUtil->getView('dashboard');
+    }
     }
     
     public function notFound()
@@ -72,7 +90,12 @@ class Dashboard
     /***** For Admin (Back end) *****/
     public function all()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL . '?p=admin&a=login');
+           exit; 
+        }
+        else{
         //$this->oUtil->oKunjungan = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
         $this->oUtil->oData = $this->oModel->getAnggota();
         $this->oUtil->oDataKun = $this->oModel->getKunjungan();
@@ -80,14 +103,21 @@ class Dashboard
 
         $this->oUtil->getView('dashboard');
     }
+    }
 
     public function my_profile()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL . '?p=admin&a=login');
+           exit; 
+        }
+        else{
         $this->oUtil->oAdd_Admins = $this->oModel->getById($_SESSION['id']);
         $this->oUtil->oAlog = $this->oModel->getaLog($_SESSION['id']);
 
         $this->oUtil->getView('profile_admin');
+    }
     }
 
     protected function isLogged()

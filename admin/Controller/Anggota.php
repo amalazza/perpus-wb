@@ -50,11 +50,17 @@ class Anggota
 
     public function anggota()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
 		
         $this->oUtil->oAnggota = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
 
         $this->oUtil->getView('anggota');
+    }
     }
 
     public function notFound()
@@ -112,7 +118,12 @@ class Anggota
 	
 	public function add()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
 
         if (!empty($_POST['add_submit']))
         {
@@ -144,6 +155,7 @@ class Anggota
 		
 		$this->oUtil->getView('add_anggota');
     }
+    }
 
     /* public function edit()
     {
@@ -174,12 +186,18 @@ class Anggota
 
     public function delete()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
 
         if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId))
             header('Location: ' . ROOT_URL . '?p=anggota&a=anggota');
         else
             exit('Anggota tidak bisa dihapus.');
+    }
     }
 
     protected function isLogged()

@@ -49,11 +49,17 @@ class Katalog
 
     public function katalog()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
 		
         $this->oUtil->oKatalog = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
 
         $this->oUtil->getView('katalog');
+    }
     }
 
     public function notFound()
@@ -82,17 +88,28 @@ class Katalog
 	
 	public function viewPDF()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
 	
 		$this->oUtil->oView = $this->oModel->getPDF($this->_iId);
 
         $this->oUtil->getView('view');
+    }
 		
     }
 	
 	public function add()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
 
         if (!empty($_POST['add_submit']))
         {
@@ -126,10 +143,16 @@ class Katalog
 		
 		$this->oUtil->getView('add_katalog');
     }
+    }
 
      public function edit()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
 
         if (!empty($_POST['edit_submit']))
         {
@@ -165,10 +188,16 @@ class Katalog
 
         $this->oUtil->getView('edit_katalog');
     } 
+    }
 
     public function delete()
     {
-        if (!$this->isLogged()) exit;
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
 
         if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId)){
 			header('Location: ' . ROOT_URL . '?p=katalog&a=katalog');
@@ -176,6 +205,7 @@ class Katalog
         else{
 			exit('Katalog tidak bisa dihapus.');	
 		}
+    }
     }
 
     protected function isLogged()
