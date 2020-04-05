@@ -115,7 +115,7 @@
 						<textarea class=" form-control" name="abstrak"><?=$this->oKatalog->absktrak?></textarea>
                       </div>
                     </div>
-					<div class="form-group " id="add_ebook" style="display:none;">
+					<div class="form-group " id="add_ebook" >
                       <label for="e_book" class="control-label col-lg-2">E-book <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class=" form-control" id="e_book" name="e_book" type="file" />
@@ -175,16 +175,32 @@
                 reader.readAsDataURL(input.files[0]);
             }
     }
-	function showEbook(select){
-	   if(select.value== 'E-Book'){
+	
+	//menampilkan input file ebook berdasarkan database
+	var jenisBuku = $('#searchJenisKatalog :selected').val();
+	$(document).ready(function(){  
+	   if(jenisBuku== 'E-Book'){
 		document.getElementById('add_ebook').style.display = "block";
 	   }
-	   else if(select.value== 'Buku Fisik dan E-Book'){
+	   else if(jenisBuku== 'Buku Fisik dan E-Book'){
 		document.getElementById('add_ebook').style.display = "block";
 	   } 
 	   else{
 		document.getElementById('add_ebook').style.display = "none";
-		}}
+	}
+	});
+	
+	//menampilkan/hide input file ebook sesuai apa yang dipilih pada jenis buku
+   function showEbook(select){
+   if(select.value== 'E-Book'){
+    document.getElementById('add_ebook').style.display = "block";
+   }
+   else if(select.value== 'Buku Fisik dan E-Book'){
+    document.getElementById('add_ebook').style.display = "block";
+   } 
+   else{
+    document.getElementById('add_ebook').style.display = "none";
+	}}
   </script>
   
 <?php require 'inc/footer.php' ?>

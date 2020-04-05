@@ -159,7 +159,9 @@
 		}
 		return true;
 	}
-	function showEbook(select){
+	
+	//menampilkan/hide input file ebook sesuai apa yang dipilih pada jenis buku
+   function showEbook(select){
    if(select.value== 'E-Book'){
     document.getElementById('add_ebook').style.display = "block";
    }
