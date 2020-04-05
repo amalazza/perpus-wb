@@ -106,8 +106,8 @@ class Anggota
 				
 				$sData = array('nis' => $nis, 'nama' => $nama, 'kelas' => $kelas);
 				if ($this->oModel->addSiswa($sData)){
-                 echo '<div class="alert alert-success">Data S berhasil ditambahkan.</div>';
-				header("Refresh: 3; URL=?p=anggota&a=anggota");}
+                 $this->oUtil->sSuccMsg = 'Data siswa berhasil ditambahkan.';
+                    header("Refresh: 3; URL=?p=anggota&a=anggota");}
                 else{
 				$this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';}
 			}
@@ -137,7 +137,7 @@ class Anggota
                 $aLog = array('id_admin' => $idku, 'activity' => $act );
 
                 if ($this->oModel->add($aData) && $this->oModel->addAlog($aLog)){
-                    echo '<div class="alert alert-success">Data Anggota berhasil ditambahkan.</div>';
+                    $this->oUtil->sSuccMsg = 'Data anggota berhasil ditambahkan.';
                     header("Refresh: 3; URL=?p=anggota&a=anggota");
 				}
                 else{
@@ -193,10 +193,11 @@ class Anggota
         }
         else{
 
-        if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId))
-            header('Location: ' . ROOT_URL . '?p=anggota&a=anggota');
-        else
-            exit('Anggota tidak bisa dihapus.');
+        if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId)){
+            $this->oUtil->sSuccMsg = 'Data anggota berhasil dihapus.';
+		header("Refresh: 3; URL=?p=anggota&a=anggota");}
+        else{
+		exit('Anggota tidak bisa dihapus.');}
     }
     }
 

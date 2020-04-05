@@ -2,83 +2,58 @@
 <?php require 'inc/msg.php' ?>
 
 
+<?php 
 
+          if (empty($this->oAnggota)): ?>
+            <?php else: ?>
+            <?php $data = $this->oAnggota;
+             ?>
  <!--main content start-->
         <div class="row">
           <!-- profile-widget -->
           <div class="col-lg-12">
             <div class="profile-widget profile-widget-info" style="background-color: #1abc9c;">
               <div class="panel-body">
-                <div class="col-lg-2 col-sm-2">
-                  <h4>Jenifer Smith</h4>
-                  <div class="follow-ava">
-                    <img src="<?=ROOT_URL?>static/img/avataaars.svg" alt="">
-                  </div>
-                  <h6>Administrator</h6>
+                  
+				  <div class="col-lg-2 col-sm-2 follow-info" style="-webkit-border-radius: 0%;">
+				  <?php //echo "<img  src= 'data:image/jpeg;base64,".base64_encode(stripslashes($data->foto))."' width='150' />";?>
+                  
+				  <?php 
+                    echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($data->foto))."' style='height: 100%; width: 100%; -webkit-border-radius: 0%'/>";
+                ?>
                 </div>
                 <div class="col-lg-4 col-sm-4 follow-info">
-                  <p>Hello I’m Jenifer Smith, a leading expert in interactive and creative design.</p>
-                  <p>@jenifersmith</p>
-                  <p><i class="fa fa-twitter">jenifertweet</i></p>
-                  <h6>
-                                    <span><i class="icon_clock_alt"></i>11:05 AM</span>
-                                    <span><i class="icon_calendar"></i>25.10.13</span>
-                                    <span><i class="icon_pin_alt"></i>NY</span>
-                                </h6>
+                  <p>Nama: <?=$data->nama?></p>
+                  <p>NIS: <?=$data->no_anggota?></p>
+                  <p>Kelas: <?=$data->kelas?></p>
+				  <p>Email: <?=$data->email?></p>
+				  <p>No. Telpon: <?=$data->no_telpon?></p>
+				  <p>Alamat: <?=$data->alamat?></p>
                 </div>
-                <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                  <ul style="background-color: #1abc9c;">
-                    <li class="active">
-
-                      <i class="fa fa-comments fa-2x"> </i><br> Contrary to popular belief, Lorem Ipsum is not simply
-                    </li>
-
-                  </ul>
-                </div>
-                <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                  <ul style="background-color: #1abc9c;">
-                    <li class="active">
-
-                      <i class="fa fa-bell fa-2x"> </i><br> Contrary to popular belief, Lorem Ipsum is not simply
-                    </li>
-
-                  </ul>
-                </div>
-                <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                  <ul style="background-color: #1abc9c;">
-                    <li class="active">
-
-                      <i class="fa fa-tachometer fa-2x"> </i><br> Contrary to popular belief, Lorem Ipsum is not simply
-                    </li>
-
-                  </ul>
+				<div style="float:right;">
+                  <form action="<?=ROOT_URL?>?p=anggota&amp;a=edit&amp;id=<?=$data->no_anggota?>" method="post">
+                <button class="btn btn-danger" type="submit" name="edit" value="1" style="width: 120px;">Edit Profile</button>
+              </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
+		<?php endif ?>
         <!-- page start-->
         <div class="row">
           <div class="col-lg-12">
             <section class="panel" >
-              <header class="panel-heading tab-bg-info">
-                <ul class="nav nav-tabs">
-                  <li class="active" style="background-color: #1abc9c;">
+              <header class="panel-heading" style="background-color: #2c3e50;">
+                <ul class="nav nav-tabs" >
+                  <li class="active">
                     <a data-toggle="tab" href="#recent-activity">
-                                          <i class="icon-home"></i>
-                                          Daily Activity
+                                          DATA PINJAMAN
                                       </a>
                   </li>
-                  <li style="background-color: #1abc9c;">
+                  <li>
                     <a data-toggle="tab" href="#profile">
-                                          <i class="icon-user"></i>
-                                          Profile
-                                      </a>
-                  </li>
-                  <li class="" style="background-color: #1abc9c;">
-                    <a data-toggle="tab" href="#edit-profile">
-                                          <i class="icon-envelope"></i>
-                                          Edit Profile
+                                          AKTIVITAS
                                       </a>
                   </li>
                 </ul>

@@ -122,7 +122,7 @@ class Katalog
 				$aData = array('no_katalog' => $_POST['no_katalog'], 'no_klasifikasi' => $_POST['klasifikasi'], 'no_koleksi' => $_POST['koleksi'],'jenis_katalog'=>$_POST['jenis_katalog'],'judul' => $_POST['judul'],'pengarang' => $_POST['pengarang'],'penerbit' => $_POST['penerbit'],'kota_terbit' => $_POST['kota_terbit'],'tahun_terbit' => $_POST['tahun_terbit'],'isbn' => $_POST['isbn'],'lokasi' => $_POST['lokasi'],'absktrak' => $_POST['abstrak'],'tanggal_masuk' => date('Y-m-d H:i:s'),'e_book' => $e_book,'cover' => addslashes(file_get_contents($_FILES['cover']['tmp_name'])), 'stok'=> $_POST['stok']);
 
                 if ($this->oModel->add($aData)){
-					echo '<div class="alert alert-success">Data katalog berhasil ditambahkan.</div>';
+					$this->oUtil->sSuccMsg = 'Data anggota berhasil ditambahkan.';
                     header("Refresh: 3; URL=?p=katalog&a=katalog");
 				}
                 else{
@@ -165,8 +165,8 @@ class Katalog
                 $aData = array('no_katalog' => $_POST['no_katalog'], 'no_klasifikasi' => $_POST['klasifikasi'], 'no_koleksi' => $_POST['koleksi'], 'jenis_katalog' => $_POST['jenis_katalog'], 'judul' => $_POST['judul'],'pengarang' => $_POST['pengarang'],'penerbit' => $_POST['penerbit'],'kota_terbit' => $_POST['kota_terbit'],'tahun_terbit' => $_POST['tahun_terbit'],'isbn' => $_POST['isbn'],'lokasi' => $_POST['lokasi'],'absktrak' => $_POST['abstrak'],'tanggal_masuk' => date('Y-m-d H:i:s'),'e_book' => file_get_contents($_FILES['e_book']['tmp_name']),'cover' => addslashes(file_get_contents($_FILES['cover']['tmp_name'])), 'stok'=> $_POST['stok']);
 
                 if ($this->oModel->update($aData)){
-					echo '<div class="alert alert-success">Data katalog berhasil diedit.</div>';
-                    header("Refresh: 3; URL=?p=katalog&a=katalog");
+					$this->oUtil->sSuccMsg = 'Data anggota berhasil ditambahkan.';
+                    header("Refresh: 3; URL=?p=anggota&a=anggota");
 				}
                 else{
 					$this->oUtil->sErrMsg = 'Data katalog gagal diedit.';
