@@ -85,7 +85,12 @@
               <p style="font-size: 20px;"><?=$oBuku->judul?></p>
               <p><?=$oBuku->tahun_terbit?></p>
             </div>
+<!-- <<<<<<< HEAD -->
               <button class="btn btn-primary center" style="background-color: #2c3e50; color: white; border-color: white; float:"><?=$oBuku->jenis_katalog?></button>
+<!-- =======
+              <br>
+              <input type="submit" class="btn btn-primary center" style="background-color: #2c3e50; color: white; border-color: white;" value="<?=$oBuku->jenis_katalog?>" id="jenis_katalog"/>
+>>>>>>> 23522e5fb86d88a1c7498b288d8a03e928a34a38 -->
             </div>
           </a>
           </div>
@@ -96,7 +101,6 @@
 
     </div>
   </section>
-
 
     <script>
 filterSelection("all")

@@ -147,12 +147,7 @@ class Admincrud
 
     public function edit()
     {
-        if (!$this->isLogged())
-        {
-           header('Location: ' . ROOT_URL);
-           exit; 
-        }
-        else{
+        if (!$this->isLogged()) exit;
 
         if (!empty($_POST['edit_submit']))
         {
@@ -203,7 +198,7 @@ class Admincrud
 
         $this->oUtil->getView('edit_admin');
     }
-    }
+    
 
 
     public function delete()
