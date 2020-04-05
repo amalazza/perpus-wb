@@ -69,6 +69,7 @@
                         <input class=" form-control" placeholder="Username" type="text" name="username" id="username" value="<?=$data->username?>"/>
                       </div>
                     </div>
+
                     <div class="form-group ">
                       <label for="password" class="control-label col-lg-2">Password <span class="required">*</span></label>
                       <div class="col-lg-10">
@@ -81,6 +82,9 @@
                         <input class="form-control " placeholder="Confirm Password" id="confirm_password" name="confirm_password" type="password" value="<?=$data->password?>"/>
                       </div>
                     </div>
+
+                        <input class="form-control " placeholder="Password" id="Opassword" name="Opassword" type="hidden" value="<?=$data->password?>"/>
+
                     <div class="form-group ">
                       <label for="foto" class="control-label col-lg-2">Foto Profil <span class="required">*</span></label>
                       

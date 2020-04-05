@@ -119,15 +119,35 @@ class Katalog
 					$e_book = file_get_contents($_FILES['e_book']['tmp_name']);
 				}else{
 				$e_book = "";}
+
+                $idku = $_SESSION['id'];
+                $act = $_SESSION['nama'].' menambahkan buku baru '.$_POST['judul'].' karangan '.$_POST['pengarang'];
+
 				$aData = array('no_katalog' => $_POST['no_katalog'], 'no_klasifikasi' => $_POST['klasifikasi'], 'no_koleksi' => $_POST['koleksi'],'jenis_katalog'=>$_POST['jenis_katalog'],'judul' => $_POST['judul'],'pengarang' => $_POST['pengarang'],'penerbit' => $_POST['penerbit'],'kota_terbit' => $_POST['kota_terbit'],'tahun_terbit' => $_POST['tahun_terbit'],'isbn' => $_POST['isbn'],'lokasi' => $_POST['lokasi'],'absktrak' => $_POST['abstrak'],'tanggal_masuk' => date('Y-m-d H:i:s'),'e_book' => $e_book,'cover' => addslashes(file_get_contents($_FILES['cover']['tmp_name'])), 'stok'=> $_POST['stok']);
 
-                if ($this->oModel->add($aData)){
-					$this->oUtil->sSuccMsg = 'Data anggota berhasil ditambahkan.';
+                $aDup = $_POST['tahun_terbit'];
+                $dupt = $this->oModel->sDuplikat($aDup);
+
+                $aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                $tahun = array('id_thn' => '','thn_terbit' => $_POST['tahun_terbit']);
+
+                if ($dupt !== 0){
+                    if ($this->oModel->add($aData) && $this->oModel->addAlog($aLog)){
+                    echo '<div class="alert alert-success">Data katalog berhasil ditambahkan.</div>';
                     header("Refresh: 3; URL=?p=katalog&a=katalog");
-				}
-                else{
-					$this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
-				}
+                    }
+                    else{
+                     $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                    }
+                }elseif ($this->oModel->add($aData) && $this->oModel->addthnTerbit($tahun) && $this->oModel->addAlog($aLog)) {
+                    echo '<div class="alert alert-success">Data katalog berhasil ditambahkan.</div>';
+                    header("Refresh: 3; URL=?p=katalog&a=katalog");
+                    }
+                    else{
+                     $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                    }
+                }
             }
             else
             {
@@ -142,7 +162,6 @@ class Katalog
 		$this->oUtil->oKoleksi = $this->oModel->getKoleksi();
 		
 		$this->oUtil->getView('add_katalog');
-    }
     }
 
      public function edit()
@@ -165,8 +184,8 @@ class Katalog
                 $aData = array('no_katalog' => $_POST['no_katalog'], 'no_klasifikasi' => $_POST['klasifikasi'], 'no_koleksi' => $_POST['koleksi'], 'jenis_katalog' => $_POST['jenis_katalog'], 'judul' => $_POST['judul'],'pengarang' => $_POST['pengarang'],'penerbit' => $_POST['penerbit'],'kota_terbit' => $_POST['kota_terbit'],'tahun_terbit' => $_POST['tahun_terbit'],'isbn' => $_POST['isbn'],'lokasi' => $_POST['lokasi'],'absktrak' => $_POST['abstrak'],'tanggal_masuk' => date('Y-m-d H:i:s'),'e_book' => file_get_contents($_FILES['e_book']['tmp_name']),'cover' => addslashes(file_get_contents($_FILES['cover']['tmp_name'])), 'stok'=> $_POST['stok']);
 
                 if ($this->oModel->update($aData)){
-					$this->oUtil->sSuccMsg = 'Data anggota berhasil ditambahkan.';
-                    header("Refresh: 3; URL=?p=anggota&a=anggota");
+					echo '<div class="alert alert-success">Data katalog berhasil diedit.</div>';
+                    header("Refresh: 3; URL=?p=katalog&a=katalog");
 				}
                 else{
 					$this->oUtil->sErrMsg = 'Data katalog gagal diedit.';

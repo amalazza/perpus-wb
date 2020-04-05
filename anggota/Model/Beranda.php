@@ -22,7 +22,7 @@ class Beranda
 
             public function getAllj()
     {
-        $oStmt = $this->oDb->query('SELECT * FROM katalog ORDER BY tanggal_masuk DESC');
+        $oStmt = $this->oDb->query('SELECT * FROM katalog ORDER BY tanggal_masuk DESC LIMIT 4');
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 

@@ -70,7 +70,7 @@
         <?php foreach ($this->oBuku as $oBuku):
         $potong = substr($oBuku->absktrak, 0, 250) . '...';
          ?>
-         <div class="filterDiv <?=$oBuku->tahun_terbit?> <?=$oBuku->jenis_katalog?>">
+         <div style="width: 25%;" class="filterDiv <?=$oBuku->tahun_terbit?> <?=$oBuku->jenis_katalog?>">
           <a href="<?=ROOT_URL?>?p=buku&amp;a=detail&amp;id=<?=$oBuku->no_katalog?>">
             <div class="portfolio-item mx-auto  shadow p-3 mb-5 rounded" data-toggle="modal" data-target="#portfolioModal1" style="width: 90%; height: 95%">
               <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100" >
@@ -80,19 +80,20 @@
                   <i class="fas fa-plus fa-3x"></i>
                 </div>
               </div>
-              <div style="max-height: 100%; max-width: 100%">
-              <?php echo "<img style='height:300px;' class='img-fluid' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($oBuku->cover))."'/>";?>
-              <p style="font-size: 20px;"><?=$oBuku->judul?></p>
+              <div style="text-align: left; max-height: 100%; max-width: 100%">
+              <div style="text-align: center;">
+                <?php echo "<img style='height:300px;' class='img-fluid' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($oBuku->cover))."'/>";?>
+              <p style="font-size: 16px;"><?=$oBuku->judul?> || <?=$oBuku->pengarang?></p>
               <p><?=$oBuku->tahun_terbit?></p>
             </div>
-              <button class="btn btn-primary center" style="background-color: #2c3e50; color: white; border-color: white; float:"><?=$oBuku->jenis_katalog?></button>
+            </div>
+              <button class="btn btn-primary center" style="bottom: 0; width: 160px; background-color: #2c3e50; color: white; border-color: white;"><?=$oBuku->jenis_katalog?></button>
             </div>
           </a>
           </div>
           <?php endforeach ?>
           <?php endif ?>
           </div>
-          
 
     </div>
   </section>

@@ -38,10 +38,10 @@
       </div>
   </section>
 
-  <section class="page-section portfolio" id="portfolio" style="margin-top: -20px;">
+  <section class="page-section portfolio" id="portfolio" style="margin-top: -90px;">
     <div class="container">
 <!-- Portfolio Section Heading -->
-      <h2 class="page-section-heading text-center text-secondary mb-0">Buku Baru</h2>
+      <h2 class="page-section-heading text-center text-secondary mb-0"><b>Judul Terbaru</b></h2>
 
       <!-- Icon Divider -->
       <div class="divider-custom">
@@ -51,13 +51,14 @@
         </div>
         <div class="divider-custom-line"></div>
       </div>
-      <!-- Portfolio Grid Items -->
+
       <div class="row">
         <?php if (empty($this->oBuku)): ?>
         <?php else: ?>
         <?php foreach ($this->oBuku as $oBuku):
         $potong = substr($oBuku->absktrak, 0, 250) . '...';
          ?>
+         <div style="width: 25%;" class="">
           <a href="<?=ROOT_URL?>?p=buku&amp;a=detail&amp;id=<?=$oBuku->no_katalog?>">
             <div class="portfolio-item mx-auto  shadow p-3 mb-5 rounded" data-toggle="modal" data-target="#portfolioModal1" style="width: 90%; height: 95%">
               <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100" >
@@ -67,17 +68,42 @@
                   <i class="fas fa-plus fa-3x"></i>
                 </div>
               </div>
-              <div style="max-height: 100%; max-width: 100%">
-              <?php echo "<img style='height:300px;' class='img-fluid' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($oBuku->cover))."'/>";?>
-              <p style="font-size: 20px;"><?=$oBuku->judul?></p>
+              <div style="text-align: left; max-height: 100%; max-width: 100%">
+              <div style="text-align: center;">
+                <?php echo "<img style='height:300px;' class='img-fluid' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($oBuku->cover))."'/>";?>
+              <p style="font-size: 16px;"><?=$oBuku->judul?> || <?=$oBuku->pengarang?></p>
               <p><?=$oBuku->tahun_terbit?></p>
+              </div>
             </div>
-              <button class="btn btn-primary center" style="background-color: #2c3e50; color: white; border-color: white; float:"><?=$oBuku->jenis_katalog?></button>
+            <div style="text-align: center;">
+              <button class="btn btn-primary center" style=" bottom: 0; width: 160px; background-color: #2c3e50; color: white; border-color: white;"><?=$oBuku->jenis_katalog?></button>
+              </div>
             </div>
           </a>
+          </div>
           <?php endforeach ?>
           <?php endif ?>
+          <div style="margin-left: 20px;" text-align: center; " >
+            <button class="btn btn-primary center" style="font-size: 17px; background-color: #12876f;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=index'">Lihat Koleksi</button>
           </div>
+          </div>
+
+    </div>
+  </section>
+
+  <section class="page-section portfolio" id="portfolio" style="margin-top: -90px;">
+    <div class="container">
+<!-- Portfolio Section Heading -->
+      <h2 class="page-section-heading text-center text-secondary mb-0"><b>Judul Favorite</b></h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-book"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
 
     </div>
   </section>
