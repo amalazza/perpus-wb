@@ -24,7 +24,7 @@
 
 		<form class="form-inline" role="form" action="" method="post">
 
-      <div class="form-group ">
+<!--       <div class="form-group ">
           <label for="no_anggota" class="control-label col-lg-8">Nomor-Nama Anggota <span class="required">*</span></label>
             <div class="col-lg-10">
                 <select id="searchAnggota" class="form-control m-bot15" name="anggota">
@@ -34,12 +34,20 @@
                 </select>
                 <input type="hidden" name="nAnggota" id="nAnggota" value="<?=$oAnggota->nama?>">
             </div>
-      </div>
-
-		    <!-- <p><label  class="sr-only" for="no_anggota">No Anggota:</label><br />
-		        <input class="form-control" type="text" name="no_anggota" id="no_anggota" required="required" />
-		    </p>
- -->
+      </div> -->
+      <div class="form-group ">
+          <label for="no_anggota" class="control-label col-lg-8">Nomor-Nama Anggota <span class="required">*</span></label>
+          <div class="col-lg-10">
+            <select id="searchAnggota" class="form-control m-bot15" name="anggota">
+              <option value="" selected="" disabled="">--Nomor-Nama Anggota--</option>
+              <?php foreach ($this->oAnggota as $oAnggota): ?>
+                <option value="<?=$oAnggota->no_anggota?>"><?=$oAnggota->no_anggota?> - <?=$oAnggota->nama?>
+              <?php endforeach ?>
+              </option>
+            </select>
+          </div>
+        </div>
+        <br><br>
 		    <p><input type="submit" name="add_submit" value="Submit" class="btn btn-primary"/></p>
 		</form>
 
@@ -48,5 +56,11 @@
 
   </div>
 </div>
+
+<!--search dropdown-->
+  <script type="text/javascript">
+  $("#searchAnggota").chosen();
+  
+  </script>
 
 <?php require 'inc/footer.php' ?>

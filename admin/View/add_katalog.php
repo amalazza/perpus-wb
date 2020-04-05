@@ -31,15 +31,16 @@
                         <input class=" form-control" id="no_katalog" name="no_katalog" type="text" />
                       </div>
                     </div>
-					<div class="form-group ">
+					         <div class="form-group ">
                       <label for="no_klasifikasi" class="control-label col-lg-2">Nama Klasifikasi <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <select id="searchKlasifikasi" class="form-control m-bot15" name="klasifikasi">
-						<option value="" selected="" disabled="">--Klasifikasi Buku--</option>
-						<?php foreach ($this->oKlasifikasi as $oKlasifikasi): ?>
-						<option value="<?=$oKlasifikasi->no_klasifikasi?>"><?=$oKlasifikasi->no_klasifikasi?> - <?=$oKlasifikasi->nama_klasifikasi?></option>
-						<?php endforeach ?>
-						</select>
+              						<option value="" selected="" disabled="">--Klasifikasi Buku--</option>
+              						<?php foreach ($this->oKlasifikasi as $oKlasifikasi): ?>
+              						  <option value="<?=$oKlasifikasi->no_klasifikasi?>"><?=$oKlasifikasi->no_klasifikasi?> - <?=$oKlasifikasi->nama_klasifikasi?>
+              						<?php endforeach ?>
+                          </option>
+            						</select>
                       </div>
                     </div>
 					<div class="form-group ">
