@@ -52,11 +52,16 @@ class Buku
     public function view()
     {
 
-        if (!$this->isLogged()) exit;
-        
-        $this->oUtil->oView = $this->oModel->getPDFById($this->_iId);
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+            $this->oUtil->oView = $this->oModel->getPDFById($this->_iId);
 
-        $this->oUtil->getView('view');
+            $this->oUtil->getView('view');
+            }
     }
 
 
