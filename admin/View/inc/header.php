@@ -110,16 +110,16 @@
         <ul class="sidebar-menu">
           <li class="">
             <a class="" href="<?=ROOT_URL?>?p=dashboard&amp;a=all">
-                          <i class="icon_house_alt"></i>
-                          <span>Dashboard</span>
-                      </a>
+              <i class="icon_house_alt"></i>
+              <span>Dashboard</span>
+            </a>
           </li>
           <li class="sub-menu">
             <a href="javascript:;" class="">
-                          <i class="icon_genius"></i>
-                          <span>Pengguna</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
+              <i class="icon_genius"></i>
+              <span>Pengguna</span>
+              <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
             <ul class="sub">
               <li><a class="" href="<?=ROOT_URL?>?p=Admincrud&amp;a=p_admin">Admin</a></li>
               <li><a class="" href="<?=ROOT_URL?>?p=anggota&amp;a=anggota">Anggota</a></li>
@@ -128,10 +128,10 @@
           </li>
           <li class="sub-menu ">
             <a href="javascript:;" class="">
-                          <i class="icon_documents_alt"></i>
-                          <span>Buku</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
+              <i class="icon_documents_alt"></i>
+              <span>Buku</span>
+              <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
             <ul class="sub">
               <li><a class="" href="profile.html">Koleksi</a></li>
               <li><a class="" href="login.html"><span>Klasifikasi</span></a></li>
@@ -140,13 +140,11 @@
           </li>
           <li>
             <a class="" href="widgets.html">
-                          <i class="icon_desktop"></i>
-                          <span>Transaksi</span>
-                      </a>
+              <i class="icon_desktop"></i>
+              <span>Transaksi</span>
+            </a>
           </li>
           
-          
-
         </ul>
         <!-- sidebar menu end-->
       </div>

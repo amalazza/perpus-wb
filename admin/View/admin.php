@@ -30,14 +30,15 @@
     <div class="row">
       <div class="col-lg-12">
         <section class="panel">
-          <header class="panel-heading" style="font-size: 20px;">
-            Tabel Admin
+          <header class="panel-heading">
+            <h2 style="font-size: 150%; padding-bottom: 1%">Tabel Admin</h2>
+            <div class="form-group panel" style="margin-bottom: 1%; border: 1px solid #c7c7cc;">
+              <label for="search" class="control-label" style="margin-bottom: 0px; padding-bottom: 0px; padding-left: 1%;">Cari Data Admin : </label>
+              <input name="search" id="search" class="form-control search" placeholder="Search Admin" style="margin: 1%; width: 90%; color: #8e8e93; border: 1px solid #c7c7cc; margin-top: 0px; padding-top: 0px;" />
+            </div>
           </header>
-		  <br>
-		  <div class="col-lg-12">
-		  <input class=" form-control" id="search" name="search" type="text" autocomplete="off" placeholder="search admin"/>
-		  </div>
-		  <br>
+
+
           <?php if (empty($this->oAdd_Admin)): ?>
             <?php else: ?>
             
@@ -45,20 +46,20 @@
           <table id="tableMaster" class="table table-striped table-advance table-hover">
             <tbody>
               <tr>
-                <th>Profile</th>
                 <th>Nama</th>
                 <th>Email</th>
-                <th>No Tlp</th>
+                <th>No Telepon</th>
+                <th>Foto</th>
                 <th>Detail</th>
                 <th id="thAct">Action</th>
               </tr>
               <?php foreach ($this->oAdd_Admin as $oAdd_Admin): 
               ?>
               <tr>
-                <td><img src="data:<?=$oAdd_Admin->mime?>;base64,<?=base64_encode($oAdd_Admin->foto); ?>" width="100" height="100"/></td>
                 <td><?=$oAdd_Admin->nama?></td>
                 <td><?=$oAdd_Admin->email?></td>
                 <td><?=$oAdd_Admin->notlp?></td>
+                <td><img src="data:<?=$oAdd_Admin->mime?>;base64,<?=base64_encode($oAdd_Admin->foto); ?>" width="100" height="100"/></td>
                 <td>
                   <form style="display: inline">
                       <button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#detailAdmin" data-id="<?=$oAdd_Admin->id_admin?>" >Detail</button>

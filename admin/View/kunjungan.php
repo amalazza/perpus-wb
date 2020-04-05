@@ -30,14 +30,14 @@
     <div class="row">
       <div class="col-lg-12">
         <section class="panel">
-          <header class="panel-heading" style="font-size: 20px;">
-            Tabel Kunjungan
+          <header class="panel-heading">
+            <h2 style="font-size: 150%; padding-bottom: 1%">Tabel Kunjungan</h2>
+            <div class="form-group panel" style="margin-bottom: 1%; border: 1px solid #c7c7cc;">
+              <label for="search" class="control-label" style="margin-bottom: 0px; padding-bottom: 0px; padding-left: 1%;">Cari Data Kunjungan : </label>
+              <input name="search" id="search" class="form-control search" placeholder="Search Kunjungan" style="margin: 1%; width: 90%; color: #8e8e93; border: 1px solid #c7c7cc; margin-top: 0px; padding-top: 0px;" />
+            </div>
           </header>
-		  <br>
-		  <div class="col-lg-12">
-		  <input class=" form-control" id="search" name="search" type="text" autocomplete="off" placeholder="search kunjungan"/>
-		  </div>
-		  <br>
+
           <?php if (empty($this->oKunjungan)): ?>
             <?php else: ?>
             
@@ -63,7 +63,7 @@
                   <div class="btn-group">
                     <!-- <button class="btn btn-primary" onclick="window.location='<?=ROOT_URL?>?p=kunjungan&amp;a=edit&amp;id=<?=$oKunjungan->no_kunjungan?>'">Edit</button> &nbsp; -->
                     <form action="<?=ROOT_URL?>?p=kunjungan&amp;a=delete&amp;id=<?=$oKunjungan->no_kunjungan?>" method="post" style="display: inline">
-                        <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin mennghapus data ini?');">Hapus</button>
+                        <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin menghapus data ini?');">Hapus</button>
                     </form>
                   </div>
                 </td>                

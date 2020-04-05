@@ -15,7 +15,7 @@
     </div>
 	
 	<div class="row">
-      <div class="col-lg-12">
+      <div class="col-sm-12">
         <section class="panel">
           <header class="panel-heading">
             Buku Baru
@@ -27,17 +27,18 @@
      </div>
     </div>
 
+
     <div class="row">
       <div class="col-lg-12">
         <section class="panel">
-          <header class="panel-heading" style="font-size: 20px;">
-            Tabel Buku
+          <header class="panel-heading">
+          	<h2 style="font-size: 150%; padding-bottom: 1%">Tabel Katalog</h2>
+          	<div class="form-group panel" style="margin-bottom: 1%; border: 1px solid #c7c7cc;">
+	          	<label for="search" class="control-label" style="margin-bottom: 0px; padding-bottom: 0px; padding-left: 1%;">Cari Data Katalog : </label>
+	          	<input name="search" id="search" class="form-control search" placeholder="Search Katalog" style="margin: 1%; width: 90%; color: #8e8e93; border: 1px solid #c7c7cc; margin-top: 0px; padding-top: 0px;" />
+      	  	</div>
           </header>
-		  <br>
-		  <div class="col-lg-12">
-		  <input class=" form-control" id="search" name="search" type="text" autocomplete="off" placeholder="search katalog"/>
-		  </div>
-		  <br>
+          
           <?php if (empty($this->oKatalog)): ?>
             <?php else: ?> 
   
