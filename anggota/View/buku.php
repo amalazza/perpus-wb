@@ -31,6 +31,14 @@
 
         </select>
         <select class="dropbtn" id="cbJenis" name="cbJenis">
+          <option>- Jenis Katalog -</option>
+          <option class="opt2" onclick="filterSelection('E-Book')" >E-Book</option>
+          <option class="opt2" onclick="filterSelection('Buku Fisik')" >Buku Fisik</option>
+          <option class="opt2" onclick="filterSelection('Buku Fisik dan E-Book')" >Buku Fisik dan E-Book</option>
+        </select>
+
+        </select>
+        <select class="dropbtn" id="cbJenis" name="cbJenis">
         <option>- Jenis Buku -</option>
         <?php if (empty($this->oBuku)): ?>
         <?php else: ?>
@@ -38,7 +46,7 @@
           <option class="opt2" onclick="filterSelection('<?=$oJenis->no_klasifikasi?>')" ><?=$oJenis->nama_klasifikasi?></option>
         <?php endforeach ?>
         <?php endif ?>
-        </select>*masih belom diadd fungsinya
+        </select>
         </div>
       </div>
   </div>
@@ -62,7 +70,7 @@
         <?php foreach ($this->oBuku as $oBuku):
         $potong = substr($oBuku->absktrak, 0, 250) . '...';
          ?>
-         <div class="filterDiv <?=$oBuku->tahun_terbit?>">
+         <div class="filterDiv <?=$oBuku->tahun_terbit?> <?=$oBuku->jenis_katalog?>">
           <a href="<?=ROOT_URL?>?p=buku&amp;a=detail&amp;id=<?=$oBuku->no_katalog?>">
             <div class="portfolio-item mx-auto  shadow p-3 mb-5 rounded" data-toggle="modal" data-target="#portfolioModal1" style="width: 90%; height: 95%">
               <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100" >
