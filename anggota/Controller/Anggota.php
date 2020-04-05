@@ -29,18 +29,27 @@ class Anggota extends Beranda
         if ($this->isLogged())
             header('Location: ' . ROOT_URL . '?p=beranda&a=index');
 
-        if (isset($_POST['no_anggota'], $_POST['password']))
+        if (isset($_POST['btnLoginku']))
         {
-            // $this->oUtil->getModel('Anggota');
-            // $this->oModel = new \TestProject\Model\Anggota;
+            
+            $u = $_POST['no_anggota'];
+            $p = $_POST['password'];
+            $p_crypt = sha1($p);
 
-            $sHashPassword =  $this->oModel->login($_POST['no_anggota']);
-            if (password_verify($_POST['password'], $sHashPassword))
-            {
-                $_SESSION['is_logged'] = 1; // Admin is logged now
+            $sHashPassword =  $this->oModel->login($u);
+            $idku = $_POST['no_anggota'];
+            $namaku = $this->oModel->ambil_nama($u);
+
+            $compare = strcmp($p_crypt, $sHashPassword);
+
+            if ($compare == 0)
+            {   
+                $_SESSION['is_logged'] = 1; // Master Admin is logged now
+                $_SESSION['id'] = $idku;
+                $_SESSION['nama'] = $namaku;
                 header('Location: ' . ROOT_URL . '?p=beranda&a=index');
                 exit;
-            }
+            }          
             else
             {
                 $this->oUtil->sErrMsg = 'Incorrect Login!';
@@ -49,7 +58,7 @@ class Anggota extends Beranda
 
         $this->oUtil->getView('login');
     }
-
+    
     public function logout()
     {
         if (!$this->isLogged())

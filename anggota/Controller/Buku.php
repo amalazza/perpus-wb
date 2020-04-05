@@ -30,7 +30,9 @@ class Buku
     // Homepage
     public function index()
     {
-        $this->oUtil->oBuku = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
+        $this->oUtil->oBuku = $this->oModel->getAllj(0, self::MAX_POSTS); // Get only the latest X posts
+        $this->oUtil->oTahun = $this->oModel->getTahun();
+        $this->oUtil->oJenis = $this->oModel->getJenis();
 
         $this->oUtil->getView('buku');
     }

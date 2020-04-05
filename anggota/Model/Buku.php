@@ -20,6 +20,27 @@ class Buku
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
+        public function getAllj()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM katalog ORDER BY judul ASC');
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+    
+    public function getTahun()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM tahunterbit ORDER BY thn_terbit DESC');
+        $oStmt->execute();
+
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getJenis()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM klasifikasi ORDER BY nama_klasifikasi ASC');
+        $oStmt->execute();
+
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
 
     public function getById($iId)
     {

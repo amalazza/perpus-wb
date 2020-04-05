@@ -20,6 +20,13 @@ class Beranda
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
+            public function getAllj()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM katalog ORDER BY tanggal_masuk DESC');
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+
     public function getById($idKatalog)
     {
         //console.log($idKatalog);

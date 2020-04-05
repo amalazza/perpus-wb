@@ -32,6 +32,25 @@
   <link href="<?=ROOT_URL?>static/other/css/style.css" rel="stylesheet">
   <link href="<?=ROOT_URL?>static/other/css/style-responsive.css" rel="stylesheet" />
 
+<style>
+.dropbtn {
+  background-color: #12876f;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.show {
+  display: block;
+}
+.filterDiv {
+  text-align: center;
+  display: none;
+}
+
+</style>
 
 </head>
 
@@ -72,7 +91,7 @@
                     <img alt="" src="<?=ROOT_URL?>static/img/avatar1_small.jpg">
                 </span>
                 <span class="username">
-                  Jenifer Smith
+                 <?php $_SESSION['nama']; ?>
                 </span>
               </a>
               <ul class="dropdown-menu extended logout">

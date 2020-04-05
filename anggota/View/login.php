@@ -1,21 +1,20 @@
 <?php require 'inc/msg.php' ?>
 <?php require 'inc/header.php' ?>
-
-  <header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex align-items-center">
+<div>
+    <header class="masthead text-white text-center" style="opacity: 100%; background-image: url(<?=ROOT_URL?>static/1.jpg); position: relative; margin-top: -55px;">
+    <div class="container align-items-center">
 
       <!-- Masthead Avatar Image -->
-      <img class="masthead-avatar" src="<?=ROOT_URL?>static/img/avataaars.svg" alt="">
-
+      <img class="masthead-avatar" style=" height: 120px; width:200px;" src="<?=ROOT_URL?>static/bukup.png" alt="">
+      <br>
       <!-- Masthead Heading -->
-      <h1 class="masthead-heading text-uppercase mb-0">Perpustakaan Online Wira Buana</h1>
-
+      <h1 class="masthead-heading mb-0"><b>Perpustakaan Online Wira Buana</b></h1>
+      <h3 style="margin-top: 7px;"><b><i>SMK WIRA BUANA 1 | SMK WIRA BUANA 2</i></b></h3>
 
     </div>
   </header>
 
-  <!-- Contact Section -->
-  <section class="page-section" id="contact" style="background-color: white">
+  <section class="page-section portfolio" id="portfolio" style="margin-top: -20px;">
     <div class="container">
 
       <!-- Contact Section Heading -->
@@ -25,7 +24,7 @@
       <div class="divider-custom">
         <div class="divider-custom-line"></div>
         <div class="divider-custom-icon">
-          <i class="fas fa-star"></i>
+          <i class="fas fa-book"></i>
         </div>
         <div class="divider-custom-line"></div>
       </div>
@@ -51,7 +50,7 @@
             <br>
             <div class="form-group">
               <center>
-                <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Login</button>
+                <button type="submit" class="btn btn-primary btn-xl" name="btnLoginku" id="btnLoginku">Login</button>
                 <br><br>
                 <p>Belum Punya Akun? Daftar <a href="<?=ROOT_URL?>?p=anggota&a=daftar">Disini</a>
               </center>

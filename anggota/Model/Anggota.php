@@ -14,6 +14,15 @@ class Anggota extends Beranda
         return @$oRow->password; // Use the PHP 5.5 password function
     }
 
+    public function ambil_nama($username)
+    {
+        $oStmt = $this->oDb->prepare('SELECT no_anggota,nama FROM anggota WHERE no_anggota = :no_anggota LIMIT 1');
+        $oStmt->bindValue(':no_anggota', $username, \PDO::PARAM_STR);
+        $oStmt->execute();
+        $oRow = $oStmt->fetch(\PDO::FETCH_OBJ);
+
+        return @$oRow->nama; // Use the PHP 5.5 password function
+    }
 
     public function add(array $aData)
     {

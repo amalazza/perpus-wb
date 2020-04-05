@@ -30,7 +30,7 @@ class Beranda
     // Homepage
     public function index()
     {
-        $this->oUtil->oBeranda = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
+        $this->oUtil->oBuku = $this->oModel->getAllj(0, self::MAX_POSTS); // Get only the latest X posts
 
         $this->oUtil->getView('beranda');
     }
