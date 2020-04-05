@@ -5,11 +5,11 @@
   <section class="wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h3 class="page-header"><i class="fa fa fa-bars"></i> Page Klasifikasi</h3>
+        <h3 class="page-header"><i class="fa fa fa-bars"></i> Page Koleksi</h3>
         <ol class="breadcrumb">
           <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
           <li><i class="fa fa-bars"></i>Buku</li>
-          <li><i class="fa fa-square-o"></i>Klasifikasi</li>
+          <li><i class="fa fa-square-o"></i>Koleksi</li>
         </ol>
       </div>
     </div>
@@ -18,10 +18,10 @@
       <div class="col-sm-12">
         <section class="panel">
           <header class="panel-heading">
-            Klasifikasi Baru
+            Koleksi Baru
           </header>
           <div class="panel-body">
-            <button type="button" onclick="window.location='<?=ROOT_URL?>?p=klasifikasi&amp;a=add'" class="btn btn-primary">Tambah Klasifikasi Baru</button>
+            <button type="button" onclick="window.location='<?=ROOT_URL?>?p=koleksi&amp;a=add'" class="btn btn-primary">Tambah Koleksi Baru</button>
           </div>
       </section>
      </div>
@@ -32,39 +32,39 @@
       <div class="col-lg-12">
         <section class="panel">
           <header class="panel-heading">
-          	<h2 style="font-size: 150%; padding-bottom: 1%">Tabel Klasifikasi</h2>
+          	<h2 style="font-size: 150%; padding-bottom: 1%">Tabel Koleksi</h2>
           	<div class="form-group panel" style="margin-bottom: 1%; border: 1px solid #c7c7cc;">
-	          	<label for="search" class="control-label" style="margin-bottom: 0px; padding-bottom: 0px; padding-left: 1%;">Cari Data Klasifikasi : </label>
-	          	<input name="search" id="search" class="form-control search" placeholder="Search Klasifikasi" style="margin: 1%; width: 90%; color: #8e8e93; border: 1px solid #c7c7cc; margin-top: 0px; padding-top: 0px;" />
+	          	<label for="search" class="control-label" style="margin-bottom: 0px; padding-bottom: 0px; padding-left: 1%;">Cari Data Koleksi : </label>
+	          	<input name="search" id="search" class="form-control search" placeholder="Search Koleksi" style="margin: 1%; width: 90%; color: #8e8e93; border: 1px solid #c7c7cc; margin-top: 0px; padding-top: 0px;" />
       	  	</div>
           </header>
           
-          <?php if (empty($this->oKlasifikasi)): ?>
+          <?php if (empty($this->oKoleksi)): ?>
             <?php else: ?> 
   
   		<div  style="position: relative; height: 500px; overflow: auto; display: block;">
   			<table class="table table-striped table-advance table-hover" id="katalog">
             <tbody>
               <tr>
-                <th>No Klasifikasi</th>
-				<th>Nama Klasifikasi</th>
+                <th>No Koleksi</th>
+				<th>Nama Koleksi</th>
 				<th>Action</th>
               </tr> 
 			  
-              <?php foreach ($this->oKlasifikasi as $oKlasifikasi): ?>
+              <?php foreach ($this->oKoleksi as $oKoleksi): ?>
               <tr>
-                <td><?=htmlspecialchars($oKlasifikasi->no_klasifikasi)?></td>
-				<td><?=$oKlasifikasi->nama_klasifikasi?></td>
+                <td><?=htmlspecialchars($oKoleksi->no_koleksi)?></td>
+				<td><?=$oKoleksi->jenis_koleksi?></td>
 				<!-- <td><?=$oKatalog->stok ?></td> -->
 				<!-- <td>
 				<button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#detailAnggota" data-id="<?=$oKatalog->no_katalog?>">Detail</button>
 				</td> -->
 				<td>
                   <div class="btn-group">
-				  <form action="<?=ROOT_URL?>?p=klasifikasi&amp;a=edit&amp;id=<?=$oKlasifikasi->no_klasifikasi?>" method="post" style="display: inline">
+				  <form action="<?=ROOT_URL?>?p=koleksi&amp;a=edit&amp;id=<?=$oKoleksi->no_koleksi?>" method="post" style="display: inline">
                         <button class="btn btn-primary" type="submit" name="edit" value="1" >Edit</button>
                     </form>
-                    <form action="<?=ROOT_URL?>?p=klasifikasi&amp;a=delete&amp;id=<?=$oKlasifikasi->no_klasifikasi?>" method="post" style="display: inline">
+                    <form action="<?=ROOT_URL?>?p=koleksi&amp;a=delete&amp;id=<?=$oKoleksi->no_koleksi?>" method="post" style="display: inline">
                         <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin mennghapus data ingin?');">Hapus</button>
                     </form>
                   </div>
@@ -100,7 +100,7 @@
 						<td><span id="no_katalog"></span></td>
 					</tr>
 					<tr>
-						<th>Klasifikasi</th>
+						<th>Koleksi</th>
 						<td><span id="no_klasifikasi"></span></td>
 					</tr>
 					<tr>
