@@ -52,7 +52,7 @@
               
             </div>
               <br>
-              <button class="btn btn-primary center" style="background-color: #2c3e50; color: white; border-color: white;"><?=$oBuku->jenis_katalog?></button>
+              <input type="submit" class="btn btn-primary center" style="background-color: #2c3e50; color: white; border-color: white;" value="<?=$oBuku->jenis_katalog?>" id="jenis_katalog"/>
             </div>
           </a>
           <?php endforeach ?>
@@ -60,8 +60,5 @@
 
     </div>
   </section>
-
-
-    
 
 <?php require 'inc/footer.php' ?>
