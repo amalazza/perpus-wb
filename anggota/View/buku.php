@@ -80,17 +80,12 @@
                   <i class="fas fa-plus fa-3x"></i>
                 </div>
               </div>
-              <div style="max-height: 100%; max-width: 100%">
+              <div style="text-align: left; max-height: 100%; max-width: 100%">
               <?php echo "<img style='height:300px;' class='img-fluid' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($oBuku->cover))."'/>";?>
-              <p style="font-size: 20px;"><?=$oBuku->judul?></p>
+              <p style="font-size: 16px;"><?=$oBuku->judul?> || <?=$oBuku->pengarang?></p>
               <p><?=$oBuku->tahun_terbit?></p>
             </div>
-<!-- <<<<<<< HEAD -->
-              <button class="btn btn-primary center" style="background-color: #2c3e50; color: white; border-color: white; float:"><?=$oBuku->jenis_katalog?></button>
-<!-- =======
-              <br>
-              <input type="submit" class="btn btn-primary center" style="background-color: #2c3e50; color: white; border-color: white;" value="<?=$oBuku->jenis_katalog?>" id="jenis_katalog"/>
->>>>>>> 23522e5fb86d88a1c7498b288d8a03e928a34a38 -->
+              <button class="btn btn-primary center" style="bottom: 0; width: 160px; background-color: #2c3e50; color: white; border-color: white;"><?=$oBuku->jenis_katalog?></button>
             </div>
           </a>
           </div>
@@ -101,6 +96,7 @@
 
     </div>
   </section>
+
 
     <script>
 filterSelection("all")
