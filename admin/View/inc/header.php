@@ -121,8 +121,8 @@
               <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-              <li><a class="" href="profile.html">Koleksi</a></li>
-              <li><a class="" href="login.html"><span>Klasifikasi</span></a></li>
+              <li><a class="" href="<?=ROOT_URL?>?p=koleksi&amp;a=koleksi">Koleksi</a></li>
+              <li><a class="" href="<?=ROOT_URL?>?p=klasifikasi&amp;a=klasifikasi"><span>Klasifikasi</span></a></li>
               <li><a class="" href="<?=ROOT_URL?>?p=katalog&amp;a=katalog"><span>Katalog</span></a></li>
             </ul>
           </li>

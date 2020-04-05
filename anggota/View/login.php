@@ -1,6 +1,6 @@
 <?php require 'inc/msg.php' ?>
 <?php require 'inc/header.php' ?>
-<div>
+<div style="background-color: white;">
     <header class="masthead text-white text-center" style="opacity: 100%; background-image: url(<?=ROOT_URL?>static/1.jpg); position: relative; margin-top: -55px;">
     <div class="container align-items-center">
 

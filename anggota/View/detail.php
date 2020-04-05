@@ -59,7 +59,7 @@
                   <li class="active">
                     <h3>
                       <i class="fa fa-bell fa-2x"> </i><br> 
-                      <button  id="ebook"  type="submit" name="baca" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=view&amp;id=<?=$this->oBuku->no_katalog?>'">BACA</button>
+                      <input type="submit" name="pinjam" value="BACA" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=view&amp;id=<?=$this->oBuku->no_katalog?>'"/> 
                     </h3>
                     Buku-buku elektronik yang bisa dibaca dimana dan kapan saja
                   </li>
