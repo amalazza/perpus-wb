@@ -24,14 +24,14 @@
               </header>
               <div class="panel-body">
                 <div class="form">
-        <?php if (empty($this->oKoleksi)): ?>
+        <?php if (empty($this->oKoleksiE)): ?>
           <p class="error">Post Data Not Found!</p>
         <?php else: ?>
                   <form class="form-validate form-horizontal " enctype="multipart/form-data" role="form" method="post" action="">
                     <div class="form-group ">
                       <label for="no_koleksi" class="control-label col-lg-2">No Koleksi <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="no_koleksi" name="jenis_koleksi" type="text" value="<?=$this->oKoleksi->no_koleksi?>" readonly="true"/>
+                        <input class=" form-control" id="no_koleksi" name="jenis_koleksi" type="text" value="<?=$this->oKoleksiE->no_koleksi?>" readonly="true"/>
                       </div>
                     </div>
 
@@ -40,7 +40,7 @@
           <div class="form-group ">
                       <label for="judul" class="control-label col-lg-2">Jenis Koleksi <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="jenis_koleksi" name="jenis_koleksi" type="text" value="<?=$this->oKoleksi->jenis_koleksi?>"/>
+                        <input class=" form-control" id="jenis_koleksi" name="jenis_koleksi" type="text" value="<?=$this->oKoleksiE->jenis_koleksi?>"/>
                       </div>
                     </div>
                     
@@ -59,52 +59,5 @@
     <?php endif; ?>
         <!-- page end-->
     
-<!--search dropdown-->
-  <script type="text/javascript">
-  $("#searchKoleksi").chosen();
-  $("#searchKlasifikasi").chosen();
-  $("#searchJenisKatalog").chosen();
-  
-  function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#blah')
-                        .attr('src', e.target.result)
-                        .width(500)
-                        .height(200);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-    }
-  
-  //menampilkan input file ebook berdasarkan database
-  var jenisBuku = $('#searchJenisKatalog :selected').val();
-  $(document).ready(function(){  
-     if(jenisBuku== 'E-Book'){
-    document.getElementById('add_ebook').style.display = "block";
-     }
-     else if(jenisBuku== 'Buku Fisik dan E-Book'){
-    document.getElementById('add_ebook').style.display = "block";
-     } 
-     else{
-    document.getElementById('add_ebook').style.display = "none";
-  }
-  });
-  
-  //menampilkan/hide input file ebook sesuai apa yang dipilih pada jenis buku
-   function showEbook(select){
-   if(select.value== 'E-Book'){
-    document.getElementById('add_ebook').style.display = "block";
-   }
-   else if(select.value== 'Buku Fisik dan E-Book'){
-    document.getElementById('add_ebook').style.display = "block";
-   } 
-   else{
-    document.getElementById('add_ebook').style.display = "none";
-  }}
-  </script>
   
 <?php require 'inc/footer.php' ?>

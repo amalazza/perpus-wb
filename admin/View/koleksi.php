@@ -64,9 +64,9 @@
 				  <form action="<?=ROOT_URL?>?p=koleksi&amp;a=edit&amp;id=<?=$oKoleksi->no_koleksi?>" method="post" style="display: inline">
                         <button class="btn btn-primary" type="submit" name="edit" value="1" >Edit</button>
                     </form>
-                    <form action="<?=ROOT_URL?>?p=koleksi&amp;a=delete&amp;id=<?=$oKoleksi->no_koleksi?>" method="post" style="display: inline">
+                    <!-- <form action="<?=ROOT_URL?>?p=koleksi&amp;a=delete&amp;id=<?=$oKoleksi->no_koleksi?>" method="post" style="display: inline">
                         <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin mennghapus data ingin?');">Hapus</button>
-                    </form>
+                    </form> -->
                   </div>
                 </td>                
               </tr>
