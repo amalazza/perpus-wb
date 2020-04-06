@@ -39,6 +39,7 @@ class Anggota extends Beranda
             $sHashPassword =  $this->oModel->login($u);
             $idku = $_POST['no_anggota'];
             $namaku = $this->oModel->ambil_nama($u);
+            $kelasku = $this->oModel->ambil_kelas($u);
 
             $compare = strcmp($p_crypt, $sHashPassword);
 
@@ -47,6 +48,7 @@ class Anggota extends Beranda
                 $_SESSION['is_logged'] = 1; // Master Admin is logged now
                 $_SESSION['id'] = $idku;
                 $_SESSION['nama'] = $namaku;
+                $_SESSION['kelas'] = $kelasku;
                 header('Location: ' . ROOT_URL . '?p=beranda&a=index');
                 exit;
             }          
@@ -102,8 +104,9 @@ class Anggota extends Beranda
         {
             if (isset($_POST['no_anggota']) <= 15) // Allow a maximum of 50 characters
             {
-                
-                $aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => $_POST['password'],'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
+                $pass = $_POST['password'];
+                $p_crypt = sha1($pass);
+                $aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' =>$p_crypt ,'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
 
                 if ($this->oModel->add($aData))
                      header('Location: ' . ROOT_URL  . '?p=anggota&a=login');

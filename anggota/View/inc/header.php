@@ -72,26 +72,23 @@
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?=ROOT_URL?>?p=buku&amp;a=ebook">E-book</a>
           </li>
+          <form class="form-inline ml-auto" style="">
+            <div class="md-form my-0">
+              <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            </div>
+            <button href="#!" class="btn btn-outline-white btn-md my-0 ml-sm-2" type="submit"></button>
+          </form>
         </ul>
 
         <div class="top-nav notification-row collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto navbar-right pull-right top-menu">
             <li class="nav-item mx-0 mx-lg-1">
-              <form class="form-inline ml-auto">
-                <div class="md-form my-0">
-                  <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                </div>
-                <button href="#!" class="btn btn-outline-white btn-md my-0 ml-sm-2" type="submit"></button>
-              </form>
             </li>
             <li class="nav-item mx-0 mx-lg-1 dropdown">
               <?php if (!empty($_SESSION['is_logged'])): ?>
               <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <span class="profile-ava">
-                    <img alt="" src="<?=ROOT_URL?>static/img/avatar1_small.jpg">
-                </span>
-                <span class="username">
-                 <?php $_SESSION['nama']; ?>
+                <span class="profile-ava" style="font-size: 17px; color: #ffffff">
+                    <?php echo $_SESSION['nama']." || ".$_SESSION['kelas'];?>
                 </span>
               </a>
               <ul class="dropdown-menu extended logout">

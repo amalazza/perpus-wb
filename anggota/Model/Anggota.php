@@ -24,6 +24,16 @@ class Anggota extends Beranda
         return @$oRow->nama; // Use the PHP 5.5 password function
     }
 
+    public function ambil_kelas($username)
+    {
+        $oStmt = $this->oDb->prepare('SELECT no_anggota,kelas FROM anggota WHERE no_anggota = :no_anggota LIMIT 1');
+        $oStmt->bindValue(':no_anggota', $username, \PDO::PARAM_STR);
+        $oStmt->execute();
+        $oRow = $oStmt->fetch(\PDO::FETCH_OBJ);
+
+        return @$oRow->kelas; // Use the PHP 5.5 password function
+    }
+
     public function add(array $aData)
     {
         $oStmt = $this->oDb->prepare('INSERT INTO anggota (no_anggota, nama, kelas, alamat, no_telpon, email, password, foto) VALUES(:no_anggota, :nama, :kelas, :alamat, :no_telpon, :email, :password, :foto)');

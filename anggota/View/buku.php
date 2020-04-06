@@ -38,12 +38,23 @@
         </select>
 
         </select>
-        <select class="dropbtn" id="cbJenis" name="cbJenis">
-        <option>- Jenis Buku -</option>
+        <select class="dropbtn" id="cbKlasi" name="cbKlasi">
+        <option>- Klasifikasi -</option>
         <?php if (empty($this->oBuku)): ?>
         <?php else: ?>
         <?php foreach ($this->oJenis as $oJenis): ?>
-          <option class="opt2" onclick="filterSelection('<?=$oJenis->no_klasifikasi?>')" ><?=$oJenis->nama_klasifikasi?></option>
+          <option class="opt3" onclick="filterSelection('<?=$oJenis->nama_klasifikasi?>')" ><?=$oJenis->nama_klasifikasi?></option>
+        <?php endforeach ?>
+        <?php endif ?>
+        </select>
+
+        </select>
+        <select class="dropbtn" id="cbKoleksi" name="cbKoleksi">
+        <option>- Koleksi -</option>
+        <?php if (empty($this->oKoleksi)): ?>
+        <?php else: ?>
+        <?php foreach ($this->oKoleksi as $oKoleksi): ?>
+          <option class="opt4" onclick="filterSelection('<?=$oKoleksi->jenis_koleksi?>')" ><?=$oKoleksi->jenis_koleksi?></option>
         <?php endforeach ?>
         <?php endif ?>
         </select>
@@ -73,7 +84,7 @@
         $pengarang = substr($oBuku->pengarang, 0, 30);
 
          ?>
-         <div style="width: 25%;" class="filterDiv <?=$oBuku->tahun_terbit?> <?=$oBuku->jenis_katalog?>">
+         <div style="width: 25%;" class="filterDiv <?=$oBuku->tahun_terbit?> <?=$oBuku->jenis_katalog?> <?=$oBuku->nama_klasifikasi?> <?=$oBuku->jenis_koleksi?>">
           <a href="<?=ROOT_URL?>?p=buku&amp;a=detail&amp;id=<?=$oBuku->no_katalog?>">
             <div class="portfolio-item mx-auto  shadow p-3 mb-5 rounded" data-toggle="modal" data-target="#portfolioModal1" style="width: 90%; height: 95%">
               <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100" >

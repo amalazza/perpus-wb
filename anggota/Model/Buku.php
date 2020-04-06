@@ -22,7 +22,7 @@ class Buku
 
         public function getAllj()
     {
-        $oStmt = $this->oDb->query('SELECT * FROM katalog ORDER BY judul ASC');
+        $oStmt = $this->oDb->query('SELECT K.no_katalog,K.no_klasifikasi, KL.nama_klasifikasi, K.no_koleksi, KO.jenis_koleksi, K.jenis_katalog, K.judul, K.pengarang, K.penerbit, K.kota_terbit, K.tahun_terbit, K.isbn, K.lokasi, K.absktrak, K.tanggal_masuk, K.e_book, K.cover, K.stok from katalog K INNER JOIN klasifikasi KL ON KL.no_klasifikasi = K.no_klasifikasi INNER JOIN koleksi KO ON KO.no_koleksi = K.no_koleksi ORDER BY judul ASC');
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
     
@@ -37,6 +37,14 @@ class Buku
     public function getJenis()
     {
         $oStmt = $this->oDb->query('SELECT * FROM klasifikasi ORDER BY nama_klasifikasi ASC');
+        $oStmt->execute();
+
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getKoleksi()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM koleksi ORDER BY jenis_koleksi ASC');
         $oStmt->execute();
 
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);

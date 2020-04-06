@@ -15,20 +15,20 @@
             <div class="profile-widget profile-widget-info" style="background-color: #1abc9c;">
               <div class="panel-body">
                   
-				  <div class="col-lg-2 col-sm-2 follow-info" style="-webkit-border-radius: 0%;">
-				  <?php //echo "<img  src= 'data:image/jpeg;base64,".base64_encode(stripslashes($data->foto))."' width='150' />";?>
-                  
-				  <?php 
-                    echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($data->foto))."' style='height: 100%; width: 100%; -webkit-border-radius: 0%'/>";
+				  <div class="col-lg-2 col-sm-2 follow-info" style="-webkit-border-radius: 0%;">   
+				        <?php 
+                    echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($data->foto))."' style='height: 180px; width: 100%; -webkit-border-radius: 20%'/>";
                 ?>
                 </div>
-                <div class="col-lg-4 col-sm-4 follow-info">
+                <div class="col-sm-4 follow-info" style="font-size: 20px; width: 25%;">
                   <p>Nama: <?=$data->nama?></p>
                   <p>NIS: <?=$data->no_anggota?></p>
                   <p>Kelas: <?=$data->kelas?></p>
-				  <p>Email: <?=$data->email?></p>
-				  <p>No. Telpon: <?=$data->no_telpon?></p>
-				  <p>Alamat: <?=$data->alamat?></p>
+                  <p>Email: <?=$data->email?></p>
+                  <p>No. Telpon: <?=$data->no_telpon?></p>
+                </div>
+                <div class="col-sm-4 follow-info" style="font-size: 20px; float: left;">
+                  <p>Alamat: <?=$data->alamat?></p>
                 </div>
 				<div style="float:right;">
                   <form action="<?=ROOT_URL?>?p=anggota&amp;a=edit&amp;id=<?=$data->no_anggota?>" method="post">
