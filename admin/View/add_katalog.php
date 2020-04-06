@@ -101,7 +101,7 @@
                         <input class=" form-control" id="isbn" name="isbn" type="text" />
                       </div>
                     </div>
-					<div class="form-group ">
+					<div class="form-group " id="add_lokasi">
                       <label for="lokasi" class="control-label col-lg-2">Lokasi <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class=" form-control" id="lokasi" name="lokasi" type="text" />
@@ -113,7 +113,7 @@
 						<textarea class=" form-control" name="abstrak"></textarea>
                       </div>
                     </div>
-					<div class="form-group ">
+					<div class="form-group " id="add_stok">
                       <label for="stok" class="control-label col-lg-2">Stok <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class=" form-control" id="stok" name="stok" type="text" onkeypress="return isNumber(event)"/>
@@ -164,6 +164,8 @@
    function showEbook(select){
    if(select.value== 'E-Book'){
     document.getElementById('add_ebook').style.display = "block";
+	document.getElementById('add_lokasi').style.display = "none";
+	document.getElementById('add_stok').style.display = "none";
    }
    else if(select.value== 'Buku Fisik dan E-Book'){
     document.getElementById('add_ebook').style.display = "block";

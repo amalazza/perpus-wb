@@ -103,7 +103,7 @@
                         <input class=" form-control" id="isbn" name="isbn" type="text" value="<?=$this->oKatalog->isbn?>"/>
                       </div>
                     </div>
-					<div class="form-group ">
+					<div class="form-group " id="add_lokasi">
                       <label for="lokasi" class="control-label col-lg-2">Lokasi <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class=" form-control" id="lokasi" name="lokasi" type="text" value="<?=$this->oKatalog->lokasi?>"/>
@@ -113,6 +113,12 @@
                       <label for="abstrak" class="control-label col-lg-2">Abstrak <span class="required">*</span></label>
                       <div class="col-lg-10">
 						<textarea class=" form-control" name="abstrak"><?=$this->oKatalog->absktrak?></textarea>
+                      </div>
+                    </div>
+					<div class="form-group " id="add_stok">
+                      <label for="stok" class="control-label col-lg-2">Stok <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class=" form-control" id="stok" name="stok" type="text" value="<?=$this->oKatalog->stok?>" />
                       </div>
                     </div>
 					<div class="form-group " id="add_ebook" >
@@ -133,12 +139,6 @@
                                     else if (! empty($_FILES)){
                                     echo "<img id='blah'/>";}
 						?>
-                      </div>
-                    </div>
-					<div class="form-group ">
-                      <label for="stok" class="control-label col-lg-2">Stok <span class="required">*</span></label>
-                      <div class="col-lg-10">
-                        <input class=" form-control" id="stok" name="stok" type="text" value="<?=$this->oKatalog->stok?>" />
                       </div>
                     </div>
                     <div class="form-group">
@@ -181,6 +181,8 @@
 	$(document).ready(function(){  
 	   if(jenisBuku== 'E-Book'){
 		document.getElementById('add_ebook').style.display = "block";
+		document.getElementById('add_lokasi').style.display = "none";
+		document.getElementById('add_stok').style.display = "none";
 	   }
 	   else if(jenisBuku== 'Buku Fisik dan E-Book'){
 		document.getElementById('add_ebook').style.display = "block";
@@ -194,12 +196,18 @@
    function showEbook(select){
    if(select.value== 'E-Book'){
     document.getElementById('add_ebook').style.display = "block";
+	document.getElementById('add_lokasi').style.display = "none";
+	document.getElementById('add_stok').style.display = "none";
    }
    else if(select.value== 'Buku Fisik dan E-Book'){
     document.getElementById('add_ebook').style.display = "block";
+	document.getElementById('add_lokasi').style.display = "block";
+	document.getElementById('add_stok').style.display = "block";
    } 
    else{
     document.getElementById('add_ebook').style.display = "none";
+	document.getElementById('add_lokasi').style.display = "block";
+	document.getElementById('add_stok').style.display = "block";
 	}}
   </script>
   
