@@ -36,6 +36,7 @@
 						</select>
                       </div>
                     </div>
+                    <input type="hidden" name="nAnggota" id="nAnggota" value="<?=$oNIS->nis?>">
 					<div class="form-group ">
                       <label for="nama" class="control-label col-lg-2">Nama <span class="required">*</span></label>
                       <div class="col-lg-10">

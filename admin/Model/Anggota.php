@@ -23,6 +23,12 @@ class Anggota
         $oStmt = $this->oDb->query('SELECT * FROM anggota');
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
+
+            public function addAlog(array $aLog)
+    {
+        $oStmt = $this->oDb->prepare('INSERT INTO logadmin (id_admin, activity) VALUES(:id_admin, :activity)');
+        return $oStmt->execute($aLog);
+    }
 	
 	public function getNIS()
     {
