@@ -40,9 +40,9 @@
   cursor: pointer;
   font-size: 15px;
   height: 50px;
-  width: 10%;
   text-align: center;
   -webkit-border-radius: 20%;
+  padding-bottom: 5px;
 }
 
 .show {
@@ -60,13 +60,10 @@ select{
 
 @media (min-width: 360px) {
   .container {
-    max-width: 330px;
+    max-width: 350px;
   }
   .kotak{
     width: 100%;
-  }
-  .lihat{
-    
   }
 }
 
@@ -77,6 +74,9 @@ select{
   .kotak{
     width: 50%;
   }
+  .dropbtn{
+      width: 25%;
+  }
 }
 
 @media (min-width: 768px) {
@@ -85,6 +85,9 @@ select{
   }
   .kotak{
     width: 33%;
+  }
+  .dropbtn{
+      width: 18%;
   }
 }
 
@@ -95,6 +98,9 @@ select{
   .kotak{
     width: 25%;
   }
+  .dropbtn{
+      width: 12%;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -102,7 +108,10 @@ select{
     max-width: 1140px;
   }
   .kotak{
-    width: 25%%;
+    width: 25%;
+  }
+  .dropbtn{
+      width: 10%;
   }
 }
 
