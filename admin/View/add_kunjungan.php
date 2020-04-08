@@ -23,22 +23,10 @@
       <div class="panel-body">
 
 		<form class="form-inline" role="form" action="" method="post">
-
-<!--       <div class="form-group ">
-          <label for="no_anggota" class="control-label col-lg-8">Nomor-Nama Anggota <span class="required">*</span></label>
-            <div class="col-lg-10">
-                <select id="searchAnggota" class="form-control m-bot15" name="anggota">
-                  <?php foreach ($this->oAnggota as $oAnggota): ?>
-                  <option value="<?=$oAnggota->no_anggota?>"><?=$oAnggota->no_anggota?> - <?=$oAnggota->nama?></option>
-                  <?php endforeach ?>
-                </select>
-                <input type="hidden" name="nAnggota" id="nAnggota" value="<?=$oAnggota->nama?>">
-            </div>
-      </div> -->
       <div class="form-group ">
           <label for="no_anggota" class="control-label col-lg-8">Nomor-Nama Anggota <span class="required">*</span></label>
           <div class="col-lg-10">
-            <select id="searchAnggota" class="form-control m-bot15" name="anggota">
+            <select id="searchAnggota" onchange="getselect();" class="form-control m-bot15" name="anggota">
               <option value="" selected="" disabled="">--Nomor-Nama Anggota--</option>
               <?php foreach ($this->oAnggota as $oAnggota): ?>
                 <option value="<?=$oAnggota->no_anggota?>"><?=$oAnggota->no_anggota?> - <?=$oAnggota->nama?>
@@ -46,6 +34,7 @@
               </option>
             </select>
           </div>
+          <input type="hidden" name="nAng" id="nAng" >
         </div>
         <br><br>
 		    <p><input type="submit" name="add_submit" value="Submit" class="btn btn-primary"/></p>
@@ -60,7 +49,13 @@
 <!--search dropdown-->
   <script type="text/javascript">
   $("#searchAnggota").chosen();
-  
-  </script>
+        </script>
+<!--   <script type="text/javascript">
+  function getselect(){
+    var cb =document.getElementById("searchAnggota");
+    var display =cb.options(cb.selectedIndex).text;
+    document.getElementById("nAnggota").value=display;
+  }
+  </script> -->
 
 <?php require 'inc/footer.php' ?>
