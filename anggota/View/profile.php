@@ -15,12 +15,12 @@
             <div class="profile-widget profile-widget-info" style="background-color: #1abc9c;">
               <div class="panel-body">
                   
-				  <div class="col-lg-2 col-sm-2 follow-info" style="-webkit-border-radius: 0%;">   
-				        <?php 
+          <div class="col-lg-2 col-sm-2 follow-info" style="-webkit-border-radius: 0%;">   
+                <?php 
                     echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($data->foto))."' style='height: 180px; width: 100%; -webkit-border-radius: 20%'/>";
                 ?>
                 </div>
-                <div class="col-sm-4 follow-info" style="font-size: 20px; width: 25%;">
+                <div class="col-sm-4 follow-info" style="font-size: 20px; width: 100%;">
                   <p>Nama: <?=$data->nama?></p>
                   <p>NIS: <?=$data->no_anggota?></p>
                   <p>Kelas: <?=$data->kelas?></p>
@@ -30,7 +30,7 @@
                 <div class="col-sm-4 follow-info" style="font-size: 20px; float: left;">
                   <p>Alamat: <?=$data->alamat?></p>
                 </div>
-				<div style="float:right;">
+        <div style="float:right;">
                   <form action="<?=ROOT_URL?>?p=anggota&amp;a=edit&amp;id=<?=$data->no_anggota?>" method="post">
                 <button class="btn btn-danger" type="submit" name="edit" value="1" style="width: 120px;">Edit Profile</button>
               </form>
@@ -39,7 +39,7 @@
             </div>
           </div>
         </div>
-		<?php endif ?>
+    <?php endif ?>
         <!-- page start-->
         <div class="row">
           <div class="col-lg-12">

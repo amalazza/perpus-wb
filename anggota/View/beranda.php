@@ -62,7 +62,7 @@
         $pengarang = substr($oBuku->pengarang, 0, 30);
 
          ?>
-         <div style="width: 25%;">
+         <div style="text-align: center;" class="kotak">
           <a href="<?=ROOT_URL?>?p=buku&amp;a=detail&amp;id=<?=$oBuku->no_katalog?>">
             <div class="portfolio-item mx-auto  shadow p-3 mb-5 rounded" data-toggle="modal" data-target="#portfolioModal1" style="width: 90%; height: 95%">
               <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100" >
@@ -72,20 +72,20 @@
                   <i class="fas fa-plus fa-3x"></i>
                 </div>
               </div>
-              <div style="text-align: left; max-height: 100%; max-width: 100%; color: #2c3e50cf!important;">
+              <div style="text-align: left; max-height: 100%; max-width: 100%; color: #2c3e50cf !important;">
                 <div style="text-align: center;">
                   <?php echo "<img style='height:280px; width: 200px;' class='img-fluid' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($oBuku->cover))."'/>";?>
                   <p style="font-size: 16px; padding-top: 3%"><?php echo $judul; ?></p>
                   <p><i class="fa fa-user"></i> <?php echo $pengarang; ?> | <i class="fa fa-calendar"></i> <?=$oBuku->tahun_terbit?></p>
                 </div>
               </div>
-              <center><button class="btn btn-primary center" style="bottom: 0; width: 160px; background-color: #2c3e50; color: white; border-color: white;"><?=$oBuku->jenis_katalog?></button></center>
+              <button class="btn btn-primary center" style="bottom: 0; width: 160px; background-color: #2c3e50; color: white; border-color: white;"><?=$oBuku->jenis_katalog?></button>
              </div>
           </a>
          </div>
           <?php endforeach ?>
           <?php endif ?>
-          <div style="margin-left: 20px; text-align: center;" class="right">
+          <div style="margin-left: 20px; text-align: center;" class="lihat right">
             <button class="btn btn-primary center" style="font-size: 17px; background-color: #12876f;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=index'">Lihat Koleksi</button>
           </div>
         </div>

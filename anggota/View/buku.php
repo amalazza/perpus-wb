@@ -19,7 +19,7 @@
     <div style=" width: 100%; margin-top: -20px; padding-bottom: 5px; text-align: center;">
       <div style=" display: inline;">
         <div id="myBtnContainer">
-        <button class="btn dropbtn active" onclick="filterSelection('all')"> Show all</button>
+        <button class="dropbtn active" onclick="filterSelection('all')"> Show all</button>
         <select class="dropbtn" id="cbtahun" name="cbtahun">
         <option>- Tahun Terbit -</option>
         <?php if (empty($this->oBuku)): ?>
@@ -75,7 +75,7 @@
       </div>
 
       <!-- Portfolio Grid Items -->
-      <div class="row">
+      <div class="row ">
         <?php if (empty($this->oBuku)): ?>
         <?php else: ?>
         <?php foreach ($this->oBuku as $oBuku):
@@ -84,7 +84,7 @@
         $pengarang = substr($oBuku->pengarang, 0, 30);
 
          ?>
-         <div style="width: 25%;" class="filterDiv <?=$oBuku->tahun_terbit?> <?=$oBuku->jenis_katalog?> <?=$oBuku->nama_klasifikasi?> <?=$oBuku->jenis_koleksi?>">
+         <div style="" class="kotak filterDiv <?=$oBuku->tahun_terbit?> <?=$oBuku->jenis_katalog?> <?=$oBuku->nama_klasifikasi?> <?=$oBuku->jenis_koleksi?>">
           <a href="<?=ROOT_URL?>?p=buku&amp;a=detail&amp;id=<?=$oBuku->no_katalog?>">
             <div class="portfolio-item mx-auto  shadow p-3 mb-5 rounded" data-toggle="modal" data-target="#portfolioModal1" style="width: 90%; height: 95%">
               <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100" >
@@ -94,7 +94,7 @@
                   <i class="fas fa-plus fa-3x"></i>
                 </div>
               </div>
-              <div style="text-align: left; max-height: 100%; max-width: 100%; color: #2c3e50cf!important;">
+              <div style="text-align: left; max-height: 100%; max-width: 100%; color: #2c3e50cf !important;">
                 <div style="text-align: center;">
                   <?php echo "<img style='height:280px; width: 200px;' class='img-fluid' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($oBuku->cover))."'/>";?>
                   <p style="font-size: 16px; padding-top: 3%"><?php echo $judul; ?></p>

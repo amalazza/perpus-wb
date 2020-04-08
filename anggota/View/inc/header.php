@@ -36,10 +36,13 @@
 .dropbtn {
   background-color: #12876f;
   color: white;
-  padding: 10px;
-  font-size: 16px;
   border: none;
   cursor: pointer;
+  font-size: 15px;
+  height: 50px;
+  width: 10%;
+  text-align: center;
+  -webkit-border-radius: 20%;
 }
 
 .show {
@@ -49,6 +52,60 @@
   text-align: center;
   display: none;
 }
+select{
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+}
+
+@media (min-width: 360px) {
+  .container {
+    max-width: 330px;
+  }
+  .kotak{
+    width: 100%;
+  }
+  .lihat{
+    
+  }
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+  .kotak{
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+  .kotak{
+    width: 33%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+  .kotak{
+    width: 25%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+  .kotak{
+    width: 25%%;
+  }
+}
+
 
 </style>
 
