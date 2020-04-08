@@ -65,6 +65,9 @@ select{
   .kotak{
     width: 100%;
   }
+  .profile-ava{
+    font-size: 12px;
+  }
 }
 
 @media (min-width: 576px) {
@@ -76,6 +79,12 @@ select{
   }
   .dropbtn{
       width: 25%;
+  }
+  .profile-ava{
+    font-size: 10px;
+  }
+  .profile-ava{
+    font-size: 15px;
   }
 }
 
@@ -89,6 +98,9 @@ select{
   .dropbtn{
       width: 18%;
   }
+  .profile-ava{
+    font-size: 15px;
+  }
 }
 
 @media (min-width: 992px) {
@@ -101,6 +113,9 @@ select{
   .dropbtn{
       width: 12%;
   }
+  .profile-ava{
+    font-size: 15px;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -112,6 +127,9 @@ select{
   }
   .dropbtn{
       width: 10%;
+  }
+  .profile-ava{
+    font-size: 17px;
   }
 }
 
@@ -153,7 +171,7 @@ select{
             <li class="nav-item mx-0 mx-lg-1 dropdown">
               <?php if (!empty($_SESSION['is_logged'])): ?>
               <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <span class="profile-ava" style="font-size: 17px; color: #ffffff">
+                <span class="profile-ava" style="color: #ffffff">
                     <?php echo $_SESSION['nama']." || ".$_SESSION['kelas'];?>
                 </span>
               </a>
