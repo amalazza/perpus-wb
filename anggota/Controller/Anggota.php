@@ -149,27 +149,50 @@ class Anggota extends Beranda
 
         if (!empty($_POST['edit_submit']))
         {
+				
 				$pass = $_POST['password'];
-				$oldPass = $_POST['password'];
+				$oldPass = $_POST['Opassword'];
 				$compare = strcmp($pass, $oldPass);
-				if ($compare == 0) {
-                $aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => $oldPass,'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
+				
+				if(!empty($_FILES['foto']['tmp_name'])){
+					if ($compare == 0) {
+						$aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => $oldPass,'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
 
-                if ($this->oModel->update($aData)){
-                $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
-				header("Refresh: 3; URL=?p=anggota&a=profile");}
-                else{
-				$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+						if ($this->oModel->update($aData)){
+						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+						header("Refresh: 3; URL=?p=anggota&a=profile");}
+						else{
+						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+					}
+					else{
+						$aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => sha1($pass),'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
+
+						if ($this->oModel->update($aData)){
+						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+						header("Refresh: 3; URL=?p=anggota&a=profile");}
+						else{
+						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+					}
 				}
 				else{
-					//masih salah
-                $aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => sha1($pass),'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
+					if ($compare == 0) {
+						$aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => $oldPass);
 
-                if ($this->oModel->update($aData)){
-                $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
-				header("Refresh: 3; URL=?p=anggota&a=profile");}
-                else{
-				$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+						if ($this->oModel->updateNoPic($aData)){
+						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+						header("Refresh: 3; URL=?p=anggota&a=profile");}
+						else{
+						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+					}
+					else{
+						$aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => sha1($pass));
+
+						if ($this->oModel->updateNoPic($aData)){
+						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+						header("Refresh: 3; URL=?p=anggota&a=profile");}
+						else{
+						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+					}
 				}
             
         }

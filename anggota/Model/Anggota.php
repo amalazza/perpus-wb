@@ -70,4 +70,17 @@ class Anggota extends Beranda
         $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
         return $oStmt->execute($aData);
     }
+	
+	public function updateNoPic(array $aData)
+    {
+        $oStmt = $this->oDb->prepare('UPDATE anggota SET nama = :nama, kelas = :kelas, no_telpon = :no_telpon, email = :email, alamat = :alamat, password = :password WHERE no_anggota = :no_anggota LIMIT 1');
+        $oStmt->bindValue(':nama', $aData['nama']);
+		$oStmt->bindValue(':kelas', $aData['kelas']);
+        $oStmt->bindValue(':no_telpon', $aData['no_telpon']);
+        $oStmt->bindValue(':email', $aData['email']);
+        $oStmt->bindValue(':alamat', $aData['alamat']);
+		$oStmt->bindValue(':password', $aData['password']);
+        $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
+        return $oStmt->execute($aData);
+    }
 }

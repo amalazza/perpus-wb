@@ -97,7 +97,7 @@ class Katalog
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
 
-    public function update(array $aData)
+    public function updateAll(array $aData)
     {
         $oStmt = $this->oDb->prepare('UPDATE katalog SET no_klasifikasi = :no_klasifikasi, no_koleksi = :no_koleksi, jenis_katalog = :jenis_katalog, judul = :judul, pengarang = :pengarang, penerbit = :penerbit, kota_terbit = :kota_terbit, tahun_terbit = :tahun_terbit, isbn = :isbn, lokasi = :lokasi, absktrak = :absktrak, e_book = :e_book, cover = :cover, stok = :stok WHERE no_katalog = :no_katalog LIMIT 1');
         $oStmt->bindValue(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
@@ -114,6 +114,65 @@ class Katalog
 		$oStmt->bindValue(':absktrak', $aData['absktrak']);
 		$oStmt->bindValue(':e_book', $aData['e_book']);
 		$oStmt->bindValue(':cover', $aData['cover']);
+		$oStmt->bindValue(':stok', $aData['stok']);
+        return $oStmt->execute();
+    }
+	
+	 public function updatePDF(array $aData)
+    {
+        $oStmt = $this->oDb->prepare('UPDATE katalog SET no_klasifikasi = :no_klasifikasi, no_koleksi = :no_koleksi, jenis_katalog = :jenis_katalog, judul = :judul, pengarang = :pengarang, penerbit = :penerbit, kota_terbit = :kota_terbit, tahun_terbit = :tahun_terbit, isbn = :isbn, lokasi = :lokasi, absktrak = :absktrak, e_book = :e_book, stok = :stok WHERE no_katalog = :no_katalog LIMIT 1');
+        $oStmt->bindValue(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
+        $oStmt->bindValue(':no_klasifikasi', $aData['no_klasifikasi']);
+		$oStmt->bindValue(':no_koleksi', $aData['no_koleksi']);
+		$oStmt->bindValue(':jenis_katalog', $aData['jenis_katalog']);
+		$oStmt->bindValue(':judul', $aData['judul']);
+		$oStmt->bindValue(':pengarang', $aData['pengarang']);
+		$oStmt->bindValue(':penerbit', $aData['penerbit']);
+		$oStmt->bindValue(':kota_terbit', $aData['kota_terbit']);
+		$oStmt->bindValue(':tahun_terbit', $aData['tahun_terbit']);
+		$oStmt->bindValue(':isbn', $aData['isbn']);
+		$oStmt->bindValue(':lokasi', $aData['lokasi']);
+		$oStmt->bindValue(':absktrak', $aData['absktrak']);
+		$oStmt->bindValue(':e_book', $aData['e_book']);
+		$oStmt->bindValue(':stok', $aData['stok']);
+        return $oStmt->execute();
+    }
+	
+	public function updatePic(array $aData)
+    {
+        $oStmt = $this->oDb->prepare('UPDATE katalog SET no_klasifikasi = :no_klasifikasi, no_koleksi = :no_koleksi, jenis_katalog = :jenis_katalog, judul = :judul, pengarang = :pengarang, penerbit = :penerbit, kota_terbit = :kota_terbit, tahun_terbit = :tahun_terbit, isbn = :isbn, lokasi = :lokasi, absktrak = :absktrak, cover = :cover, stok = :stok WHERE no_katalog = :no_katalog LIMIT 1');
+        $oStmt->bindValue(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
+        $oStmt->bindValue(':no_klasifikasi', $aData['no_klasifikasi']);
+		$oStmt->bindValue(':no_koleksi', $aData['no_koleksi']);
+		$oStmt->bindValue(':jenis_katalog', $aData['jenis_katalog']);
+		$oStmt->bindValue(':judul', $aData['judul']);
+		$oStmt->bindValue(':pengarang', $aData['pengarang']);
+		$oStmt->bindValue(':penerbit', $aData['penerbit']);
+		$oStmt->bindValue(':kota_terbit', $aData['kota_terbit']);
+		$oStmt->bindValue(':tahun_terbit', $aData['tahun_terbit']);
+		$oStmt->bindValue(':isbn', $aData['isbn']);
+		$oStmt->bindValue(':lokasi', $aData['lokasi']);
+		$oStmt->bindValue(':absktrak', $aData['absktrak']);
+		$oStmt->bindValue(':cover', $aData['cover']);
+		$oStmt->bindValue(':stok', $aData['stok']);
+        return $oStmt->execute();
+    }
+	
+	public function updateNoPicPDF(array $aData)
+    {
+        $oStmt = $this->oDb->prepare('UPDATE katalog SET no_klasifikasi = :no_klasifikasi, no_koleksi = :no_koleksi, jenis_katalog = :jenis_katalog, judul = :judul, pengarang = :pengarang, penerbit = :penerbit, kota_terbit = :kota_terbit, tahun_terbit = :tahun_terbit, isbn = :isbn, lokasi = :lokasi, absktrak = :absktrak, stok = :stok WHERE no_katalog = :no_katalog LIMIT 1');
+        $oStmt->bindValue(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
+        $oStmt->bindValue(':no_klasifikasi', $aData['no_klasifikasi']);
+		$oStmt->bindValue(':no_koleksi', $aData['no_koleksi']);
+		$oStmt->bindValue(':jenis_katalog', $aData['jenis_katalog']);
+		$oStmt->bindValue(':judul', $aData['judul']);
+		$oStmt->bindValue(':pengarang', $aData['pengarang']);
+		$oStmt->bindValue(':penerbit', $aData['penerbit']);
+		$oStmt->bindValue(':kota_terbit', $aData['kota_terbit']);
+		$oStmt->bindValue(':tahun_terbit', $aData['tahun_terbit']);
+		$oStmt->bindValue(':isbn', $aData['isbn']);
+		$oStmt->bindValue(':lokasi', $aData['lokasi']);
+		$oStmt->bindValue(':absktrak', $aData['absktrak']);
 		$oStmt->bindValue(':stok', $aData['stok']);
         return $oStmt->execute();
     }
