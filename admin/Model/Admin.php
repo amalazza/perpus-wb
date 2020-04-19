@@ -122,6 +122,20 @@ class Admins
         return $oStmt->execute($aData);
     }
 
+        public function updtOld(array $aData)
+    {
+        $oStmt = $this->oDb->prepare('UPDATE admin SET nama = :nama, notlp = :notlp, email = :email, alamat = :alamat, role = :role, username = :username, password = :password WHERE id_admin = :id_admin LIMIT 1');
+        $oStmt->bindValue(':nama', $aData['nama']);
+        $oStmt->bindValue(':notlp', $aData['notlp']);
+        $oStmt->bindValue(':email', $aData['email']);
+        $oStmt->bindValue(':alamat', $aData['alamat']);
+        $oStmt->bindValue(':role', $aData['role']);
+        $oStmt->bindValue(':username', $aData['username']);
+        $oStmt->bindValue(':password', $aData['password']);
+        $oStmt->bindValue(':id_admin', $aData['id_admin']);
+        return $oStmt->execute($aData);
+    }
+
 
     public function delete($iId)
     {

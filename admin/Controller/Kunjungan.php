@@ -97,7 +97,7 @@ class Kunjungan
             {
                 $idku = $_SESSION['id'];
                 date_default_timezone_set("Asia/Jakarta");
-                $act = 'Admin '.$_SESSION['nama'].' menginput kunjungan '.$_POST['nAng'].' ke perpus pada tanggal '. date("Y/m/d").' jam '.date("h:m").' '.date(":a");
+                $act = 'Admin '.$_SESSION['nama'].' menginput kunjungan '.$_POST['nAng'].' ke perpus pada tanggal '. date("Y/m/d").' jam '.date("h:m").' '.date("a");
 
                 $aData = array('no_anggota' => $_POST['anggota']);
                 $aLog = array('id_admin' => $idku, 'activity' => $act );

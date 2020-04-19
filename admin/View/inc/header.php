@@ -8,8 +8,6 @@
 
 	  <title>Blank | Creative - Bootstrap 3 Responsive Admin Template</title>
 	  
-	  
-
 	  <!-- Bootstrap CSS -->
 	  <link href="<?=ROOT_URL?>static/css/bootstrap.min.css" rel="stylesheet">
 	  <!-- bootstrap theme -->
@@ -29,6 +27,9 @@
 	  <!-- chosen jquery-->
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css"/>
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
 	  <script>

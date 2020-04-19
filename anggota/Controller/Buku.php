@@ -78,6 +78,22 @@ class Buku
     }
 
 
+    public function lihatpdf()
+    {
+
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+            $this->oUtil->oBuku = $this->oModel->getById($this->_iId);
+
+            $this->oUtil->getView('lihatpdf');
+            }
+    } 
+
+
     public function notFound()
     {
         $this->oUtil->getView('not_found');

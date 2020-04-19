@@ -60,7 +60,7 @@
                     </div>
                     <div class="form-group " style="display: none;">
                       <div class="col-lg-10">
-                        <input class=" form-control" type="hidden" value="admin" name="role" id="role" value="admin"/>
+                        <input class=" form-control" type="text" name="role" id="role" value="<?=$data->role?>"/>
                       </div>
                     </div>
                     <div class="form-group ">
@@ -89,8 +89,9 @@
                       <label for="foto" class="control-label col-lg-2">Foto Profil <span class="required">*</span></label>
                       
                       <div class="col-lg-10">
-                        <input class=" form-control" id="foto" name="foto" type="file" style="margin-bottom: 7px;" />
-                        <img src="data:<?=$data->mime?>;base64,<?=base64_encode($data->foto); ?>" width="100" height="100"  />
+                        <input class=" form-control" id="foto" name="foto" type="file" style="margin-bottom: 7px;" onchange="readURL(this);"/>
+                        <img id="oldpp" src="data:<?=$data->mime?>;base64,<?=base64_encode($data->foto); ?>" width="100" height="100" />
+                            <img id="blah" src="#" alt=" " style="width: 100px; height: 100px;" />
                       </div>
                     </div>
                     <div class="form-group">
@@ -106,6 +107,24 @@
           </div>
         </div>
         <!-- page end-->
+
+<script type="text/javascript">
+  function readURL(input) {
+    document.getElementById("oldpp").style.display = "none";
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(100)
+                        .height(100);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
+
   <script type="text/javascript">  
   //nomor telepon hanya menerima angka
   function isNumber(evt) {

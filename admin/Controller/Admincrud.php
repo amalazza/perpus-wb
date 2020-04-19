@@ -164,30 +164,91 @@ class Admincrud
                 $p_crypt = sha1($pass);
                 $mime = $_FILES['foto']['type'];
                 $foto = file_get_contents($_FILES['foto']['tmp_name']);
-                $oldfoto = $_POST['oldFoto'];
-                $oldmime = $_POST['oldMime'];
+                // $oldfoto = $_POST['oldFoto'];
+                // $oldmime = $_POST['oldMime'];
                 $oldPass = $_POST['Opassword'];
                 $idku = $_SESSION['id'];
                 $act = $_SESSION['nama'].' mengubah data profile admin '.$_POST['nama'];
                 $compare = strcmp($pass, $oldPass);
+                $cmpRole = strcmp('master', $role);
 
-                if ($compare == 0) {
-                    $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $oldPass, 'mime' => $mime, 'foto' => $foto);
-                    $aLog = array('id_admin' => $idku, 'activity' => $act );
+                if ($compare == 0) { //pass sama dengan oldpass
+                    if ($cmpRole == 0) { //kalo yg login master+oldpass
+                        if (!empty($foto)) {//+newFoto
+                            $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => 'master', 'username' => $user, 'password' => $oldPass, 'mime' => $mime, 'foto' => $foto);
+                            $aLog = array('id_admin' => $idku, 'activity' => $act );
 
-                    if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog))
-                         header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
-                    else
-                    $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';    
-                } else {
-                    /* ini masih salah */
-                    $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt, 'mime' => $mime, 'foto' => $foto);
-                    $aLog = array('id_admin' => $idku, 'activity' => $act );
+                            if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog))
+                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            else
+                            $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';
+                        } else {//+oldFoto
+                            $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => 'master', 'username' => $user, 'password' => $oldPass);
+                            $aLog = array('id_admin' => $idku, 'activity' => $act );
 
-                    if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog))
-                         header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
-                    else
-                    $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';                    }                                
+                            if ($this->oModel->updtOld($aData) && $this->oModel->addAlog($aLog))
+                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            else
+                            $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';
+                        }
+                    } else { //kalo yg login admin+oldpass
+                        if (!empty($foto)) {
+                            $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $oldPass, 'mime' => $mime, 'foto' => $foto);
+                            $aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                            if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog))
+                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            else
+                            $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';
+                        } else {
+                            $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $oldPass);
+                            $aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                            if ($this->oModel->updtOld($aData) && $this->oModel->addAlog($aLog))
+                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            else
+                            $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';
+                        }
+                    }    
+                } else {//pass tdk sama oldpass
+                    if ($cmpRole == 0) { //input role = master
+                        if (!empty($foto)) {
+                            $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => 'master', 'username' => $user, 'password' => $p_crypt, 'mime' => $mime, 'foto' => $foto);
+                            $aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                            if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog))
+                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            else
+                            $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';
+                        } else {
+                            $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => 'master', 'username' => $user, 'password' => $p_crypt);
+                            $aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                            if ($this->oModel->updtOld($aData) && $this->oModel->addAlog($aLog))
+                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            else
+                            $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';
+                        }
+                    } else {
+                        if (!empty($foto)) {//foto tdk kosong
+                            $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt, 'mime' => $mime, 'foto' => $foto);
+                            $aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                            if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog))
+                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            else
+                            $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';
+                        } else {//foto kosong
+                            $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt);
+                            $aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                            if ($this->oModel->updtOld($aData) && $this->oModel->addAlog($aLog))
+                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            else
+                            $this->oUtil->sErrMsg = 'Data new admin gagal diupdate.';
+                        }
+                    }
+                }                                
             }
             else
             {

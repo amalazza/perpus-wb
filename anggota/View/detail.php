@@ -63,7 +63,6 @@
                     </h3>
                     Buku-buku elektronik yang bisa dibaca dimana dan kapan saja
                   </li>
-
                 </ul>
               </div>
             </div>
@@ -156,9 +155,5 @@ var jenis = document.getElementById("jenis_katalog").innerText
 </script>
 
 <?php endif ?>
-
-
-
-
 
 <?php require 'inc/footer.php' ?>
