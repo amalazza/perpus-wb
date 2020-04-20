@@ -64,9 +64,9 @@
 				  <form action="<?=ROOT_URL?>?p=klasifikasi&amp;a=edit&amp;id=<?=$oKlasifikasi->no_klasifikasi?>" method="post" style="display: inline">
                         <button class="btn btn-primary" type="submit" name="edit" value="1" >Edit</button>
                     </form>
-                    <!-- <form action="<?=ROOT_URL?>?p=klasifikasi&amp;a=delete&amp;id=<?=$oKlasifikasi->no_klasifikasi?>" method="post" style="display: inline">
+                    <form action="<?=ROOT_URL?>?p=klasifikasi&amp;a=delete&amp;id=<?=$oKlasifikasi->no_klasifikasi?>" method="post" style="display: inline">
                         <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin mennghapus data ingin?');">Hapus</button>
-                    </form> -->
+                    </form>
                   </div>
                 </td>                
               </tr>

@@ -62,216 +62,109 @@
                 <div class="tab-content">
                   <div id="recent-activity" class="tab-pane active">
                     <div class="profile-activity">
-                      <div class="act-time">
-                        <div class="activity-body act-in">
-                          <span class="arrow"></span>
-                          <div class="text">
-                            <a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-                            <p class="attribution"><a href="#">Jonatanh Doe</a> at 4:25pm, 30th Octmber 2014</p>
-                            <p>It is a long established fact that a reader will be distracted layout</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="act-time">
-                        <div class="activity-body act-in">
-                          <span class="arrow"></span>
-                          <div class="text">
-                            <a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-                            <p class="attribution"><a href="#">Jhon Loves </a> at 5:25am, 30th Octmber 2014</p>
-                            <p>Knowledge speaks, but wisdom listens.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="act-time">
-                        <div class="activity-body act-in">
-                          <span class="arrow"></span>
-                          <div class="text">
-                            <a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-                            <p class="attribution"><a href="#">Rose Crack</a> at 5:25am, 30th Octmber 2014</p>
-                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="act-time">
-                        <div class="activity-body act-in">
-                          <span class="arrow"></span>
-                          <div class="text">
-                            <a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-                            <p class="attribution"><a href="#">Jimy Smith</a> at 5:25am, 30th Octmber 2014</p>
-                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                              ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="act-time">
-                        <div class="activity-body act-in">
-                          <span class="arrow"></span>
-                          <div class="text">
-                            <a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-                            <p class="attribution"><a href="#">Maria Willyam</a> at 5:25am, 30th Octmber 2014</p>
-                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                              ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt
-                              condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-                              eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="act-time">
-                        <div class="activity-body act-in">
-                          <span class="arrow"></span>
-                          <div class="text">
-                            <a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-                            <p class="attribution"><a href="#">Sarah saw</a> at 5:25am, 30th Octmber 2014</p>
-                            <p>Knowledge speaks, but wisdom listens.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="act-time">
-                        <div class="activity-body act-in">
-                          <span class="arrow"></span>
-                          <div class="text">
-                            <a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-                            <p class="attribution"><a href="#">Layla night</a> at 5:25am, 30th Octmber 2014</p>
-                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="act-time">
-                        <div class="activity-body act-in">
-                          <span class="arrow"></span>
-                          <div class="text">
-                            <a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-                            <p class="attribution"><a href="#">Andriana lee</a> at 5:25am, 30th Octmber 2014</p>
-                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                              ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="act-time">
-                        <div class="activity-body act-in">
-                          <span class="arrow"></span>
-                          <div class="text">
-                            <a href="#" class="activity-img"><img class="avatar" src="img/chat-avatar.jpg" alt=""></a>
-                            <p class="attribution"><a href="#">Maria Willyam</a> at 5:25am, 30th Octmber 2014</p>
-                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                              ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt
-                              condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-                              eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-                          </div>
-                        </div>
-                      </div>
+                      <section class="page-section portfolio" id="portfolio" style="margin-top: -20px;">
+    <div class="container">
+    <div style=" width: 100%; margin-top: -20px; padding-bottom: 5px; text-align: center;">
+      <div style=" display: inline;">
+        <div id="myBtnContainer">
+        <button class="dropbtn active" onclick="filterSelection('all')"> Show all</button>
+        <select class="dropbtn" id="cbtahun" name="cbtahun">
+        <option>- Tahun Terbit -</option>
+        <?php if (empty($this->oBuku)): ?>
+        <?php else: ?>
+        <?php foreach ($this->oTahun as $oTahun): ?>
+          <option class="opt1" onclick="filterSelection('<?=$oTahun->thn_terbit?>')" ><?=$oTahun->thn_terbit?></option>
+        <?php endforeach ?>
+        <?php endif ?>
 
+        </select>
+        <select class="dropbtn" id="cbJenis" name="cbJenis">
+          <option>- Jenis Katalog -</option>
+          <option class="opt2" onclick="filterSelection('E-Book')" >E-Book</option>
+          <option class="opt2" onclick="filterSelection('Buku Fisik')" >Buku Fisik</option>
+          <option class="opt2" onclick="filterSelection('Buku Fisik dan E-Book')" >Buku Fisik dan E-Book</option>
+        </select>
+
+        </select>
+        <select class="dropbtn" id="cbKlasi" name="cbKlasi">
+        <option>- Klasifikasi -</option>
+        <?php if (empty($this->oBuku)): ?>
+        <?php else: ?>
+        <?php foreach ($this->oJenis as $oJenis): ?>
+          <option class="opt3" onclick="filterSelection('<?=$oJenis->nama_klasifikasi?>')" ><?=$oJenis->nama_klasifikasi?></option>
+        <?php endforeach ?>
+        <?php endif ?>
+        </select>
+
+        </select>
+        <select class="dropbtn" id="cbKoleksi" name="cbKoleksi">
+        <option>- Koleksi -</option>
+        <?php if (empty($this->oKoleksi)): ?>
+        <?php else: ?>
+        <?php foreach ($this->oKoleksi as $oKoleksi): ?>
+          <option class="opt4" onclick="filterSelection('<?=$oKoleksi->jenis_koleksi?>')" ><?=$oKoleksi->jenis_koleksi?></option>
+        <?php endforeach ?>
+        <?php endif ?>
+        </select>
+        </div>
+      </div>
+  </div>
+
+<!-- Portfolio Section Heading -->
+      <h2 class="page-section-heading text-center text-secondary mb-0">Katalog Buku</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-book"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Portfolio Grid Items -->
+      <div class="row ">
+        <?php if (empty($this->oBuku)): ?>
+        <?php else: ?>
+        <?php foreach ($this->oBuku as $oBuku):
+        $absktrak = substr($oBuku->absktrak, 0, 250) . '...';
+        $judul = substr($oBuku->judul, 0, 30) . '...';
+        $pengarang = substr($oBuku->pengarang, 0, 30);
+
+         ?>
+         <div style="" class="kotak filterDiv <?=$oBuku->tahun_terbit?> <?=$oBuku->jenis_katalog?> <?=$oBuku->nama_klasifikasi?> <?=$oBuku->jenis_koleksi?>">
+          <a href="<?=ROOT_URL?>?p=buku&amp;a=detail&amp;id=<?=$oBuku->no_katalog?>">
+            <div class="portfolio-item mx-auto  shadow p-3 mb-5 rounded" data-toggle="modal" data-target="#portfolioModal1" style="width: 90%; height: 95%">
+              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100" >
+                <div class="portfolio-item-caption-content text-center text-white" >
+                  <h3><b><?=$oBuku->judul?></b></h3>
+                  <p style="text-align: justify; text-justify: inter-word; padding: 3%"><?php echo $absktrak; ?></p>
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <div style="text-align: left; max-height: 100%; max-width: 100%; color: #2c3e50cf !important;">
+                <div style="text-align: center;">
+                  <?php echo "<img style='height:280px; width: 200px;' class='img-fluid' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($oBuku->cover))."'/>";?>
+                  <p style="font-size: 16px; padding-top: 3%"><?php echo $judul; ?></p>
+                  <p><i class="fa fa-user"></i> <?php echo $pengarang; ?> | <i class="fa fa-calendar"></i> <?=$oBuku->tahun_terbit?></p>
+                </div>
+              </div>
+              <button class="btn btn-primary center" style="bottom: 0; width: 160px; background-color: #2c3e50; color: white; border-color: white;"><?=$oBuku->jenis_katalog?></button>
+             </div>
+          </a>
+         </div>
+          <?php endforeach ?>
+          <?php endif ?>
+        </div>
+
+    </div>
+  </section>
                     </div>
                   </div>
                   <!-- profile -->
                   <div id="profile" class="tab-pane">
-                    <section class="panel">
-                      <div class="bio-graph-heading">
-                        Hello I’m Jenifer Smith, a leading expert in interactive and creative design specializing in the mobile medium. My graduation from Massey University with a Bachelor of Design majoring in visual communication.
-                      </div>
-                      <div class="panel-body bio-graph-info">
-                        <h1>Bio Graph</h1>
-                        <div class="row">
-                          <div class="bio-row">
-                            <p><span>First Name </span>: Jenifer </p>
-                          </div>
-                          <div class="bio-row">
-                            <p><span>Last Name </span>: Smith</p>
-                          </div>
-                          <div class="bio-row">
-                            <p><span>Birthday</span>: 27 August 1987</p>
-                          </div>
-                          <div class="bio-row">
-                            <p><span>Country </span>: United</p>
-                          </div>
-                          <div class="bio-row">
-                            <p><span>Occupation </span>: UI Designer</p>
-                          </div>
-                          <div class="bio-row">
-                            <p><span>Email </span>:jenifer@mailname.com</p>
-                          </div>
-                          <div class="bio-row">
-                            <p><span>Mobile </span>: (+6283) 456 789</p>
-                          </div>
-                          <div class="bio-row">
-                            <p><span>Phone </span>: (+021) 956 789123</p>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
                     <section>
                       <div class="row">
-                      </div>
-                    </section>
-                  </div>
-                  <!-- edit-profile -->
-                  <div id="edit-profile" class="tab-pane">
-                    <section class="panel">
-                      <div class="panel-body bio-graph-info">
-                        <h1> Profile Info</h1>
-                        <form class="form-horizontal" role="form">
-                          <div class="form-group">
-                            <label class="col-lg-2 control-label">First Name</label>
-                            <div class="col-lg-6">
-                              <input type="text" class="form-control" id="f-name" placeholder=" ">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-lg-2 control-label">Last Name</label>
-                            <div class="col-lg-6">
-                              <input type="text" class="form-control" id="l-name" placeholder=" ">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-lg-2 control-label">About Me</label>
-                            <div class="col-lg-10">
-                              <textarea name="" id="" class="form-control" cols="30" rows="5"></textarea>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-lg-2 control-label">Country</label>
-                            <div class="col-lg-6">
-                              <input type="text" class="form-control" id="c-name" placeholder=" ">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-lg-2 control-label">Birthday</label>
-                            <div class="col-lg-6">
-                              <input type="text" class="form-control" id="b-day" placeholder=" ">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-lg-2 control-label">Occupation</label>
-                            <div class="col-lg-6">
-                              <input type="text" class="form-control" id="occupation" placeholder=" ">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-lg-2 control-label">Email</label>
-                            <div class="col-lg-6">
-                              <input type="text" class="form-control" id="email" placeholder=" ">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-lg-2 control-label">Mobile</label>
-                            <div class="col-lg-6">
-                              <input type="text" class="form-control" id="mobile" placeholder=" ">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-lg-2 control-label">Website URL</label>
-                            <div class="col-lg-6">
-                              <input type="text" class="form-control" id="url" placeholder="http://www.demowebsite.com ">
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                            <div class="col-lg-offset-2 col-lg-10">
-                              <button type="submit" class="btn btn-primary">Save</button>
-                              <button type="button" class="btn btn-danger">Cancel</button>
-                            </div>
-                          </div>
-                        </form>
                       </div>
                     </section>
                   </div>
