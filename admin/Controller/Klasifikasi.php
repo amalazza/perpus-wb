@@ -21,6 +21,7 @@ class Klasifikasi
     {
         // Enable PHP Session
         if (empty($_SESSION))
+            session_name('PROJECT1');
             @session_start();
 
         $this->oUtil = new \TestProject\Engine\Util;
