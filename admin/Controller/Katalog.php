@@ -57,6 +57,7 @@ class Katalog
         else{
 		
         $this->oUtil->oKatalog = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
+		$this->oUtil->sSuccMsg = 'Data katalog berhasil diubah.';
 
         $this->oUtil->getView('katalog');
     }

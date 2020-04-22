@@ -66,67 +66,6 @@ class Beranda
     }
 
 
-    // public function add()
-    // {
-    //     if (!$this->isLogged()) exit;
-
-    //     if (!empty($_POST['add_submit']))
-    //     {
-    //         if (isset($_POST['no_anggota']) <= 15) // Allow a maximum of 50 characters
-    //         {
-    //             $aData = array('no_anggota' => $_POST['no_anggota'], 'waktu_kunjungan' => date('Y-m-d H:i:s'));
-
-    //             if ($this->oModel->add($aData))
-    //                  header('Location: ' . ROOT_URL  . '?p=kunjungan&a=kunjungan');
-    //             else
-    //                 $this->oUtil->sErrMsg = 'Data kunjungan gagal ditambahkan.';
-    //         }
-    //         else
-    //         {
-    //             $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
-    //         }
-    //     }
-
-    //     $this->oUtil->getView('add_kunjungan');
-    // }
-
-    // public function edit()
-    // {
-    //     if (!$this->isLogged()) exit;
-
-    //     if (!empty($_POST['edit_submit']))
-    //     {
-    //         if (isset($_POST['no_anggota']))
-    //         {
-    //             $aData = array('no_kunjungan' => $this->_iId, 'no_anggota' => $_POST['no_anggota']);
-
-    //             if ($this->oModel->update($aData))
-    //                 $this->oUtil->sSuccMsg = 'Data kunjungan berhasil diedit.';
-    //             else
-    //                 $this->oUtil->sErrMsg = 'Data kunjungan gagal diedit.';
-    //         }
-    //         else
-    //         {
-    //             $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
-    //         }
-    //     }
-
-    //     /* Get the data of the post */
-    //     $this->oUtil->oKunjungan = $this->oModel->getById($this->_iId);
-
-    //     $this->oUtil->getView('edit_kunjungan');
-    // }
-
-    // public function delete()
-    // {
-    //     if (!$this->isLogged()) exit;
-
-    //     if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId))
-    //         header('Location: ' . ROOT_URL . '?p=kunjungan&a=kunjungan');
-    //     else
-    //         exit('Kunjungan tidak bisa dihapus.');
-    // }
-
     protected function isLogged()
     {
         return !empty($_SESSION['is_logged']);

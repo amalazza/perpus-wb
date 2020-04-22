@@ -92,4 +92,11 @@ class Buku
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
+	
+	public function search($search){
+		$oStmt = $this->oDb->prepare("SELECT * FROM katalog WHERE judul LIKE :judul");
+        $oStmt->bindValue('judul', "%$search%");
+        $oStmt->execute();
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+	}
 }
