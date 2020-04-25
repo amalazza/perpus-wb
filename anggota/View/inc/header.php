@@ -156,32 +156,31 @@ select{
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?=ROOT_URL?>?p=buku&amp;a=ebook">E-book</a>
           </li>
-		  <form action="http://localhost/perpus-wb/anggota/?p=Buku&a=search" method="post">
-			  <div class="md-form my-0">
-				<input class="form-control" type="text" name="search" id="search" placeholder="Search Judul ..." aria-label="Search">
-			  </div>
-			  <button href="#!" class="btn btn-outline-white btn-md my-0 ml-sm-2" style="background-color: #1abc9c; height: 33px;" type="submit">Search</button>
-		  </form>
+          <li class="nav mx-0 mx-lg-1">
+              <form action="http://localhost/perpus-wb/anggota/?p=Buku&a=search" method="post" class="form-inline mr-auto ">
+                
+                  <input class="form-control" type="text" name="search" id="search" placeholder="Search Judul ..." aria-label="Search">
+                  <button href="#!" class="btn btn-outline-white btn-md my-0 ml-sm-2" style="background-color: #2c3e50; color: white; border-color: white;" type="submit">Search</button>
+              </form>
+          </li>
+          
         </ul>
-
         <div class="top-nav notification-row collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto navbar-right pull-right top-menu">
-            <li class="nav-item mx-0 mx-lg-1">
-            </li>
             <li class="nav-item mx-0 mx-lg-1 dropdown">
               <?php if (!empty($_SESSION['is_logged'])): ?>
-              <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <span class="profile-ava" style="color: #ffffff">
+              <a data-toggle="dropdown" class="dropdown-toggle nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">
+                <span class="username" style="color: #ffffff">
                     <?php echo $_SESSION['nama']." || ".$_SESSION['kelas'];?>
                 </span>
               </a>
-              <ul class="dropdown-menu extended logout">
+              <ul class="dropdown-menu extended logout" >
                 <div class="log-arrow-up"></div>
                 <li class="eborder-top">
                   <a  href="<?=ROOT_URL?>?p=anggota&amp;a=profile"><i class="icon_profile"></i> Profile Saya</a>
                 </li>
                 <li>
-                  <a  href="<?=ROOT_URL?>?p=anggota&amp;a=logout"><i class="icon_key_alt"></i> Keluar</a>
+                  <a  href="<?=ROOT_URL?>?p=anggota&amp;a=logout"  style="color: #fff; border-bottom: none !important; text-transform: uppercase; background-color: #2c3e50 !important;"><i class="icon_key_alt"></i> Keluar</a>
                 </li>
               </ul>
             </li>

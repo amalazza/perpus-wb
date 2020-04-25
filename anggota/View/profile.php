@@ -4,41 +4,89 @@
 
 <?php 
 
-          if (empty($this->oAnggota)): ?>
-            <?php else: ?>
-            <?php $data = $this->oAnggota;
-             ?>
- <!--main content start-->
-        <div class="row">
-          <!-- profile-widget -->
-          <div class="col-lg-12">
-            <div class="profile-widget profile-widget-info" style="background-color: #1abc9c;">
-              <div class="panel-body">
-                  
-          <div class="col-lg-2 col-sm-2 follow-info" style="-webkit-border-radius: 0%;">   
-                <?php 
-                    echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($data->foto))."' style='height: 180px; width: 100%; -webkit-border-radius: 20%'/>";
-                ?>
-                </div>
-                <div class="col-sm-4 follow-info" style="font-size: 20px; width: 100%;">
-                  <p>Nama: <?=$data->nama?></p>
-                  <p>NIS: <?=$data->no_anggota?></p>
-                  <p>Kelas: <?=$data->kelas?></p>
-                  <p>Email: <?=$data->email?></p>
-                  <p>No. Telpon: <?=$data->no_telpon?></p>
-                </div>
-                <div class="col-sm-4 follow-info" style="font-size: 20px; float: left;">
-                  <p>Alamat: <?=$data->alamat?></p>
-                </div>
-        <div style="float:right;">
-                  <form action="<?=ROOT_URL?>?p=anggota&amp;a=edit&amp;id=<?=$data->no_anggota?>" method="post">
-                <button class="btn btn-danger" type="submit" name="edit" value="1" style="width: 120px;">Edit Profile</button>
-              </form>
-                </div>
-              </div>
+if (empty($this->oAnggota)): ?>
+  <?php else: ?>
+  <?php $data = $this->oAnggota;
+?>
+<!--main content start-->
+  <div class="row">
+    <!-- profile-widget -->
+    <div class="col-lg-12">
+      <div class="profile-widget profile-widget-info" style="background-color: #1abc9c;">
+        <div class="panel-body">
+          <div class="col-lg-2 col-sm-2">
+            <div class="follow-ava" style="-webkit-border-radius: 0%;">
+              <!-- <img src="data:<?=$oBuku->mime?>;base64,<?=base64_encode($oBuku->cover); ?>" style="height: 100%; width: 100%; -webkit-border-radius: 0%;"/> -->
+              <!-- <img src="<?=ROOT_URL?>static/img/cover_buku.png" alt="" style="height: 100%; width: 100%; -webkit-border-radius: 0%;"> -->
+              <?php 
+                  echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($data->foto))."' style='height: 100%; width: 100%; -webkit-border-radius: 0%'/>";
+              ?>
             </div>
           </div>
+          <div class="col-lg-4 col-sm-4 follow-info">
+            <h2>
+              <?=$data->nama?>
+            </h2>
+            <h4>
+              <i>NIS   : </i><?=$data->no_anggota?>
+            </h4>
+            <h4>
+              <i>Kelas : </i><?=$data->kelas?>
+            </h4>
+            <h4> 
+              <i>Email : </i><?=$data->email?>
+            </h4>
+          </div>
+          <!-- <p>Nama: <?=$data->nama?></p>
+                <p>NIS: <?=$data->no_anggota?></p>
+                <p>Kelas: <?=$data->kelas?></p>
+                <p>Email: <?=$data->email?></p>
+                <p>No. Telpon: <?=$data->no_telpon?></p>
+              </div>
+              <div class="col-sm-4 follow-info" style="font-size: 20px; float: left;">
+                <p>Alamat: <?=$data->alamat?></p>
+              </div> -->
+          
+          <div class="col-lg">
+            <div class="col-lg-2 col-sm-6 follow-info weather-category">
+              <div class="follow-info">
+                  <h2 style="text-align: right; padding-right: 5%;">
+                    LIHAT PROFILE LEBIH JAUH?
+                  </h2>
+              </div>
+            </div>
+            <div class="col-lg-2 col-sm-6 follow-info weather-category">
+              <ul style="background-color: #1abc9c;">
+                <li class="active">
+                  <h3>
+                    <i class="fa fa-bell fa-2x"> </i><br> 
+                    <input type="submit" name="detail" value="DETAIL" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;" /> 
+                  </h3>
+                  Lihat Detail Profile
+                </li>
+
+              </ul>
+            </div>
+            <div class="col-lg-2 col-sm-6 follow-info weather-category">
+              <ul style="background-color: #1abc9c;">
+                <li class="active">
+                  <h3>
+                    <i class="fa fa-bell fa-2x"> </i><br> 
+                    <form action="<?=ROOT_URL?>?p=anggota&amp;a=edit&amp;id=<?=$data->no_anggota?>" method="post">
+                      <button class="btn btn-danger" type="submit" name="edit" value="1" style="background-color: #2c3e50; color: white; border-color: white;">EDIT</button>
+                    </form>
+                  </h3>
+                  Edit Profile
+                </li>
+              </ul>
+            </div>
+          </div>
+
         </div>
+      </div>
+    </div>
+  </div>
+
     <?php endif ?>
         <!-- page start-->
         <div class="row">
