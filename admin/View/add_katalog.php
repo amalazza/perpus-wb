@@ -31,6 +31,17 @@
                         <input class=" form-control" id="no_katalog" name="no_katalog" type="text" />
                       </div>
                     </div>
+                    <div class="form-group ">
+                      <label for="no_koleksi" class="control-label col-lg-2">Jenis Koleksi <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <select class="form-control m-bot15" id="searchKoleksi" name="koleksi">
+                          <option value="" selected="" disabled="">--Jenis Koleksi Buku--</option>
+                          <?php foreach ($this->oKoleksi as $oKoleksi): ?>
+                          <option value="<?=$oKoleksi->no_koleksi?>"><?=$oKoleksi->no_koleksi?> - <?=$oKoleksi->jenis_koleksi?></option>
+                          <?php endforeach ?>
+                        </select>
+                      </div>
+                  </div>
 					         <div class="form-group ">
                       <label for="no_klasifikasi" class="control-label col-lg-2">Nama Klasifikasi <span class="required">*</span></label>
                       <div class="col-lg-10">
@@ -43,17 +54,7 @@
             						</select>
                       </div>
                     </div>
-					<div class="form-group ">
-                      <label for="no_koleksi" class="control-label col-lg-2">Jenis Koleksi <span class="required">*</span></label>
-                      <div class="col-lg-10">
-                        <select class="form-control m-bot15" id="searchKoleksi" name="koleksi">
-						<option value="" selected="" disabled="">--Jenis Koleksi Buku--</option>
-						<?php foreach ($this->oKoleksi as $oKoleksi): ?>
-						<option value="<?=$oKoleksi->no_koleksi?>"><?=$oKoleksi->no_koleksi?> - <?=$oKoleksi->jenis_koleksi?></option>
-						<?php endforeach ?>
-						</select>
-                      </div>
-                    </div>
+				          
 					<div class="form-group ">
                       <label for="jenis_katalog" class="control-label col-lg-2">Jenis Buku <span class="required">*</span></label>
                       <div class="col-lg-10">

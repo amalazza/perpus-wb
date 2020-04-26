@@ -136,12 +136,26 @@ class Anggota extends Beranda
         else{
 
         $this->oUtil->oAnggota = $this->oModel->getById($_SESSION['id']);
+        $this->oUtil->oBuku = $this->oModel->getBukuById($_SESSION['id']);
+
+
+        //$this->oUtil->oBuku = $this->oModel->getAllj(0, self::MAX_POSTS); 
+        $this->oUtil->oTahun = $this->oModel->getTahun();
+        $this->oUtil->oJenis = $this->oModel->getJenis();
+        $this->oUtil->oKoleksi = $this->oModel->getKoleksi();
         //$this->oUtil->oAlog = $this->oModel->getaLog($_SESSION['id']);
 
         $this->oUtil->getView('profile');
 
     }
 	}
+
+    // public function buku()
+    // {
+    //     $this->oUtil->oAnggota = $this->oModel->getBukuById($this->_iId); // Get the data of the post
+
+    //     $this->oUtil->getView('profile');
+    // }
 	
 	public function edit()
     {

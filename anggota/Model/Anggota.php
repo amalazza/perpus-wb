@@ -56,6 +56,44 @@ class Anggota extends Beranda
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
+
+    public function getBukuById($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE p.no_anggota = :no_anggota');
+        $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getAllj()
+    {
+        $oStmt = $this->oDb->query('SELECT K.no_katalog,K.no_klasifikasi, KL.nama_klasifikasi, K.no_koleksi, KO.jenis_koleksi, K.jenis_katalog, K.judul, K.pengarang, K.penerbit, K.kota_terbit, K.tahun_terbit, K.isbn, K.lokasi, K.absktrak, K.tanggal_masuk, K.e_book, K.cover, K.stok from katalog K INNER JOIN klasifikasi KL ON KL.no_klasifikasi = K.no_klasifikasi INNER JOIN koleksi KO ON KO.no_koleksi = K.no_koleksi ORDER BY judul ASC');
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getTahun()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM tahunterbit ORDER BY thn_terbit DESC');
+        $oStmt->execute();
+
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getJenis()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM klasifikasi ORDER BY nama_klasifikasi ASC');
+        $oStmt->execute();
+
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getKoleksi()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM koleksi ORDER BY jenis_koleksi ASC');
+        $oStmt->execute();
+
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
 	
 	public function update(array $aData)
     {
