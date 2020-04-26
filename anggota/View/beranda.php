@@ -86,7 +86,7 @@
           <?php endforeach ?>
           <?php endif ?>
           <div style="margin-left: 20px; text-align: center;" class="lihat right">
-            <button class="btn btn-primary center" style="font-size: 17px; background-color: #12876f;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=index'">Lihat Koleksi</button>
+            <button class="btn btn-primary center" style="font-size: 17px; background-color: #12876f;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=buku'">Lihat Koleksi</button>
           </div>
         </div>
 

@@ -136,7 +136,9 @@ class Anggota extends Beranda
         else{
 
         $this->oUtil->oAnggota = $this->oModel->getById($_SESSION['id']);
-        $this->oUtil->oBuku = $this->oModel->getBukuById($_SESSION['id']);
+        $this->oUtil->oPesan = $this->oModel->getPemesananById($_SESSION['id']);
+        $this->oUtil->oPinjam = $this->oModel->getPeminjamanById($_SESSION['id']);
+        $this->oUtil->oRiwayat = $this->oModel->getRiwayatById($_SESSION['id']);
 
 
         //$this->oUtil->oBuku = $this->oModel->getAllj(0, self::MAX_POSTS); 

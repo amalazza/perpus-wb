@@ -57,9 +57,25 @@ class Anggota extends Beranda
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
 
-    public function getBukuById($iId)
+    public function getPemesananById($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM pemesanan_buku p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE p.no_anggota = :no_anggota');
+        $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getPeminjamanById($iId)
     {
         $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE p.no_anggota = :no_anggota');
+        $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getRiwayatById($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE p.tanggal_kembali != 0000-00-00 and p.no_anggota = :no_anggota');
         $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
