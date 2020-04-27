@@ -59,9 +59,9 @@
 					<?php if ($this->oPerpanjang->perpanjangan_ke < $this->dataPerpanjang->batas): ?>
 					<div class="form-group ">
                       <div class="form-group ">
-                      <label for="tgl_kembali" class="control-label col-lg-2">Tanggal Pengembalian <span class="required">*</span></label>
+                      <label for="batas_kembali" class="control-label col-lg-2">Tanggal Pengembalian <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="tgl_kembali" name="tgl_kembali" type="text" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d', strtotime('+'.$this->dataPerpanjang->hari.' days', strtotime($this->oPerpanjang->batas_kembali)));?>" readonly="true"/>
+                        <input class=" form-control" id="batas_kembali" name="batas_kembali" type="text" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d', strtotime('+'.$this->dataPerpanjang->hari.' days', strtotime($this->oPerpanjang->batas_kembali)));?>" readonly="true"/>
                       </div>
                     </div>
                     </div>

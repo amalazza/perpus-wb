@@ -20,7 +20,7 @@ class Transaksi
 	
 	public function getPesanan($iOffset, $iLimit)
     {
-        $oStmt = $this->oDb->prepare('SELECT a.id_pemesanan, b.no_anggota, b.nama, c.no_katalog, c.judul, c.lokasi FROM pemesanan_buku a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog');
+        $oStmt = $this->oDb->prepare('SELECT a.no_peminjaman, b.no_anggota, b.nama, c.no_katalog, c.judul, c.lokasi FROM peminjaman a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog WHERE status="dipesan"');
 		$oStmt->execute();
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
@@ -81,7 +81,7 @@ class Transaksi
 	
 	public function getPesananById($iId)
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM pemesanan_buku WHERE id_pemesanan = :id LIMIT 1');
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman WHERE no_peminjaman = :id LIMIT 1');
         $oStmt->bindParam(':id', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
@@ -110,7 +110,7 @@ class Transaksi
 	
 	public function deletePesanan($iId)
     {
-        $oStmt = $this->oDb->prepare('DELETE FROM pemesanan_buku WHERE id_pemesanan = :id LIMIT 1');
+        $oStmt = $this->oDb->prepare('DELETE FROM peminjaman WHERE no_peminjaman = :id LIMIT 1');
         $oStmt->bindParam(':id', $iId, \PDO::PARAM_INT);
         return $oStmt->execute();
     } 
@@ -119,6 +119,15 @@ class Transaksi
 		$oStmt = $this->oDb->prepare('UPDATE peminjaman SET batas_kembali = :batas_kembali, perpanjangan_ke = perpanjangan_ke + 1 WHERE no_peminjaman = :no_peminjaman LIMIT 1');
 		$oStmt->bindValue(':no_peminjaman', $aData['no_peminjaman'], \PDO::PARAM_INT);
 		$oStmt->bindValue(':batas_kembali', $aData['batas_kembali']);
+		return $oStmt->execute();
+	}
+	
+	public function updatePesanan(array $aData){
+		$oStmt = $this->oDb->prepare('UPDATE peminjaman SET tanggal_pinjam = :tanggal_pinjam, batas_kembali = :batas_kembali, status = :status WHERE no_peminjaman = :no_peminjaman LIMIT 1');
+		$oStmt->bindValue(':no_peminjaman', $aData['no_peminjaman'], \PDO::PARAM_INT);
+		$oStmt->bindValue(':tanggal_pinjam', $aData['tanggal_pinjam']);
+		$oStmt->bindValue(':batas_kembali', $aData['batas_kembali']);
+		$oStmt->bindValue(':status', $aData['status']);
 		return $oStmt->execute();
 	}
 	

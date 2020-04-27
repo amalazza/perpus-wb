@@ -52,6 +52,12 @@
 					
 				  <?php else: ?>
 					<div class="form-group ">
+                      <label for="no_peminjaman" class="control-label col-lg-2">No. Peminjaman<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class=" form-control" id="no_peminjaman" name="no_peminjaman" type="text" value="<?=$this->oPesan->no_peminjaman?>" readonly="true"/>
+                      </div>
+                    </div>
+					<div class="form-group ">
                       <label for="anggota" class="control-label col-lg-2">Anggota<span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class=" form-control" id="no_anggota" name="no_anggota" type="text" value="<?=$this->oPesan->no_anggota?>" readonly="true"/>
@@ -72,9 +78,9 @@
                       </div>
                     </div>
 					<div class="form-group ">
-                      <label for="tgl_kembali" class="control-label col-lg-2">Tanggal Pengembalian <span class="required">*</span></label>
+                      <label for="batas_kembali" class="control-label col-lg-2">Tanggal Pengembalian <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="tgl_kembali" name="tgl_kembali" type="text" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d', strtotime('+1 week'));?>" readonly="true"/>
+                        <input class=" form-control" id="batas_kembali" name="batas_kembali" type="text" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d', strtotime('+1 week'));?>" readonly="true"/>
                       </div>
                     </div>
                     <div class="form-group">

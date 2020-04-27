@@ -21,7 +21,7 @@
             Transaksi Buku
           </header>
           <div class="panel-body">
-            <button type="button" onclick="window.location='<?=ROOT_URL?>?p=transaksi&amp;a=pinjamBuku'" class="btn btn-primary">Peminjaman Buku</button>
+            <button type="button" onclick="window.location='<?=ROOT_URL?>?p=transaksi&amp;a=pinjamBaru'" class="btn btn-primary">Peminjaman Buku</button>
           </div>
       </section>
      </div>

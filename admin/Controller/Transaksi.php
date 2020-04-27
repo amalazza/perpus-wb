@@ -112,7 +112,7 @@ class Transaksi
 			echo json_encode($this->oUtil->oData = $this->oModel->getById($_POST['id']));
     }
 	
-	public function pinjamBuku()
+	public function updatePesanan()
     {
         if (!$this->isLogged())
         {
@@ -129,11 +129,10 @@ class Transaksi
                 //$idku = $_SESSION['id'];
                 //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
 				$no_katalog = $_POST['no_katalog'];
-				$aData = array('no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['tgl_kembali'],'status' => 'belum kembali');
+				$aData = array('no_peminjaman'=> $_POST['no_peminjaman'],'no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali'],'status' => 'belum kembali');
                 //$aLog = array('id_admin' => $idku, 'activity' => $act );
 
-                if ($this->oModel->pinjamBaru($aData)){
-					$this->oModel->deletePesanan($this->_iId);
+                if ($this->oModel->updatePesanan($aData)){
 					$this->oModel->updateStok($no_katalog);
                     $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
                     header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
@@ -157,6 +156,51 @@ class Transaksi
     }
     }
 	
+	public function pinjamBaru()
+    {
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+
+        if (!empty($_POST['add_submit']))
+        {
+            if (!empty($_POST['no_anggota'])) // Allow a maximum of 50 characters
+            {
+				
+                //$idku = $_SESSION['id'];
+                //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
+				$no_katalog = $_POST['no_katalog'];
+				$aData = array('no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali'],'status' => 'belum kembali');
+                //$aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                if ($this->oModel->pinjamBaru($aData)){
+					$this->oModel->deletePesanan($this->_iId);
+					$this->oModel->updateStok($no_katalog);
+                    $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
+                    header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
+				}
+                else{
+                    $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+				}
+            }
+            else
+            {
+                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+            }
+        }
+
+        //get nis from database
+		$this->oUtil->oNIS = $this->oModel->getNIS();
+		$this->oUtil->oKatalog = $this->oModel->getKatalog();
+		//$this->oUtil->oPesan = $this->oModel->getPesananById($this->_iId);
+		
+		$this->oUtil->getView('add_pinjam');
+    }
+    }
+	
 	public function perpanjangan()
     {
         if (!$this->isLogged())
@@ -174,7 +218,7 @@ class Transaksi
                 //$idku = $_SESSION['id'];
                 //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
 				$no_katalog = $_POST['no_katalog'];
-				$aData = array('no_peminjaman' => $_POST['no_peminjaman'], 'no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['tgl_kembali']);
+				$aData = array('no_peminjaman' => $_POST['no_peminjaman'], 'no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali']);
                 //$aLog = array('id_admin' => $idku, 'activity' => $act );
 
                 if ($this->oModel->perpanjangan($aData)){
@@ -212,6 +256,23 @@ class Transaksi
         if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId)){
             $this->oUtil->sSuccMsg = 'Data anggota berhasil dihapus.';
 		header("Refresh: 3; URL=?p=anggota&a=anggota");}
+        else{
+		exit('Anggota tidak bisa dihapus.');}
+    }
+    }
+	
+	public function deletePesanan()
+    {
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+
+        if (!empty($_POST['delete']) && $this->oModel->deletePesanan($this->_iId)){
+            $this->oUtil->sSuccMsg = 'Data anggota berhasil dihapus.';
+		header("Refresh: 3; URL=?p=transaksi&a=pemesanan");}
         else{
 		exit('Anggota tidak bisa dihapus.');}
     }
