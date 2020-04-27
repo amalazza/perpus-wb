@@ -54,20 +54,20 @@
                         <input class=" form-control" id="tgl_pinjam" name="tgl_pinjam" type="text" value="<?=$this->oPerpanjang->tanggal_pinjam?>" readonly="true"/>
                       </div>
                     </div>
-					<?php if ($this->oPerpanjang->perpanjangan_ke < 2): ?>
+					<?php if (empty($this->dataPerpanjang)): ?>
+					<?php else: ?>
+					<?php if ($this->oPerpanjang->perpanjangan_ke < $this->dataPerpanjang->batas): ?>
 					<div class="form-group ">
+                      <div class="form-group ">
                       <label for="tgl_kembali" class="control-label col-lg-2">Tanggal Pengembalian <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="tgl_kembali" name="tgl_kembali" type="text" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d', strtotime('+2 week'));?>" readonly="true"/>
+                        <input class=" form-control" id="tgl_kembali" name="tgl_kembali" type="text" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d', strtotime('+'.$this->dataPerpanjang->hari.' days', strtotime($this->oPerpanjang->batas_kembali)));?>" readonly="true"/>
                       </div>
+                    </div>
                     </div>
 					<?php else: ?>
-					<div class="form-group ">
-                      <label for="tgl_kembali" class="control-label col-lg-2">Tanggal Pengembalians <span class="required">*</span></label>
-                      <div class="col-lg-10">
-                        <input class=" form-control" id="tgl_kembali" name="tgl_kembali" type="text" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d', strtotime('+3 week'));?>" readonly="true"/>
-                      </div>
-                    </div>
+					
+					<?php endif; ?>
 					<?php endif; ?>
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">

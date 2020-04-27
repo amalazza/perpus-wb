@@ -67,14 +67,8 @@ class Transaksi
 
      public function pinjamBaru(array $aData)
     {
-        $oStmt = $this->oDb->prepare('INSERT INTO peminjaman (no_anggota, no_katalog, tanggal_pinjam, batas_kembali, perpanjangan_ke) VALUES(:no_anggota, :no_katalog, :tanggal_pinjam, :batas_kembali, :perpanjangan_ke)');
+        $oStmt = $this->oDb->prepare('INSERT INTO peminjaman (no_anggota, no_katalog, tanggal_pinjam, batas_kembali, status) VALUES(:no_anggota, :no_katalog, :tanggal_pinjam, :batas_kembali, :status)');
         return $oStmt->execute($aData);
-    }
-	
-	public function addSiswa(array $sData)
-    {
-        $oStmt = $this->oDb->prepare('REPLACE INTO siswa (nis,nama,kelas) VALUES(:nis, :nama, :kelas)');
-        return $oStmt->execute($sData);
     }
 
     public function getById($iId)
@@ -127,4 +121,10 @@ class Transaksi
 		$oStmt->bindValue(':batas_kembali', $aData['batas_kembali']);
 		return $oStmt->execute();
 	}
+	
+	public function getPerpanjangan()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM perpanjangan');
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
 }

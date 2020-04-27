@@ -60,8 +60,10 @@
 				<td><?=$oPinjam->tanggal_pinjam?></td>
 				<td><?=$oPinjam->batas_kembali?></td>
                 <td>
-				<?php if ($oPinjam->perpanjangan_ke  < 3 ): ?>
-				<div class="btn-group">
+				<?php if (empty($this->dataPerpanjang)): ?>
+				<?php else: ?>
+					<?php if ($oPinjam->perpanjangan_ke < $this->dataPerpanjang->batas): ?>
+					<div class="btn-group">
 				
 					<form action="<?=ROOT_URL?>?p=transaksi&amp;a=perpanjangan&amp;id=<?=$oPinjam->no_peminjaman?>" method="post" style="display: inline">
                         <button class="btn btn-primary" type="submit" name="edit" value="1" >Perpanjangan</button>
@@ -74,7 +76,8 @@
                         <button class="btn btn-primary" type="submit" name="edit" value="1" disabled>Perpanjangan</button>
                     </form>
                   </div>
-				  <?php endif; ?>
+					<?php endif; ?>
+				<?php endif; ?>
                   <div class="btn-group">
 					<form action="<?=ROOT_URL?>?p=transaksi&amp;a=Kembali&amp;id=<?=$oPinjam->no_peminjaman?>" method="post" style="display: inline">
                         <button class="btn btn-danger" type="submit" name="edit" value="1" >Pengembalian</button>

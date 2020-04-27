@@ -89,6 +89,7 @@ class Transaksi
         else{
 		
         $this->oUtil->oPinjam = $this->oModel->getPeminjaman(0, self::MAX_POSTS); // Get only the latest X posts
+		$this->oUtil->dataPerpanjang = $this->oModel->getPerpanjangan();
 
         $this->oUtil->getView('peminjaman');
     }
@@ -128,7 +129,7 @@ class Transaksi
                 //$idku = $_SESSION['id'];
                 //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
 				$no_katalog = $_POST['no_katalog'];
-				$aData = array('no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['tgl_kembali'],'perpanjangan_ke' => '1');
+				$aData = array('no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['tgl_kembali'],'status' => 'belum kembali');
                 //$aLog = array('id_admin' => $idku, 'activity' => $act );
 
                 if ($this->oModel->pinjamBaru($aData)){
@@ -191,6 +192,7 @@ class Transaksi
         }
 		
 		$this->oUtil->oPerpanjang = $this->oModel->getPerpanjangById($this->_iId);
+		$this->oUtil->dataPerpanjang = $this->oModel->getPerpanjangan();
 		
 		$this->oUtil->getView('edit_pinjam');
     }
