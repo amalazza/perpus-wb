@@ -7,7 +7,7 @@
       <!-- Masthead Avatar Image -->
       <img class="masthead-avatar" style=" height: 120px; width:200px;" src="<?=ROOT_URL?>static/bukup.png" alt="">
       <br>
-      <!-- Masthead Heading -->
+      <!-- njn Masthead Heading -->
       <h1 class="masthead-heading mb-0"><b>Perpustakaan Online Wira Buana</b></h1>
       <h3 style="margin-top: 7px;"><b><i>SMK WIRA BUANA 1 | SMK WIRA BUANA 2</i></b></h3>
 

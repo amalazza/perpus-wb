@@ -8,7 +8,7 @@ if (empty($this->oAnggota)): ?>
   <?php else: ?>
   <?php $data = $this->oAnggota;
 ?>
-<!--main content start-->
+<!--main sscontent start-->
   <div class="row">
     <!-- profile-widget -->
     <div class="col-lg-12">

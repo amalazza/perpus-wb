@@ -67,7 +67,7 @@ class Anggota extends Beranda
 
     public function getPeminjamanById($iId)
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE p.no_anggota = :no_anggota');
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota INNER JOIN klasifikasi KL ON KL.no_klasifikasi = K.no_klasifikasi INNER JOIN koleksi KO ON KO.no_koleksi = K.no_koleksi WHERE p.no_anggota = :no_anggota');
         $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
@@ -78,6 +78,12 @@ class Anggota extends Beranda
         $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE p.tanggal_kembali != 0000-00-00 and p.no_anggota = :no_anggota');
         $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+            public function getAllBuku()
+    {
+        $oStmt = $this->oDb->query('SELECT K.no_katalog,K.no_klasifikasi, KL.nama_klasifikasi, K.no_koleksi, KO.jenis_koleksi, K.jenis_katalog, K.judul, K.pengarang, K.penerbit, K.kota_terbit, K.tahun_terbit, K.isbn, K.lokasi, K.absktrak, K.tanggal_masuk, K.e_book, K.cover, K.stok from katalog K INNER JOIN klasifikasi KL ON KL.no_klasifikasi = K.no_klasifikasi INNER JOIN koleksi KO ON KO.no_koleksi = K.no_koleksi WHERE jenis_katalog = "Buku Fisik" OR jenis_katalog = "Buku Fisik dan E-Book" ORDER BY judul ASC');
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 

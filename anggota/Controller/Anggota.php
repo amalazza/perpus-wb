@@ -140,12 +140,10 @@ class Anggota extends Beranda
         $this->oUtil->oPinjam = $this->oModel->getPeminjamanById($_SESSION['id']);
         $this->oUtil->oRiwayat = $this->oModel->getRiwayatById($_SESSION['id']);
 
-
-        //$this->oUtil->oBuku = $this->oModel->getAllj(0, self::MAX_POSTS); 
+        $this->oUtil->oBuku = $this->oModel->getAllBuku(0, self::MAX_POSTS);
         $this->oUtil->oTahun = $this->oModel->getTahun();
         $this->oUtil->oJenis = $this->oModel->getJenis();
         $this->oUtil->oKoleksi = $this->oModel->getKoleksi();
-        //$this->oUtil->oAlog = $this->oModel->getaLog($_SESSION['id']);
 
         $this->oUtil->getView('profile');
 
