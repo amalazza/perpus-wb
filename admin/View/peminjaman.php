@@ -49,7 +49,7 @@
                 <th>Anggota</th>
                 <th>Katalog</th>
 				<th>Tanggal Pinjam</th>
-				<th>Tanggal Kembali</th>
+				<th>Batas Kembali</th>
                 <th>Action</th>
               </tr>
               <?php foreach ($this->oPinjam as $oPinjam): ?>
@@ -79,8 +79,8 @@
 					<?php endif; ?>
 				<?php endif; ?>
                   <div class="btn-group">
-					<form action="<?=ROOT_URL?>?p=transaksi&amp;a=Kembali&amp;id=<?=$oPinjam->no_peminjaman?>" method="post" style="display: inline">
-                        <button class="btn btn-danger" type="submit" name="edit" value="1" >Pengembalian</button>
+					<form action="<?=ROOT_URL?>?p=transaksi&amp;a=pengembalian&amp;id=<?=$oPinjam->no_peminjaman?>" method="post" style="display: inline">
+                        <button class="btn btn-danger" type="submit" name="edit" value="1">Pengembalian</button>
                     </form>
                   </div>
                 </td>                

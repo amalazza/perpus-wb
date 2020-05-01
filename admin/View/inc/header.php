@@ -143,7 +143,7 @@
             <ul class="sub">
 			  <li><a class="" href="<?=ROOT_URL?>?p=transaksi&amp;a=pemesanan">Pemesanan</a></li>
               <li><a class="" href="<?=ROOT_URL?>?p=transaksi&amp;a=peminjaman">Peminjaman</a></li>
-              <li><a class="" href="<?=ROOT_URL?>?p=transaksi&amp;a=kembali"><span>Pengembalian</span></a></li>
+              <li><a class="" href="<?=ROOT_URL?>?p=transaksi&amp;a=tblPengembalian"><span>Pengembalian</span></a></li>
             </ul>
           </li>
           
