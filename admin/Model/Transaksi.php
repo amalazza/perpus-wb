@@ -41,11 +41,7 @@ class Transaksi
 	
 	public function getPengembalian($iOffset, $iLimit)
     {
-<<<<<<< HEAD
 		$oStmt = $this->oDb->prepare('SELECT a.no_peminjaman, b.no_anggota, b.nama, c.no_katalog, c.judul, a.tanggal_pinjam, a.tanggal_kembali, a.perpanjangan_ke, a.keterlambatan, a.denda FROM peminjaman a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog WHERE status="kembali"');
-=======
-		$oStmt = $this->oDb->prepare('SELECT a.no_peminjaman, b.no_anggota, b.nama, c.no_katalog, c.judul, a.tanggal_pinjam, a.tanggal_kembali, a.perpanjangan_ke FROM peminjaman a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog WHERE status="kembali"');
->>>>>>> 0b4ebb6a38a03731a529150093d7d5a15a1a15c3
 		$oStmt->execute();
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
@@ -149,15 +145,10 @@ class Transaksi
 	}
 	
 	public function pengembalian(array $aData){
-<<<<<<< HEAD
 		$oStmt = $this->oDb->prepare('UPDATE peminjaman SET denda = :denda, tanggal_kembali = :tanggal_kembali, keterlambatan = :keterlambatan, status = :status WHERE no_peminjaman = :no_peminjaman LIMIT 1');
 		$oStmt->bindValue(':no_peminjaman', $aData['no_peminjaman'], \PDO::PARAM_INT);
 		$oStmt->bindValue(':denda', $aData['denda']);
 		$oStmt->bindValue(':keterlambatan', $aData['keterlambatan']);
-=======
-		$oStmt = $this->oDb->prepare('UPDATE peminjaman SET tanggal_kembali = :tanggal_kembali, status = :status WHERE no_peminjaman = :no_peminjaman LIMIT 1');
-		$oStmt->bindValue(':no_peminjaman', $aData['no_peminjaman'], \PDO::PARAM_INT);
->>>>>>> 0b4ebb6a38a03731a529150093d7d5a15a1a15c3
 		$oStmt->bindValue(':tanggal_kembali', $aData['tanggal_kembali']);
 		$oStmt->bindValue(':status', $aData['status']);
 		return $oStmt->execute();

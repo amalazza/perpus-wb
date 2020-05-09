@@ -182,11 +182,7 @@ class Transaksi
                 //$idku = $_SESSION['id'];
                 //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
 				$no_katalog = $_POST['no_katalog'];
-<<<<<<< HEAD
 				$aData = array('no_peminjaman'=> $_POST['no_peminjaman'], 'tanggal_kembali' => $_POST['tgl_kembali'], 'keterlambatan'=>$_POST['telat'], 'denda'=>$_POST['denda'], 'status' => 'kembali');
-=======
-				$aData = array('no_peminjaman'=> $_POST['no_peminjaman'], 'tanggal_kembali' => $_POST['tgl_kembali'], 'status' => 'kembali');
->>>>>>> 0b4ebb6a38a03731a529150093d7d5a15a1a15c3
                 //$aLog = array('id_admin' => $idku, 'activity' => $act );
 
                 if ($this->oModel->pengembalian($aData)){
@@ -206,11 +202,7 @@ class Transaksi
 		$this->oUtil->oNIS = $this->oModel->getNIS();
 		$this->oUtil->oKatalog = $this->oModel->getKatalog();
 		$this->oUtil->oPesan = $this->oModel->getPeminjamanById($this->_iId);
-<<<<<<< HEAD
 		$this->oUtil->oDenda = $this->oModel->getDenda();
-=======
->>>>>>> 0b4ebb6a38a03731a529150093d7d5a15a1a15c3
-		
 		$this->oUtil->getView('form_pengembalian');
     }
     }
