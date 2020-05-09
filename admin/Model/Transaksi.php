@@ -18,6 +18,12 @@ class Transaksi
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 	
+	public function getDenda()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM denda');
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+	
 	public function getPesanan($iOffset, $iLimit)
     {
         $oStmt = $this->oDb->prepare('SELECT a.no_peminjaman, b.no_anggota, b.nama, c.no_katalog, c.judul, c.lokasi FROM peminjaman a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog WHERE status="dipesan"');
@@ -28,7 +34,14 @@ class Transaksi
 	public function getPeminjaman($iOffset, $iLimit)
     {
 		//salah
-        $oStmt = $this->oDb->prepare('SELECT a.no_peminjaman, b.no_anggota, b.nama, c.no_katalog, c.judul, a.tanggal_pinjam, a.batas_kembali, a.perpanjangan_ke FROM peminjaman a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog');
+        $oStmt = $this->oDb->prepare('SELECT a.no_peminjaman, b.no_anggota, b.nama, c.no_katalog, c.judul, a.tanggal_pinjam, a.batas_kembali, a.perpanjangan_ke FROM peminjaman a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog WHERE status="dipinjam"');
+		$oStmt->execute();
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+	
+	public function getPengembalian($iOffset, $iLimit)
+    {
+		$oStmt = $this->oDb->prepare('SELECT a.no_peminjaman, b.no_anggota, b.nama, c.no_katalog, c.judul, a.tanggal_pinjam, a.tanggal_kembali, a.perpanjangan_ke, a.keterlambatan, a.denda FROM peminjaman a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog WHERE status="kembali"');
 		$oStmt->execute();
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
@@ -79,14 +92,7 @@ class Transaksi
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
 	
-	public function getPesananById($iId)
-    {
-        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman WHERE no_peminjaman = :id LIMIT 1');
-        $oStmt->bindParam(':id', $iId, \PDO::PARAM_INT);
-        $oStmt->execute();
-        return $oStmt->fetch(\PDO::FETCH_OBJ);
-    }
-	public function getPerpanjangById($iId)
+	public function getPeminjamanById($iId)
     {
         $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman WHERE no_peminjaman = :id LIMIT 1');
         $oStmt->bindParam(':id', $iId, \PDO::PARAM_INT);
@@ -94,9 +100,16 @@ class Transaksi
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
 
-    public function updateStok($no_katalog)
+    public function minusStok($no_katalog)
     {
         $oStmt = $this->oDb->prepare('UPDATE katalog SET stok = stok - 1 WHERE no_katalog = :no_katalog LIMIT 1');
+        $oStmt->bindParam(':no_katalog', $no_katalog, \PDO::PARAM_INT);
+        return $oStmt->execute();
+    }
+	
+	public function plusStok($no_katalog)
+    {
+        $oStmt = $this->oDb->prepare('UPDATE katalog SET stok = stok + 1 WHERE no_katalog = :no_katalog LIMIT 1');
         $oStmt->bindParam(':no_katalog', $no_katalog, \PDO::PARAM_INT);
         return $oStmt->execute();
     }
@@ -127,6 +140,16 @@ class Transaksi
 		$oStmt->bindValue(':no_peminjaman', $aData['no_peminjaman'], \PDO::PARAM_INT);
 		$oStmt->bindValue(':tanggal_pinjam', $aData['tanggal_pinjam']);
 		$oStmt->bindValue(':batas_kembali', $aData['batas_kembali']);
+		$oStmt->bindValue(':status', $aData['status']);
+		return $oStmt->execute();
+	}
+	
+	public function pengembalian(array $aData){
+		$oStmt = $this->oDb->prepare('UPDATE peminjaman SET denda = :denda, tanggal_kembali = :tanggal_kembali, keterlambatan = :keterlambatan, status = :status WHERE no_peminjaman = :no_peminjaman LIMIT 1');
+		$oStmt->bindValue(':no_peminjaman', $aData['no_peminjaman'], \PDO::PARAM_INT);
+		$oStmt->bindValue(':denda', $aData['denda']);
+		$oStmt->bindValue(':keterlambatan', $aData['keterlambatan']);
+		$oStmt->bindValue(':tanggal_kembali', $aData['tanggal_kembali']);
 		$oStmt->bindValue(':status', $aData['status']);
 		return $oStmt->execute();
 	}

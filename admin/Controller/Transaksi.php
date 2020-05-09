@@ -94,6 +94,21 @@ class Transaksi
         $this->oUtil->getView('peminjaman');
     }
     }
+	
+	public function tblPengembalian()
+    {
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+		
+        $this->oUtil->oKembali = $this->oModel->getPengembalian(0, self::MAX_POSTS); // Get only the latest X posts
+
+        $this->oUtil->getView('pengembalian');
+    }
+    }
 
     public function notFound()
     {
@@ -104,12 +119,6 @@ class Transaksi
     {
         
 			echo json_encode($this->oUtil->oData = $this->oModel->getDataById($_POST['nis']));
-    }
-	
-	public function detailAnggota()
-    {
-        
-			echo json_encode($this->oUtil->oData = $this->oModel->getById($_POST['id']));
     }
 	
 	public function updatePesanan()
@@ -129,11 +138,11 @@ class Transaksi
                 //$idku = $_SESSION['id'];
                 //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
 				$no_katalog = $_POST['no_katalog'];
-				$aData = array('no_peminjaman'=> $_POST['no_peminjaman'],'no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali'],'status' => 'belum kembali');
+				$aData = array('no_peminjaman'=> $_POST['no_peminjaman'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali'],'status' => 'dipinjam');
                 //$aLog = array('id_admin' => $idku, 'activity' => $act );
 
                 if ($this->oModel->updatePesanan($aData)){
-					$this->oModel->updateStok($no_katalog);
+					$this->oModel->minusStok($no_katalog);
                     $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
                     header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
 				}
@@ -150,9 +159,52 @@ class Transaksi
         //get nis from database
 		$this->oUtil->oNIS = $this->oModel->getNIS();
 		$this->oUtil->oKatalog = $this->oModel->getKatalog();
-		$this->oUtil->oPesan = $this->oModel->getPesananById($this->_iId);
+		$this->oUtil->oPesan = $this->oModel->getPeminjamanById($this->_iId);
 		
 		$this->oUtil->getView('add_pinjam');
+    }
+    }
+	
+	public function pengembalian()
+    {
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+
+        if (!empty($_POST['add_submit']))
+        {
+            if (!empty($_POST['no_anggota'])) // Allow a maximum of 50 characters
+            {
+				
+                //$idku = $_SESSION['id'];
+                //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
+				$no_katalog = $_POST['no_katalog'];
+				$aData = array('no_peminjaman'=> $_POST['no_peminjaman'], 'tanggal_kembali' => $_POST['tgl_kembali'], 'keterlambatan'=>$_POST['telat'], 'denda'=>$_POST['denda'], 'status' => 'kembali');
+                //$aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                if ($this->oModel->pengembalian($aData)){
+					$this->oModel->plusStok($no_katalog);
+                    $this->oUtil->sSuccMsg = 'Buku berhasil dikembalikan.';
+                    header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
+				}
+                else{
+                    $this->oUtil->sErrMsg = 'Buku gagal dikembalikan';
+				}
+            }
+            else
+            {
+                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+            }
+        }
+		$this->oUtil->oNIS = $this->oModel->getNIS();
+		$this->oUtil->oKatalog = $this->oModel->getKatalog();
+		$this->oUtil->oPesan = $this->oModel->getPeminjamanById($this->_iId);
+		$this->oUtil->oDenda = $this->oModel->getDenda();
+		
+		$this->oUtil->getView('form_pengembalian');
     }
     }
 	
@@ -173,12 +225,12 @@ class Transaksi
                 //$idku = $_SESSION['id'];
                 //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
 				$no_katalog = $_POST['no_katalog'];
-				$aData = array('no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali'],'status' => 'belum kembali');
+				$aData = array('no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali'],'status' => 'dipinjam');
                 //$aLog = array('id_admin' => $idku, 'activity' => $act );
 
                 if ($this->oModel->pinjamBaru($aData)){
 					$this->oModel->deletePesanan($this->_iId);
-					$this->oModel->updateStok($no_katalog);
+					$this->oModel->minusStok($no_katalog);
                     $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
                     header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
 				}
@@ -195,7 +247,6 @@ class Transaksi
         //get nis from database
 		$this->oUtil->oNIS = $this->oModel->getNIS();
 		$this->oUtil->oKatalog = $this->oModel->getKatalog();
-		//$this->oUtil->oPesan = $this->oModel->getPesananById($this->_iId);
 		
 		$this->oUtil->getView('add_pinjam');
     }
@@ -235,7 +286,7 @@ class Transaksi
             }
         }
 		
-		$this->oUtil->oPerpanjang = $this->oModel->getPerpanjangById($this->_iId);
+		$this->oUtil->oPerpanjang = $this->oModel->getPeminjamanById($this->_iId);
 		$this->oUtil->dataPerpanjang = $this->oModel->getPerpanjangan();
 		
 		$this->oUtil->getView('edit_pinjam');
