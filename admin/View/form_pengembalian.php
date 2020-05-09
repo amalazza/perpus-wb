@@ -63,6 +63,7 @@
                         <input class=" form-control" id="tgl_kembali" name="tgl_kembali" type="text" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d');?>" readonly="true"/>
                       </div>
                     </div>
+<<<<<<< HEAD
 					<div class="form-group ">
                       <label for="telat" class="control-label col-lg-2"> Keterlambatan <span class="required">*</span></label>
                       <div class="col-lg-10">
@@ -86,6 +87,26 @@
 					<?php else: ?>
 				  <?php endif; ?>
                   <?php endif; ?>
+=======
+					<?php date_default_timezone_set("Asia/Jakarta"); 
+					if ($this->oPesan->batas_kembali < date('Y-m-d')):?>
+					<div class="form-group ">
+                      <label for="denda" class="control-label col-lg-2">denda <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class=" form-control" value="belom bisa" id="denda" name="denda" type="text" readonly="true" />
+                      </div>
+                    </div>
+					<?php else: ?>
+					<div class="form-group ">
+                      <label for="denda" class="control-label col-lg-2">denda <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class=" form-control" value="0" id="denda" name="denda" type="text" readonly="true" />
+                      </div>
+                    </div>
+					<?php endif; ?>
+				  <?php endif; ?>
+                    
+>>>>>>> 0b4ebb6a38a03731a529150093d7d5a15a1a15c3
 					
                     <div class="form-group">
                       <div class="col-lg-offset-2 col-lg-10">

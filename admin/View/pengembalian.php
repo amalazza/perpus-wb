@@ -37,8 +37,11 @@
                 <th>Katalog</th>
 				<th>Tanggal Pinjam</th>
 				<th>Tanggal Kembali</th>
+<<<<<<< HEAD
 				<th>Keterlambatan</th>
 				<th>Denda</th>
+=======
+>>>>>>> 0b4ebb6a38a03731a529150093d7d5a15a1a15c3
               </tr>
               <?php foreach ($this->oKembali as $oKembali): ?>
               <tr>
@@ -46,9 +49,13 @@
                 <td><?=htmlspecialchars($oKembali->no_anggota)?> - <?=$oKembali->nama?></td>
 				<td><?=htmlspecialchars($oKembali->no_katalog)?> - <?=$oKembali->judul?></td>
 				<td><?=$oKembali->tanggal_pinjam?></td>
+<<<<<<< HEAD
 				<td><?=$oKembali->tanggal_kembali?></td>
 				<td><?=$oKembali->keterlambatan?></td>
 				<td><?=$oKembali->denda?></td>    				
+=======
+				<td><?=$oKembali->tanggal_kembali?></td>               
+>>>>>>> 0b4ebb6a38a03731a529150093d7d5a15a1a15c3
               </tr>
               <?php endforeach ?>
              
