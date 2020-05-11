@@ -66,9 +66,12 @@ class Buku
         $this->oUtil->getView('buku');
     }
 
-    public function detail()
+    public function detail()/**/
     {
         $this->oUtil->oBuku = $this->oModel->getById($this->_iId); // Get the data of the post
+        $aData = array('no_katalog' => $this->_iId, 'no_anggota' => $_SESSION['id']);
+        $this->oUtil->oStatus = $this->oModel->getStatus($aData); 
+
 
         $this->oUtil->getView('detail');
     }

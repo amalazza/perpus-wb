@@ -44,13 +44,26 @@
               </div>
               <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
                 <ul style="background-color: #1abc9c;">
-                  <li class="active">
+                <?php 
+                $str = $this->oStatus->status;
+                $stat2 = strcmp("kembali", $str);  ?>
+                <?php if (empty($str) || $stat2 == 0): ?>
+                  <?php echo "<li class='active'>
                     <h3>
-                      <i class="fa fa-bell fa-2x"> </i><br> 
-                      <input type="submit" name="pinjam" value="PINJAM" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;"/> 
+                      <i class='fa fa-bell fa-2x'> </i><br> 
+                      <input type='submit' name='pinjam' value='PINJAM' class='btn btn-primary' style='background-color: #2c3e50; color: white; border-color: white;'x/> 
                     </h3>
                     Kini, pinjam buku di Wira Buana bisa order dulu *SPRINT3
+                  </li>"; ?>
+                <?php else: ?>
+                  <li class="ctive" id="divpPanjang">
+                    <h3>
+                      <i class="fa fa-bell fa-2x"> </i><br> 
+                      <input type="submit" name="pPanjang" value="PERPANJANG" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=perpanjangan&amp;id=<?=$this->oBuku->no_katalog?>'"/> 
+                    </h3>
+                    Yuk, perpanjang waktu peminjamanmu, agar tidak terkena denda
                   </li>
+                <?php endif ?>   
 
                 </ul>
               </div>
@@ -143,17 +156,17 @@
 
 <script type="text/javascript">
 var jenis = document.getElementById("jenis_katalog").innerText
-	  
-	  //alert(jenis);
-	  
+    
+    //alert(jenis);
+    
     if( jenis == "Buku Fisik"){
       document.getElementById('ebookButton').style.display = "none";
-	   //alert(jenis);
+     //alert(jenis);
     }
-	else{
-		document.getElementById('ebook').style.display = "block";
-		//alert(jenis);
-	}
+  else{
+    document.getElementById('ebook').style.display = "block";
+    //alert(jenis);
+  }
 </script>
 
 <?php endif ?>
