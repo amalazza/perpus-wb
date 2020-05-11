@@ -1,146 +1,437 @@
 <?php
 
-namespace TestProject\Model;
+
+
+
+
+namespace TestProject\Controller;
+
+
+
+// require 'vendor/autoload.php';
+
+
 
 class Anggota extends Beranda
+
 {
-    public function login($no_anggota)
-    {
-        $oStmt = $this->oDb->prepare('SELECT no_anggota, password FROM Anggota WHERE no_anggota = :no_anggota LIMIT 1');
-        $oStmt->bindValue(':no_anggota', $no_anggota, \PDO::PARAM_STR);
-        $oStmt->execute();
-        $oRow = $oStmt->fetch(\PDO::FETCH_OBJ);
 
-        return @$oRow->password; // Use the PHP 5.5 password function
+
+
+    public function __construct()
+
+    {
+
+        // Enable PHP Session
+
+        if (empty($_SESSION))
+
+            @session_start();
+
+
+
+        $this->oUtil = new \TestProject\Engine\Util;
+
+
+
+        /** Get the Model class in all the controller class **/
+
+        $this->oUtil->getModel('Anggota');
+
+        $this->oModel = new \TestProject\Model\Anggota;
+
+
+
+        /** Get the Post ID in the constructor in order to avoid the duplication of the same code **/
+
+        $this->_iId = (int) (!empty($_GET['id']) ? $_GET['id'] : 0);
+
     }
 
-    public function ambil_nama($username)
-    {
-        $oStmt = $this->oDb->prepare('SELECT no_anggota,nama FROM anggota WHERE no_anggota = :no_anggota LIMIT 1');
-        $oStmt->bindValue(':no_anggota', $username, \PDO::PARAM_STR);
-        $oStmt->execute();
-        $oRow = $oStmt->fetch(\PDO::FETCH_OBJ);
 
-        return @$oRow->nama; // Use the PHP 5.5 password function
+
+    public function login()
+
+    {
+
+        if ($this->isLogged())
+
+            header('Location: ' . ROOT_URL . '?p=beranda&a=index');
+
+
+
+        if (isset($_POST['btnLoginku']))
+
+        {
+
+            
+
+            $u = $_POST['no_anggota'];
+
+            $p = $_POST['password'];
+
+            $p_crypt = sha1($p);
+
+
+
+            $sHashPassword =  $this->oModel->login($u);
+
+            $idku = $_POST['no_anggota'];
+
+            $namaku = $this->oModel->ambil_nama($u);
+
+            $kelasku = $this->oModel->ambil_kelas($u);
+
+
+
+            $compare = strcmp($p_crypt, $sHashPassword);
+
+
+
+            if ($compare == 0)
+
+            {   
+
+                $_SESSION['is_logged'] = 1; // Master Admin is logged now
+
+                $_SESSION['id'] = $idku;
+
+                $_SESSION['nama'] = $namaku;
+
+                $_SESSION['kelas'] = $kelasku;
+
+                header('Location: ' . ROOT_URL . '?p=beranda&a=index');
+
+                exit;
+
+            }          
+
+            else
+
+            {
+
+                $this->oUtil->sErrMsg = 'Incorrect Login!';
+
+            }
+
+        }
+
+
+
+        $this->oUtil->getView('login');
+
     }
 
-    public function ambil_kelas($username)
-    {
-        $oStmt = $this->oDb->prepare('SELECT no_anggota,kelas FROM anggota WHERE no_anggota = :no_anggota LIMIT 1');
-        $oStmt->bindValue(':no_anggota', $username, \PDO::PARAM_STR);
-        $oStmt->execute();
-        $oRow = $oStmt->fetch(\PDO::FETCH_OBJ);
-
-        return @$oRow->kelas; // Use the PHP 5.5 password function
-    }
-
-    public function add(array $aData)
-    {
-        $oStmt = $this->oDb->prepare('INSERT INTO anggota (no_anggota, nama, kelas, alamat, no_telpon, email, password, foto) VALUES(:no_anggota, :nama, :kelas, :alamat, :no_telpon, :email, :password, :foto)');
-        return $oStmt->execute($aData);
-    }
-
-    public function get($iOffset, $iLimit)
-    {
-        $oStmt = $this->oDb->prepare('SELECT * FROM anggota');
-        $oStmt->bindParam(':offset', $iOffset, \PDO::PARAM_INT);
-        $oStmt->bindParam(':limit', $iLimit, \PDO::PARAM_INT);
-        $oStmt->execute();
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-    }
-
-	public function getById($iId)
-    {
-        $oStmt = $this->oDb->prepare('SELECT * FROM anggota WHERE no_anggota = :no_anggota LIMIT 1');
-        $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
-        $oStmt->execute();
-        return $oStmt->fetch(\PDO::FETCH_OBJ);
-    }
-
-    public function getPemesananById($iId)
-    {
-        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE status = "dipesan" and p.no_anggota = :no_anggota');
-        $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
-        $oStmt->execute();
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-    }
-
-    public function getPeminjamanById($iId)
-    {
-        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota INNER JOIN klasifikasi KL ON KL.no_klasifikasi = K.no_klasifikasi INNER JOIN koleksi KO ON KO.no_koleksi = K.no_koleksi WHERE status="dipinjam" and p.no_anggota = :no_anggota');
-        $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
-        $oStmt->execute();
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-    }
-
-    public function getRiwayatById($iId)
-    {
-        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE status="kembali" and p.no_anggota = :no_anggota');
-        $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
-        $oStmt->execute();
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-    }
-
-            public function getAllBuku()
-    {
-        $oStmt = $this->oDb->query('SELECT K.no_katalog,K.no_klasifikasi, KL.nama_klasifikasi, K.no_koleksi, KO.jenis_koleksi, K.jenis_katalog, K.judul, K.pengarang, K.penerbit, K.kota_terbit, K.tahun_terbit, K.isbn, K.lokasi, K.absktrak, K.tanggal_masuk, K.e_book, K.cover, K.stok from katalog K INNER JOIN klasifikasi KL ON KL.no_klasifikasi = K.no_klasifikasi INNER JOIN koleksi KO ON KO.no_koleksi = K.no_koleksi WHERE jenis_katalog = "Buku Fisik" OR jenis_katalog = "Buku Fisik dan E-Book" ORDER BY judul ASC');
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-    }
-
-    public function getAllj()
-    {
-        $oStmt = $this->oDb->query('SELECT K.no_katalog,K.no_klasifikasi, KL.nama_klasifikasi, K.no_koleksi, KO.jenis_koleksi, K.jenis_katalog, K.judul, K.pengarang, K.penerbit, K.kota_terbit, K.tahun_terbit, K.isbn, K.lokasi, K.absktrak, K.tanggal_masuk, K.e_book, K.cover, K.stok from katalog K INNER JOIN klasifikasi KL ON KL.no_klasifikasi = K.no_klasifikasi INNER JOIN koleksi KO ON KO.no_koleksi = K.no_koleksi ORDER BY judul ASC');
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-    }
-
-    public function getTahun()
-    {
-        $oStmt = $this->oDb->query('SELECT * FROM tahunterbit ORDER BY thn_terbit DESC');
-        $oStmt->execute();
-
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-    }
-
-    public function getJenis()
-    {
-        $oStmt = $this->oDb->query('SELECT * FROM klasifikasi ORDER BY nama_klasifikasi ASC');
-        $oStmt->execute();
-
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-    }
-
-    public function getKoleksi()
-    {
-        $oStmt = $this->oDb->query('SELECT * FROM koleksi ORDER BY jenis_koleksi ASC');
-        $oStmt->execute();
-
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-    }
 	
-	public function update(array $aData)
+
+	public function my_profile()
+
     {
-        $oStmt = $this->oDb->prepare('UPDATE anggota SET nama = :nama, kelas = :kelas, no_telpon = :no_telpon, email = :email, alamat = :alamat, password = :password, foto = :foto WHERE no_anggota = :no_anggota LIMIT 1');
-        $oStmt->bindValue(':nama', $aData['nama']);
-		$oStmt->bindValue(':kelas', $aData['kelas']);
-        $oStmt->bindValue(':no_telpon', $aData['no_telpon']);
-        $oStmt->bindValue(':email', $aData['email']);
-        $oStmt->bindValue(':alamat', $aData['alamat']);
-		$oStmt->bindValue(':password', $aData['password']);
-        $oStmt->bindValue(':foto', $aData['foto']);
-        $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
-        return $oStmt->execute($aData);
+
+        if (!$this->isLogged())
+
+        {
+
+           header('Location: ' . ROOT_URL);
+
+           exit; 
+
+        }
+
+        else{
+
+
+
+        $this->oUtil->oAdd_Admins = $this->oModel->getById($_SESSION['id']);
+
+        $this->oUtil->oAlog = $this->oModel->getaLog($_SESSION['id']);
+
+
+
+        $this->oUtil->getView('profile_admin');
+
     }
+
+    }
+
+    
+
+    public function logout()
+
+    {
+
+        if (!$this->isLogged())
+
+            exit;
+
+
+
+        // If there is a session, destroy it to disconnect the admin
+
+        if (!empty($_SESSION))
+
+        {
+
+            $_SESSION = array();
+
+            session_unset();
+
+            session_destroy();
+
+        }
+
+
+
+        // Redirect to the homepage
+
+        header('Location: ' . ROOT_URL);
+
+        exit;
+
+    }
+
+
+
+
+
+    public function daftar()
+
+    {
+
+        // if (!$this->isLogged()) exit;
+
+
+
+        if (!empty($_POST['add_submit']))
+
+        {
+
+            if (isset($_POST['no_anggota']) <= 15) // Allow a maximum of 50 characters
+
+            {
+
+                $pass = $_POST['password'];
+
+                $p_crypt = sha1($pass);
+
+                $aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' =>$p_crypt ,'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
+
+
+
+                if ($this->oModel->add($aData))
+
+                     header('Location: ' . ROOT_URL  . '?p=anggota&a=login');
+
+                else
+
+                    $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+
+            }
+
+            else
+
+            {
+
+                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+
+            }
+
+        }
+
+
+
+        //get nis from database
+
+        // $this->oUtil->oNIS = $this->oModel->getNIS();
+
+        
+
+        $this->oUtil->getView('add_anggota');
+
+    }
+
+
+
+        // Homepage
+
+    public function profile()
+
+    {
+
+        if (!$this->isLogged())
+
+        {
+
+           header('Location: ' . ROOT_URL);
+
+           exit; 
+
+        }
+
+        else{
+
+
+
+        $this->oUtil->oAnggota = $this->oModel->getById($_SESSION['id']);
+
+        $this->oUtil->oPesan = $this->oModel->getPemesananById($_SESSION['id']);
+
+        $this->oUtil->oPinjam = $this->oModel->getPeminjamanById($_SESSION['id']);
+
+        $this->oUtil->oRiwayat = $this->oModel->getRiwayatById($_SESSION['id']);
+
+
+
+        $this->oUtil->oBuku = $this->oModel->getAllBuku(0, self::MAX_POSTS);
+
+        $this->oUtil->oTahun = $this->oModel->getTahun();
+
+        $this->oUtil->oJenis = $this->oModel->getJenis();
+
+        $this->oUtil->oKoleksi = $this->oModel->getKoleksi();
+
+
+
+        $this->oUtil->getView('profile');
+
+
+
+    }
+
+	}
+
+
+
+    // public function buku()
+
+    // {
+
+    //     $this->oUtil->oAnggota = $this->oModel->getBukuById($this->_iId); // Get the data of the post
+
+
+
+    //     $this->oUtil->getView('profile');
+
+    // }
+
 	
-	public function updateNoPic(array $aData)
+
+	public function edit()
+
     {
-        $oStmt = $this->oDb->prepare('UPDATE anggota SET nama = :nama, kelas = :kelas, no_telpon = :no_telpon, email = :email, alamat = :alamat, password = :password WHERE no_anggota = :no_anggota LIMIT 1');
-        $oStmt->bindValue(':nama', $aData['nama']);
-		$oStmt->bindValue(':kelas', $aData['kelas']);
-        $oStmt->bindValue(':no_telpon', $aData['no_telpon']);
-        $oStmt->bindValue(':email', $aData['email']);
-        $oStmt->bindValue(':alamat', $aData['alamat']);
-		$oStmt->bindValue(':password', $aData['password']);
-        $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
-        return $oStmt->execute($aData);
+
+        if (!$this->isLogged()) exit;
+
+
+
+        if (!empty($_POST['edit_submit']))
+
+        {
+
+				
+
+				$pass = $_POST['password'];
+
+				$oldPass = $_POST['Opassword'];
+
+				$compare = strcmp($pass, $oldPass);
+
+				
+
+				if(!empty($_FILES['foto']['tmp_name'])){
+
+					if ($compare == 0) {
+
+						$aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => $oldPass,'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
+
+
+
+						if ($this->oModel->update($aData)){
+
+						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+
+						header("Refresh: 3; URL=?p=anggota&a=profile");}
+
+						else{
+
+						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+
+					}
+
+					else{
+
+						$aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => sha1($pass),'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
+
+
+
+						if ($this->oModel->update($aData)){
+
+						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+
+						header("Refresh: 3; URL=?p=anggota&a=profile");}
+
+						else{
+
+						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+
+					}
+
+				}
+
+				else{
+
+					if ($compare == 0) {
+
+						$aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => $oldPass);
+
+
+
+						if ($this->oModel->updateNoPic($aData)){
+
+						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+
+						header("Refresh: 3; URL=?p=anggota&a=profile");}
+
+						else{
+
+						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+
+					}
+
+					else{
+
+						$aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => sha1($pass));
+
+
+
+						if ($this->oModel->updateNoPic($aData)){
+
+						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+
+						header("Refresh: 3; URL=?p=anggota&a=profile");}
+
+						else{
+
+						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+
+					}
+
+				}
+
+            
+
+        }
+
+
+
+        // Get the data of the post 
+
+        $this->oUtil->oAnggota = $this->oModel->getById($this->_iId);
+
+
+
+        $this->oUtil->getView('edit_anggota');
+
     }
+
 }

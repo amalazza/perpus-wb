@@ -59,7 +59,7 @@ class Anggota extends Beranda
 
     public function getPemesananById($iId)
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM pemesanan_buku p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE p.no_anggota = :no_anggota');
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE p.status = "dipesan" and p.no_anggota = :no_anggota');
         $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
@@ -67,7 +67,7 @@ class Anggota extends Beranda
 
     public function getPeminjamanById($iId)
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota INNER JOIN klasifikasi KL ON KL.no_klasifikasi = K.no_klasifikasi INNER JOIN koleksi KO ON KO.no_koleksi = K.no_koleksi WHERE p.no_anggota = :no_anggota');
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota INNER JOIN klasifikasi KL ON KL.no_klasifikasi = K.no_klasifikasi INNER JOIN koleksi KO ON KO.no_koleksi = K.no_koleksi WHERE p.status="dipinjam" and p.no_anggota = :no_anggota');
         $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
@@ -75,7 +75,7 @@ class Anggota extends Beranda
 
     public function getRiwayatById($iId)
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE p.tanggal_kembali != 0000-00-00 and p.no_anggota = :no_anggota');
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE p.status="kembali" and p.no_anggota = :no_anggota');
         $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
