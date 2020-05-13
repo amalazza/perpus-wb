@@ -95,6 +95,36 @@ class Transaksi
     }
     }
 	
+	public function infoPerpanjangan()
+    {
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+		
+        $this->oUtil->oPerpanjangan = $this->oModel->getInfoPerpanjangan(0, self::MAX_POSTS); // Get only the latest X posts
+
+        $this->oUtil->getView('perpanjangan');
+    }
+    }
+	
+	public function infoDenda()
+    {
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+		
+        $this->oUtil->oDenda = $this->oModel->getInfoDenda(0, self::MAX_POSTS); // Get only the latest X posts
+
+        $this->oUtil->getView('denda');
+    }
+    }
+	
 	public function tblPengembalian()
     {
         if (!$this->isLogged())
@@ -292,7 +322,83 @@ class Transaksi
     }
     }
 
-    
+    public function editPerpanjangan()
+    {
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+
+        if (!empty($_POST['add_submit']))
+        {
+            if (!empty($_POST['id_perpanjangan'])) // Allow a maximum of 50 characters
+            {
+				
+                //$idku = $_SESSION['id'];
+                //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
+				$aData = array('id_perpanjangan' => $_POST['id_perpanjangan'], 'hari' => $_POST['hari'], 'batas' => $_POST['batas']);
+                //$aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                if ($this->oModel->editPerpanjangan($aData)){
+                    $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
+                    header("Refresh: 3; URL=?p=transaksi&a=infoPerpanjangan");
+				}
+                else{
+                    $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+				}
+            }
+            else
+            {
+                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+            }
+        }
+		
+		$this->oUtil->oPerpanjangan = $this->oModel->getInfoPerpanjanganById($this->_iId);
+		
+		$this->oUtil->getView('edit_perpanjangan');
+    }
+    }
+	
+	public function editDenda()
+    {
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+
+        if (!empty($_POST['add_submit']))
+        {
+            if (!empty($_POST['id_denda'])) // Allow a maximum of 50 characters
+            {
+				
+                //$idku = $_SESSION['id'];
+                //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
+				$aData = array('id_denda' => $_POST['id_denda'], 'denda_per_hari' => $_POST['denda_per_hari'], 'denda_maks' => $_POST['denda_maks']);
+                //$aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                if ($this->oModel->editDenda($aData)){
+                    $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
+                    header("Refresh: 3; URL=?p=transaksi&a=infoDenda");
+				}
+                else{
+                    $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+				}
+            }
+            else
+            {
+                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+            }
+        }
+		
+		$this->oUtil->oDenda = $this->oModel->getInfoDendaById($this->_iId);
+		
+		$this->oUtil->getView('edit_denda');
+    }
+    }
 
     public function delete()
     {

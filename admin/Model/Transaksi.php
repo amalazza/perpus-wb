@@ -20,7 +20,37 @@ class Transaksi
 	
 	public function getDenda()
     {
-        $oStmt = $this->oDb->query('SELECT * FROM denda');
+        $oStmt = $this->oDb->prepare('SELECT * FROM denda LIMIT 1');
+		$oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+	
+	public function getInfoDenda()
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM denda');
+		$oStmt->execute();
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+	
+	public function getInfoDendaById($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM denda WHERE id_denda = :id_denda LIMIT 1');
+        $oStmt->bindParam(':id_denda', $iId, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+	
+	public function getInfoPerpanjangan()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM perpanjangan');
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+	
+	public function getInfoPerpanjanganById($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM perpanjangan WHERE id_perpanjangan = :id_perpanjangan LIMIT 1');
+        $oStmt->bindParam(':id_perpanjangan', $iId, \PDO::PARAM_INT);
+        $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
 	
@@ -132,6 +162,22 @@ class Transaksi
 		$oStmt = $this->oDb->prepare('UPDATE peminjaman SET batas_kembali = :batas_kembali, perpanjangan_ke = perpanjangan_ke + 1 WHERE no_peminjaman = :no_peminjaman LIMIT 1');
 		$oStmt->bindValue(':no_peminjaman', $aData['no_peminjaman'], \PDO::PARAM_INT);
 		$oStmt->bindValue(':batas_kembali', $aData['batas_kembali']);
+		return $oStmt->execute();
+	}
+	
+	public function editPerpanjangan(array $aData){
+		$oStmt = $this->oDb->prepare('UPDATE perpanjangan SET hari = :hari, batas = :batas WHERE id_perpanjangan = :id_perpanjangan');
+		$oStmt->bindValue(':id_perpanjangan', $aData['id_perpanjangan'], \PDO::PARAM_INT);
+		$oStmt->bindValue(':hari', $aData['hari']);
+		$oStmt->bindValue(':batas', $aData['batas']);
+		return $oStmt->execute();
+	}
+	
+	public function editDenda(array $aData){
+		$oStmt = $this->oDb->prepare('UPDATE denda SET denda_per_hari = :denda_per_hari, denda_maks = :denda_maks WHERE id_denda = :id_denda');
+		$oStmt->bindValue(':id_denda', $aData['id_denda'], \PDO::PARAM_INT);
+		$oStmt->bindValue(':denda_per_hari', $aData['denda_per_hari']);
+		$oStmt->bindValue(':denda_maks', $aData['denda_maks']);
 		return $oStmt->execute();
 	}
 	

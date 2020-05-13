@@ -144,6 +144,8 @@
 			  <li><a class="" href="<?=ROOT_URL?>?p=transaksi&amp;a=pemesanan">Pemesanan</a></li>
               <li><a class="" href="<?=ROOT_URL?>?p=transaksi&amp;a=peminjaman">Peminjaman</a></li>
               <li><a class="" href="<?=ROOT_URL?>?p=transaksi&amp;a=tblPengembalian"><span>Pengembalian</span></a></li>
+			  <li><a class="" href="<?=ROOT_URL?>?p=transaksi&amp;a=infoPerpanjangan"><span>Info Perpanjangan</span></a></li>
+			  <li><a class="" href="<?=ROOT_URL?>?p=transaksi&amp;a=infoDenda"><span>Info Denda</span></a></li>
             </ul>
           </li>
           
