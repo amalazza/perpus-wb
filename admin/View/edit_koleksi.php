@@ -24,14 +24,14 @@
               </header>
               <div class="panel-body">
                 <div class="form">
-        <?php if (empty($this->oKoleksiE)): ?>
+        <?php if (empty($this->oKoleksi)): ?>
           <p class="error">Post Data Not Found!</p>
         <?php else: ?>
                   <form class="form-validate form-horizontal " enctype="multipart/form-data" role="form" method="post" action="">
                     <div class="form-group ">
                       <label for="no_koleksi" class="control-label col-lg-2">No Koleksi <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="no_koleksi" name="jenis_koleksi" type="text" value="<?=$this->oKoleksiE->no_koleksi?>" readonly="true"/>
+                        <input class=" form-control" id="no_koleksi" name="no_koleksi" type="text" value="<?=$this->oKoleksi->no_koleksi?>" readonly="true"/>
                       </div>
                     </div>
 
@@ -40,7 +40,7 @@
           <div class="form-group ">
                       <label for="judul" class="control-label col-lg-2">Jenis Koleksi <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="jenis_koleksi" name="jenis_koleksi" type="text" value="<?=$this->oKoleksiE->jenis_koleksi?>"/>
+                        <input class=" form-control" id="jenis_koleksi" name="jenis_koleksi" type="text" value="<?=$this->oKoleksi->jenis_koleksi?>"/>
                       </div>
                     </div>
                     

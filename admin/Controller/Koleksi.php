@@ -183,7 +183,7 @@ class Koleksi
                 $aData = array('no_koleksi' => $_POST['no_koleksi'], 'jenis_koleksi' => $_POST['jenis_koleksi']);
 
                 if ($this->oModel->update($aData)){
-                    echo '<div class="alert alert-success">Data kolekso berhasil diedit.</div>';
+                    echo '<div class="alert alert-success">Data koleksi berhasil diedit.</div>';
                     header("Refresh: 3; URL=?p=koleksi&a=koleksi");
                 }
                 else{
@@ -198,11 +198,6 @@ class Koleksi
 
         // Get the data of the post 
         $this->oUtil->oKoleksi= $this->oModel->getAllById($this->_iId);
-        //get klasifikasi id from database
-        // $this->oUtil->oKlasifikasi = $this->oModel->getKlasifikasi();
-        
-        //get koleksi id from database
-        $this->oUtil->oKoleksi = $this->oModel->getKoleksi();
 
         $this->oUtil->getView('edit_koleksi');
     } 
@@ -221,7 +216,7 @@ class Koleksi
 			header('Location: ' . ROOT_URL . '?p=koleksi&a=koleksi');
 		}
         else{
-			exit('Data koleksi tidak bisa dihapus.');	
+			//exit('Data koleksi tidak bisa dihapus.');	
 		}
     }
     }
