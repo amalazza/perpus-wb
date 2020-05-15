@@ -7,6 +7,7 @@ require 'vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Reader\Csv;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+use Exception;
 
 //$file_mimes = array('application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 
@@ -218,9 +219,15 @@ class Klasifikasi
            exit; 
         }
         else{
-
-        if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId)){
-			header('Location: ' . ROOT_URL . '?p=klasifikasi&a=klasifikasi');
+        if (!empty($_POST['delete'])){
+			try{
+				$this->oModel->delete($this->_iId);
+				header('Location: ' . ROOT_URL . '?p=klasifikasi&a=klasifikasi');
+			}
+			catch(Exception $e){
+				echo "<script type='text/javascript'>alert('Maaf, data tidak dapat dihapus karena terdapat data pada katalog'); window.history.back();</script>";
+				//header('Location: ' . ROOT_URL . '?p=klasifikasi&a=klasifikasi');
+			}
 		}
         else{
 			exit('klasifikasi tidak bisa dihapus.');	
