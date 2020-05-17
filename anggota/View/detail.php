@@ -34,7 +34,7 @@
               </h4>
             </div>
             
-            <div class="col-lg">
+<!--             <div class="col-lg">
               <div class="col-lg-2 col-sm-6 follow-info weather-category">
                 <div class="follow-info">
                     <h2 style="text-align: right; padding-right: 5%;">
@@ -64,6 +64,39 @@
                     Yuk, perpanjang waktu peminjamanmu, agar tidak terkena denda
                   </li>
                 <?php endif ?>   
+
+                </ul>
+              </div>
+              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="ebookButton">
+                <ul style="background-color: #1abc9c;">
+                  <li class="active">
+                    <h3>
+                      <i class="fa fa-bell fa-2x"> </i><br> 
+                      <input type="submit" name="pinjam" value="BACA" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=view&amp;id=<?=$this->oBuku->no_katalog?>'"/> 
+                    </h3>
+                    Buku-buku elektronik yang bisa dibaca dimana dan kapan saja
+                  </li>
+                </ul>
+              </div>
+            </div> -->
+
+            <div class="col-lg">
+              <div class="col-lg-2 col-sm-6 follow-info weather-category">
+                <div class="follow-info">
+                    <h2 style="text-align: right; padding-right: 5%;">
+                      INGIN MELIHAT LEBIH JAUH?
+                    </h2>
+                </div>
+              </div>
+              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
+                <ul style="background-color: #1abc9c;">
+                  <li class="active">
+                    <h3>
+                      <i class="fa fa-bell fa-2x"> </i><br> 
+                      <input type="submit" name="pinjam" value="PINJAM" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;"/> 
+                    </h3>
+                    Kini, pinjam buku di Wira Buana bisa order dulu *SPRINT3
+                  </li>
 
                 </ul>
               </div>

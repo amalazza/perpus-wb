@@ -2,7 +2,7 @@
 <?php require 'inc/msg.php' ?>
 <!--main content start-->
 <section id="main-content">
-  <section class="wrapper">
+  <section class="wrapper" style="margin-top: 0px;">
     <div class="row">
       <div class="col-lg-12">
         <h3 class="page-header"><i class="fa fa fa-bars"></i> Page Katalog</h3>
@@ -18,10 +18,10 @@
       <div class="col-sm-12">
         <section class="panel">
           <header class="panel-heading">
-            Buku Baru
+            Katalog Baru
           </header>
           <div class="panel-body">
-            <button type="button" onclick="window.location='<?=ROOT_URL?>?p=katalog&amp;a=add'" class="btn btn-primary">Tambah Buku Baru</button>
+            <button type="button" onclick="window.location='<?=ROOT_URL?>?p=katalog&amp;a=add'" class="btn btn-primary">Tambah Katalog Baru</button>
           </div>
       </section>
      </div>

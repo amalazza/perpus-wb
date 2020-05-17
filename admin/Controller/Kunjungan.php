@@ -168,10 +168,15 @@ class Kunjungan
         }
         else{
 
-            if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId))
-                header('Location: ' . ROOT_URL . '?p=kunjungan&a=kunjungan');
+            if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId)){
+                echo '<div class="alert alert-success">Data kunjungan berhasil dihapus.</div>';
+                header("Refresh: 3; URL=?p=kunjungan&a=kunjungan");
+                // header('Location: ' . ROOT_URL . '?p=kunjungan&a=kunjungan');
+            }
             else
+            {
                 exit('Kunjungan tidak bisa dihapus.');
+            }
     }
     }
 
