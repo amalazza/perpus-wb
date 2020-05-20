@@ -49,7 +49,7 @@ if (empty($this->oAnggota)): ?>
                 <li class="active">
                   <h3>
                     <i class="fa fa-user fa-2x"> </i><br> 
-                    <input type="submit" name="detail" value="DETAIL" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;" /> 
+					<button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#detailAnggota" onclick="tes()" style="background-color: #2c3e50; color: white; border-color: white;">DETAIL</button>
                   </h3>
                   Lihat Detail Profile
                 </li>
@@ -410,9 +410,63 @@ if (empty($this->oAnggota)): ?>
             </section>
           </div>
         </div>
+		</div>
+		</div>
+		</div>
 
+<!--MODAL BOX DETAIL PROFILE-->
+<div id="detailAnggota" class="modal fade" role="dialog">
+	  <div class="modal-dialog" style="left:auto;">
 
-  <script>
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-header">
+		  <h4 class="modal-title-centered" >Detail Anggota</h4>
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			
+		  </div>
+		  <div class="modal-body">
+		  <div id="foto"></div>
+			<table class="table table-striped table-advance table-hover">
+				<tbody>
+					<tr>
+						<th>NIS</th>
+						<td><span id="nis"></span></td>
+					</tr>
+					<tr>
+						<th>Nama</th>
+						<td><span id="nama"></span></td>
+					</tr>
+					<tr>
+						<th>Kelas</th>
+						<td><span id="kelas"></span></td>
+					</tr>
+					<tr>
+						<th>Alamat</th>
+						<td><span id="alamat"></span></td>
+					</tr>
+					<tr>
+						<th>No telepon</th>
+						<td><span id="no_telpon"></span></td>
+					</tr>
+					<tr>
+						<th>Email</th>
+						<td><span id="email"></span></td>
+					</tr>
+				</tbody>
+			</table>
+                    
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+
+	  </div>
+	</div> 
+	
+	
+  <script type="text/javascript">
   filterSelection("all")
   function filterSelection(c) {
     var x, i;
@@ -458,6 +512,26 @@ if (empty($this->oAnggota)): ?>
     });
   }
 
+  //DETAIL PROFILE
+	function tes(){
+	const id = <?php echo $_SESSION['id']?>;
+	$.ajax({
+			  url: 'http://localhost/perpus-wb/anggota/?p=anggota&a=detailProfile',
+			  data: {id:id},
+			  method:'post',
+			  dataType: 'json'
+		  }).done(function(Data){
+			  //console.log(Data.nama);
+			  $('#nis').text(Data.no_anggota); 
+			  $('#nama').text(Data.nama);
+			  $('#kelas').text(Data.kelas); 
+			  $('#alamat').text(Data.alamat);
+			  $('#no_telpon').text(Data.no_telpon); 
+			  $('#email').text(Data.email);
+			   
+			  
+		  });
+	};
   </script>
 
 <?php require 'inc/footer.php' ?>

@@ -299,6 +299,12 @@ class Anggota extends Beranda
     }
 
 	}
+	
+	public function detailProfile()
+    {
+        
+			echo json_encode($this->oUtil->oData = $this->oModel->getDetailById($_POST['id']));
+    }
 
 
 
