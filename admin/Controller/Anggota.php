@@ -103,9 +103,13 @@ class Anggota
 			{
 				$nis = $sheetData[$i]['0'];
 				$nama = $sheetData[$i]['1'];
-				$kelas = $sheetData[$i]['2'];
+				$jurusan = $sheetData[$i]['2'];
+				$inisial_jurusan = $sheetData[$i]['3'];
+				$tahun = $sheetData[$i]['4'];
+				$kelas = $sheetData[$i]['5'];
+				$unit = $sheetData[$i]['6'];
 				
-				$sData = array('nis' => $nis, 'nama' => $nama, 'kelas' => $kelas);
+				$sData = array('nis' => $nis, 'nama' => $nama, 'jurusan' => $jurusan, 'inisial_jurusan' => $inisial_jurusan, 'tahun' => $tahun, 'kelas' => $kelas, 'unit' => $unit);
 				if ($this->oModel->addSiswa($sData)){
                  $this->oUtil->sSuccMsg = 'Data siswa berhasil ditambahkan.';
                     header("Refresh: 3; URL=?p=anggota&a=anggota");}

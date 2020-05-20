@@ -33,52 +33,6 @@
                 <i class="icon_star"></i>  3,5 <span>/5 Penilaian</span> *SPRINT3
               </h4>
             </div>
-            
-<!--             <div class="col-lg">
-              <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                <div class="follow-info">
-                    <h2 style="text-align: right; padding-right: 5%;">
-                      INGIN MELIHAT LEBIH JAUH?
-                    </h2>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
-                <ul style="background-color: #1abc9c;">
-                <?php 
-                $str = $this->oStatus->status;
-                $stat2 = strcmp("kembali", $str);  ?>
-                <?php if (empty($str) || $stat2 == 0): ?>
-                  <?php echo "<li class='active'>
-                    <h3>
-                      <i class='fa fa-bell fa-2x'> </i><br> 
-                      <input type='submit' name='pinjam' value='PINJAM' class='btn btn-primary' style='background-color: #2c3e50; color: white; border-color: white;'x/> 
-                    </h3>
-                    Kini, pinjam buku di Wira Buana bisa order dulu *SPRINT3
-                  </li>"; ?>
-                <?php else: ?>
-                  <li class="ctive" id="divpPanjang">
-                    <h3>
-                      <i class="fa fa-bell fa-2x"> </i><br> 
-                      <input type="submit" name="pPanjang" value="PERPANJANG" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=perpanjangan&amp;id=<?=$this->oBuku->no_katalog?>'"/> 
-                    </h3>
-                    Yuk, perpanjang waktu peminjamanmu, agar tidak terkena denda
-                  </li>
-                <?php endif ?>   
-
-                </ul>
-              </div>
-              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="ebookButton">
-                <ul style="background-color: #1abc9c;">
-                  <li class="active">
-                    <h3>
-                      <i class="fa fa-bell fa-2x"> </i><br> 
-                      <input type="submit" name="pinjam" value="BACA" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=view&amp;id=<?=$this->oBuku->no_katalog?>'"/> 
-                    </h3>
-                    Buku-buku elektronik yang bisa dibaca dimana dan kapan saja
-                  </li>
-                </ul>
-              </div>
-            </div> -->
 
             <div class="col-lg">
               <div class="col-lg-2 col-sm-6 follow-info weather-category">
@@ -88,18 +42,68 @@
                     </h2>
                 </div>
               </div>
-              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
+			  <?php if (empty($this->oStatus)): ?>
+			  <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
                 <ul style="background-color: #1abc9c;">
                   <li class="active">
                     <h3>
                       <i class="fa fa-bell fa-2x"> </i><br> 
                       <input type="submit" name="pinjam" value="PINJAM" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;"/> 
                     </h3>
-                    Kini, pinjam buku di Wira Buana bisa order dulu *SPRINT3
+                    Kini, pinjam buku di Wira Buana bisa order dulu
                   </li>
 
                 </ul>
               </div>
+			  <?php else: ?>
+			  <?php if($this->oStatus->status == "dipinjam"): ?>
+			  <?php if (empty($this->dataPerpanjang)): ?>
+				<?php else: ?>
+					<?php if ($this->oStatus->perpanjangan_ke < $this->dataPerpanjang->batas): ?>
+			  <div class="col-lg-2 col-sm-6 follow-info weather-category" id="perpanjang">
+                <ul style="background-color: #1abc9c;">
+                  <li class="active">
+                    <h3>
+                      <i class="fa fa-bell fa-2x"> </i><br> 
+                      <input type="submit" name="perpanjangan" value="PERPANJANGAN" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;"/> 
+                    </h3>
+                    Yuk, perpanjang waktu peminjamanmu, agar tidak terkena denda
+                  </li>
+
+                </ul>
+              </div>
+			  <?php else: ?>
+			  <div class="col-lg-2 col-sm-6 follow-info weather-category" id="perpanjang">
+                <ul style="background-color: #1abc9c;">
+                  <li class="active">
+                    <h3>
+                      <i class="fa fa-bell fa-2x"> </i><br> 
+                       <button class="btn btn-primary" type="submit" name="edit" value="1" style="background-color: #2c3e50; color: white; border-color: white;" disabled>Perpanjangan</button>
+                    </h3>
+                    Kamu sudah melakukan perpanjangan sebanyak <?= $this->dataPerpanjang->batas?> kali. 
+                  </li>
+
+                </ul>
+              </div>
+			  <?php endif ?>
+			  <?php endif ?>
+			  <?php else: ?>
+			  <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
+                <ul style="background-color: #1abc9c;">
+                  <li class="active">
+                    <h3>
+                      <i class="fa fa-bell fa-2x"> </i><br> 
+                      <input type="submit" name="pinjam" value="PINJAM" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;"/> 
+                    </h3>
+                    Kini, pinjam buku di Wira Buana bisa order dulu
+                  </li>
+
+                </ul>
+              </div>
+			  <?php endif; ?>
+			  <?php endif; ?>
+              
+			  
               <div class="col-lg-2 col-sm-6 follow-info weather-category" id="ebookButton">
                 <ul style="background-color: #1abc9c;">
                   <li class="active">
@@ -194,11 +198,16 @@ var jenis = document.getElementById("jenis_katalog").innerText
     
     if( jenis == "Buku Fisik"){
       document.getElementById('ebookButton').style.display = "none";
+	  document.getElementById('fisik').style.display = "block";
      //alert(jenis);
     }
-  else{
-    document.getElementById('ebook').style.display = "block";
+  if(jenis == "E-Book"){
+    document.getElementById('ebookButton').style.display = "block";
+	document.getElementById('fisik').style.display = "none";
     //alert(jenis);
+  }
+  else{
+	  
   }
 </script>
 
