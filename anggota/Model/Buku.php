@@ -72,8 +72,8 @@ class Buku
     }
     public function getStatus(array $aData)/**/
     {
-        $oStmt = $this->oDb->prepare('SELECT status FROM peminjaman WHERE no_katalog = :no_katalog AND no_anggota = :no_anggota');
-        $oStmt->bindValue(':no_katalog', $aData['no_katalog']);
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman WHERE no_katalog = :no_katalog AND no_anggota = :no_anggota');
+        $oStmt->bindParam(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
         $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
@@ -81,7 +81,6 @@ class Buku
     public function getBatas()
     {
         $oStmt = $this->oDb->query('SELECT * FROM perpanjangan');
-        $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
     public function up(array $aData)

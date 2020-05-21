@@ -56,6 +56,14 @@ class Anggota extends Beranda
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
+	
+	public function getDetailById($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT no_anggota, nama, kelas, alamat, no_telpon, email FROM anggota WHERE no_anggota = :no_anggota LIMIT 1');
+        $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
 
     public function getPemesananById($iId)
     {

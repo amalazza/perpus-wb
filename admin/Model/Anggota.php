@@ -52,7 +52,7 @@ class Anggota
 	
 	public function addSiswa(array $sData)
     {
-        $oStmt = $this->oDb->prepare('REPLACE INTO siswa (nis,nama,kelas) VALUES(:nis, :nama, :kelas)');
+        $oStmt = $this->oDb->prepare('REPLACE INTO siswa (nis,nama, jurusan, inisial_jurusan, tahun, kelas, unit) VALUES(:nis, :nama, :jurusan, :inisial_jurusan, :tahun, :kelas, :unit)');
         return $oStmt->execute($sData);
     }
 
