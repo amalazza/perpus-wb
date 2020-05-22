@@ -95,6 +95,21 @@ class Transaksi
     }
     }
 	
+	public function cetakLaporan()
+    {
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+		$aData = array('from' => $_POST['from'], 'end' => $_POST['end']);
+        $this->oUtil->oPinjam = $this->oModel->cetakLaporan($aData);
+
+        $this->oUtil->getView('laporanPeminjaman');
+    }
+    }
+	
 	public function infoPerpanjangan()
     {
         if (!$this->isLogged())

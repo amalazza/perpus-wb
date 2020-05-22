@@ -103,10 +103,10 @@ class Anggota
 			{
 				$nis = $sheetData[$i]['0'];
 				$nama = $sheetData[$i]['1'];
-				$jurusan = $sheetData[$i]['2'];
-				$inisial_jurusan = $sheetData[$i]['3'];
-				$tahun = $sheetData[$i]['4'];
-				$kelas = $sheetData[$i]['5'];
+				$inisial_jurusan = $sheetData[$i]['2'];
+				$tahun = $sheetData[$i]['3'];
+				$kelas = $sheetData[$i]['4'];
+				$jurusan = $sheetData[$i]['5'];
 				$unit = $sheetData[$i]['6'];
 				
 				$sData = array('nis' => $nis, 'nama' => $nama, 'jurusan' => $jurusan, 'inisial_jurusan' => $inisial_jurusan, 'tahun' => $tahun, 'kelas' => $kelas, 'unit' => $unit);

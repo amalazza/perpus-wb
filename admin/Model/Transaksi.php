@@ -18,6 +18,17 @@ class Transaksi
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 	
+	public function cetakLaporan(array $aData)
+    {
+        $from = date('Y-m-d', strtotime($aData['from']));
+		$end = date('Y-m-d', strtotime($aData['end']));
+		$oStmt = $this->oDb->prepare('SELECT a.no_peminjaman, a.tanggal_kembali, a.status, b.no_anggota, b.nama, c.no_katalog, c.judul, a.tanggal_pinjam, a.batas_kembali, a.perpanjangan_ke FROM peminjaman a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog WHERE status="dipinjam" AND tanggal_pinjam BETWEEN :from AND :end ');
+        $oStmt->bindValue(':from', $from);
+        $oStmt->bindValue(':end', $end);
+        $oStmt->execute();
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+	
 	public function getDenda()
     {
         $oStmt = $this->oDb->prepare('SELECT * FROM denda LIMIT 1');
@@ -111,6 +122,11 @@ class Transaksi
      public function pinjamBaru(array $aData)
     {
         $oStmt = $this->oDb->prepare('INSERT INTO peminjaman (no_anggota, no_katalog, tanggal_pinjam, batas_kembali, status) VALUES(:no_anggota, :no_katalog, :tanggal_pinjam, :batas_kembali, :status)');
+		$oStmt->bindValue(':no_anggota', $aData['no_anggota'], \PDO::PARAM_INT);
+		$oStmt->bindValue(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
+		$oStmt->bindValue(':tanggal_pinjam', $aData['tanggal_pinjam']);
+		$oStmt->bindValue(':batas_kembali', $aData['batas_kembali']);
+		$oStmt->bindValue(':status', $aData['status']);
         return $oStmt->execute($aData);
     }
 
