@@ -118,33 +118,36 @@
     <!-- page end-->
 	<!-- modal atur tanggal untuk cetak laporan-->
 	<form method="POST" action="<?=ROOT_URL?>?p=transaksi&amp;a=cetakLaporan" target="_blank" >
-  <div class="modal fade" id="cetakLaporan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"><small>PRINT FILTER DATE</small></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
+  <div id="cetakLaporan" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Laporan Peminjaman</h4>
+		  </div>
+		  <div class="modal-body">
       <div class="form-group">
-        <label class="control-label">Star Date</label>
+        <label class="control-label">Start Date</label>
         <input type="date" name="from" id="stayf" value="<?php echo date('Y-m-d'); ?>" class="form-control">
     </div>
     <div class="form-group">
         <label class="control-label">End Date</label>
         <input type="date" name="end" id="stayf" value="<?php echo date('Y-m-d'); ?>" class="form-control">
     </div>                
-    <div class="form-group">
+</div>
+		  <div class="modal-footer">
+			<div class="form-group">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button class="btn btn-primary" type="submit" name="submit" value="proses" onclick="return valid();">Print</button>
     </div>
-</div>
-</div>  
-</div>
-</div>
-</form>
+		  </div>
+		</div>
+
+	  </div>
+	</div>
+	</form>
 	
 	
 	

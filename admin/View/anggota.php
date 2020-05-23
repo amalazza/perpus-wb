@@ -77,7 +77,13 @@
 				</td>
                 <td>
                   <div class="btn-group">
-                    <form action="<?=ROOT_URL?>?p=anggota&amp;a=delete&amp;id=<?=$oAnggota->no_anggota?>" method="post" style="display: inline">
+                    <?php if($_SESSION['role'] == 'master'):?>
+					<form action="<?=ROOT_URL?>?p=anggota&amp;a=edit&amp;id=<?=$oAnggota->no_anggota?>" method="post" style="display: inline">
+                        <button class="btn btn-primary" type="submit" name="delete" value="1">Edit</button>
+                    </form>
+					<?php else:?>
+					<?php endif; ?>
+					<form action="<?=ROOT_URL?>?p=anggota&amp;a=delete&amp;id=<?=$oAnggota->no_anggota?>" method="post" style="display: inline">
                         <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin mennghapus data ini?');">Hapus</button>
                     </form>
                   </div>

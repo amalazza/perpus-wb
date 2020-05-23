@@ -66,7 +66,7 @@
                     <div class="form-group ">
                       <label for="password" class="control-label col-lg-2">Password <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control " id="password" name="password" type="password" value="<?=$this->oAnggota->password?>"/>
+                        <input class="form-control " id="password" name="password" type="password" value=""/>
                       </div>
                     </div>
 					<div class="form-group ">
