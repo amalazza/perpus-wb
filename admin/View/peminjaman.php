@@ -52,6 +52,7 @@
           </header>
 
           <?php if (empty($this->oPinjam)): ?>
+		  Tidak Ada Peminjaman
             <?php else: ?>
             
         <div  style="position: relative; height: 500px; overflow: auto; display: block;">
@@ -130,11 +131,11 @@
 		  <div class="modal-body">
       <div class="form-group">
         <label class="control-label">Start Date</label>
-        <input type="date" name="from" id="stayf" value="<?php echo date('Y-m-d'); ?>" class="form-control">
+        <input type="date" name="from" id="from" value="" class="form-control">
     </div>
     <div class="form-group">
         <label class="control-label">End Date</label>
-        <input type="date" name="end" id="stayf" value="<?php echo date('Y-m-d'); ?>" class="form-control">
+        <input type="date" name="end" id="end" value="" class="form-control" readonly="true">
     </div>                
 </div>
 		  <div class="modal-footer">
@@ -180,6 +181,16 @@
                 });  
            }  
       }); 
+	  
+ 
+    $('#from')[0].valueAsDate = new Date();
+	$('#from').change(function(){
+		var date = this.valueAsDate;
+		date.setMonth(date.getMonth() + 1);
+		$('#end')[0].valueAsDate = date;
+	});
+	$('#from').change();
+
   </script>	
 <?php endif ?>
 <?php require 'inc/footer.php' ?>

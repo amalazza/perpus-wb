@@ -27,6 +27,11 @@
 
   <!-- Custom scripts for this template -->
   <script src="<?=ROOT_URL?>static/js/freelancer.min.js"></script>
+  
+  <!-- custom form validation script for this page-->
+  <script src="<?=ROOT_URL?>static/js/form-validation-script.js"></script>
+  <!-- jquery validate js -->
+  <script type="text/javascript" src="<?=ROOT_URL?>static/js/jquery.validate.min.js"></script>
 
 
 

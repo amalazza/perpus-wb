@@ -34,7 +34,7 @@
                     <div class="form-group ">
                       <label for="no_koleksi" class="control-label col-lg-2">Jenis Koleksi <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" id="searchKoleksi" name="koleksi">
+                        <select class="form-control m-bot15" id="searchKoleksi" name="koleksi" required>
                           <option value="" selected="" disabled="">--Jenis Koleksi Buku--</option>
                           <?php foreach ($this->oKoleksi as $oKoleksi): ?>
                           <option value="<?=$oKoleksi->no_koleksi?>"><?=$oKoleksi->no_koleksi?> - <?=$oKoleksi->jenis_koleksi?></option>
@@ -111,7 +111,7 @@
                     <div class="form-group ">
                       <label for="abstrak" class="control-label col-lg-2">Abstrak <span class="required">*</span></label>
                       <div class="col-lg-10">
-						<textarea class=" form-control" name="abstrak"></textarea>
+						<textarea class=" form-control" id="abstrak" name="abstrak"></textarea>
                       </div>
                     </div>
 					<div class="form-group " id="add_stok">

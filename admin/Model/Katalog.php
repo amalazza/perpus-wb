@@ -24,6 +24,14 @@ class Katalog
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 	
+	public function cetakLaporan($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE p.no_katalog = :id AND status= "dipinjam" or  p.no_katalog = :id AND status = "kembali"');
+        $oStmt->bindParam(':id', $iId, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+	
 	public function getKoleksi()
     {
         $oStmt = $this->oDb->query('SELECT * FROM koleksi');

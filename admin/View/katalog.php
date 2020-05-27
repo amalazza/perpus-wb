@@ -40,6 +40,7 @@
           </header>
           
           <?php if (empty($this->oKatalog)): ?>
+		  Tidak Ada Katalog
             <?php else: ?> 
   
   		<div  style="position: relative; height: 500px; overflow: auto; display: block;">
@@ -51,6 +52,7 @@
 				<th>Stok</th>
 				<th>Cover</th>
 				<th>Detail</th>
+				<th>History Peminjaman</th>
                 <th>Action</th>
               </tr> 
 			  
@@ -64,6 +66,13 @@
 				<td>
 				<button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#detailAnggota" data-id="<?=$oKatalog->no_katalog?>">Detail</button>
 				</td>
+				<td>
+                  <div class="btn-group">
+				  <form action="<?=ROOT_URL?>?p=katalog&amp;a=cetakLaporan&amp;id=<?=$oKatalog->no_katalog?>" method="post" style="display: inline">
+                        <button class="btn btn-primary" type="submit" name="edit" value="1" >Cetak Laporan</button>
+                    </form>
+                  </div>
+                </td>
 				<td>
                   <div class="btn-group">
 				  <form action="<?=ROOT_URL?>?p=katalog&amp;a=edit&amp;id=<?=$oKatalog->no_katalog?>" method="post" style="display: inline">

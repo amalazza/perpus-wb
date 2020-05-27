@@ -104,6 +104,20 @@ class Katalog
 		
     }
 	
+	public function cetakLaporan()
+    {
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+        $this->oUtil->oPinjam = $this->oModel->cetakLaporan($this->_iId);
+
+        $this->oUtil->getView('LaporanKatalog');
+    }
+    }
+	
 	public function add()
     {
         if (!$this->isLogged())

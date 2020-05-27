@@ -52,6 +52,7 @@
           </header>
 
           <?php if (empty($this->oAnggota)): ?>
+		  Tidak Ada Anggota
             <?php else: ?>
             
         <div  style="position: relative; height: 500px; overflow: auto; display: block;">
@@ -160,7 +161,7 @@
 			<h4 class="modal-title">Input Siswa Baru</h4>
 		  </div>
 		  <div class="modal-body">
-			<form class="form-validate form-horizontal " enctype="multipart/form-data" role="form" method="post" action="<?=ROOT_URL?>?p=anggota&amp;a=addSiswa">
+			<form class="form-validate form-horizontal register_form" enctype="multipart/form-data" role="form" method="post" action="<?=ROOT_URL?>?p=anggota&amp;a=addSiswa">
                     
 					<div class="form-group ">
                       <label for="berkas_excel" class="control-label col-lg-2">Data Siswa </label>

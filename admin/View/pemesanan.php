@@ -26,6 +26,7 @@
           </header>
 
           <?php if (empty($this->oPesan)): ?>
+		  Tidak Ada Pemesanan Buku
             <?php else: ?>
             
         <div  style="position: relative; height: 500px; overflow: auto; display: block;">

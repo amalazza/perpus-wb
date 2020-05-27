@@ -26,7 +26,7 @@
 				<?php if (empty($this->oAnggota)): ?>
 					<p class="error">Post Data Not Found!</p>
 				<?php else: ?>
-                  <form class="form-validate form-horizontal " enctype="multipart/form-data" role="form" method="post" action="">
+                  <form class="form-validate form-horizontal register_form" enctype="multipart/form-data" role="form" method="post" action="">
                   	<div class="form-group ">
                       <label for="nama" class="control-label col-lg-2">Nomor Anggota <span class="required">*</span></label>
                       <div class="col-lg-10">
