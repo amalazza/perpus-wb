@@ -214,7 +214,7 @@ class Anggota extends Beranda
 
                 $p_crypt = sha1($pass);
 
-                $aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' =>$p_crypt ,'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
+                $aData = array('no_anggota' => $_POST['nis'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' =>$p_crypt ,'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
 
 
 
@@ -240,9 +240,9 @@ class Anggota extends Beranda
 
 
 
-        //get nis from database
+        // get nis from database
 
-        // $this->oUtil->oNIS = $this->oModel->getNIS();
+        $this->oUtil->oNIS = $this->oModel->getNIS();
 
         
 
@@ -438,6 +438,12 @@ class Anggota extends Beranda
 
         $this->oUtil->getView('edit_anggota');
 
+    }
+
+    public function dropdown()
+    {
+        
+            echo json_encode($this->oUtil->oData = $this->oModel->getDataById($_POST['nis']));
     }
 
 }

@@ -49,13 +49,27 @@ class Anggota extends Beranda
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
-	public function getById($iId)
+    public function getNIS()
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM anggota WHERE no_anggota = :no_anggota LIMIT 1');
-        $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
+        $oStmt = $this->oDb->query('SELECT * FROM siswa WHERE nis NOT IN(SELECT no_anggota FROM anggota)');
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getDataById($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM siswa WHERE nis = :nis LIMIT 1');
+        $oStmt->bindParam(':nis', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
+
+	// public function getById($iId)
+ //    {
+ //        $oStmt = $this->oDb->prepare('SELECT * FROM anggota WHERE no_anggota = :no_anggota LIMIT 1');
+ //        $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
+ //        $oStmt->execute();
+ //        return $oStmt->fetch(\PDO::FETCH_OBJ);
+ //    }
 	
 	public function getDetailById($iId)
     {
