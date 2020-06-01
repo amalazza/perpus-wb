@@ -20,15 +20,39 @@ class Kunjungan
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
+    // public function getKonfirmasi($iOffset, $iLimit)
+    // {
+    //     $oStmt = $this->oDb->prepare('SELECT * FROM kunjungan INNER JOIN anggota USING (no_anggota) WHERE waktu_kepulangan="0000-00-00 00:00:00" ORDER by waktu_kunjungan DESC LIMIT :offset, :limit');
+    //     $oStmt->bindParam(':offset', $iOffset, \PDO::PARAM_INT);
+    //     $oStmt->bindParam(':limit', $iLimit, \PDO::PARAM_INT);
+    //     $oStmt->execute();
+    //     return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    // }
+
+    
+    public function getKonfirmasi()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM kunjungan INNER JOIN anggota USING (no_anggota) WHERE waktu_kepulangan="0000-00-00 00:00:00" ORDER by waktu_kunjungan DESC');
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
     public function getAll()
     {
-        $oStmt = $this->oDb->query('SELECT * FROM kunjungan ORDER BY waktu_kunjungan DESC');
+        $oStmt = $this->oDb->query('SELECT * FROM kunjungan INNER JOIN anggota USING (no_anggota) ORDER by waktu_kunjungan DESC');
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
     public function getAnggotaById($iId)
     {
         $oStmt = $this->oDb->prepare('SELECT no_anggota, nama, kelas, alamat, no_telpon, email, waktu_kunjungan FROM anggota INNER JOIN kunjungan USING (no_anggota) WHERE no_anggota = :id LIMIT 1');
+        $oStmt->bindParam(':id', $iId);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
+    public function getKonfirmasiById($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT no_anggota, nama, kelas, alamat, no_telpon, email, waktu_kunjungan FROM anggota INNER JOIN kunjungan USING (no_anggota) WHERE no_kunjungan = :id LIMIT 1');
         $oStmt->bindParam(':id', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
@@ -51,7 +75,7 @@ class Kunjungan
         $oStmt = $this->oDb->prepare('INSERT INTO logadmin (id_admin, activity) VALUES(:id_admin, :activity)');
         return $oStmt->execute($aLog);
     }
-    public function getById($iId)
+    public function getAllById($iId)
     {
         $oStmt = $this->oDb->prepare('SELECT * FROM kunjungan WHERE no_kunjungan = :no_kunjungan LIMIT 1');
         $oStmt->bindParam(':no_kunjungan', $iId, \PDO::PARAM_INT);
@@ -61,9 +85,9 @@ class Kunjungan
 
     public function update(array $aData)
     {
-        $oStmt = $this->oDb->prepare('UPDATE kunjungan SET no_anggota = :no_anggota WHERE no_kunjungan = :no_kunjungan LIMIT 1');
+        $oStmt = $this->oDb->prepare('UPDATE kunjungan SET waktu_kepulangan = :waktu_kepulangan WHERE no_kunjungan = :no_kunjungan LIMIT 1');
         $oStmt->bindValue(':no_kunjungan', $aData['no_kunjungan'], \PDO::PARAM_INT);
-        $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
+        $oStmt->bindValue(':waktu_kepulangan', $aData['waktu_kepulangan']);
         return $oStmt->execute();
     }
 

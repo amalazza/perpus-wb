@@ -21,10 +21,21 @@
             Input Kunjungan
           </header>
           <div class="panel-body">
-            <button type="button" onclick="window.location='<?=ROOT_URL?>?p=kunjungan&amp;a=add'" class="btn btn-primary">Input Kunjungan Baru</button>
+            <button type="button" onclick="window.location='<?=ROOT_URL?>?p=kunjungan&amp;a=add'" class="btn btn-primary">Input Kunjungan</button>
           </div>
       </section>
      </div>
+
+      <!-- <div class="col-lg-6">
+        <section class="panel">
+          <header class="panel-heading">
+            Konfirmasi Kepulangan Kunjungan
+          </header>
+          <div class="panel-body">
+            <button type="button" onclick="window.location='<?=ROOT_URL?>?p=kunjungan&amp;a=konfirmasi'" class="btn btn-primary">Konfirmsi Kepulangan</button>
+          </div>
+      </section>
+     </div> -->
     </div>
 
     <div class="row">
@@ -62,7 +73,7 @@
                 <td>
                   <div class="btn-group">
                     <!-- <button class="btn btn-primary" onclick="window.location='<?=ROOT_URL?>?p=kunjungan&amp;a=edit&amp;id=<?=$oKunjungan->no_kunjungan?>'">Edit</button> &nbsp; -->
-                    <form action="<?=ROOT_URL?>?p=kunjungan&amp;a=delete&amp;id=<?=$oKunjungan->no_kunjungan?>" method="post" style="display: inline">
+                    <form action="<?=ROOT_URL?>?p=kunjungan&amp;a=deleteAfterKonfirmasi&amp;id=<?=$oKunjungan->no_kunjungan?>" method="post" style="display: inline">
                         <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin menghapus data ini?');">Hapus</button>
                     </form>
                   </div>
@@ -173,11 +184,11 @@
                      });  
                      if(found == 'true')  
                      {  
-						  $(this).show();  
+              $(this).show();  
                      }  
                      else  
                      {  
-						  $(this).hide();  
+              $(this).hide();  
                      }  
                 });  
            }  

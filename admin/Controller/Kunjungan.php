@@ -48,7 +48,7 @@ class Kunjungan
            exit; 
         }
         else{
-        $this->oUtil->oKunjungan = $this->oModel->get(0, self::MAX_POSTS); // Get only the latest X posts
+        $this->oUtil->oKunjungan = $this->oModel->getAll(0, self::MAX_POSTS); // Get only the latest X posts
 
         $this->oUtil->getView('kunjungan');
     }
@@ -91,6 +91,7 @@ class Kunjungan
            exit; 
         }
         else{
+            $this->oUtil->oKunjungan = $this->oModel->getKonfirmasi(0, self::MAX_POSTS); // Get only the latest X posts
 
         if (!empty($_POST['add_submit']))
         {
@@ -106,7 +107,7 @@ class Kunjungan
                 if ($this->oModel->add($aData) && $this->oModel->addAlog($aLog))
                 {
                     echo '<div class="alert alert-success">Data kunjungan berhasil ditambahkan.</div>';
-                    header("Refresh: 3; URL=?p=kunjungan&a=kunjungan");
+                    header("Refresh: 3; URL=?p=kunjungan&a=add");
                 }
                 else
                 {
@@ -122,11 +123,26 @@ class Kunjungan
         //get anggota id from database
         $this->oUtil->oAnggota = $this->oModel->getAnggota();
 
+
         $this->oUtil->getView('add_kunjungan');
     }
     }
 
-    public function edit()
+    // public function konfirmasi()
+    // {
+    //     if (!$this->isLogged())
+    //     {
+    //        header('Location: ' . ROOT_URL);
+    //        exit; 
+    //     }
+    //     else{
+    //     $this->oUtil->oKunjungan = $this->oModel->getKonfirmasi(0, self::MAX_POSTS); // Get only the latest X posts
+
+    //     $this->oUtil->getView('konfirmasi_kunjungan');
+    // }
+    // }
+
+    public function konfirmasi()
     {
         if (!$this->isLogged())
         {
@@ -135,31 +151,54 @@ class Kunjungan
         }
         else{
 
-        if (!empty($_POST['edit_submit']))
+        if (!empty($_POST['edit']))
         {
-            if (isset($_POST['no_anggota']))
+            if (isset($_POST['no_kunjungan']))
             {
-                $aData = array('no_kunjungan' => $this->_iId, 'no_anggota' => $_POST['no_anggota']);
+    
+                $aData = array('no_kunjungan' => $_POST['no_kunjungan'], 'waktu_kepulangan' => $_POST['waktu_kepulangan']);
 
-                if ($this->oModel->update($aData))
-                    $this->oUtil->sSuccMsg = 'Data kunjungan berhasil diedit.';
-                else
-                    $this->oUtil->sErrMsg = 'Data kunjungan gagal diedit.';
+                if ($this->oModel->update($aData)){
+                    echo '<div class="alert alert-success">Data kepulangan kunjungan berhasil ditambah.</div>';
+                    header("Refresh: 3; URL=?p=kunjungan&a=add");
+                }
+                else{
+                    $this->oUtil->sErrMsg = 'Data kepulangan kunjungan gagal ditambah.';
+                }
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                $this->oUtil->sErrMsg = 'Nomor kunjungan harus diisi.';
             }
         }
+        // Get the data of the post 
+        $this->oUtil->oKunjunganK= $this->oModel->getKonfirmasiById($this->_iId);
+        // echo json_encode($this->oUtil->oData = $this->oModel->getAnggotaById($_POST['id']));
+    } 
+    }
 
-        /* Get the data of the post */
-        $this->oUtil->oKunjungan = $this->oModel->getById($this->_iId);
+    public function deleteBeforeKonfirmasi()
+    {
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
 
-        $this->oUtil->getView('edit_kunjungan');
+            if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId)){
+                echo '<div class="alert alert-success">Data kunjungan berhasil dihapus.</div>';
+                header("Refresh: 3; URL=?p=kunjungan&a=add");
+                // header('Location: ' . ROOT_URL . '?p=kunjungan&a=kunjungan');
+            }
+            else
+            {
+                exit('Kunjungan tidak bisa dihapus.');
+            }
     }
     }
 
-    public function delete()
+    public function deleteAfterKonfirmasi()
     {
         if (!$this->isLogged())
         {
