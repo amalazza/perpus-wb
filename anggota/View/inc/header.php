@@ -42,6 +42,9 @@
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>  
 	<!--bootstrap js-->
 	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- filter -->
+
   <!-- chosen jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css"/>
@@ -67,6 +70,7 @@
   text-align: center;
   -webkit-border-radius: 20%;
   padding-bottom: 5px;
+  text-align-last:center;
 }
 
 .show {

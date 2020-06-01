@@ -58,6 +58,25 @@ class Buku
 
         $this->oUtil->getView('ebook');
     }
+public function filter()
+    {
+        $this->oUtil->oBuku = $this->oModel->getAllEbook(0, self::MAX_POSTS); // Get only the latest X posts
+        $this->oUtil->oTahun = $this->oModel->getTahun();
+        $this->oUtil->oJenis = $this->oModel->getJenis();
+        $this->oUtil->oKoleksi = $this->oModel->getKoleksi();
+
+        $this->oUtil->getView('filter');
+    }
+
+    public function filterku()
+    {
+        $this->oUtil->oBuku = $this->oModel->getAllEbook(0, self::MAX_POSTS); // Get only the latest X posts
+        $this->oUtil->oTahun = $this->oModel->getTahun();
+        $this->oUtil->oJenis = $this->oModel->getJenis();
+        $this->oUtil->oKoleksi = $this->oModel->getKoleksi();
+
+        $this->oUtil->getView('filterku');
+    }
 
     public function beranda()
     {

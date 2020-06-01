@@ -19,42 +19,34 @@
     <div style=" width: 100%; margin-top: -20px; padding-bottom: 5px; text-align: center;">
       <div style=" display: inline;">
         <div id="myBtnContainer">
-        <button class="btn dropbtn active" onclick="filterSelection('all')"> Show all</button>
-        <select class="dropbtn" id="cbtahun" name="cbtahun">
-        <option>- Tahun Terbit -</option>
+        <button class="dropbtn active" id="idAll" value="all" onclick="getAll()"> Show all</button>
+
+        <select class="dropbtn" id="cbtahun" name="cbtahun" onchange="getTahun()">
+        <option value="all">- Tahun Terbit -</option>
         <?php if (empty($this->oBuku)): ?>
         <?php else: ?>
         <?php foreach ($this->oTahun as $oTahun): ?>
-          <option class="opt1" onclick="filterSelection('<?=$oTahun->thn_terbit?>')" ><?=$oTahun->thn_terbit?></option>
+          <option class="opt1" value="<?=$oTahun->thn_terbit?>" ><?=$oTahun->thn_terbit?></option>
         <?php endforeach ?>
         <?php endif ?>
-
-        </select>
-        <select class="dropbtn" id="cbJenis" name="cbJenis">
-          <option>- Jenis Katalog -</option>
-          <option class="opt2" onclick="filterSelection('E-Book')" >E-Book</option>
-          <option class="opt2" onclick="filterSelection('Buku Fisik')" >Buku Fisik</option>
-          <option class="opt2" onclick="filterSelection('Buku Fisik dan E-Book')" >Buku Fisik dan E-Book</option>
         </select>
 
-        </select>
-        <select class="dropbtn" id="cbKlasi" name="cbKlasi">
-        <option>- Klasifikasi -</option>
+        <select class="dropbtn" id="cbKlasi" name="cbKlasi" onchange="getKlasi()" style="text-align-last:center;">
+        <option value="all">- Klasifikasi -</option>
         <?php if (empty($this->oBuku)): ?>
         <?php else: ?>
         <?php foreach ($this->oJenis as $oJenis): ?>
-          <option class="opt3" onclick="filterSelection('<?=$oJenis->nama_klasifikasi?>')" ><?=$oJenis->nama_klasifikasi?></option>
+          <option class="opt3" value="<?=$oJenis->nama_klasifikasi?>" ><?=$oJenis->nama_klasifikasi?></option>
         <?php endforeach ?>
         <?php endif ?>
         </select>
 
-        </select>
-        <select class="dropbtn" id="cbKoleksi" name="cbKoleksi">
-        <option>- Koleksi -</option>
+        <select class="dropbtn" id="cbKoleksi" name="cbKoleksi" onchange="getKoleksi()">
+        <option value="all">- Koleksi -</option>
         <?php if (empty($this->oKoleksi)): ?>
         <?php else: ?>
         <?php foreach ($this->oKoleksi as $oKoleksi): ?>
-          <option class="opt4" onclick="filterSelection('<?=$oKoleksi->jenis_koleksi?>')" ><?=$oKoleksi->jenis_koleksi?></option>
+          <option class="opt4" value="<?=$oKoleksi->jenis_koleksi?>" ><?=$oKoleksi->jenis_koleksi?></option>
         <?php endforeach ?>
         <?php endif ?>
         </select>
@@ -75,7 +67,7 @@
       </div>
 
       <!-- Portfolio Grid Items -->
-      <div class="row">
+      <div class="row ">
         <?php if (empty($this->oBuku)): ?>
         <?php else: ?>
         <?php foreach ($this->oBuku as $oBuku):
@@ -84,7 +76,7 @@
         $pengarang = substr($oBuku->pengarang, 0, 30);
 
          ?>
-         <div style="width: 25%;" class="filterDiv <?=$oBuku->tahun_terbit?> <?=$oBuku->jenis_katalog?> <?=$oBuku->nama_klasifikasi?> <?=$oBuku->jenis_koleksi?>">
+         <div style="" class="filterDiv <?=$oBuku->tahun_terbit?> <?=$oBuku->jenis_katalog?> <?=$oBuku->nama_klasifikasi?> <?=$oBuku->jenis_koleksi?> kotak">
           <a href="<?=ROOT_URL?>?p=buku&amp;a=detail&amp;id=<?=$oBuku->no_katalog?>">
             <div class="portfolio-item mx-auto  shadow p-3 mb-5 rounded" data-toggle="modal" data-target="#portfolioModal1" style="width: 90%; height: 95%">
               <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100" >
@@ -94,7 +86,7 @@
                   <i class="fas fa-plus fa-3x"></i>
                 </div>
               </div>
-              <div style="text-align: left; max-height: 100%; max-width: 100%; color: #2c3e50cf!important;">
+              <div style="text-align: left; max-height: 100%; max-width: 100%; color: #2c3e50cf !important;">
                 <div style="text-align: center;">
                   <?php echo "<img style='height:280px; width: 200px;' class='img-fluid' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($oBuku->cover))."'/>";?>
                   <p style="font-size: 16px; padding-top: 3%"><?php echo $judul; ?></p>
@@ -115,6 +107,32 @@
 
     <script>
 filterSelection("all")
+function getAll(){
+  var x = document.getElementById("idAll").value;
+  filterSelection(x);
+  document.getElementById("cbtahun").options[0].selected = 'selected';
+  document.getElementById("cbKlasi").options[0].selected = 'selected';
+  document.getElementById("cbKoleksi").options[0].selected = 'selected';
+}
+function getTahun(){
+  var x = document.getElementById("cbtahun").value;
+  filterSelection(x);
+  document.getElementById("cbKlasi").options[0].selected = 'selected';
+  document.getElementById("cbKoleksi").options[0].selected = 'selected';
+}
+function getKlasi(){
+  var x = document.getElementById("cbKlasi").value;
+  filterSelection(x);
+  document.getElementById("cbtahun").options[0].selected = 'selected';
+  document.getElementById("cbKoleksi").options[0].selected = 'selected';
+}
+function getKoleksi(){
+  var x = document.getElementById("cbKoleksi").value;
+  filterSelection(x);
+  document.getElementById("cbKlasi").options[0].selected = 'selected';
+  document.getElementById("cbtahun").options[0].selected = 'selected';
+}
+
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("filterDiv");

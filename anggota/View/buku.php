@@ -19,42 +19,34 @@
     <div style=" width: 100%; margin-top: -20px; padding-bottom: 5px; text-align: center;">
       <div style=" display: inline;">
         <div id="myBtnContainer">
-        <button class="dropbtn active" onclick="filterSelection('all')"> Show all</button>
-        <select class="dropbtn" id="cbtahun" name="cbtahun">
-        <option>- Tahun Terbit -</option>
+        <button class="dropbtn active" id="idAll" value="all" onclick="getAll()"> Show all</button>
+
+        <select class="dropbtn" id="cbtahun" name="cbtahun" onchange="getTahun()">
+        <option value="all">- Tahun Terbit -</option>
         <?php if (empty($this->oBuku)): ?>
         <?php else: ?>
         <?php foreach ($this->oTahun as $oTahun): ?>
-          <option class="opt1" onclick="filterSelection('<?=$oTahun->thn_terbit?>')" ><?=$oTahun->thn_terbit?></option>
+          <option class="opt1" value="<?=$oTahun->thn_terbit?>" ><?=$oTahun->thn_terbit?></option>
         <?php endforeach ?>
         <?php endif ?>
-
-        </select>
-        <select class="dropbtn" id="cbJenis" name="cbJenis">
-          <option>- Jenis Katalog -</option>
-          <option class="opt2" onclick="filterSelection('E-Book')" >E-Book</option>
-          <option class="opt2" onclick="filterSelection('Buku Fisik')" >Buku Fisik</option>
-          <option class="opt2" onclick="filterSelection('Buku Fisik dan E-Book')" >Buku Fisik dan E-Book</option>
         </select>
 
-        </select>
-        <select class="dropbtn" id="cbKlasi" name="cbKlasi">
-        <option>- Klasifikasi -</option>
+        <select class="dropbtn" id="cbKlasi" name="cbKlasi" onchange="getKlasi()">
+        <option value="all">- Klasifikasi -</option>
         <?php if (empty($this->oBuku)): ?>
         <?php else: ?>
         <?php foreach ($this->oJenis as $oJenis): ?>
-          <option class="opt3" onclick="filterSelection('<?=$oJenis->nama_klasifikasi?>')" ><?=$oJenis->nama_klasifikasi?></option>
+          <option class="opt3" value="<?=$oJenis->nama_klasifikasi?>" ><?=$oJenis->nama_klasifikasi?></option>
         <?php endforeach ?>
         <?php endif ?>
         </select>
 
-        </select>
-        <select class="dropbtn" id="cbKoleksi" name="cbKoleksi">
-        <option>- Koleksi -</option>
+        <select class="dropbtn" id="cbKoleksi" name="cbKoleksi" onchange="getKoleksi()">
+        <option value="all">- Koleksi -</option>
         <?php if (empty($this->oKoleksi)): ?>
         <?php else: ?>
         <?php foreach ($this->oKoleksi as $oKoleksi): ?>
-          <option class="opt4" onclick="filterSelection('<?=$oKoleksi->jenis_koleksi?>')" ><?=$oKoleksi->jenis_koleksi?></option>
+          <option class="opt4" value="<?=$oKoleksi->jenis_koleksi?>" ><?=$oKoleksi->jenis_koleksi?></option>
         <?php endforeach ?>
         <?php endif ?>
         </select>
@@ -84,7 +76,7 @@
         $pengarang = substr($oBuku->pengarang, 0, 30);
 
          ?>
-         <div style="" class="kotak filterDiv <?=$oBuku->tahun_terbit?> <?=$oBuku->jenis_katalog?> <?=$oBuku->nama_klasifikasi?> <?=$oBuku->jenis_koleksi?>">
+         <div style="" class="filterDiv <?=$oBuku->tahun_terbit?> <?=$oBuku->jenis_katalog?> <?=$oBuku->nama_klasifikasi?> <?=$oBuku->jenis_koleksi?> kotak">
           <a href="<?=ROOT_URL?>?p=buku&amp;a=detail&amp;id=<?=$oBuku->no_katalog?>">
             <div class="portfolio-item mx-auto  shadow p-3 mb-5 rounded" data-toggle="modal" data-target="#portfolioModal1" style="width: 90%; height: 95%">
               <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100" >
@@ -111,21 +103,43 @@
 
     </div>
   </section>
-
-
     <script>
 filterSelection("all")
+function getAll(){
+  var x = document.getElementById("idAll").value;
+  filterSelection(x);
+  document.getElementById("cbtahun").options[0].selected = 'selected';
+  document.getElementById("cbKlasi").options[0].selected = 'selected';
+  document.getElementById("cbKoleksi").options[0].selected = 'selected';
+}
+function getTahun(){
+  var x = document.getElementById("cbtahun").value;
+  filterSelection(x);
+  document.getElementById("cbKlasi").options[0].selected = 'selected';
+  document.getElementById("cbKoleksi").options[0].selected = 'selected';
+}
+function getKlasi(){
+  var x = document.getElementById("cbKlasi").value;
+  filterSelection(x);
+  document.getElementById("cbtahun").options[0].selected = 'selected';
+  document.getElementById("cbKoleksi").options[0].selected = 'selected';
+}
+function getKoleksi(){
+  var x = document.getElementById("cbKoleksi").value;
+  filterSelection(x);
+  document.getElementById("cbKlasi").options[0].selected = 'selected';
+  document.getElementById("cbtahun").options[0].selected = 'selected';
+}
+
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("filterDiv");
   if (c == "all") c = "";
   for (i = 0; i < x.length; i++) {
     w3RemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1)
-      w3AddClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
   }
 }
-
 function w3AddClass(element, name) {
   var i, arr1, arr2;
   arr1 = element.className.split(" ");
@@ -134,7 +148,6 @@ function w3AddClass(element, name) {
     if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
   }
 }
-
 function w3RemoveClass(element, name) {
   var i, arr1, arr2;
   arr1 = element.className.split(" ");
@@ -147,7 +160,7 @@ function w3RemoveClass(element, name) {
   element.className = arr1.join(" ");
 }
 
-// Add active class to the current button (highlight it)
+/*// Add active class to the current button (highlight it)
 var btnContainer = document.getElementById("myBtnContainer");
 var cbs = btnContainer.getElementsByClassName("dropbtn");
 var opts = dropbtn.getElementsByClassName("opt1");
@@ -157,7 +170,7 @@ for (var i = 0; i < btns.length; i++) {
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
   });
-}
+}*/
 
 </script>
 
