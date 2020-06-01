@@ -42,9 +42,16 @@ class Kunjungan
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
+    public function getAllAfterConfirm()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM kunjungan INNER JOIN anggota USING (no_anggota) WHERE waktu_kepulangan!= "0000-00-00 00:00:00" ORDER by waktu_kunjungan DESC');
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+
     public function getAnggotaById($iId)
     {
-        $oStmt = $this->oDb->prepare('SELECT no_anggota, nama, kelas, alamat, no_telpon, email, waktu_kunjungan FROM anggota INNER JOIN kunjungan USING (no_anggota) WHERE no_anggota = :id LIMIT 1');
+        $oStmt = $this->oDb->prepare('SELECT no_anggota, nama, kelas, alamat, no_telpon, email, loker,  waktu_kunjungan, waktu_kepulangan FROM anggota INNER JOIN kunjungan USING (no_anggota) WHERE no_anggota = :id LIMIT 1');
         $oStmt->bindParam(':id', $iId);
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
@@ -52,7 +59,7 @@ class Kunjungan
 
     public function getKonfirmasiById($iId)
     {
-        $oStmt = $this->oDb->prepare('SELECT no_anggota, nama, kelas, alamat, no_telpon, email, waktu_kunjungan FROM anggota INNER JOIN kunjungan USING (no_anggota) WHERE no_kunjungan = :id LIMIT 1');
+        $oStmt = $this->oDb->prepare('SELECT no_anggota, nama, kelas, alamat, no_telpon, email, loker, waktu_kunjungan, waktu_kepulangan FROM anggota INNER JOIN kunjungan USING (no_anggota) WHERE no_kunjungan = :id LIMIT 1');
         $oStmt->bindParam(':id', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
@@ -66,7 +73,7 @@ class Kunjungan
 
     public function add(array $aData)
     {
-        $oStmt = $this->oDb->prepare('INSERT INTO kunjungan (no_anggota) VALUES(:no_anggota)');
+        $oStmt = $this->oDb->prepare('INSERT INTO kunjungan (no_anggota, loker) VALUES(:no_anggota, :loker)');
         return $oStmt->execute($aData);
     }
 

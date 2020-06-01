@@ -48,7 +48,7 @@ class Kunjungan
            exit; 
         }
         else{
-        $this->oUtil->oKunjungan = $this->oModel->getAll(0, self::MAX_POSTS); // Get only the latest X posts
+        $this->oUtil->oKunjungan = $this->oModel->getAllAfterConfirm(0, self::MAX_POSTS); // Get only the latest X posts
 
         $this->oUtil->getView('kunjungan');
     }
@@ -81,6 +81,13 @@ class Kunjungan
         
             echo json_encode($this->oUtil->oData = $this->oModel->getAnggotaById($_POST['id']));
     }
+    
+
+    // public function detailKonfirmasi()
+    // {
+        
+    //         echo json_encode($this->oUtil->oData = $this->oModel->getAnggotaById($_POST['id']));
+    // }
 
 
     public function add()
@@ -101,7 +108,7 @@ class Kunjungan
                 date_default_timezone_set("Asia/Jakarta");
                 $act = 'Admin '.$_SESSION['nama'].' menginput kunjungan '.$_POST['nAng'].' ke perpus pada tanggal '. date("Y/m/d").' jam '.date("h:m").' '.date("a");
 
-                $aData = array('no_anggota' => $_POST['anggota']);
+                $aData = array('no_anggota' => $_POST['anggota'], 'loker' => $_POST['loker']);
                 $aLog = array('id_admin' => $idku, 'activity' => $act );
 
                 if ($this->oModel->add($aData) && $this->oModel->addAlog($aLog))

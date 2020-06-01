@@ -7,7 +7,7 @@
       <div class="col-lg-12">
         <h3 class="page-header"><i class="fa fa fa-bars"></i> Page Kunjungan</h3>
         <ol class="breadcrumb">
-          <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+          <li><i class="fa fa-home"></i><a>Home</a></li>
           <li><i class="fa fa-bars"></i>Pengguna</li>
           <li><i class="fa fa-square-o"></i>Kunjungan</li>
         </ol>
@@ -25,17 +25,6 @@
           </div>
       </section>
      </div>
-
-      <!-- <div class="col-lg-6">
-        <section class="panel">
-          <header class="panel-heading">
-            Konfirmasi Kepulangan Kunjungan
-          </header>
-          <div class="panel-body">
-            <button type="button" onclick="window.location='<?=ROOT_URL?>?p=kunjungan&amp;a=konfirmasi'" class="btn btn-primary">Konfirmsi Kepulangan</button>
-          </div>
-      </section>
-     </div> -->
     </div>
 
     <div class="row">
@@ -59,6 +48,7 @@
                 <th>No Anggota</th>
                 <th>Nama Anggota</th>
                 <th>Waktu Kunjungan</th>
+                <th>Waktu Kepulangan</th>
                 <th>Detail</th>
                 <th>Action</th>
               </tr>
@@ -67,6 +57,7 @@
                 <td><?=htmlspecialchars($oKunjungan->no_anggota)?></td>
                 <td><?=$oKunjungan->nama?></td>
                 <td><?=$oKunjungan->waktu_kunjungan?></td>
+                <td><?=$oKunjungan->waktu_kepulangan?></td>
                 <td>
                   <button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#detailKunjungan" data-id="<?=$oKunjungan->no_anggota?>">Detail</button>
                 </td>
@@ -128,8 +119,16 @@
             <td><span id="email"></span></td>
           </tr>
           <tr>
+            <th>Loker</th>
+            <td><span id="loker"></span></td>
+          </tr>
+          <tr>
             <th>Waktu Kunjungan</th>
             <td><span id="waktu_kunjungan"></span></td>
+          </tr>
+          <tr>
+            <th>Waktu Kepulangan</th>
+            <td><span id="waktu_kepulangan"></span></td>
           </tr>
         </tbody>
       </table>
@@ -161,7 +160,9 @@
         $('#alamat').text(Data.alamat);
         $('#no_telpon').text(Data.no_telpon); 
         $('#email').text(Data.email);
+        $('#loker').text(Data.loker);
         $('#waktu_kunjungan').text(Data.waktu_kunjungan);
+        $('#waktu_kepulangan').text(Data.waktu_kepulangan);
          
         
       });

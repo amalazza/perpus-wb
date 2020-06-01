@@ -42,7 +42,7 @@
                 <div class="form-group ">
                   <label for="loker" class="control-label col-lg-2">Loker <span class="required">*</span></label>
                   <div class="col-lg-10">
-                    <input class=" form-control" id="loker" name="loker" type="text"/>
+                    <input class=" form-control" id="loker" name="loker" type="text" required/>
                   </div>
                 </div>
       
@@ -112,22 +112,25 @@
                 <tr>
                   <th>No Anggota</th>
                   <th>Nama Anggota</th>
+                  <th>Loker</th>
                   <th>Waktu Kunjungan</th>
-                  <th>Detail</th>
+                  <!-- <th>Detail</th> -->
                   <th>Action</th>
                 </tr>
                 <?php foreach ($this->oKunjungan as $oKunjungan): ?>
                 <tr>
                   <td><?=htmlspecialchars($oKunjungan->no_anggota)?></td>
                   <td><?=$oKunjungan->nama?></td>
+                  <td><?=$oKunjungan->loker?></td>
                   <td><?=$oKunjungan->waktu_kunjungan?></td>
-                  <td>
+                  <!-- <td>
                     <button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#detailKunjungan" data-id="<?=$oKunjungan->no_anggota?>">Detail</button>
                     
-                  </td>
+                  </td> -->
                   <td>
                     <div class="btn-group">
-                     <button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#konfirmasiKunjungan">Konfirmasi</button>
+                     <!-- <button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#konfirmasiKunjungan">Konfirmasi</button> -->
+                     <button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#konfirmasiKunjungan" data-id="<?=$oKunjungan->no_anggota?>">Detail & Konfirmasi</button>
                       &nbsp;
                       <form action="<?=ROOT_URL?>?p=kunjungan&amp;a=deleteBeforeKonfirmasi&amp;id=<?=$oKunjungan->no_kunjungan?>" method="post" style="display: inline">
                           <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin menghapus data ini?');">Delete</button>
@@ -145,56 +148,14 @@
     </div>
     <!-- page end-->
 
-    <?php if (empty($this->oKunjunganK)): ?>
-    <?php else: ?>
-    <form action="<?=ROOT_URL?>?p=kunjungan&amp;a=konfirmasi&amp;id=<?=$oKunjungan->no_kunjungan?>" method="post" style="display: inline">
-      <div id="konfirmasiKunjungan" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Konfirmasi Kepulangan Kunjungan</h4>
-            </div>
-            <div class="modal-body">
-              <input class=" form-control" id="no_kunjungan" name="no_kunjungan" type="text" value="<?=$oKunjungan->no_kunjungan?>" style="display: none"/>
-              <div class="form-group">
-                <label class="control-label">No Anggota</label>
-                <input type="text" name="no_anggota" id="no_anggota" value="<?=$this->oKunjunganK->no_anggota?>" class="form-control" readonly="true"/>
-              </div>
-              <div class="form-group">
-                <label class="control-label">Nama</label>
-                <input type="text" name="nama" id="nama" value="<?=$oKunjungan->nama?>" class="form-control" readonly="true"/>
-              </div>
-              <div class="form-group">
-                <label class="control-label">Waktu Kedatangan</label>
-                <input type="text" name="waktu_kunjungan" id="waktu_kunjungan" value="<?=$oKunjungan->waktu_kunjungan?>" class="form-control" readonly="true"/>
-              </div>
-              <div class="form-group">
-                  <label class="control-label">Waktu Kepulangan</label>
-                  <input type="text" name="waktu_kepulangan" id="waktu_kepulangan" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d H:i:s');?>" class="form-control" readonly="true"/>
-              </div>                
-            </div>
-            <div class="modal-footer">
-              <div class="form-group">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary" type="submit" name="edit" value="1">Konfirmasi</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-    <?php endif; ?>
-
     <!-- Modal Detail Anggota-->
-    <div id="detailKunjungan" class="modal fade" role="dialog">
+    <div id="konfirmasiKunjungan" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Detail Kunjungan</h4>
+            <h4 class="modal-title">Detail & Konfirmasi Kunjungan</h4>
           </div>
           <div class="modal-body">
             <table class="table table-striped table-advance table-hover">
@@ -224,13 +185,26 @@
                   <td><span id="email"></span></td>
                 </tr>
                 <tr>
+                  <th>Loker</th>
+                  <td><span id="loker"></span></td>
+                </tr>
+                <tr>
                   <th>Waktu Kunjungan</th>
                   <td><span id="waktu_kunjungan"></span></td>
+                </tr>
+                <tr>
+                  <th>Waktu Kepulangan</th>
+                  <td><span id="waktu_kunjungan"><?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d H:i:s');?></span></td>
                 </tr>
               </tbody>
             </table>    
           </div>
           <div class="modal-footer">
+            <form action="<?=ROOT_URL?>?p=kunjungan&amp;a=konfirmasi&amp;id=<?=$oKunjungan->no_kunjungan?>" method="post" style="display: inline">
+              <input class=" form-control" id="no_kunjungan" name="no_kunjungan" type="text" value="<?=$oKunjungan->no_kunjungan?>" style="display: none"/>
+              <input type="text" name="waktu_kepulangan" id="waktu_kepulangan" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d H:i:s');?>" class="form-control" style="display: none"/>
+              <button class="btn btn-primary" type="submit" name="edit" value="1">Konfirmasi</button>
+            </form>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
@@ -259,6 +233,7 @@
         $('#alamat').text(Data.alamat);
         $('#no_telpon').text(Data.no_telpon); 
         $('#email').text(Data.email);
+        $('#loker').text(Data.loker);
         $('#waktu_kunjungan').text(Data.waktu_kunjungan);
          
         
