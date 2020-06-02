@@ -1,7 +1,7 @@
   <!-- Copyright Section -->
   <section class="copyright py-4 text-center text-white">
     <div class="container">
-      <small>Copyright &copy; Perpustakaan Online Wira Buana</small>
+      <small>Copyright © IT Development SMP-SMK Wira Buana - Proudly powered by WB-Technopark</small>
     </div>
   </section>
 

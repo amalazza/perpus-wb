@@ -11,11 +11,11 @@
         <div class="profile-widget profile-widget-info" style="background-color: #1abc9c;">
           <div class="panel-body">
             <div class="col-lg-2 col-sm-2">
-              <div class="follow-ava" style="-webkit-border-radius: 0%;">
+              <div class="follow-ava" style="-webkit-border-radius: 5%;">
                 <!-- <img src="data:<?=$oBuku->mime?>;base64,<?=base64_encode($oBuku->cover); ?>" style="height: 100%; width: 100%; -webkit-border-radius: 0%;"/> -->
                 <!-- <img src="<?=ROOT_URL?>static/img/cover_buku.png" alt="" style="height: 100%; width: 100%; -webkit-border-radius: 0%;"> -->
                 <?php 
-                    echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($this->oBuku->cover))."' style='height: 100%; width: 100%; -webkit-border-radius: 0%'/>";
+                    echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($this->oBuku->cover))."' style='height: 100%; width: 100%; border-radius: 4%;'/>";
                 ?>
               </div>
             </div>
