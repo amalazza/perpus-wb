@@ -1,0 +1,32 @@
+biru tua
+#294a70
+
+oren
+#f4a024
+
+biru muda di atas
+#49688e
+
+footer
+#15305b
+
+favicon
+<link rel="shortcut icon" type="image/x-icon" href="<?=ROOT_URL?>static/img/favicon.ico">
+
+
+header
+<div style="background-image: url(<?=ROOT_URL?>static/img/bg-wb.jpeg);background-size: cover; ">
+      <header class="masthead text-white text-center" style="background-color: rgba(0, 0, 0, 0.75) ">
+        
+        <div class="container align-items-center" style="">
+
+          <!-- Masthead Avatar Image -->
+          <img class="masthead-avatar" style="width: 22%; height: 22%; border-radius: 45%;" src="<?=ROOT_URL?>static/img/logo-wb.jpeg" alt="">
+          <br>
+          <!-- Masthead Heading -->
+          <h1 class="masthead-heading mb-0"><b>Perpustakaan Online</b></h1>
+          <h3 style="margin-top: 7px;"><b>SMP-SMK WIRA BUANA</b></h3>
+
+        </div>
+      </header>
+  </div>

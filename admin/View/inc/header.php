@@ -4,9 +4,7 @@
         <meta charset="utf-8" />
         <title><?=\TestProject\Engine\Config::SITE_NAME?></title>
 
-	  <link rel="shortcut icon" href="img/favicon.png">
-
-	  <title>Blank | Creative - Bootstrap 3 Responsive Admin Template</title>
+	  <link rel="shortcut icon" type="image/x-icon" href="<?=ROOT_URL?>static/img/favicon.ico">
 	  
 	  <!-- Bootstrap CSS -->
 	  <link href="<?=ROOT_URL?>static/css/bootstrap.min.css" rel="stylesheet">

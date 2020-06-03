@@ -11,6 +11,7 @@
   <meta name="author" content="">
 
   <title><?=\TestProject\Engine\Config::SITE_NAME?></title>
+  <link rel="shortcut icon" type="image/x-icon" href="<?=ROOT_URL?>static/img/favicon.ico">
 
   <!-- Custom fonts for this theme -->
   <link href="<?=ROOT_URL?>static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
