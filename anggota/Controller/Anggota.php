@@ -270,8 +270,6 @@ class Anggota extends Beranda
 
         else{
 
-
-
         $this->oUtil->oAnggota = $this->oModel->getById($_SESSION['id']);
 
         $this->oUtil->oPesan = $this->oModel->getPemesananById($_SESSION['id']);
@@ -291,11 +289,7 @@ class Anggota extends Beranda
         $this->oUtil->oKoleksi = $this->oModel->getKoleksi();
 
 
-
         $this->oUtil->getView('profile');
-
-
-
     }
 
 	}

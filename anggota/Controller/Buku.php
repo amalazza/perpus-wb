@@ -107,17 +107,17 @@ public function filter()
     public function perpanjangan()
     {     
         if (!$this->isLogged()) exit;
-        $this->oUtil->oBuku = $this->oUtil->oBuku = $this->oModel->getByIdKu($_GET['id']);
-        $this->oUtil->oPerpjg = $this->oUtil->oPerpjg = $this->oModel->getBatas();
+        $aData = array('no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
+        $this->oUtil->oBuku = $this->oModel->getBukuKu($aData);
+        $this->oUtil->oPerpjg = $this->oModel->getBatas();
 
         if (!empty($_POST['btn_update']))
         {
-            $newTgl = $_POST['newTanggal'];
-            $p_ke = $_POST['ke'];
-            $p_hi = (int)$p_ke + 1;
-            $idnya = $_POST['idnya'];
+            $newTgl = $_POST['perpjg'];
+            $p_hi = $_POST['ke'];
+            $idnya = $_GET['id'];
 
-            $aData = array('batas_kembali' => $newTgl, 'perpanjangan_ke' => $p_hi, 'no_katalog' => $idnya);
+            $aData = array('batas_kembali' => $newTgl, 'perpanjangan_ke' => $p_hi, 'no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
 
             if ($this->oModel->up($aData)){
                 $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';

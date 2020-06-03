@@ -70,6 +70,16 @@ class Buku
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
+
+    public function getBukuKu($aData)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog a on a.no_katalog = p.no_katalog where p.no_katalog = :no_katalog AND p.no_anggota = :no_anggota LIMIT 1');
+        $oStmt->bindParam(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
+        $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
     public function getStatus(array $aData)/**/
     {
         $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman WHERE no_katalog = :no_katalog AND no_anggota = :no_anggota');
@@ -85,10 +95,11 @@ class Buku
     }
     public function up(array $aData)
     {
-        $oStmt = $this->oDb->prepare('UPDATE peminjaman SET batas_kembali = :batas_kembali, perpanjangan_ke = :perpanjangan_ke WHERE no_katalog = :no_katalog LIMIT 1');
+        $oStmt = $this->oDb->prepare('UPDATE peminjaman SET batas_kembali = :batas_kembali, perpanjangan_ke = :perpanjangan_ke WHERE no_katalog = :no_katalog AND no_anggota = :no_anggota LIMIT 1');
         $oStmt->bindValue(':batas_kembali', $aData['batas_kembali']);
         $oStmt->bindValue(':perpanjangan_ke', $aData['perpanjangan_ke']);
         $oStmt->bindValue(':no_katalog', $aData['no_katalog']);
+        $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
         return $oStmt->execute($aData);
     }
 

@@ -6,8 +6,8 @@
 
 if (empty($this->oAnggota)): ?>
   <?php else: ?>
-  <?php $data = $this->oAnggota;
-?>
+    <?php endif ?>
+ 
 <!--main sscontent start-->
   <div class="row">
     <!-- profile-widget -->
@@ -17,22 +17,23 @@ if (empty($this->oAnggota)): ?>
           <div class="col-lg-2 col-sm-2">
             <div class="follow-ava" style="-webkit-border-radius: 0%;">
               <?php 
-                  echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($data->foto))."' style='height: 100%; width: 100%; -webkit-border-radius: 0%'/>";
+                  echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($this->oAnggota->foto))."' style='height: 100%; width: 100%; -webkit-border-radius: 0%'/>";
               ?>
             </div>
           </div>
           <div class="col-lg-4 col-sm-4 follow-info">
+          <h1 style="color: red;"> <b>YANG JADI MASALAH oAnggota di controllernya gak ngambil data dari db</b></h1>
             <h2>
-              <?=$data->nama?>
+              <?=$this->oAnggota->nama?>
             </h2>
             <h4>
-              <i>NIS   : </i><?=$data->no_anggota?>
+              <i>NIS   : </i><?=$this->oAnggota->no_anggota?>
             </h4>
             <h4>
-              <i>Kelas : </i><?=$data->kelas?>
+              <i>Kelas : </i><?=$this->oAnggota->kelas?>
             </h4>
             <h4> 
-              <i>Email : </i><?=$data->email?>
+              <i>Email : </i><?=$this->oAnggota->email?>
             </h4>
           </div>
           
@@ -49,7 +50,7 @@ if (empty($this->oAnggota)): ?>
                 <li class="active">
                   <h3>
                     <i class="fa fa-user fa-2x"> </i><br> 
-					<button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#detailAnggota" onclick="tes()" style="background-color: #2c3e50; color: white; border-color: white;">DETAIL</button>
+          <button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#detailAnggota" onclick="tes()" style="background-color: #2c3e50; color: white; border-color: white;">DETAIL</button>
                   </h3>
                   Lihat Detail Profile
                 </li>
@@ -75,8 +76,6 @@ if (empty($this->oAnggota)): ?>
       </div>
     </div>
   </div>
-
-    <?php endif ?>
         <!-- page start-->
         <div class="row">
           <div class="col-lg-12">

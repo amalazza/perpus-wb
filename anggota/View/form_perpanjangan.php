@@ -4,10 +4,10 @@
     <p class="error">The post can't be be found!</p>
 <?php else: ?>
 <!-- profile -->
-              <div id="profile">
-                <section class="panel">
-                  <div class="panel-body bio-graph-info">
-                    <div class="col-sm-2" style="text-align: center;">
+              <div id="profile" >
+                <section class="panel" >
+                  <div class="panel-body bio-graph-info" style="height: 700px;">
+                    <div class="col-sm-2" style="text-align: center; ">
                         <h4 style="font-size: 20px;">INFORMASI BUKU</h4>
                         <div class="bio-row" style="width: 100%;">
                           <div style="height: 200px; width: 180px;">
@@ -45,20 +45,28 @@
                           <p>INFO PERPANJANGAN</p>
                         </div>
                         <div>
+                        <?php $newke = $this->oBuku->perpanjangan_ke+1; ?>
+                          <p><span>Perpanjangan</span>:<input class="ke" id="ke" name="ke" style="background: 0; border: 0; width: 80px; overflow: visible; outline: 0; height: auto; color: #666666;" type="text" value="<?php echo $newke; ?>" readonly="readonly"/> </p>
+                        </div>
+                        <div>
                           <p><span>Tanggal Pinjam</span>: <?=$this->oBuku->tanggal_pinjam?></p>
                         </div>
                         <div>
                           <p><span>Tanggal Kembali</span>: <?=$this->oBuku->batas_kembali?></p>
                         </div>
-                        <?php if (empty($this->dataPerpanjang)): ?>
-                        <?php else: ?>
-                        <?php if ($this->oBuku->perpanjangan_ke < $this->dataPerpanjang->batas): ?>
                         <div>
-                        <p><span>Perpanjangan</span>: <?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d', strtotime('+'.$this->dataPerpanjang->hari.' days', strtotime($this->oBuku->batas_kembali))); ?></p>
+                        <?php
+                            $tanggalSekarang = $this->oBuku->batas_kembali;
+                            $newTanggalSekarang=strtotime($tanggalSekarang);
+
+                            $jumlahHari=$this->oPerpjg->hari;
+                            $NewjumlahHari=86400*$jumlahHari;
+
+                            $hasilJumlah = $newTanggalSekarang + $NewjumlahHari;
+                            $tampilHasil=date("Y-m-d",$hasilJumlah);
+                        ?>
+                        <p><span>Diperpanjang</span>: <input class="perpjg" id="perpjg" name="perpjg" style="background: 0; border: 0; width: 80px; overflow: visible; outline: 0; height: auto; color: #666666;" type="text" value="<?php echo $tampilHasil; ?>" readonly="readonly"/></p>                        
                         </div>
-                        <?php else: ?>
-                        <?php endif; ?>
-                        <?php endif; ?>
                           <input class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white; text-align: center; font-size: 15px;" type="submit" name="btn_update" value="Perpanjang">
                         </div>
                     </form>
@@ -70,5 +78,6 @@
         </div>
 
 <?php endif ?>
-
+<div style="position: absolute; bottom: 0; width: 100%;">
 <?php require 'inc/footer.php' ?>
+</div>
