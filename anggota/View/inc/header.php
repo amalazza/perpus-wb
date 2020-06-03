@@ -19,7 +19,7 @@
 
   <!-- Theme CSS -->
   <link href="<?=ROOT_URL?>static/css/freelancer.min.css" rel="stylesheet">
-
+    <link href="<?=ROOT_URL?>static/css/styleku.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
   <link href="<?=ROOT_URL?>static/other/css/bootstrap.min.css" rel="stylesheet">
   <!-- bootstrap theme -->
@@ -31,17 +31,17 @@
   <!-- Custom styles -->
   <link href="<?=ROOT_URL?>static/other/css/style.css" rel="stylesheet">
   <link href="<?=ROOT_URL?>static/other/css/style-responsive.css" rel="stylesheet" />
-	<!--jquery-->
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	  <!--jquery UI-->
-	  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
-	  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> 
-	  
+  <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--jquery UI-->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> 
+    
     <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>  
-	<!--bootstrap js-->
-	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!--bootstrap js-->
+  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- filter -->
 
@@ -183,6 +183,9 @@ select{
           </li>
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?=ROOT_URL?>?p=buku&amp;a=ebook">E-book</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?=ROOT_URL?>?p=beranda&amp;a=about">About</a>
           </li>
           <li class="nav mx-0 mx-lg-1">
               <form action="http://localhost/perpus-wb/anggota/?p=Buku&a=search" method="post" class="form-inline mr-auto ">

@@ -49,6 +49,12 @@ class Beranda
         $this->oUtil->getView('detail');
     }
 
+    public function about()
+    {
+
+        $this->oUtil->getView('about');
+    }
+
     public function notFound()
     {
         $this->oUtil->getView('not_found');

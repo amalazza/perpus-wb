@@ -88,13 +88,21 @@ public function filter()
     public function detail()/**/
     {
         // $this->oUtil->oBuku = $this->oModel->getById($this->_iId); // Get the data of the post
-        $aData = array('no_katalog' => $this->_iId, 'no_anggota' => $_SESSION['id']);
+        if (!$this->isLogged())
+        {
+           $this->oUtil->oBuku = $this->oModel->getById($this->_iId); // Get the data of the post
+
+            $this->oUtil->getView('detail');
+        }else{
+            $aData = array('no_katalog' => $this->_iId, 'no_anggota' => $_SESSION['id']);
         $this->oUtil->oStatus = $this->oModel->getStatus($aData); 
         $this->oUtil->dataPerpanjang = $this->oModel->getBatas();
 
          $this->oUtil->oBuku = $this->oModel->getById($this->_iId); // Get the data of the post
 
         $this->oUtil->getView('detail');
+        }
+        
     }
     public function perpanjangan()
     {     

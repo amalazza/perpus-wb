@@ -4,7 +4,7 @@
     <p class="error">The post can't be be found!</p>
 <?php else: ?>
 
-    <!--main content start-->
+    <!--main content start d-->
     <div class="row">
       <!-- profile-widget -->
       <div class="col-lg-12">
@@ -42,8 +42,9 @@
                     </h2>
                 </div>
               </div>
-			  <?php if (empty($this->oStatus)): ?>
-			  <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
+        <?php if (!empty($_SESSION['is_logged'])): ?>
+                  <?php if (empty($this->oStatus)): ?>
+        <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
                 <ul style="background-color: #1abc9c;">
                   <li class="active">
                     <h3>
@@ -55,12 +56,12 @@
 
                 </ul>
               </div>
-			  <?php else: ?>
-			  <?php if($this->oStatus->status == "dipinjam"): ?>
-			  <?php if (empty($this->dataPerpanjang)): ?>
-				<?php else: ?>
-					<?php if ($this->oStatus->perpanjangan_ke < $this->dataPerpanjang->batas): ?>
-			  <div class="col-lg-2 col-sm-6 follow-info weather-category" id="perpanjang">
+        <?php else: ?>
+        <?php if($this->oStatus->status == "dipinjam"): ?>
+        <?php if (empty($this->dataPerpanjang)): ?>
+        <?php else: ?>
+          <?php if ($this->oStatus->perpanjangan_ke < $this->dataPerpanjang->batas): ?>
+        <div class="col-lg-2 col-sm-6 follow-info weather-category" id="perpanjang">
                 <ul style="background-color: #1abc9c;">
                   <li class="active">
                     <h3>
@@ -72,8 +73,8 @@
 
                 </ul>
               </div>
-			  <?php else: ?>
-			  <div class="col-lg-2 col-sm-6 follow-info weather-category" id="perpanjang">
+        <?php else: ?>
+        <div class="col-lg-2 col-sm-6 follow-info weather-category" id="perpanjang">
                 <ul style="background-color: #1abc9c;">
                   <li class="active">
                     <h3>
@@ -85,10 +86,10 @@
 
                 </ul>
               </div>
-			  <?php endif ?>
-			  <?php endif ?>
-			  <?php else: ?>
-			  <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
+        <?php endif ?>
+        <?php endif ?>
+        <?php else: ?>
+        <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
                 <ul style="background-color: #1abc9c;">
                   <li class="active">
                     <h3>
@@ -100,9 +101,22 @@
 
                 </ul>
               </div>
-			  <?php endif; ?>
-			  <?php endif; ?>
-              
+        <?php endif; ?>
+        <?php endif; ?>
+      <?php else: ?>
+        <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
+                <ul style="background-color: #1abc9c;">
+                  <li class="active">
+                    <h3>
+                      <i class="fa fa-bell fa-2x"> </i><br> 
+                      <input type="submit" name="pinjam" value="PINJAM" class="btn btn-primary" style="background-color: #2c3e50; color: white; border-color: white;"/> 
+                    </h3>
+                    Kini, pinjam buku di Wira Buana bisa order dulu
+                  </li>
+
+                </ul>
+              </div>
+        <?php endif ?>
 			  
               <div class="col-lg-2 col-sm-6 follow-info weather-category" id="ebookButton">
                 <ul style="background-color: #1abc9c;">

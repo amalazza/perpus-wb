@@ -19,27 +19,17 @@
     <section class="page-section portfolio" id="portfolio" style="margin-top: -20px;">
     <div class="container">
 
-      <!-- Portfolio Section Heading -->
-      <h2 class="page-section-heading text-center text-secondary mb-0"><b>About</b></h2>
-
-      <!-- Icon Divider -->
-      <div class="divider-custom">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon">
-          <i class="fas fa-book"></i>
-        </div>
-        <div class="divider-custom-line"></div>
-      </div>
-
-      <!-- Portfolio Grid Items -->
-      <div class="row text-center ">
-          <h4  style="font-size: 23px;">SMP Wirabuana Adalah Sekolah yang menjadikan kedisiplinan dan pengembangan karakter yang bernuansa agamis untuk menyiapkan para generasi muda indonesia yang mandiri, kreatif, santun dan agamis. Didukung sarana dan prasarana yang lengkap dan mumpui serta tenaga pendidik yang propesonal agar menjadikan SMP Wirabuana mendapatkan Akreditasi A semenjak tahun 2010 sampai sekarang.</h4>
+          <section class="panel">
+            <div class="bio-graph-heading" style="text-align: center;">
+                    " The more that you READ, the more things you will KNOW, the more that you LEARN, the more places you'll GO "
+            </div>
+          </section>
       </div>
       </div>
   </section>
 
   <section class="page-section portfolio" id="portfolio" style="margin-top: -90px;">
-    <div class="container">
+    <div class="container" style=" margin-top: -38px;">
 <!-- Portfolio Section Heading -->
       <h2 class="page-section-heading text-center text-secondary mb-0"><b>Judul Terbaru</b></h2>
 
