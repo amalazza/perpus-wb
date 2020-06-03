@@ -80,7 +80,17 @@
 					<div class="form-group ">
                       <label for="batas_kembali" class="control-label col-lg-2">Batas Pengembalian <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="batas_kembali" name="batas_kembali" type="text" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d', strtotime('+1 week'));?>" readonly="true"/>
+                        <?php
+                            $tanggalSekarang = date('Y-m-d');
+                            $newTanggalSekarang=strtotime($tanggalSekarang);
+
+                            $jumlahHari=$this->oPerpjg->hari;
+                            $NewjumlahHari=86400*$jumlahHari;
+
+                            $hasilJumlah = $newTanggalSekarang + $NewjumlahHari;
+                            $tampilHasil=date("Y-m-d",$hasilJumlah);
+                        ?>
+                        <input class=" form-control" id="batas_kembali" name="batas_kembali" type="text" value="<?php echo $tampilHasil; ?>" readonly="true"/>
                       </div>
                     </div>
                     <div class="form-group">

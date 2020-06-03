@@ -105,6 +105,12 @@ class Transaksi
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 	
+public function getBatas()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM perpanjangan');
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+    
 	public function getKatalog()
     {
         $oStmt = $this->oDb->query('SELECT * FROM katalog WHERE stok != "0" AND jenis_katalog != "E-Book"');

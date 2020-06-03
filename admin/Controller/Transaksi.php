@@ -260,7 +260,7 @@ class Transaksi
            exit; 
         }
         else{
-
+            $this->oUtil->oPerpjg = $this->oModel->getBatas();
         if (!empty($_POST['add_submit']))
         {
             if (!empty($_POST['no_anggota'])) // Allow a maximum of 50 characters
@@ -268,6 +268,7 @@ class Transaksi
 				
                 //$idku = $_SESSION['id'];
                 //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
+                
 				$no_katalog = $_POST['no_katalog'];
 				$aData = array('no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali'],'status' => 'dipinjam');
                 //$aLog = array('id_admin' => $idku, 'activity' => $act );
