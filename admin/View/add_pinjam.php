@@ -70,6 +70,7 @@
                       </div>
                     </div>
 				  <?php endif; ?>
+				  
                     
 					<div class="form-group ">
                       <label for="tgl_pinjam" class="control-label col-lg-2">Tanggal Peminjaman <span class="required">*</span></label>
@@ -112,17 +113,17 @@
   
   //autofill input
   
-  $("#searchNIS").on('change', function(){
+  $("#searchKatalog").on('change', function(){
 	  var nis = $("#searchNIS").val();
+	  var katalog = $("#searchKatalog").val();
 		  $.ajax({
-			  url: 'http://localhost/perpus-wb/admin/?p=anggota&a=dropdown',
-			  data: {nis:nis},
+			  url: 'http://localhost/perpus-wb/admin/?p=transaksi&a=dropdown',
+			  data: {nis:nis, katalog:katalog},
 			  method:'post',
 			  dataType: 'json'
 		  }).done(function(Data){
-			  //console.log(Data);
-			  $('#nama').val(Data.nama);
-			  $('#kelas').val(Data.kelas);
+			  alert("Buku yang ingin dipinjam belum dikembalikan, harap kembalikan buku terlebih dahulu");
+			  window.history.back();
 		  });
   });
   

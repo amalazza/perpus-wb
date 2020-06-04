@@ -14,8 +14,8 @@ $pdf->AddPage();
 $pdf->SetFont('Times','B',11);
 //$pdf->Image('images/php.png',1,1,2,2);
 
-$pdf->SetX(4);
-$pdf->MultiCell(19.5,0.5,'Perpustakaan Wira Buana',0,'L');
+$pdf->SetX(1);
+$pdf->MultiCell(0,0,'Perpustakaan Wira Buana',0,'L');
 $pdf->SetX(4);
 $pdf->Line(1,3.1,28.5,3.1);
 $pdf->SetLineWidth(0.1);      
@@ -33,8 +33,9 @@ $pdf->Cell(2.5, 0.8, 'No Peminjaman', 1, 0, 'C');
 $pdf->Cell(6, 0.8, 'Nama Anggota', 1, 0, 'C');
 $pdf->Cell(6, 0.8, 'Buku', 1, 0, 'C');
 $pdf->Cell(4, 0.8, 'Tanggal Peminjaman', 1, 0, 'C');
-$pdf->Cell(4, 0.8, 'Batas Pengembalian', 1, 0, 'C');
-$pdf->Cell(4, 0.8, 'Tanggal Pengembalian', 1, 1, 'C');
+$pdf->Cell(4, 0.8, 'Tanggal Pengembalian', 1, 0, 'C');
+$pdf->Cell(3, 0.8, 'Status', 1, 0, 'C');
+$pdf->Cell(3, 0.8, 'denda', 1, 1, 'C');
 $pdf->SetFont('Arial','',9);
 
 
@@ -43,11 +44,18 @@ foreach ($this->oPinjam as $oPinjam){
 	$pdf->Cell(6, 0.8, $oPinjam->no_anggota ." - " .$oPinjam->nama, 1, 0,'C');
 	$pdf->Cell(6, 0.8, $oPinjam->no_katalog ." - " .$oPinjam->judul,1, 0, 'C');
 	$pdf->Cell(4, 0.8, $oPinjam->tanggal_pinjam,1, 0, 'C');
-	$pdf->Cell(4, 0.8, $oPinjam->batas_kembali,1, 0, 'C');
-	$pdf->Cell(4, 0.8, $oPinjam->tanggal_kembali,1, 1, 'C');
+	$pdf->Cell(4, 0.8, $oPinjam->tanggal_kembali,1, 0, 'C');
+	$pdf->Cell(3, 0.8, $oPinjam->status,1, 0, 'C');
+	$pdf->Cell(3, 0.8, $oPinjam->denda,1, 1, 'C');
 }
-
 $pdf->ln(1);
+$pdf->SetFont('Arial','B',11);
+$pdf->Cell(40.5,0.7,"Total Peminjaman: " . $this->cPinjam[0] ,0,10,'L');
+
+$pdf->SetFont('Arial','B',11);
+$pdf->Cell(40.5,0.7,"Total Denda: " . $this->cDenda[0],0,10,'L');
+$pdf->ln(1);
+
 $pdf->SetFont('Arial','B',11);
 $pdf->Cell(40.5,0.7,"Approve",0,10,'C');
 

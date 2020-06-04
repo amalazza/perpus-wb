@@ -95,6 +95,12 @@ class Transaksi
     }
     }
 	
+	public function dropdown()
+    {
+			$aData = array('no_anggota' => $_POST['nis'], 'no_katalog' => $_POST['katalog']);
+			echo json_encode($this->oUtil->oData = $this->oModel->getDataById($aData));
+    }
+	
 	public function cetakLaporan()
     {
         if (!$this->isLogged())
@@ -105,6 +111,8 @@ class Transaksi
         else{
 		$aData = array('from' => $_POST['from'], 'end' => $_POST['end']);
         $this->oUtil->oPinjam = $this->oModel->cetakLaporan($aData);
+		$this->oUtil->cPinjam = $this->oModel->countPeminjaman($aData);
+		$this->oUtil->cDenda = $this->oModel->countDenda($aData);
 
         $this->oUtil->getView('laporanPeminjaman');
     }
@@ -158,12 +166,6 @@ class Transaksi
     public function notFound()
     {
         $this->oUtil->getView('not_found');
-    }
-    
-	public function dropdown()
-    {
-        
-			echo json_encode($this->oUtil->oData = $this->oModel->getDataById($_POST['nis']));
     }
 	
 	public function updatePesanan()

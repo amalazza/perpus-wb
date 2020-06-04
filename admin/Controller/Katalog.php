@@ -113,6 +113,7 @@ class Katalog
         }
         else{
         $this->oUtil->oPinjam = $this->oModel->cetakLaporan($this->_iId);
+		$this->oUtil->cPinjam = $this->oModel->countPeminjaman($this->_iId);
 
         $this->oUtil->getView('LaporanKatalog');
     }

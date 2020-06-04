@@ -22,7 +22,6 @@ if (empty($this->oAnggota)): ?>
             </div>
           </div>
           <div class="col-lg-4 col-sm-4 follow-info">
-          <h1 style="color: red;"> <b>YANG JADI MASALAH oAnggota di controllernya gak ngambil data dari db</b></h1>
             <h2>
               <?=$this->oAnggota->nama?>
             </h2>

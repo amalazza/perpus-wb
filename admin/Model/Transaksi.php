@@ -22,11 +22,33 @@ class Transaksi
     {
         $from = date('Y-m-d', strtotime($aData['from']));
 		$end = date('Y-m-d', strtotime($aData['end']));
-		$oStmt = $this->oDb->prepare('SELECT a.no_peminjaman, a.tanggal_kembali, a.status, b.no_anggota, b.nama, c.no_katalog, c.judul, a.tanggal_pinjam, a.batas_kembali, a.perpanjangan_ke FROM peminjaman a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog WHERE status="dipinjam" AND tanggal_pinjam BETWEEN :from AND :end ');
+		$oStmt = $this->oDb->prepare('SELECT a.no_peminjaman, a.tanggal_kembali, a.status, b.no_anggota, b.nama, c.no_katalog, c.judul, a.tanggal_pinjam, a.batas_kembali, a.perpanjangan_ke, a.denda FROM peminjaman a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog WHERE status="dipinjam" AND tanggal_pinjam BETWEEN :from AND :end OR status="kembali" AND tanggal_pinjam BETWEEN :from AND :end');
         $oStmt->bindValue(':from', $from);
         $oStmt->bindValue(':end', $end);
         $oStmt->execute();
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+	
+	public function countPeminjaman(array $aData)
+    {
+        $from = date('Y-m-d', strtotime($aData['from']));
+		$end = date('Y-m-d', strtotime($aData['end']));
+		$oStmt = $this->oDb->prepare('SELECT COUNT(*) FROM peminjaman WHERE status="dipinjam" AND tanggal_pinjam BETWEEN :from AND :end OR status="kembali" AND tanggal_pinjam BETWEEN :from AND :end');
+        $oStmt->bindValue(':from', $from);
+        $oStmt->bindValue(':end', $end);
+        $oStmt->execute();
+        return $oStmt->fetch();
+    }
+	
+	public function countDenda(array $aData)
+    {
+        $from = date('Y-m-d', strtotime($aData['from']));
+		$end = date('Y-m-d', strtotime($aData['end']));
+		$oStmt = $this->oDb->prepare('SELECT SUM(denda) FROM peminjaman WHERE status="dipinjam" AND tanggal_pinjam BETWEEN :from AND :end OR status="kembali" AND tanggal_pinjam BETWEEN :from AND :end');
+        $oStmt->bindValue(':from', $from);
+        $oStmt->bindValue(':end', $end);
+        $oStmt->execute();
+        return $oStmt->fetch();
     }
 	
 	public function getDenda()
@@ -117,10 +139,11 @@ public function getBatas()
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 	
-	public function getDataById($iId)
+	public function getDataById(array $aData)
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM siswa WHERE nis = :nis LIMIT 1');
-        $oStmt->bindParam(':nis', $iId, \PDO::PARAM_INT);
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman WHERE no_anggota = :no_anggota AND no_katalog = :no_katalog LIMIT 1');
+        $oStmt->bindValue(':no_anggota', $aData['no_anggota'], \PDO::PARAM_INT);
+		$oStmt->bindValue(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }

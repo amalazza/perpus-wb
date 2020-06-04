@@ -50,6 +50,10 @@ foreach ($this->oPinjam as $oPinjam){
 
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',11);
+$pdf->Cell(40.5,0.7,"Total Peminjaman: " . $this->cPinjam[0] ,0,10,'L');
+
+$pdf->ln(1);
+$pdf->SetFont('Arial','B',11);
 $pdf->Cell(20,0.1,"Approve",0,0,'R');
 
 $pdf->ln(1);
