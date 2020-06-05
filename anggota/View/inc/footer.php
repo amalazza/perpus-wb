@@ -1,5 +1,5 @@
   <!-- Copyright Section -->
-  <section class="copyright py-4 text-center text-white">
+  <section class="copyright py-4 text-center text-white birufooterrwb">
     <div class="container">
       <small>Copyright © IT Development SMP-SMK Wira Buana - Proudly powered by WB-Technopark</small>
     </div>

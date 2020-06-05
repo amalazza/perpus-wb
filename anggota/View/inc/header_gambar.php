@@ -36,7 +36,7 @@
         <section class="page-section portfolio" id="portfolio" style="margin-top: -100px;">
           <div class="container">
             <section class="panel">
-              <div class="bio-graph-heading" style="text-align: center;">
+              <div class="bio-graph-heading birunavbarwb" style="text-align: center; padding: 30px 80px;">
                   Website perpustakaan wira buana digunakan mempermudah kegiatan perpustakaan konvensional, menjadi lebih digital
               </div>
             </section>
@@ -58,7 +58,7 @@
         <section class="page-section portfolio" id="portfolio" style="margin-top: -100px;">
           <div class="container">
             <section class="panel">
-              <div class="bio-graph-heading" style="text-align: center;">
+              <div class="bio-graph-heading birunavbarwb" style="text-align: center; padding: 30px 80px;">
                   Menyediakan koleksi buku perpustakaan wira buana, juga mempunyai fitur pemesanan dan perpanjangan buku
               </div>
             </section>
@@ -80,7 +80,7 @@
         <section class="page-section portfolio" id="portfolio" style="margin-top: -100px;">
           <div class="container">
             <section class="panel">
-              <div class="bio-graph-heading" style="text-align: center;">
+              <div class="bio-graph-heading birunavbarwb" style="text-align: center; padding: 30px 80px;">
                   Menyediakan koleksi e-book yang bisa dibaca anggota perpustakaan wira buana
               </div>
             </section>

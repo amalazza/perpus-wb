@@ -45,7 +45,7 @@
                   <p><i class="fa fa-user"></i> <?php echo $pengarang; ?> | <i class="fa fa-calendar"></i> <?=$oBuku->tahun_terbit?></p>
                 </div>
               </div>
-              <button class="btn btn-primary center" style="bottom: 0; width: 160px; background-color: #2c3e50; color: white; border-color: white;"><?=$oBuku->jenis_katalog?></button>
+              <button class="btn btn-primary center tombolbirufooterrwb" style="bottom: 0; width: 160px; color: white; border-color: white;"><?=$oBuku->jenis_katalog?></button>
              </div>
           </a>
          </div>

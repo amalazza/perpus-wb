@@ -85,6 +85,47 @@
   text-align: center;
   display: none;
 }
+
+.birunavbarwb { 
+  background-color: #294a70;
+}
+
+.birutopheadwb { 
+  background-color: #49688e;
+}
+
+.birufooterrwb { 
+  background-color: #15305b;
+}
+
+.orangewb { 
+  background-color: #f4a024;
+}
+
+.tombolbirunavbarwb { 
+  background-color: #294a70;
+  color: white; 
+  border-color: white;
+}
+
+.tombolbirutopheadwb { 
+  background-color: #49688e;
+  color: white; 
+  border-color: white;
+}
+
+.tombolbirufooterrwb { 
+  background-color: #15305b;
+  color: white; 
+  border-color: white;
+}
+
+.tombolorangewb { 
+  background-color: #f4a024;
+  color: white; 
+  border-color: white;
+}
+
 select{
   appearance:none;
   -webkit-appearance:none;
@@ -174,7 +215,7 @@ select{
 <body id="page-top">
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav" style="margin: 0">
+  <nav class="navbar navbar-expand-lg text-uppercase fixed-top birufooterrwb" id="mainNav" style="margin: 0">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="<?=ROOT_URL?>?p=beranda&amp;a=index">Perpus WB</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -196,7 +237,7 @@ select{
               <form action="http://localhost/perpus-wb/anggota/?p=Buku&a=search" method="post" class="form-inline mr-auto ">
                 
                   <input class="form-control" type="text" name="search" id="search" placeholder="Search Judul ..." aria-label="Search">
-                  <button href="#!" class="btn btn-outline-white btn-md my-0 ml-sm-2" style="background-color: #2c3e50; color: white; border-color: white;" type="submit">Search</button>
+                  <button href="#!" class="btn btn-outline-white btn-md my-0 ml-sm-2 tombolbirufooterrwb" style="color: white;" type="submit">Search</button>
               </form>
           </li>
           
@@ -216,7 +257,7 @@ select{
                   <a  href="<?=ROOT_URL?>?p=anggota&amp;a=profile"><i class="icon_profile"></i> Profile Saya</a>
                 </li>
                 <li>
-                  <a  href="<?=ROOT_URL?>?p=anggota&amp;a=logout"  style="color: #fff; border-bottom: none !important; text-transform: uppercase; background-color: #2c3e50 !important;"><i class="icon_key_alt"></i> Keluar</a>
+                  <a  href="<?=ROOT_URL?>?p=anggota&amp;a=logout"  style="color: #fff; border-bottom: none !important; text-transform: uppercase; background-color: #15305b !important;"><i class="icon_key_alt"></i> Keluar</a>
                 </li>
               </ul>
             </li>
