@@ -1,32 +1,8 @@
-<?php require 'inc/header.php' ?>
 <?php require 'inc/msg.php' ?>
-
+<?php require 'inc/header.php' ?>
+<?php require 'inc/header_gambar.php' ?>
 
 <div>
-    <header class="masthead text-white text-center" style="opacity: 100%; background-image: url(<?=ROOT_URL?>static/1.jpg); position: relative; margin-top: -55px;">
-    <div class="container align-items-center">
-
-      <!-- Masthead Avatar Image -->
-      <img class="masthead-avatar" style=" height: 120px; width:200px;" src="<?=ROOT_URL?>static/bukup.png" alt="">
-      <br>
-      <!-- Masthead Heading -->
-      <h1 class="masthead-heading mb-0"><b>Perpustakaan Online Wira Buana</b></h1>
-      <h3 style="margin-top: 7px;"><b><i>SMK WIRA BUANA 1 | SMK WIRA BUANA 2</i></b></h3>
-
-    </div>
-  </header>
-
-    <section class="page-section portfolio" id="portfolio" style="margin-top: -20px;">
-    <div class="container">
-
-          <section class="panel">
-            <div class="bio-graph-heading" style="text-align: center;">
-                    " The more that you READ, the more things you will KNOW, the more that you LEARN, the more places you'll GO "
-            </div>
-          </section>
-      </div>
-      </div>
-  </section>
 
   <section class="page-section portfolio" id="portfolio" style="margin-top: -90px;">
     <div class="container" style=" margin-top: -38px;">

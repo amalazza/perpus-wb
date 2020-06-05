@@ -1,4 +1,6 @@
+<?php require 'inc/msg.php' ?>
 <?php require 'inc/header.php' ?>
+<?php require 'inc/header_gambar.php' ?>
 <center>
 		<!-- Masthead Heading -->
       <h2 class="page-section-heading text-center text-secondary mb-0">Perpustakaan Online Wira Buana</h2>
