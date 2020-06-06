@@ -51,8 +51,9 @@
          </div>
           <?php endforeach ?>
           <?php endif ?>
-          <div style="margin-left: 20px; text-align: center;" class="lihat right">
-            <button class="btn btn-primary center" style="font-size: 17px; background-color: #12876f;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=buku'">Lihat Koleksi</button>
+          <div class="text-center">
+            <center>
+            <button class="tombolbirufooterrwb btn btn-primary btn-lg btn-block text-center " onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=buku'" style="padding: 10px;">Lihat Koleksi</button></center>
           </div>
         </div>
 

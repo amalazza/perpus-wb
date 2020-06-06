@@ -3,7 +3,7 @@
 <?php require 'inc/header_gambar.php' ?>
 <div>
 
-  <section class="page-section portfolio" id="portfolio" style="margin-top: -9%;">
+  <section class="page-section portfolio" id="portfolio" style="margin-top: -120px;">
 
     <div class="container">
       <form class="login-form" action="" method="post" style="margin: auto;">

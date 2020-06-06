@@ -15,11 +15,9 @@ if (empty($this->oAnggota)): ?>
       <div class="profile-widget profile-widget-info" style="background-color: #1abc9c;">
         <div class="panel-body">
           <div class="col-lg-2 col-sm-2">
-            <div class="follow-ava" style="-webkit-border-radius: 0%;">
               <?php 
-                  echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($this->oAnggota->foto))."' style='height: 100%; width: 100%; -webkit-border-radius: 0%'/>";
+                  echo "<img class='follow-ava' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($this->oAnggota->foto))."' style=' transform: scale(3, 3); margin-top: 60px;'/>";
               ?>
-            </div>
           </div>
           <div class="col-lg-4 col-sm-4 follow-info">
             <h2>
@@ -49,7 +47,7 @@ if (empty($this->oAnggota)): ?>
                 <li class="active">
                   <h3>
                     <i class="fa fa-user fa-2x"> </i><br> 
-          <button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#detailAnggota" onclick="tes()" style="background-color: #2c3e50; color: white; border-color: white;">DETAIL</button>
+          <button class="btn btn-primary detail" id="detail" type="button" data-toggle="modal" data-target="#detailAnggota" onclick="tes()" style="background-color: #15305b; color: white; border-color: white;">DETAIL</button>
                   </h3>
                   Lihat Detail Profile
                 </li>
@@ -62,7 +60,7 @@ if (empty($this->oAnggota)): ?>
                   <h3>
                     <i class="fa fa-user fa-2x"> </i><br> 
                     <form action="<?=ROOT_URL?>?p=anggota&amp;a=edit&amp;id=<?=$data->no_anggota?>" method="post">
-                      <button class="btn btn-danger" type="submit" name="edit" value="1" style="background-color: #2c3e50; color: white; border-color: white;">EDIT</button>
+                      <button class="btn btn-primary" type="submit" name="edit" value="1" style="background-color: #15305b; color: white; border-color: white;">EDIT</button>
                     </form>
                   </h3>
                   Edit Profile
@@ -79,7 +77,7 @@ if (empty($this->oAnggota)): ?>
         <div class="row">
           <div class="col-lg-12">
             <section class="panel" >
-              <header class="panel-heading" style="background-color: #2c3e50;">
+              <header class="panel-heading birunavbarwb">
                 <ul class="nav nav-tabs" >
                   <li>
                     <a data-toggle="tab" href="#aktifitas">
