@@ -44,87 +44,91 @@
               </div>
               <?php if (!empty($_SESSION['is_logged'])): ?>
                 <?php if (empty($this->oStatus)): ?>
-                  <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
-                    <ul style="background-color: #1abc9c;">
-                      <li class="active">
-                        <h3>
-                          <i class="fa fa-bell fa-2x"> </i><br> 
-                          <input type="submit" name="pinjam" value="PINJAM" class="btn btn-primary" style="background-color: #15305b; color: white; border-color: white;"/> 
-                        </h3>
-                        Kini, pinjam buku di Wira Buana bisa order dulu
-                      </li>
-
-                    </ul>
-                  </div>
-                <?php else: ?>
-
-                <?php if($this->oStatus->status == "dipinjam"): ?>
-                <?php if (empty($this->dataPerpanjang)): ?>
-                <?php else: ?>
-                <?php if ($this->oStatus->perpanjangan_ke < $this->dataPerpanjang->batas): ?>
-                  <div class="col-lg-2 col-sm-6 follow-info weather-category" id="perpanjang">
-                    <ul style="background-color: #1abc9c;">
-                      <li class="active">
-                        <h3>
-                          <i class="fa fa-bell fa-2x"> </i><br> 
-                          <input type="submit" name="perpanjangan" value="PERPANJANGAN" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=perpanjangan&amp;id=<?=$this->oBuku->no_katalog?>'" class="btn btn-primary" style="background-color: #15305b; color: white; border-color: white;"/> 
-                        </h3>
-                        Yuk, perpanjang waktu peminjamanmu, agar tidak terkena denda
-                      </li>
-                    </ul>
-                  </div>
-              <?php else: ?>
-                <div class="col-lg-2 col-sm-6 follow-info weather-category" id="perpanjang">
-                  <ul style="background-color: #1abc9c;">
-                    <li class="active">
-                      <h3>
-                        <i class="fa fa-bell fa-2x"> </i><br> 
-                         <button class="btn btn-primary" type="submit" name="edit" value="1" style="background-color: #15305b; color: white; border-color: white;" disabled>Perpanjangan</button>
-                      </h3>
-                      Kamu sudah melakukan perpanjangan ke <?= $this->dataPerpanjang->batas?>. 
-                    </li>
-                  </ul>
+              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
+                <div class="card-box bg-orange" style="border: 1px solid white;">
+                    <div class="inner">
+                        <h3> PESAN </h3>
+                        <p><small> Kini, pinjam buku di Wira Buana bisa pesan dulu </small></p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                    </div>
+                    <button type="submit" name="pinjam" value="PINJAM" class="card-box-footer" style="border-color: transparent;">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
                 </div>
+              </div>
+              <?php else: ?>
+
+              <?php if($this->oStatus->status == "dipinjam"): ?>
+              <?php if (empty($this->dataPerpanjang)): ?>
+              <?php else: ?>
+              <?php if ($this->oStatus->perpanjangan_ke < $this->dataPerpanjang->batas): ?>
+              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="perpanjang">
+                <div  class="card-box bg-orange" style="border: 1px solid white">
+                    <div class="inner">
+                        <h3> PERPANJANG </h3>
+                        <p> <small>Perpanjang waktu peminjaman agar tidak denda</small></p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                    </div>
+                    <button class="card-box-footer" style="border-color: transparent;" type="submit" name="perpanjangan" value="PERPANJANGAN" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=perpanjangan&amp;id=<?=$this->oBuku->no_katalog?>'">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
+                </div>
+              </div>
+              <?php else: ?>
+              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="perpanjang">
+                <div  class="card-box bg-orange" style="border: 1px solid white">
+                    <div class="inner">
+                        <h3> PERPANJANG </h3>
+                        <p><small> Kamu sudah melakukan perpanjangan ke <?= $this->dataPerpanjang->batas?> </small></p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                    </div>
+                    <button class="card-box-footer" style="border-color: transparent;" type="submit" name="edit" value="1" disabled>Tidak bisa melakukannya lagi</button>
+                </div>
+              </div>
               <?php endif ?>
               <?php endif ?>
               <?php else: ?>
-                <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
-                  <ul style="background-color: #1abc9c;">
-                    <li class="active">
-                      <h3>
-                        <i class="fa fa-bell fa-2x"> </i><br> 
-                        <input type="submit" name="pinjam" value="PINJAM" class="btn btn-primary" style="background-color: #15305b; color: white; border-color: white;"/> 
-                      </h3>
-                      Kini, pinjam buku di Wira Buana bisa order dulu
-                    </li>
-                  </ul>
+              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
+                <div class="card-box bg-orange" style="border: 1px solid white;">
+                    <div class="inner">
+                        <h3> PESAN </h3>
+                        <p><small> Kini, pinjam buku di Wira Buana bisa pesan dulu </small></p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                    </div>
+                    <button type="submit" name="pinjam" value="PINJAM" class="card-box-footer" style="border-color: transparent;">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
                 </div>
+              </div>
               <?php endif; ?>
               <?php endif; ?>
               <?php else: ?>
-                <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
-                  <ul style="background-color: #1abc9c;">
-                    <li class="active">
-                      <h3>
-                        <i class="fa fa-bell fa-2x"> </i><br> 
-                        <input type="submit" name="pinjam" value="PINJAM" class="btn btn-primary" style="background-color: #15305b; color: white; border-color: white;"/> 
-                      </h3>
-                      Kini, pinjam buku di Wira Buana bisa order dulu
-                    </li>
-                  </ul>
+              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
+                <div class="card-box bg-orange" style="border: 1px solid white;">
+                    <div class="inner">
+                        <h3> PESAN </h3>
+                        <p><small> Kini, pinjam buku di Wira Buana bisa pesan dulu </small></p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                    </div>
+                    <button type="submit" name="pinjam" value="PINJAM" class="card-box-footer" style="border-color: transparent;">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
                 </div>
+              </div>
               <?php endif ?>
-			  
-              <div class="col-lg-2 col-sm-6 follow-info weather-category" id="ebookButton">
-                <ul style="background-color: #1abc9c;">
-                  <li class="active">
-                    <h3>
-                      <i class="fa fa-bell fa-2x"> </i><br> 
-                      <input type="submit" name="pinjam" value="BACA" class="btn btn-primary" style="background-color: #15305b; color: white; border-color: white;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=view&amp;id=<?=$this->oBuku->no_katalog?>'"/> 
-                    </h3>
-                    Buku-buku elektronik yang bisa dibaca dimana dan kapan saja
-                  </li>
-                </ul>
+              <div class="col-lg-2 col-sm-6 follow-info weather-category" >
+                <div  class="card-box bg-red" style="border: 1px solid white">
+                    <div class="inner">
+                        <h3> BACA </h3>
+                        <p><small> E-book yang bisa dibaca dimana dan kapan saja </small></p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                    </div>
+                    <button class="card-box-footer" style="border-color: transparent;" type="submit" name="pinjam" value="BACA"  onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=view&amp;id=<?=$this->oBuku->no_katalog?>'">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
+                </div>
               </div>
             </div>
 
