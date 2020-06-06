@@ -136,7 +136,7 @@
     <div class="row">
       <div class="col-lg-12">
         <section class="panel" >
-          <header class="panel-heading tab-bg-info">
+          <header class="panel-heading tab-bg-info birunavbarwb" style="">
             <ul class="nav nav-tabs">
               <li class="active">
                 <a data-toggle="tab" href="#recent-activity">
@@ -152,7 +152,7 @@
               <!-- profile -->
               <div id="profile">
                 <section class="panel">
-                  <div class="bio-graph-heading" style="text-align: left; ">
+                  <div class="bio-graph-heading birutopheadwb" style="text-align: left; ">
                     <?=$this->oBuku->absktrak?>
                   </div>
                   <div class="panel-body bio-graph-info">

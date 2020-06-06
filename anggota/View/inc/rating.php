@@ -72,7 +72,7 @@
 </style>
 
 
-  <header class="panel-heading tab-bg-info">
+  <header class="panel-heading tab-bg-info birunavbarwb">
     <ul class="nav nav-tabs">
       <li class="active">
         <a data-toggle="tab" href="#recent-activity">

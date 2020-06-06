@@ -37,7 +37,7 @@
           <div class="container">
             <section class="panel">
               <div class="bio-graph-heading birunavbarwb" style="text-align: center; padding: 30px 80px;">
-                  Website perpustakaan wira buana digunakan mempermudah kegiatan perpustakaan konvensional, menjadi lebih digital
+                  Website perpustakaan wira buana digunakan untuk mempermudah kegiatan perpustakaan konvensional, menjadi lebih digital
               </div>
             </section>
            </div>
