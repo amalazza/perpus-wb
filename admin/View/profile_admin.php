@@ -28,7 +28,7 @@
             <?php $data = $this->oAdd_Admins;
              ?>
           <div class="panel-body">
-            <img src="data:<?=$data->mime?>;base64,<?=base64_encode($data->foto); ?>" style="width: 200px; height: 200px; float:left; margin-right: 20px;"/>
+            <img class="follow-ava" src="data:<?=$data->mime?>;base64,<?=base64_encode($data->foto); ?>" style="width: 200px; height: 200px; float:left; margin-right: 20px;"/>
             <div style="">
             <h4>Nama : <?=$data->nama?></h4>
             <h4>Email : <?=$data->email?></h4>
