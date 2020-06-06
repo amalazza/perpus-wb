@@ -3,57 +3,29 @@
 <?php require 'inc/header_gambar.php' ?>
 <div>
 
-  <section class="page-section portfolio" id="portfolio" style="margin-top: -20px;">
+  <section class="page-section portfolio" id="portfolio" style="margin-top: -9%;">
+
     <div class="container">
-
-      <!-- Contact Section Heading -->
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Login</h2>
-
-      <!-- Icon Divider -->
-      <div class="divider-custom">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon">
-          <i class="fas fa-book"></i>
-        </div>
-        <div class="divider-custom-line"></div>
-      </div>
-
-      <div class="row" >
-        <div class="col-lg-8 mx-auto ">
-          <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-          <form action="" method="post">
-          <div style="">
-            <div class="control-group">
-              <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>No Anggota</label>
-                <div  style="font-size: 13px;">
-                  <input class="form-control" type="text" placeholder="No Anggota" required="required" name="no_anggota" id="no_anggota">
-                </div>
-                <p class="help-block text-danger"></p>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>Password</label>
-                <div style="font-size: 13px;">
-                  <input class="form-control" type="password" placeholder="Password" required="required" name="password" id="password">
-                </div>
-                <p class="help-block text-danger"></p>
-              </div>
-            </div>
-            <br>
-            <div class="form-group">
-              <center>
-                <button type="submit"  style=" background-color: #12876f; width: 20%;" class="btn btn-primary btn-lg" name="btnLoginku" id="btnLoginku">Login</button>
-                <br><br>
-                <p>Belum Punya Akun? Daftar <a href="<?=ROOT_URL?>?p=anggota&a=daftar">Disini</a>
-              </center>
-            </div>
+      <form class="login-form" action="" method="post" style="margin: auto;">
+        <div class="login-wrap">
+         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Login</h2>
+         <br>
+          <p class="login-img"><i class="icon_lock_alt"></i></p>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="icon_profile"></i></span>
+            <input type="text" class="form-control" placeholder="No Anggota" autofocus name="no_anggota" id="no_anggota">
           </div>
-          </form>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+            <input type="password" class="form-control" placeholder="Password" required="required" name="password" id="password">
+          </div>
+          <button name="btnLoginku" id="btnLoginku" class="tombolbirufooterrwb btn btn-primary btn-lg btn-block" type="submit">Login</button>
+          <br><br>
+                <p style="color: #2c3e50cf;">Belum Punya Akun? Daftar <a href="<?=ROOT_URL?>?p=anggota&a=daftar"><u>Disini</u></a>
         </div>
-      </div>
-</div>
+      </form>
+    </div>
+   
 </section>
 <?php require 'inc/footer.php' ?>
 

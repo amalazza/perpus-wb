@@ -13,9 +13,8 @@
   <title><?=\TestProject\Engine\Config::SITE_NAME?></title>
   <link rel="shortcut icon" type="image/x-icon" href="<?=ROOT_URL?>static/img/favicon.ico">
 
+  <!-- slider -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <!-- Custom fonts for this theme -->
   <link href="<?=ROOT_URL?>static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -225,19 +224,20 @@ select{
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?=ROOT_URL?>?p=beranda&amp;a=about">About</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?=ROOT_URL?>?p=buku&amp;a=buku">Buku</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?=ROOT_URL?>?p=buku&amp;a=ebook">E-book</a>
           </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?=ROOT_URL?>?p=beranda&amp;a=about">About</a>
-          </li>
+          
           <li class="nav mx-0 mx-lg-1">
               <form action="http://localhost/perpus-wb/anggota/?p=Buku&a=search" method="post" class="form-inline mr-auto ">
                 
                   <input class="form-control" type="text" name="search" id="search" placeholder="Search Judul ..." aria-label="Search">
-                  <button href="#!" class="btn btn-outline-white btn-md my-0 ml-sm-2 tombolbirufooterrwb" style="color: white;" type="submit">Search</button>
+                  <button href="#!" class="tombolbirufooterrwb btn btn-primary btn-md my-0 ml-sm-2" style="color: white;" type="submit">Search</button>
               </form>
           </li>
           
