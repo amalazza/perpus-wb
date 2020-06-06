@@ -21,7 +21,7 @@
           </div>
           <button name="btnLoginku" id="btnLoginku" class="tombolbirufooterrwb btn btn-primary btn-lg btn-block" type="submit">Login</button>
           <br><br>
-                <p style="color: #2c3e50cf;">Belum Punya Akun? Daftar <a href="<?=ROOT_URL?>?p=anggota&a=daftar"><u>Disini</u></a>
+                <p style="color: black;">Belum Punya Akun? Daftar <a href="<?=ROOT_URL?>?p=anggota&a=daftar"><u>Disini</u></a>
         </div>
       </form>
     </div>
