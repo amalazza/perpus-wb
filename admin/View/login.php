@@ -21,18 +21,17 @@
   <link href="<?=ROOT_URL?>static/css/style.css" rel="stylesheet">
   <link href="<?=ROOT_URL?>static/css/style-responsive.css" rel="stylesheet" />
 
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-  <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
+  <style type="text/css">
+    .tombolbirufooterrwb { 
+      background-color: #15305b;
+      color: white; 
+      border-color: white;
+    }
+    .birufooterrwb { 
+      color: #15305b;
+    }
+  </style>
 
-    <!-- =======================================================
-      Theme Name: NiceAdmin
-      Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-      Author: BootstrapMade
-      Author URL: https://bootstrapmade.com
-    ======================================================= -->
 </head>
 
 <body class="login-img3-body" style="background: url('<?=ROOT_URL?>static//img/bg-4.jpg') no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
@@ -41,7 +40,7 @@
     <form class="login-form" action="" method="post">
       <div class="login-wrap">
         <h1><center>Login Admin</h1>
-        <p class="login-img"><i class="icon_lock_alt"></i></p>
+        <p class="login-img" style="color: #15305b;"><i class="icon_lock_alt"></i></p>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_profile"></i></span>
           <input type="text" class="form-control" placeholder="Username" autofocus name="username" id="username">
@@ -50,20 +49,15 @@
           <span class="input-group-addon"><i class="icon_key_alt"></i></span>
           <input type="password" class="form-control" placeholder="Password" name="password" id="password" >
         </div>
-        <button id="btnLogin" name="btnLogin" class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+        <button id="btnLogin" name="btnLogin" class="tombolbirufooterrwb btn btn-primary btn-lg btn-block" type="submit">Login</button>
       </div>
     </form>
-    <div class="text-center">
-      <div class="credits">
-          <!--
-            All the links in the footer should remain intact.
-            You can delete the links only if you purchased the pro version.
-            Licensing information: https://bootstrapmade.com/license/
-            Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
-          -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-    </div>
+    <br>
+    <section class="copyright py-4 text-center text-white">
+      <div class="container">
+        <small>Copyright © IT Development SMP-SMK Wira Buana - Proudly powered by WB-Technopark</small>
+      </div>
+    </section>
   </div>
 
 
