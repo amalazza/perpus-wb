@@ -14,7 +14,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="<?=ROOT_URL?>static/img/favicon.ico">
 
   <!-- slider -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
   <!-- Custom fonts for this theme -->
   <link href="<?=ROOT_URL?>static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
