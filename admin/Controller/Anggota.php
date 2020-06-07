@@ -115,13 +115,19 @@ class Anggota
                 $aLog = array('id_admin' => $_SESSION['id'], 'activity' => $act );
 
 				if ($this->oModel->addSiswa($sData) && $this->oModel->addAlog($aLog)){
-                 $this->oUtil->sSuccMsg = 'Data siswa berhasil ditambahkan.';
-                    header("Refresh: 3; URL=?p=anggota&a=anggota");}
+                    // $this->oUtil->sSuccMsg = 'Data siswa berhasil ditambahkan.';
+                    // header("Refresh: 3; URL=?p=anggota&a=anggota");
+                    echo '<div class="alert alert-success">Data siswa berhasil ditambahkan.</div>';
+                    header("Refresh: 3; URL=?p=anggota&a=anggota");
+                }
                 else{
-				$this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';}
+				// $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                echo '<div class="alert alert-danger">Data anggota gagal ditambahkan.</div>';
+            }
 			}
 			
 		}
+        $this->oUtil->getView('anggota');
         }
 	}
 	
@@ -146,16 +152,20 @@ class Anggota
                 $aLog = array('id_admin' => $idku, 'activity' => $act );
 
                 if ($this->oModel->add($aData) && $this->oModel->addAlog($aLog)){
-                    $this->oUtil->sSuccMsg = 'Data anggota berhasil ditambahkan.';
+                    // $this->oUtil->sSuccMsg = 'Data anggota berhasil ditambahkan.';
+                    // header("Refresh: 3; URL=?p=anggota&a=anggota");
+                    echo '<div class="alert alert-success">Data anggota berhasil ditambahkan.</div>';
                     header("Refresh: 3; URL=?p=anggota&a=anggota");
 				}
                 else{
-                    $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                    // $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                    echo '<div class="alert alert-danger">Data anggota gagal ditambahkan.</div>';
 				}
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                // $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                echo '<div class="alert alert-danger">Nomor anggota harus diisi.</div>';
             }
         }
 
@@ -198,13 +208,18 @@ class Anggota
 
 						if ($this->oModel->update($aData)){
 
-						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
-
-						header("Refresh: 3; URL=?p=anggota&a=anggota");}
+						// $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+						// header("Refresh: 3; URL=?p=anggota&a=anggota");
+                        echo '<div class="alert alert-success">Data anggota berhasil diedit.</div>';
+                        header("Refresh: 3; URL=?p=anggota&a=anggota");
+                    }
 
 						else{
 
-						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+						// $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                        echo '<div class="alert alert-danger">Data anggota gagal diedit.</div>';
+
+                    }
 
 					}
 
@@ -216,13 +231,18 @@ class Anggota
 
 						if ($this->oModel->update($aData)){
 
-						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+						// $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+                        // header("Refresh: 3; URL=?p=anggota&a=anggota");
+                        echo '<div class="alert alert-success">Data anggota berhasil diedit.</div>';
+                        header("Refresh: 3; URL=?p=anggota&a=anggota");
+                    }
 
-						header("Refresh: 3; URL=?p=anggota&a=anggota");
-						}
-						else{
+                        else{
 
-						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+                        // $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                        echo '<div class="alert alert-danger">Data anggota gagal diedit.</div>';
+
+                    }
 						}
 
 					}
@@ -239,13 +259,18 @@ class Anggota
 
 						if ($this->oModel->updateNoPic($aData)){
 
-						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+						// $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+                        // header("Refresh: 3; URL=?p=anggota&a=anggota");
+                        echo '<div class="alert alert-success">Data anggota berhasil diedit.</div>';
+                        header("Refresh: 3; URL=?p=anggota&a=anggota");
+                    }
 
-						header("Refresh: 3; URL=?p=anggota&a=anggota");}
+                        else{
 
-						else{
+                        // $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                        echo '<div class="alert alert-danger">Data anggota gagal diedit.</div>';
 
-						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+                    }
 
 					}
 
@@ -257,26 +282,24 @@ class Anggota
 
 						if ($this->oModel->updateNoPic($aData)){
 
-						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+						// $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+                        // header("Refresh: 3; URL=?p=anggota&a=anggota");
+                        echo '<div class="alert alert-success">Data anggota berhasil diedit.</div>';
+                        header("Refresh: 3; URL=?p=anggota&a=anggota");
+                    }
 
-						header("Refresh: 3; URL=?p=anggota&a=anggota");}
+                        else{
 
-						else{
+                        // $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                        echo '<div class="alert alert-danger">Data anggota gagal diedit.</div>';
 
-						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+                    }
 
 					}
 
 				}
 		}
 
-	
-
-        
-
-
-
-        // Get the data of the post 
 
         $this->oUtil->oAnggota = $this->oModel->getAllById($this->_iId);
 
@@ -297,8 +320,10 @@ class Anggota
         else{
 
         if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId)){
-            $this->oUtil->sSuccMsg = 'Data anggota berhasil dihapus.';
-		header("Refresh: 3; URL=?p=anggota&a=anggota");}
+      //       $this->oUtil->sSuccMsg = 'Data anggota berhasil dihapus.';
+    		// header("Refresh: 3; URL=?p=anggota&a=anggota");}
+            echo '<div class="alert alert-success">Data anggota berhasil dihapus.</div>';
+            header("Refresh: 3; URL=?p=anggota&a=anggota");}
         else{
 		exit('Anggota tidak bisa dihapus.');}
     }

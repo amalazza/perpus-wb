@@ -132,13 +132,20 @@ class Admincrud
                 $aData = array('nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt, 'mime' => $type, 'foto' => $foto);
                 $aLog = array('id_admin' => $idku, 'activity' => $act );
 
-                 if ($this->oModel->addA($aData) && $this->oModel->addAlog($aLog))
-                     header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
-                else
-                    $this->oUtil->sErrMsg = 'Data new admin gagal ditambahkan.';
+                 if ($this->oModel->addA($aData) && $this->oModel->addAlog($aLog)){
+                     // header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                 
+                    echo '<div class="alert alert-success">Data admin berhasil ditambahkan.</div>';
+                    header("Refresh: 3; URL=?p=Admincrud&a=p_admin");
+                }else
+                    // $this->oUtil->sErrMsg = 'Data new admin gagal ditambahkan.';
+                    echo '<div class="alert alert-danger">Data admin gagal ditambahkan.</div>';
+                    // header("Refresh: 3; URL=?p=Admincrud&a=p_admin");
             }else
             {
-                $this->oUtil->sErrMsg = 'username dan password harus diisi.';
+                // $this->oUtil->sErrMsg = 'username dan password harus diisi.';
+                echo '<div class="alert alert-danger">Username dan password harus diisi.</div>';
+                // header("Refresh: 3; URL=?p=Admincrud&a=p_admin");
             }
         }
 
@@ -178,20 +185,26 @@ class Admincrud
                             $aLog = array('id_admin' => $idku, 'activity' => $act );
 
                             if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog)){
-                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            // header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            echo '<div class="alert alert-success">Data admin berhasil diedit.</div>';
+                            header("Refresh: 3; URL=?p=Admincrud&a=p_admin");
                             }
                             else{
-                            $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            // $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            echo '<div class="alert alert-danger">Data admin gagal diedit.</div>';
                             }
                         } else {//+oldFoto
                             $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => 'master', 'username' => $user, 'password' => $oldPass);
                             $aLog = array('id_admin' => $idku, 'activity' => $act );
 
                             if ($this->oModel->updtOld($aData) && $this->oModel->addAlog($aLog)){
-                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            // header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            echo '<div class="alert alert-success">Data admin berhasil diedit.</div>';
+                            header("Refresh: 3; URL=?p=Admincrud&a=p_admin");
                             }
                             else{
-                            $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            // $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            echo '<div class="alert alert-danger">Data admin gagal diedit.</div>';
                             }
                         }
                     } else { //kalo yg login admin+oldpass
@@ -200,20 +213,26 @@ class Admincrud
                             $aLog = array('id_admin' => $idku, 'activity' => $act );
 
                             if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog)){
-                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            // header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            echo '<div class="alert alert-success">Data admin berhasil diedit.</div>';
+                            header("Refresh: 3; URL=?p=Admincrud&a=p_admin");
                             }
                             else{
-                            $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            // $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            echo '<div class="alert alert-danger">Data admin gagal diedit.</div>';
                             }
                         } else {
                             $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $oldPass);
                             $aLog = array('id_admin' => $idku, 'activity' => $act );
 
                             if ($this->oModel->updtOld($aData) && $this->oModel->addAlog($aLog)){
-                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            // header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            echo '<div class="alert alert-success">Data admin berhasil diedit.</div>';
+                            header("Refresh: 3; URL=?p=Admincrud&a=p_admin");
                             }
                             else{
-                            $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            // $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            echo '<div class="alert alert-danger">Data admin gagal diedit.</div>';
                             }
                         }
                     }    
@@ -224,20 +243,26 @@ class Admincrud
                             $aLog = array('id_admin' => $idku, 'activity' => $act );
 
                             if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog)){
-                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            // header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            echo '<div class="alert alert-success">Data admin berhasil diedit.</div>';
+                            header("Refresh: 3; URL=?p=Admincrud&a=p_admin");
                             }
                             else{
-                            $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            // $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            echo '<div class="alert alert-danger">Data admin gagal diedit.</div>';
                             }
                         } else {
                             $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => 'master', 'username' => $user, 'password' => $p_crypt);
                             $aLog = array('id_admin' => $idku, 'activity' => $act );
 
                             if ($this->oModel->updtOld($aData) && $this->oModel->addAlog($aLog)){
-                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            // header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            echo '<div class="alert alert-success">Data admin berhasil diedit.</div>';
+                            header("Refresh: 3; URL=?p=Admincrud&a=p_admin");
                             }
                             else{
-                            $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            // $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            echo '<div class="alert alert-danger">Data admin gagal diedit.</div>';
                             }
                         }
                     } else {
@@ -246,20 +271,26 @@ class Admincrud
                             $aLog = array('id_admin' => $idku, 'activity' => $act );
 
                             if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog)){
-                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            // header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            echo '<div class="alert alert-success">Data admin berhasil diedit.</div>';
+                            header("Refresh: 3; URL=?p=Admincrud&a=p_admin");
                             }
                             else{
-                            $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            // $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            echo '<div class="alert alert-danger">Data admin gagal diedit.</div>';
                             }
                         } else {//foto kosong
                             $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt);
                             $aLog = array('id_admin' => $idku, 'activity' => $act );
 
                             if ($this->oModel->updtOld($aData) && $this->oModel->addAlog($aLog)){
-                            header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            // header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            echo '<div class="alert alert-success">Data admin berhasil diedit.</div>';
+                            header("Refresh: 3; URL=?p=Admincrud&a=p_admin");
                             }
                             else{
-                            $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            // $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            echo '<div class="alert alert-danger">Data admin gagal diedit.</div>';
                             }
                         }
                     }
@@ -267,7 +298,8 @@ class Admincrud
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Data harus terisi semua';
+                // $this->oUtil->sErrMsg = 'Data harus terisi semua';
+                echo '<div class="alert alert-danger">Data harus terisi semua.</div>';
             }
         }
 
@@ -293,10 +325,17 @@ class Admincrud
 
         $aLog = array('id_admin' => $idku, 'activity' => $act );
 
-        if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId) && $this->oModel->addAlog($aLog))
-            header('Location: ' . ROOT_URL . '?p=Admincrud&a=p_admin');
-        else
+        if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId) && $this->oModel->addAlog($aLog)){
+            // header('Location: ' . ROOT_URL . '?p=Admincrud&a=p_admin');
+            echo '<div class="alert alert-success">Data admin berhasil dihapus.</div>';
+            header("Refresh: 3; URL=?p=Admincrud&a=p_admin");
+
+        
+        }else{
             exit('Kunjungan tidak bisa dihapus.');
+        }
+        $this->oUtil->getView('admin');
+        
     }
 }
 

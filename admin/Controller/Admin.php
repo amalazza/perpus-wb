@@ -37,7 +37,9 @@ class Admin extends Dashboard
             }          
             else
             {
-                $this->oUtil->sErrMsg = 'Incorrect Login!';
+                // $this->oUtil->sErrMsg = 'Incorrect Login!';
+                echo '<div class="alert alert-danger">Login Gagal.</div>';
+                header("Refresh: 3; URL=?p=admin&a=login");
             }
         }
 
