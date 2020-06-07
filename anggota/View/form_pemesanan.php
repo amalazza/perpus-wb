@@ -12,7 +12,7 @@
             
             <!-- profile -->
             <div id="profile">
-              <form class="form-validate form-horizontal" role="form" method="post" action="" onsubmit="return confirm('harap ambil buku <?=$this->oBuku->judul?> sebelum <?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d H:i:s', strtotime('+1 day'));?>')">
+              <form class="form-validate form-horizontal" role="form" method="post" action="" onsubmit="return confirm('Harap ambil buku <?=$this->oBuku->judul?> sebelum tanggal <?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d H:i:s', strtotime('+1 day'));?>')">
                 <section class="panel">
                   <div class="bio-graph-heading birutopheadwb" style="text-align: center; font-style: normal; ">
                     <h1>PEMESANAN BUKU</h1>

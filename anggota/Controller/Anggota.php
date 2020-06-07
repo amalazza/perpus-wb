@@ -110,7 +110,9 @@ class Anggota extends Beranda
 
             {
 
-                $this->oUtil->sErrMsg = 'Incorrect Login!';
+                // $this->oUtil->sErrMsg = 'Incorrect Login!';
+                echo '<div class="alert alert-danger">Login Gagal.</div>';
+                header("Refresh: 3; URL=?p=beranda&a=login");
 
             }
 
@@ -219,13 +221,17 @@ class Anggota extends Beranda
                 $log = "Kamu telah membuat akun baru bernama ".$_POST['nama']." pada tanggal ".date('d-m-Y').", selamat menikmati fitur perpustakaan online ini.";
                 $aLog = array('no_anggota' => $_POST['nis'], 'activity' => $log);
 
-                if ($this->oModel->add($aData) && $this->oModel->addAngLog($aLog))
+                if ($this->oModel->add($aData) && $this->oModel->addAngLog($aLog)){
 
-                     header('Location: ' . ROOT_URL  . '?p=anggota&a=login');
+                     // header('Location: ' . ROOT_URL  . '?p=anggota&a=login');
+                    echo '<div class="alert alert-success">Selamat! Anda berhasil mendaftar sebagai anggota.</div>';
+                    header("Refresh: 3; URL=?p=anggota&a=login");
 
-                else
+                }else{
 
-                    $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                    // $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                    echo '<div class="alert alert-danger">Gagal mendaftar sebagai anggota.</div>';
+                }
 
             }
 
@@ -233,7 +239,8 @@ class Anggota extends Beranda
 
             {
 
-                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                // $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                echo '<div class="alert alert-danger">Nomor anggota harus diisi.</div>';
 
             }
 
@@ -349,13 +356,18 @@ class Anggota extends Beranda
 
 						if ($this->oModel->update($aData)){
 
-						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+						// $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
 
-						header("Refresh: 3; URL=?p=anggota&a=profile");}
+						// header("Refresh: 3; URL=?p=anggota&a=profile");
+                        echo '<div class="alert alert-success">Data berhasil diedit.</div>';
+                        header("Refresh: 3; URL=?p=anggota&a=profile");
+                    }
 
 						else{
 
-						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+						// $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                        echo '<div class="alert alert-danger">Data gagal diedit.</div>';
+                    }
 
 					}
 
@@ -367,13 +379,18 @@ class Anggota extends Beranda
 
 						if ($this->oModel->update($aData)){
 
-						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+						// $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
 
-						header("Refresh: 3; URL=?p=anggota&a=profile");}
+						// header("Refresh: 3; URL=?p=anggota&a=profile");
+                        echo '<div class="alert alert-success">Data berhasil diedit.</div>';
+                        header("Refresh: 3; URL=?p=anggota&a=profile");
+                    }
 
 						else{
 
-						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+						// $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                        echo '<div class="alert alert-danger">Data gagal diedit.</div>';
+                    }
 
 					}
 
@@ -389,13 +406,18 @@ class Anggota extends Beranda
 
 						if ($this->oModel->updateNoPic($aData)){
 
-						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+						// $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
 
-						header("Refresh: 3; URL=?p=anggota&a=profile");}
+						// header("Refresh: 3; URL=?p=anggota&a=profile");
+                        echo '<div class="alert alert-success">Data berhasil diedit.</div>';
+                        header("Refresh: 3; URL=?p=anggota&a=profile");
+                    }
 
 						else{
 
-						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+						// $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                        echo '<div class="alert alert-danger">Data gagal diedit.</div>';
+                    }
 
 					}
 
@@ -407,13 +429,18 @@ class Anggota extends Beranda
 
 						if ($this->oModel->updateNoPic($aData)){
 
-						$this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+						// $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
 
-						header("Refresh: 3; URL=?p=anggota&a=profile");}
+						// header("Refresh: 3; URL=?p=anggota&a=profile");
+                        echo '<div class="alert alert-success">Data berhasil diedit.</div>';
+                        header("Refresh: 3; URL=?p=anggota&a=profile");
+                    }
 
 						else{
 
-						$this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+						// $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                        echo '<div class="alert alert-danger">Data gagal diedit.</div>';
+                    }
 
 					}
 

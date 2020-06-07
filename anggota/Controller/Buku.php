@@ -126,10 +126,15 @@ public function filter()
             $aLog = array('no_anggota' => $_SESSION['id'], 'activity' => $log);
 
             if ($this->oModel->up($aData) && $this->oModel->addAlog($aLog)){
-                $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
-                header("Refresh: 1; URL=?p=buku&a=detail&id=$idnya");}
+                // $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+                // header("Refresh: 1; URL=?p=buku&a=detail&id=$idnya");
+                echo '<div class="alert alert-success">Perpanjangan buku berhasil diproses.</div>';
+                header("Refresh: 3; URL=?p=buku&a=detail&id=$idnya");
+            }
             else{
-                $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+                // $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                echo '<div class="alert alert-danger">Perpanjangan buku gagal diproses.</div>';
+            }
         }
         $this->oUtil->getView('form_perpanjangan');
     }
@@ -155,10 +160,15 @@ public function filter()
             $aLog = array('no_anggota' => $_SESSION['id'], 'activity' => $log);
 
             if ($this->oModel->pemesanan ($aData)&& $this->oModel->addAlog($aLog)){
-                $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
-                header("Refresh: 1; URL=?p=buku&a=detail&id=$idnya");}
+                // $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+                // header("Refresh: 1; URL=?p=buku&a=detail&id=$idnya");
+                echo '<div class="alert alert-success">Pemesanan buku berhasil diproses.</div>';
+                    header("Refresh: 3; URL=?p=buku&a=detail&id=$idnya");
+            }
             else{
-                $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';}
+                // $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                echo '<div class="alert alert-danger">Pemesanan buku gagal diproses.</div>';
+            }
         }
         $this->oUtil->getView('form_pemesanan');
     }
