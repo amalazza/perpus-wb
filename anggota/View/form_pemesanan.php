@@ -49,6 +49,8 @@
                     <div class="col-lg-4">
                       <h1>INFORMASI PEMESANAN</h1>
                       <div class="bio-row"  style="width: 100%;">
+                      <input type="hidden" name="jdl" id="jdl" value="<?=$this->oBuku->judul?>">
+                      <input type="hidden" name="tgla" id="tgla" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date('Y-m-d H:i:s', strtotime('+1 day'));?>">
                         <div>
                           <p>Tanggal Pemesanan: <input class="tanggal_pesan" id="tanggal_pesan" name="tanggal_pesan" style="background: 0; border: 0; width: auto; overflow: visible; outline: 0; height: auto; color: #666666;" type="text" value="<?php date_default_timezone_set("Asia/Jakarta"); echo date("Y-m-d H:i:s"); ?>" readonly="readonly"/></p>
                         </div>

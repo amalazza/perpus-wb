@@ -78,6 +78,13 @@ class Anggota extends Beranda
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
+    public function getLog($iIdku)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM loganggota WHERE no_anggota = :no_anggota ORDER BY tanggal DESC');
+        $oStmt->bindParam(':no_anggota', $iIdku, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
 
     public function getPemesananById($iId)
     {

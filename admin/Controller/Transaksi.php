@@ -269,14 +269,13 @@ class Transaksi
             if (!empty($_POST['no_anggota'])) // Allow a maximum of 50 characters
             {
 				
-                //$idku = $_SESSION['id'];
-                //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
                 
 				$no_katalog = $_POST['no_katalog'];
 				$aData = array('no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali'],'status' => 'dipinjam');
-                //$aLog = array('id_admin' => $idku, 'activity' => $act );
+                $log = "Kamu melakukan peminjaman buku ".$_POST['jdl'].". Jangan lupa batas pengembalian buku pada tanggal <b>".$_POST['batas_kembali']."</b> ya!";
+                $aLog = array('no_anggota' => $_POST['no_anggota'], 'activity' => $log);
 
-                if ($this->oModel->pinjamBaru($aData)){
+                if ($this->oModel->pinjamBaru($aData) && $this->oModel->addAngLog($aLog)){
 					$this->oModel->deletePesanan($this->_iId);
 					$this->oModel->minusStok($no_katalog);
                     $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';

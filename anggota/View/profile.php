@@ -109,6 +109,23 @@ if (empty($this->oAnggota)): ?>
                   <div id="aktifitas" class="tab-pane">
                     <section>
                       <div class="row">
+                        <div class="col-lg-12">
+                          <section class="panel">
+                            <div  style="position: relative; height: 300px; overflow: auto; display: block;">
+                              <table class="table table-striped table-advance table-hover">
+                              <tbody>              
+                                <?php foreach ($this->oAlog as $oAlog): 
+                               ?>
+                                <tr>
+                                  <td style="background-color: #ccfff2;"><?php echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($this->oAnggota->foto))."' style='height: 70px; width: 70px; float: left; -webkit-border-radius: 0%'/>"; ?> <h3 style="font-size: 20px; margin-left: 90px; color: #666666;"><?=$oAlog->activity?></h3></td>
+                                </tr>
+                               <?php endforeach ?>
+                              </tbody>
+                              </table>
+                              </div>
+                              
+                            </section>
+                          </div>
                       </div>
                     </section>
                   </div>

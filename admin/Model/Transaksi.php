@@ -148,6 +148,12 @@ public function getBatas()
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
 
+    public function addAngLog(array $aLog)
+    {
+        $oStmt = $this->oDb->prepare('INSERT INTO loganggota (no_anggota, activity) VALUES(:no_anggota, :activity)');
+        return $oStmt->execute($aLog);
+    }
+
      public function pinjamBaru(array $aData)
     {
         $oStmt = $this->oDb->prepare('INSERT INTO peminjaman (no_anggota, no_katalog, tanggal_pinjam, batas_kembali, status) VALUES(:no_anggota, :no_katalog, :tanggal_pinjam, :batas_kembali, :status)');

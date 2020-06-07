@@ -41,7 +41,7 @@
 					<div class="form-group ">
                       <label for="katalog" class="control-label col-lg-2">Katalog <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" id="searchKatalog" name="no_katalog">
+                        <select class="form-control m-bot15" id="searchKatalog" name="no_katalog" onchange="getJudul()">
 						<option value="" selected="" disabled="">--Katalog--</option>
 						<?php foreach ($this->oKatalog as $oKatalog): ?>
 						<option value="<?=$oKatalog->no_katalog?>"><?=$oKatalog->no_katalog?> - <?=$oKatalog->judul?></option>
@@ -73,6 +73,7 @@
                       </div>
                     </div>
 					<div class="form-group ">
+          <input type="hidden" name="jdl" id="jdl" value="" style="width: 300px;">
                       <label for="batas_kembali" class="control-label col-lg-2">Batas Pengembalian <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <?php
@@ -100,6 +101,7 @@
           </div>
         </div>
         <!-- page end-->
+        
   <script type="text/javascript">
   //search dropdown
   $("#searchNIS").chosen();
@@ -135,5 +137,12 @@
     return true;
 }
   </script>
+
+  <script type="text/javascript">
+   function getJudul() {
+  var tes = document.getElementById("searchKatalog").value;
+        document.getElementById("jdl").value=tes;
+  }
+</script>
 
 <?php require 'inc/footer.php' ?>

@@ -111,16 +111,21 @@ public function filter()
         $aData = array('no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
         $this->oUtil->oBuku = $this->oModel->getBukuKu($aData);
         $this->oUtil->oPerpjg = $this->oModel->getBatas();
+        
 
         if (!empty($_POST['btn_update']))
         {
             $newTgl = $_POST['perpjg'];
             $p_hi = $_POST['ke'];
             $idnya = $_GET['id'];
+            $jdl = $_POST['jdl'];
+            $tglk = $_POST['tglk'];
 
             $aData = array('batas_kembali' => $newTgl, 'perpanjangan_ke' => $p_hi, 'no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
+            $log = "Kamu melakukan perpanjangan masa pinjam buku ".$jdl.". Perpanjangan ini adalah perpanjangan ke ".$p_hi.". Jangan lupa batas pengembalian buku pada tanggal <b>".$tglk."</b> ya!";
+            $aLog = array('no_anggota' => $_SESSION['id'], 'activity' => $log);
 
-            if ($this->oModel->up($aData)){
+            if ($this->oModel->up($aData) && $this->oModel->addAlog($aLog)){
                 $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
                 header("Refresh: 1; URL=?p=buku&a=detail&id=$idnya");}
             else{
@@ -141,9 +146,15 @@ public function filter()
             $tanggal_pesan = $_POST['tanggal_pesan'];
 			$batas_pengambilan_buku = $_POST['batas_pengambilan_buku'];
 			$idnya = $_GET['id'];
+            $jdl = $_POST['jdl'];
+            $tgla = substr($_POST['tgla'],11);
+
             $aData = array('tanggal_pesan' => $tanggal_pesan, 'batas_pengambilan_buku' => $batas_pengambilan_buku, 'no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
 
-            if ($this->oModel->pemesanan($aData)){
+            $log = "Kamu melakukan pemesanan buku ".$jdl.". Jangan lupa ambil bukumu di perpustakaan sebelum jam <b>".$tgla."</b> hari ini!";
+            $aLog = array('no_anggota' => $_SESSION['id'], 'activity' => $log);
+
+            if ($this->oModel->pemesanan ($aData)&& $this->oModel->addAlog($aLog)){
                 $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
                 header("Refresh: 1; URL=?p=buku&a=detail&id=$idnya");}
             else{

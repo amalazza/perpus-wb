@@ -56,8 +56,9 @@
                         <div>
                           <p><span>Tanggal Pinjam</span>: <?=$this->oBuku->tanggal_pinjam?></p>
                         </div>
+                        <input type="hidden" name="jdl" id="jdl" value="<?=$this->oBuku->judul?>">
                         <div>
-                          <p><span>Tanggal Kembali</span>: <?=$this->oBuku->batas_kembali?></p>
+                          <p><span>Tanggal Kembali</span>: <input id="tglk" name="tglk" style="background: 0; border: 0; width: 80px; overflow: visible; outline: 0; height: auto; color: #666666;" type="text" value="<?=$this->oBuku->batas_kembali?>" readonly="readonly"/></p>
                         </div>
                         <div>
                           <?php

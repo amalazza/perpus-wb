@@ -63,6 +63,12 @@ class Buku
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
+    public function addAlog(array $aLog)
+    {
+        $oStmt = $this->oDb->prepare('INSERT INTO loganggota (no_anggota, activity) VALUES(:no_anggota, :activity)');
+        return $oStmt->execute($aLog);
+    }
+    
     public function getByIdKu($iId)
     {
         $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog a on a.no_katalog = p.no_katalog where p.no_katalog = :postId LIMIT 1');
