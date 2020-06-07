@@ -121,12 +121,14 @@ class Kunjungan
                 }
                 else
                 {
-                    $this->oUtil->sErrMsg = 'Data kunjungan gagal ditambahkan.';
+                    // $this->oUtil->sErrMsg = 'Data kunjungan gagal ditambahkan.';
+                     echo '<div class="alert alert-danger">Data kunjungan gagal tambahkan.</div>';
                 }
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                // $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                echo '<div class="alert alert-danger">Nomor anggota harus diisi.</div>';
             }
         }
 
@@ -169,21 +171,25 @@ class Kunjungan
                 $aData = array('no_kunjungan' => $_POST['no_kunjungan'], 'waktu_kepulangan' => $_POST['waktu_kepulangan']);
 
                 if ($this->oModel->update($aData)){
+                    // echo '<div class="alert alert-success">Data kepulangan kunjungan berhasil ditambah.</div>';
+                    // header("Refresh: 3; URL=?p=kunjungan&a=add");
                     echo '<div class="alert alert-success">Data kepulangan kunjungan berhasil ditambah.</div>';
                     header("Refresh: 3; URL=?p=kunjungan&a=add");
                 }
                 else{
-                    $this->oUtil->sErrMsg = 'Data kepulangan kunjungan gagal ditambah.';
+                    // $this->oUtil->sErrMsg = 'Data kepulangan kunjungan gagal ditambah.';
+                    echo '<div class="alert alert-danger">Data kepulangan kunjungan gagal tambahkan.</div>';
                 }
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor kunjungan harus diisi.';
+                // $this->oUtil->sErrMsg = 'Nomor kunjungan harus diisi.';
+                echo '<div class="alert alert-danger">Nomor kunjungan harus diisi.</div>';
             }
         }
         // Get the data of the post 
         $this->oUtil->oKunjunganK= $this->oModel->getKonfirmasiById($this->_iId);
-        // echo json_encode($this->oUtil->oData = $this->oModel->getAnggotaById($_POST['id']));
+        $this->oUtil->getView('add_kunjungan');
     } 
     }
 
@@ -205,6 +211,7 @@ class Kunjungan
             {
                 exit('Kunjungan tidak bisa dihapus.');
             }
+            $this->oUtil->getView('add_kunjungan');
     }
     }
 
@@ -226,6 +233,7 @@ class Kunjungan
             {
                 exit('Kunjungan tidak bisa dihapus.');
             }
+            $this->oUtil->getView('kunjungan');
     }
     }
 

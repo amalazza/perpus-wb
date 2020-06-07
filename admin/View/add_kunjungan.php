@@ -27,7 +27,7 @@
                 <div class="form-group ">
                   <label for="anggota" class="control-label col-lg-2">Nomor-Nama Anggota <span class="required">*</span></label>
                   <div class="col-lg-10">
-                    <select id="searchAnggota" onchange="getselect();" class="form-control m-bot15" name="anggota">
+                    <select id="searchAnggota" onchange="getselect();" class="form-control m-bot15" name="anggota" style="width: 50%">
                       <option value="" selected="" disabled="">--Nomor-Nama Anggota--
                       </option>
                       <?php foreach ($this->oAnggota as $oAnggota): ?>
@@ -36,7 +36,7 @@
                       </option>
                     </select>
                   </div>
-                <input type="text" name="nAng" id="nAng"/>
+                <input type="text" name="nAng" id="nAng" style="display: none;" />
                 </div>
 
                 <div class="form-group ">

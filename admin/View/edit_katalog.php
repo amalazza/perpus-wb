@@ -37,7 +37,7 @@
 					<div class="form-group ">
                       <label for="no_klasifikasi" class="control-label col-lg-2">Nama Klasifikasi <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <select id="searchKlasifikasi" class="form-control m-bot15" name="klasifikasi">
+                        <select id="searchKlasifikasi" class="form-control m-bot15" name="klasifikasi" style="width: 50%">
 						<option value="" selected="" disabled="">--Klasifikasi Buku--</option>
 						<?php foreach ($this->oKlasifikasi as $oKlasifikasi): ?>
 						<option value="<?=$oKlasifikasi->no_klasifikasi?>" <?php if($this->oKatalog->no_klasifikasi == $oKlasifikasi->no_klasifikasi) echo 'selected="selected"'?>><?=$oKlasifikasi->no_klasifikasi?> - <?=$oKlasifikasi->nama_klasifikasi?></option>
@@ -48,7 +48,7 @@
 					<div class="form-group ">
                       <label for="no_koleksi" class="control-label col-lg-2">Jenis Koleksi <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" id="searchKoleksi" name="koleksi">
+                        <select class="form-control m-bot15" id="searchKoleksi" name="koleksi" style="width: 50%">
 						<option value="" selected="" disabled="">--Jenis Koleksi Buku--</option>
 						<?php foreach ($this->oKoleksi as $oKoleksi): ?>
 						<option value="<?=$oKoleksi->no_koleksi?>" <?php if($this->oKatalog->no_koleksi == $oKoleksi->no_koleksi) echo 'selected="selected"'?>><?=$oKoleksi->no_koleksi?> - <?=$oKoleksi->jenis_koleksi?></option>
@@ -59,7 +59,7 @@
 					<div class="form-group ">
                       <label for="jenis_katalog" class="control-label col-lg-2">Jenis Buku <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" id="searchJenisKatalog" name="jenis_katalog" onchange="showEbook(this)">
+                        <select class="form-control m-bot15" id="searchJenisKatalog" name="jenis_katalog" onchange="showEbook(this)" style="width: 50%">
 						<option value="" selected="" disabled="">--Jenis Buku--</option>
 						<option value="Buku Fisik" <?php if($this->oKatalog->jenis_katalog == "Buku Fisik") echo 'selected="selected"'?>>Buku Fisik</option>
 						<option value="E-Book" <?php if($this->oKatalog->jenis_katalog == "E-Book") echo 'selected="selected"'?>>E-book</option>

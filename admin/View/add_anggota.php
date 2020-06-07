@@ -28,7 +28,7 @@
                     <div class="form-group ">
                       <label for="nis" class="control-label col-lg-2">NIS <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" id="searchNIS" name="nis" style="width: auto;">
+                        <select class="form-control m-bot15" id="searchNIS" name="nis" style="width: 50%">
 						<option value="" selected="" disabled="">--nomor induk siswa--</option>
 						<?php foreach ($this->oNIS as $oNIS): ?>
 						<option value="<?=$oNIS->nis?>"><?=$oNIS->nis?></option>
