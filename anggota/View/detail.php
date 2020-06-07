@@ -200,7 +200,7 @@
                         </div>
                     </div>
                   </div>
-                  <?php require 'inc/rating.php' ?>
+                  <?php require 'inc/rating_view.php' ?>
                 </section>
               </div>
             </div>
