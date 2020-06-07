@@ -185,7 +185,7 @@ class Transaksi
                 //$idku = $_SESSION['id'];
                 //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
 				$no_katalog = $_POST['no_katalog'];
-				$aData = array('no_peminjaman'=> $_POST['no_peminjaman'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali'],'status' => 'dipinjam');
+				$aData = array('tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali'],'status' => 'dipinjam');
                 //$aLog = array('id_admin' => $idku, 'activity' => $act );
 
                 if ($this->oModel->updatePesanan($aData)){
@@ -207,6 +207,7 @@ class Transaksi
 		$this->oUtil->oNIS = $this->oModel->getNIS();
 		$this->oUtil->oKatalog = $this->oModel->getKatalog();
 		$this->oUtil->oPesan = $this->oModel->getPeminjamanById($this->_iId);
+		$this->oUtil->oPerpjg = $this->oModel->getBatas();
 		
 		$this->oUtil->getView('add_pinjam');
     }
@@ -294,6 +295,7 @@ class Transaksi
         //get nis from database
 		$this->oUtil->oNIS = $this->oModel->getNIS();
 		$this->oUtil->oKatalog = $this->oModel->getKatalog();
+		$this->oUtil->oPesan = $this->oModel->getPemesananById($this->_iId);
 		
 		$this->oUtil->getView('add_pinjam');
     }

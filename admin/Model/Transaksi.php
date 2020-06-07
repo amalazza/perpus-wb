@@ -89,7 +89,7 @@ class Transaksi
 	
 	public function getPesanan($iOffset, $iLimit)
     {
-        $oStmt = $this->oDb->prepare('SELECT a.no_peminjaman, b.no_anggota, b.nama, c.no_katalog, c.judul, c.lokasi FROM peminjaman a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog WHERE status="dipesan"');
+        $oStmt = $this->oDb->prepare('SELECT a.no_pemesanan, a.tanggal_pesan, b.no_anggota, b.nama, c.no_katalog, c.judul, c.lokasi FROM pemesanan a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog');
 		$oStmt->execute();
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
@@ -141,7 +141,7 @@ public function getBatas()
 	
 	public function getDataById(array $aData)
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman WHERE no_anggota = :no_anggota AND no_katalog = :no_katalog LIMIT 1');
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman WHERE no_anggota = :no_anggota AND no_katalog = :no_katalog AND status = "dipinjam" LIMIT 1');
         $oStmt->bindValue(':no_anggota', $aData['no_anggota'], \PDO::PARAM_INT);
 		$oStmt->bindValue(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
         $oStmt->execute();
@@ -174,6 +174,14 @@ public function getBatas()
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
+	
+	public function getPemesananById($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM pemesanan WHERE no_pemesanan = :id LIMIT 1');
+        $oStmt->bindParam(':id', $iId, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
 
     public function minusStok($no_katalog)
     {
@@ -198,7 +206,7 @@ public function getBatas()
 	
 	public function deletePesanan($iId)
     {
-        $oStmt = $this->oDb->prepare('DELETE FROM peminjaman WHERE no_peminjaman = :id LIMIT 1');
+        $oStmt = $this->oDb->prepare('DELETE FROM pemesanan WHERE no_pemesanan = :id LIMIT 1');
         $oStmt->bindParam(':id', $iId, \PDO::PARAM_INT);
         return $oStmt->execute();
     } 
@@ -228,7 +236,6 @@ public function getBatas()
 	
 	public function updatePesanan(array $aData){
 		$oStmt = $this->oDb->prepare('UPDATE peminjaman SET tanggal_pinjam = :tanggal_pinjam, batas_kembali = :batas_kembali, status = :status WHERE no_peminjaman = :no_peminjaman LIMIT 1');
-		$oStmt->bindValue(':no_peminjaman', $aData['no_peminjaman'], \PDO::PARAM_INT);
 		$oStmt->bindValue(':tanggal_pinjam', $aData['tanggal_pinjam']);
 		$oStmt->bindValue(':batas_kembali', $aData['batas_kembali']);
 		$oStmt->bindValue(':status', $aData['status']);

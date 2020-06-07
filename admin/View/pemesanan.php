@@ -37,20 +37,22 @@
                 <th>Anggota</th>
                 <th>Katalog</th>
 				<th>Posisi</th>
+				<th>Waktu Pemesanan</th>
                 <th>Action</th>
               </tr>
               <?php foreach ($this->oPesan as $oPesan): ?>
               <tr>
-			    <td><?=htmlspecialchars($oPesan->no_peminjaman)?></td>
+			    <td><?=htmlspecialchars($oPesan->no_pemesanan)?></td>
                 <td><?=htmlspecialchars($oPesan->no_anggota)?> - <?=$oPesan->nama?></td>
 				<td><?=htmlspecialchars($oPesan->no_katalog)?> - <?=$oPesan->judul?></td>
 				<td><?=$oPesan->lokasi?></td>
+				<td><?=$oPesan->tanggal_pesan?></td>
                 <td>
                   <div class="btn-group">
-					<form action="<?=ROOT_URL?>?p=transaksi&amp;a=updatePesanan&amp;id=<?=$oPesan->no_peminjaman?>" method="post" style="display: inline">
+					<form action="<?=ROOT_URL?>?p=transaksi&amp;a=pinjamBaru&amp;id=<?=$oPesan->no_pemesanan?>" method="post" style="display: inline">
                         <button class="btn btn-primary" type="submit" name="edit" value="1" >Pinjam</button>
                     </form>
-                    <form action="<?=ROOT_URL?>?p=Transaksi&amp;a=deletePesanan&amp;id=<?=$oPesan->no_peminjaman?>" method="post" style="display: inline">
+                    <form action="<?=ROOT_URL?>?p=Transaksi&amp;a=deletePesanan&amp;id=<?=$oPesan->no_pemesanan?>" method="post" style="display: inline">
                         <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin mennghapus data ini?');">Hapus</button>
                     </form>
                   </div>

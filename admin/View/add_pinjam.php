@@ -52,12 +52,6 @@
 					
 				  <?php else: ?>
 					<div class="form-group ">
-                      <label for="no_peminjaman" class="control-label col-lg-2">No. Peminjaman<span class="required">*</span></label>
-                      <div class="col-lg-10">
-                        <input class=" form-control" id="no_peminjaman" name="no_peminjaman" type="text" value="<?=$this->oPesan->no_peminjaman?>" readonly="true"/>
-                      </div>
-                    </div>
-					<div class="form-group ">
                       <label for="anggota" class="control-label col-lg-2">Anggota<span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class=" form-control" id="no_anggota" name="no_anggota" type="text" value="<?=$this->oPesan->no_anggota?>" readonly="true"/>
@@ -122,8 +116,12 @@
 			  method:'post',
 			  dataType: 'json'
 		  }).done(function(Data){
+			  if (Data.no_peminjaman == null){
+				 
+			  }
+			  else{
 			  alert("Buku yang ingin dipinjam belum dikembalikan, harap kembalikan buku terlebih dahulu");
-			  window.history.back();
+			  window.history.back();}
 		  });
   });
   

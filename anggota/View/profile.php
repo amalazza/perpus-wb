@@ -59,7 +59,7 @@ if (empty($this->oAnggota)): ?>
                 <li class="active">
                   <h3>
                     <i class="fa fa-user fa-2x"> </i><br> 
-                    <form action="<?=ROOT_URL?>?p=anggota&amp;a=edit&amp;id=<?=$data->no_anggota?>" method="post">
+                    <form action="<?=ROOT_URL?>?p=anggota&amp;a=edit&amp;id=<?=$this->oAnggota->no_anggota?>" method="post">
                       <button class="btn btn-primary" type="submit" name="edit" value="1" style="background-color: #15305b; color: white; border-color: white;">EDIT</button>
                     </form>
                   </h3>
