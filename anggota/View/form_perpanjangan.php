@@ -15,15 +15,17 @@
               <form class="form-validate form-horizontal" role="form" method="post" action="">
                 <section class="panel">
                   <div class="bio-graph-heading birutopheadwb" style="text-align: center; font-style: normal; ">
-                    <h1>PERPANJANGAN</h1>
+                    <h1>PERPANJANGAN BUKU</h1>
                   </div>
                   <div class="panel-body bio-graph-info">
                     <div class="col-lg-3">
+                      <center>
                       <div class="follow-ava" style="-webkit-border-radius: 5%;">
                         <?php 
                             echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($this->oBuku->cover))."' style='height: 200px; width: 200px; border-radius: 4%;'/>";
                         ?>
                       </div>
+                      <center>
                     </div>
                     <br>
                     <div class="col-lg-4">
@@ -77,7 +79,7 @@
                     </div>
                   </div>
                   <div class="panel-footer" style="text-align: center;">
-                    <input class="tombolbirufooterrwb btn btn-primary btn-lg" type="submit" name="btn_update" value="Perpanjang"/>
+                    <input class="tombolbirufooterrwb btn btn-primary btn-lg" type="submit" name="btn_update" value="PERPANJANG"/>
                   </div>
                 </section>
               </form>
