@@ -55,7 +55,7 @@
                         <button class="btn btn-primary" type="submit" name="edit" value="1" >Pinjam</button>
                     </form>
                     <form action="<?=ROOT_URL?>?p=Transaksi&amp;a=deletePesanan&amp;id=<?=$oPesan->no_pemesanan?>" method="post" style="display: inline">
-                        <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin mennghapus data ini?');">Hapus</button>
+                        <button class="btn btn-danger" type="submit" name="delete" value="1" onclick="return confirm('Anda yakin ingin menghapus data ini?');">Hapus</button>
                     </form>
                   </div>
                 </td>                

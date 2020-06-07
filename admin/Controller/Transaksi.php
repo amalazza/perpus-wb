@@ -187,16 +187,20 @@ class Transaksi
 
                 if ($this->oModel->updatePesanan($aData)){
 					$this->oModel->minusStok($no_katalog);
-                    $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
-                    header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
+                    // $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
+                    // header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
+                    echo '<div class="alert alert-success">Buku berhasil dipinjam.</div>';
+                    header("Refresh: 3;  URL=?p=transaksi&a=peminjaman");
 				}
                 else{
-                    $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+                    // $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+                    echo '<div class="alert alert-danger">Buku gagal dipinjam.</div>';
 				}
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                // $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                echo '<div class="alert alert-danger">Nomor anggota harus diisi.</div>';
             }
         }
 
@@ -231,16 +235,20 @@ class Transaksi
 
                 if ($this->oModel->pengembalian($aData) && $this->oModel->addAngLog($aLog)){
 					$this->oModel->plusStok($no_katalog);
-                    $this->oUtil->sSuccMsg = 'Buku berhasil dikembalikan.';
-                    header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
+                    // $this->oUtil->sSuccMsg = 'Buku berhasil dikembalikan.';
+                    // header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
+                    echo '<div class="alert alert-success">Buku berhasil dikembalikan.</div>';
+                    header("Refresh: 3;  URL=?p=transaksi&a=peminjaman");
 				}
                 else{
-                    $this->oUtil->sErrMsg = 'Buku gagal dikembalikan';
+                    // $this->oUtil->sErrMsg = 'Buku gagal dikembalikan';
+                    echo '<div class="alert alert-danger">Buku gagal dikembalikan.</div>';
 				}
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                // $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                echo '<div class="alert alert-danger">Nomor anggota harus diisi.</div>';
             }
         }
 		$this->oUtil->oNIS = $this->oModel->getNIS();
@@ -283,28 +291,35 @@ class Transaksi
                         $this->oModel->addAlog($aLogAd);
                         $this->oModel->deletePesanan($this->_iId);
                         $this->oModel->minusStok($no_katalog);
-                        $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
-                        header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
+                        // $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
+                        // header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
+                        echo '<div class="alert alert-success">Buku berhasil dipinjam.</div>';
+                    header("Refresh: 3;  URL=?p=transaksi&a=peminjaman");
                     }
                     else{
-                        $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+                        // $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+                        echo '<div class="alert alert-danger">Buku gagal dipinjam.</div>';
                     }
                 } else {
                     if ($this->oModel->pinjamBaru($aData) && $this->oModel->addAngLog($aLogp) ){
                     $this->oModel->addAlog($aLogAd);
                     $this->oModel->deletePesanan($this->_iId);
                     $this->oModel->minusStok($no_katalog);
-                    $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
-                    header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
+                    // $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
+                    // header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
+                    echo '<div class="alert alert-success">Buku berhasil dipinjam.</div>';
+                    header("Refresh: 3;  URL=?p=transaksi&a=peminjaman");
                 }
                 else{
-                    $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+                    // $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+                    echo '<div class="alert alert-danger">Buku gagal dipinjam.</div>';
                 }
                 }
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                // $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                echo '<div class="alert alert-danger">Nomor anggota harus diisi.</div>';
             }
         }
 
@@ -341,16 +356,20 @@ class Transaksi
                 $aLog = array('no_anggota' => $_POST['no_anggota'], 'activity' => $log);
 
                 if ($this->oModel->perpanjangan($aData) && $this->oModel->addAngLog($aLog)){
-                    $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
-                    header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
+                    // $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
+                    // header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
+                    echo '<div class="alert alert-success">Masa pengembalian buku berhasil diperpanjang.</div>';
+                    header("Refresh: 3;  URL=?p=transaksi&a=peminjaman");
 				}
                 else{
-                    $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+                    // $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+                    echo '<div class="alert alert-danger">Masa pengembalian buku gagal diperpanjang.</div>';
 				}
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                // $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                echo '<div class="alert alert-danger">Nomor anggota harus diisi.</div>';
             }
         }
 		
@@ -381,16 +400,20 @@ class Transaksi
                 $aLog = array('id_admin' => $idku, 'activity' => $act );
 
                 if ($this->oModel->editPerpanjangan($aData) && $this->oModel->addALog($aLog)){
-                    $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
-                    header("Refresh: 3; URL=?p=transaksi&a=infoPerpanjangan");
+                    // $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
+                    // header("Refresh: 3; URL=?p=transaksi&a=infoPerpanjangan");
+                    echo '<div class="alert alert-success">Data perpanjangan berhasil diedit.</div>';
+                    header("Refresh: 3;  URL=?p=transaksi&a=infoPerpanjangan");
 				}
                 else{
-                    $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+                    // $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+                    echo '<div class="alert alert-danger">Data perpanjangan gagal diedit</div>';
 				}
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                // $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                echo '<div class="alert alert-danger">Nomor anggota harus diisi.</div>';
             }
         }
 		
@@ -420,16 +443,20 @@ class Transaksi
                 $aLog = array('id_admin' => $idku, 'activity' => $act );
 
                 if ($this->oModel->editDenda($aData) && $this->oModel->addALog($aLog)){
-                    $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
-                    header("Refresh: 3; URL=?p=transaksi&a=infoDenda");
+                    // $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
+                    // header("Refresh: 3; URL=?p=transaksi&a=infoDenda");
+                    echo '<div class="alert alert-success">Data denda berhasil diedit.</div>';
+                    header("Refresh: 3;  URL=?p=transaksi&a=infoDenda");
 				}
                 else{
-                    $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+                    // $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+                    echo '<div class="alert alert-danger">Data denda gagal diedit</div>';
 				}
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                // $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                echo '<div class="alert alert-danger">Nomor anggota harus diisi.</div>';
             }
         }
 		
@@ -466,10 +493,14 @@ class Transaksi
         else{
 
         if (!empty($_POST['delete']) && $this->oModel->deletePesanan($this->_iId)){
-            $this->oUtil->sSuccMsg = 'Data anggota berhasil dihapus.';
-		header("Refresh: 3; URL=?p=transaksi&a=pemesanan");}
+        //     $this->oUtil->sSuccMsg = 'Data anggota berhasil dihapus.';
+		      // header("Refresh: 3; URL=?p=transaksi&a=pemesanan");
+            echo '<div class="alert alert-success">Data pemesanan berhasil dihapus</div>';
+            header("Refresh: 3;  URL=?p=transaksi&a=pemesanan");
+          }
         else{
-		exit('Anggota tidak bisa dihapus.');}
+		exit('Pesanan tidak bisa dihapus.');}
+         $this->oUtil->getView('pemesanan');
     }
     }
 

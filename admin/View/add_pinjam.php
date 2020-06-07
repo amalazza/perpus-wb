@@ -30,19 +30,19 @@
 					<div class="form-group ">
                       <label for="no_anggota" class="control-label col-lg-2">Anggota <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" id="searchNIS" name="no_anggota">
+                        <select onchange="getselect();" class="form-control m-bot15" id="searchNIS" name="no_anggota" style="width: 50%">
 						<option value="" selected="" disabled="">--Anggota--</option>
 						<?php foreach ($this->oNIS as $oNIS): ?>
 						<option value="<?=$oNIS->no_anggota?>"><?=$oNIS->no_anggota?> - <?=$oNIS->nama?></option>
 						<?php endforeach ?>
 						</select>
                       </div>
-                      <input type="text" id="pesan" name="pesan" value="tidak" >
+                      <input type="text" id="pesan" name="pesan" value="tidak" style="display: none">
                     </div>
 					<div class="form-group ">
                       <label for="katalog" class="control-label col-lg-2">Katalog <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <select class="form-control m-bot15" id="searchKatalog" name="no_katalog" onchange="getJudul()">
+                        <select class="form-control m-bot15" id="searchKatalog" name="no_katalog" onchange="getJudul()" style="width: 50%">
 						<option value="" selected="" disabled="">--Katalog--</option>
 						<?php foreach ($this->oKatalog as $oKatalog): ?>
 						<option value="<?=$oKatalog->no_katalog?>"><?=$oKatalog->no_katalog?> - <?=$oKatalog->judul?></option>
@@ -58,7 +58,7 @@
                         <input class=" form-control" id="no_anggota" name="no_anggota" type="text" value="<?=$this->oPesan->no_anggota?>" readonly="true"/>
                       </div>
                     </div>
-                    <input type="text" id="pesan" name="pesan" value="pesan" >
+                    <input type="text" id="pesan" name="pesan" value="pesan" style="display: none">
 					<div class="form-group ">
                       <label for="katalog" class="control-label col-lg-2">Katalog<span class="required">*</span></label>
                       <div class="col-lg-10">
