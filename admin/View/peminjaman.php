@@ -74,7 +74,7 @@
 				<td><?=$oPinjam->tanggal_pinjam?></td>
 				<td><?=$oPinjam->batas_kembali?></td>
                 <td>
-				<?php if(strtotime($oPinjam->batas_kembali) > time()):?>
+				<?php if(strtotime($oPinjam->batas_kembali) < time()):?>
 				<div class="btn-group">
 				
 					<form action="<?=ROOT_URL?>?p=transaksi&amp;a=perpanjangan&amp;id=<?=$oPinjam->no_peminjaman?>" method="post" style="display: inline">
