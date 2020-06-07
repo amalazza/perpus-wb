@@ -89,7 +89,7 @@ class Transaksi
 	
 	public function getPesanan($iOffset, $iLimit)
     {
-        $oStmt = $this->oDb->prepare('SELECT a.no_pemesanan, a.tanggal_pesan, b.no_anggota, b.nama, c.no_katalog, c.judul, c.lokasi FROM pemesanan a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog');
+        $oStmt = $this->oDb->prepare('SELECT a.no_pemesanan, a.tanggal_pesan, a. batas_pengambilan_buku, b.no_anggota, b.nama, c.no_katalog, c.judul, c.lokasi FROM pemesanan a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog');
 		$oStmt->execute();
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }

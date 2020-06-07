@@ -38,6 +38,7 @@
                 <th>Katalog</th>
 				<th>Posisi</th>
 				<th>Waktu Pemesanan</th>
+				<th>Batas Waktu Pengambilan Buku</th>
                 <th>Action</th>
               </tr>
               <?php foreach ($this->oPesan as $oPesan): ?>
@@ -47,6 +48,7 @@
 				<td><?=htmlspecialchars($oPesan->no_katalog)?> - <?=$oPesan->judul?></td>
 				<td><?=$oPesan->lokasi?></td>
 				<td><?=$oPesan->tanggal_pesan?></td>
+				<td><?=$oPesan->batas_pengambilan_buku?></td>
                 <td>
                   <div class="btn-group">
 					<form action="<?=ROOT_URL?>?p=transaksi&amp;a=pinjamBaru&amp;id=<?=$oPesan->no_pemesanan?>" method="post" style="display: inline">

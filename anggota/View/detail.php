@@ -44,6 +44,7 @@
               </div>
               <?php if (!empty($_SESSION['is_logged'])): ?>
                 <?php if (empty($this->oStatus)): ?>
+				<?php if (empty($this->oPesan)): ?>
               <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
                 <div class="card-box bg-orange" style="border: 1px solid white;">
                     <div class="inner">
@@ -53,9 +54,11 @@
                     <div class="icon">
                         <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
                     </div>
-                    <button type="submit" name="pinjam" value="PINJAM" class="card-box-footer" style="border-color: transparent;">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
+                    <button type="submit" name="pinjam" value="PINJAM" class="card-box-footer" style="border-color: transparent;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=pemesanan&amp;id=<?=$this->oBuku->no_katalog?>'">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
                 </div>
               </div>
+			  <?php else: ?>
+			  <?php endif; ?>
               <?php else: ?>
 
               <?php if($this->oStatus->status == "dipinjam"): ?>
@@ -99,7 +102,7 @@
                     <div class="icon">
                         <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
                     </div>
-                    <button type="submit" name="pinjam" value="PINJAM" class="card-box-footer" style="border-color: transparent;">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
+                    <button type="submit" name="pinjam" value="PINJAM" class="card-box-footer" style="border-color: transparent;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=pemesanan&amp;id=<?=$this->oBuku->no_katalog?>'">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
                 </div>
               </div>
               <?php endif; ?>
@@ -114,7 +117,7 @@
                     <div class="icon">
                         <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
                     </div>
-                    <button type="submit" name="pinjam" value="PINJAM" class="card-box-footer" style="border-color: transparent;">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
+                    <button type="submit" name="pinjam" value="PINJAM" class="card-box-footer" style="border-color: transparent;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=pemesanan&amp;id=<?=$this->oBuku->no_katalog?>'">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
                 </div>
               </div>
               <?php endif ?>
