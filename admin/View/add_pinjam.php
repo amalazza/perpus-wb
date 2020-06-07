@@ -37,6 +37,7 @@
 						<?php endforeach ?>
 						</select>
                       </div>
+                      <input type="text" id="pesan" name="pesan" value="tidak" >
                     </div>
 					<div class="form-group ">
                       <label for="katalog" class="control-label col-lg-2">Katalog <span class="required">*</span></label>
@@ -57,6 +58,7 @@
                         <input class=" form-control" id="no_anggota" name="no_anggota" type="text" value="<?=$this->oPesan->no_anggota?>" readonly="true"/>
                       </div>
                     </div>
+                    <input type="text" id="pesan" name="pesan" value="pesan" >
 					<div class="form-group ">
                       <label for="katalog" class="control-label col-lg-2">Katalog<span class="required">*</span></label>
                       <div class="col-lg-10">

@@ -110,7 +110,11 @@ class Anggota
 				$unit = $sheetData[$i]['6'];
 				
 				$sData = array('nis' => $nis, 'nama' => $nama, 'jurusan' => $jurusan, 'inisial_jurusan' => $inisial_jurusan, 'tahun' => $tahun, 'kelas' => $kelas, 'unit' => $unit);
-				if ($this->oModel->addSiswa($sData)){
+
+                $act = 'Admin '.$_SESSION['nama'].' menginput data siswa baru ke perpus pada tanggal '. date("Y/m/d").' jam '.date("h:m").' '.date("a");
+                $aLog = array('id_admin' => $_SESSION['id'], 'activity' => $act );
+
+				if ($this->oModel->addSiswa($sData) && $this->oModel->addAlog($aLog)){
                  $this->oUtil->sSuccMsg = 'Data siswa berhasil ditambahkan.';
                     header("Refresh: 3; URL=?p=anggota&a=anggota");}
                 else{
@@ -136,7 +140,7 @@ class Anggota
             {
 				
                 $idku = $_SESSION['id'];
-                $act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
+                $act = 'Admin '.$_SESSION['nama'].' menambahkan '.$_POST['nama'].' kelas '.$_POST['kelas'].' menjadi anggota perpus.';
 
 				$aData = array('no_anggota' => $_POST['nis'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => sha1($_POST['confirm_password']),'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
                 $aLog = array('id_admin' => $idku, 'activity' => $act );

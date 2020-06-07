@@ -48,6 +48,15 @@ class Kunjungan
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
+    public function getNamaku($id)
+    {
+        $oStmt = $this->oDb->prepare('SELECT nama FROM anggota WHERE no_anggota = :no_anggota LIMIT 1');
+        $oStmt->bindValue(':no_anggota', $id, \PDO::PARAM_STR);
+        $oStmt->execute();
+        $oRow = $oStmt->fetch(\PDO::FETCH_OBJ);
+
+        return @$oRow->nama; // Use the PHP 5.5 password function
+    }
 
     public function getAnggotaById($iId)
     {

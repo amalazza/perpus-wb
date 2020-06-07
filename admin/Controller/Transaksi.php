@@ -265,21 +265,42 @@ class Transaksi
             if (!empty($_POST['no_anggota'])) // Allow a maximum of 50 characters
             {
 			
-                $jdlku = $this->oModel->getJudulku($_POST['jdl']);
+                $jdlku = $this->oModel->getJudulku($_POST['no_katalog']);
+                $namaku = $this->oModel->getNamanya($_POST['no_anggota']);
+                $status = strcmp('pesan', $_POST['pesan']);
 				$no_katalog = $_POST['no_katalog'];
 				$aData = array('no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali'],'status' => 'dipinjam');
-                $log = "Kamu melakukan peminjaman buku ".$jdlku.". Jangan lupa batas pengembalian buku pada tanggal <b>".$_POST['batas_kembali']."</b> ya!";
-                $aLog = array('no_anggota' => $_POST['no_anggota'], 'activity' => $log);
 
-                if ($this->oModel->pinjamBaru($aData) && $this->oModel->addAngLog($aLog)){
-					$this->oModel->deletePesanan($this->_iId);
-					$this->oModel->minusStok($no_katalog);
+                $act = "Admin ".$_SESSION['nama']." melayani peminjaman buku ".$jdlku." oleh ".$namaku." pada tanggal ".$_POST['tgl_pinjam'].".";
+                $log = "Kamu melakukan peminjaman buku ".$jdlku.". Jangan lupa batas pengembalian buku pada tanggal <b>".$_POST['batas_kembali']."</b> ya!";
+                $logp = "Kamu sudah melakukan pengambilan pesanan buku ".$jdlku.". Jangan lupa batas pengembalian buku pada tanggal <b>".$_POST['batas_kembali']."</b> ya!";
+                $aLogAd = array('id_admin' => $_SESSION['id'], 'activity' => $act);
+                $aLog = array('no_anggota' => $_POST['no_anggota'], 'activity' => $log);
+                $aLogp = array('no_anggota' => $_POST['no_anggota'], 'activity' => $logp);
+
+                if ($status == 0) {
+                    if ($this->oModel->pinjamBaru($aData) && $this->oModel->addAngLog($aLogp)){
+                        $this->oModel->addAlog($aLogAd);
+                        $this->oModel->deletePesanan($this->_iId);
+                        $this->oModel->minusStok($no_katalog);
+                        $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
+                        header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
+                    }
+                    else{
+                        $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
+                    }
+                } else {
+                    if ($this->oModel->pinjamBaru($aData) && $this->oModel->addAngLog($aLogp) ){
+                    $this->oModel->addAlog($aLogAd);
+                    $this->oModel->deletePesanan($this->_iId);
+                    $this->oModel->minusStok($no_katalog);
                     $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
                     header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
-				}
+                }
                 else{
                     $this->oUtil->sErrMsg = 'Buku gagal dipinjam';
-				}
+                }
+                }
             }
             else
             {
@@ -354,12 +375,12 @@ class Transaksi
             if (!empty($_POST['id_perpanjangan'])) // Allow a maximum of 50 characters
             {
 				
-                //$idku = $_SESSION['id'];
-                //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
+                $idku = $_SESSION['id'];
+                $act = $_SESSION['nama'].' mengubah sistem waktu perpanjangan buku.';
 				$aData = array('id_perpanjangan' => $_POST['id_perpanjangan'], 'hari' => $_POST['hari'], 'batas' => $_POST['batas']);
-                //$aLog = array('id_admin' => $idku, 'activity' => $act );
+                $aLog = array('id_admin' => $idku, 'activity' => $act );
 
-                if ($this->oModel->editPerpanjangan($aData)){
+                if ($this->oModel->editPerpanjangan($aData) && $this->oModel->addALog($aLog)){
                     $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
                     header("Refresh: 3; URL=?p=transaksi&a=infoPerpanjangan");
 				}
@@ -393,12 +414,12 @@ class Transaksi
             if (!empty($_POST['id_denda'])) // Allow a maximum of 50 characters
             {
 				
-                //$idku = $_SESSION['id'];
-                //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
+                $idku = $_SESSION['id'];
+                $act = $_SESSION['nama'].' mengubah sistem jumlah denda keterlambatan.';
 				$aData = array('id_denda' => $_POST['id_denda'], 'denda_per_hari' => $_POST['denda_per_hari'], 'denda_maks' => $_POST['denda_maks']);
-                //$aLog = array('id_admin' => $idku, 'activity' => $act );
+                $aLog = array('id_admin' => $idku, 'activity' => $act );
 
-                if ($this->oModel->editDenda($aData)){
+                if ($this->oModel->editDenda($aData) && $this->oModel->addALog($aLog)){
                     $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
                     header("Refresh: 3; URL=?p=transaksi&a=infoDenda");
 				}

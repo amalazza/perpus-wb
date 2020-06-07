@@ -105,8 +105,9 @@ class Kunjungan
             if (isset($_POST['no_anggota']) <= 15) // Allow a maximum of 50 characters
             {
                 $idku = $_SESSION['id'];
+                $nm = $this->oModel->getNamaku($_POST['nAng']);
                 date_default_timezone_set("Asia/Jakarta");
-                $act = 'Admin '.$_SESSION['nama'].' menginput kunjungan '.$_POST['nAng'].' ke perpus pada tanggal '. date("Y/m/d").' jam '.date("h:m").' '.date("a");
+                $act = 'Admin '.$_SESSION['nama'].' menginput kunjungan '.$nm.' ke perpus pada tanggal '. date("Y/m/d").' jam '.date("h:m").' '.date("a");
 
                 $aData = array('no_anggota' => $_POST['anggota'], 'loker' => $_POST['loker']);
                 $aLog = array('id_admin' => $idku, 'activity' => $act );

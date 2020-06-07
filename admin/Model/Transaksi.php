@@ -114,12 +114,6 @@ class Transaksi
         $oStmt = $this->oDb->query('SELECT * FROM anggota');
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
-
-            public function addAlog(array $aLog)
-    {
-        $oStmt = $this->oDb->prepare('INSERT INTO logadmin (id_admin, activity) VALUES(:id_admin, :activity)');
-        return $oStmt->execute($aLog);
-    }
 	
 	public function getNIS()
     {
@@ -127,7 +121,7 @@ class Transaksi
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 	
-public function getBatas()
+    public function getBatas()
     {
         $oStmt = $this->oDb->query('SELECT * FROM perpanjangan');
         return $oStmt->fetch(\PDO::FETCH_OBJ);
@@ -153,6 +147,11 @@ public function getBatas()
         $oStmt = $this->oDb->prepare('INSERT INTO loganggota (no_anggota, activity) VALUES(:no_anggota, :activity)');
         return $oStmt->execute($aLog);
     }
+    public function addAlog(array $aLogAd)
+    {
+        $oStmt = $this->oDb->prepare('INSERT INTO logadmin (id_admin, activity) VALUES(:id_admin, :activity)');
+        return $oStmt->execute($aLogAd);
+    }
 
      public function pinjamBaru(array $aData)
     {
@@ -172,6 +171,15 @@ public function getBatas()
         $oRow = $oStmt->fetch(\PDO::FETCH_OBJ);
 
         return @$oRow->judul; // Use the PHP 5.5 password function
+    }
+    public function getNamanya($id)
+    {
+        $oStmt = $this->oDb->prepare('SELECT nama FROM anggota WHERE no_anggota = :no_anggota LIMIT 1');
+        $oStmt->bindValue(':no_anggota', $id, \PDO::PARAM_STR);
+        $oStmt->execute();
+        $oRow = $oStmt->fetch(\PDO::FETCH_OBJ);
+
+        return @$oRow->nama; // Use the PHP 5.5 password function
     }
     public function getById($iId)
     {

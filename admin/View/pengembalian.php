@@ -49,7 +49,6 @@
 				<td><?=$oKembali->tanggal_kembali?></td>
 				<td><?=$oKembali->keterlambatan?></td>
 				<td><?=$oKembali->denda?></td> 
-				<td><?=$oKembali->tanggal_kembali?></td> 
               </tr>
               <?php endforeach ?>
              

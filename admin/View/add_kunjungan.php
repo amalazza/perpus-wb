@@ -36,7 +36,7 @@
                       </option>
                     </select>
                   </div>
-                <input type="hidden" name="nAng" id="nAng"/>
+                <input type="text" name="nAng" id="nAng"/>
                 </div>
 
                 <div class="form-group ">
@@ -57,43 +57,6 @@
         </section>
       </div>
     </div>
-
-    <!-- <div class="row">
-      <div class="col-lg-12">
-        <section class="panel">
-          <header class="panel-heading">
-            Input Data Kunjungan
-          </header>
-          <div class="panel-body">
-            <form class="form-validate form-horizontal" role="form" action="" method="post">
-              <div class="form-group ">
-                <label for="no_anggota" class="control-label col-lg-8">Nomor-Nama Anggota <span class="required">*</span></label>
-                <div class="col-lg-10">
-                  <select id="searchAnggota" onchange="getselect();" class="form-control m-bot15" name="anggota">
-                    <option value="" selected="" disabled="">--Nomor-Nama Anggota--
-                    </option>
-                    <?php foreach ($this->oAnggota as $oAnggota): ?>
-                      <option value="<?=$oAnggota->no_anggota?>"><?=$oAnggota->no_anggota?> - <?=$oAnggota->nama?>
-                    <?php endforeach ?>
-                    </option>
-                  </select>
-                </div>
-                <input type="hidden" name="nAng" id="nAng"/>
-              </div>
-              <br><br>
-              <div class="form-group ">
-                <label for="loker" class="control-label col-lg-8">Loker <span class="required">*</span></label>
-                <div class="col-lg-10">
-                  <input class="form-control" id="loker" name="loker" type="text" style="width: 340px" required/>
-                </div>
-              </div>
-                <br><br>
-                <p><input type="submit" name="add_submit" value="Submit" class="btn btn-primary"/></p>
-            </form>
-          </div>
-        </section>
-      </div>
-    </div> -->
 
     <div class="row">
       <div class="col-lg-12">
@@ -216,6 +179,12 @@
 
 
 <script type="text/javascript">
+   function getselect() {
+  var tes = document.getElementById("searchAnggota").value;
+        document.getElementById("nAng").value=tes;
+  }
+
+
   //detailAnggota
   $(function(){
     $(".detail").on("click", function(){
