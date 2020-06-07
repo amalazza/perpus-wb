@@ -337,7 +337,7 @@
         <div class="col-lg-12">
           <hr/>
           <center>
-            <button type="button" id="rateProduct" class="btn btn-info <?php if(!empty($_SESSION['userid']) && $_SESSION['userid']){ echo 'login';} ?>">Rate this product</button>
+            <button style="margin-bottom: 2%" type="button" id="rateProduct" class="btn btn-info <?php if(!empty($_SESSION['userid']) && $_SESSION['userid']){ echo 'login';} ?>">Rate this product</button>
           </center>
 
           <div class="review-block">    
