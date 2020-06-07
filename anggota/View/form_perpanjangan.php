@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                      <h1>INFO PERPANJANGAN</h1>
+                      <h1>INFORMASI PERPANJANGAN</h1>
                       <div class="bio-row"  style="width: 100%;">
                         <div>
                         <?php $newke = $this->oBuku->perpanjangan_ke+1; ?>
