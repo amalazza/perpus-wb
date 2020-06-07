@@ -16,7 +16,7 @@ if (empty($this->oAnggota)): ?>
         <div class="panel-body">
           <div class="col-lg-2 col-sm-2">
               <?php 
-                  echo "<img class='follow-ava' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($this->oAnggota->foto))."' style=' transform: scale(3, 3); margin-top: 60px;'/>";
+                  echo "<img class='follow-ava' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($this->oAnggota->foto))."' style=' transform: scale(2.5, 2.5); margin-top: 50px;'/>";
               ?>
           </div>
           <div class="col-lg-4 col-sm-4 follow-info">
