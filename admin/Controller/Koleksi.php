@@ -136,11 +136,14 @@ class Koleksi
 
                 // if ($dupt !== 0){
                     if ($this->oModel->add($aData) && $this->oModel->addAlog($aLog)){
-                    echo '<div class="alert alert-success">Data Koleksi berhasil ditambahkan.</div>';
+                    // echo '<div class="alert alert-success">Data Koleksi berhasil ditambahkan.</div>';
+                    // header("Refresh: 3; URL=?p=koleksi&a=koleksi");
+                    echo '<div class="alert alert-success">Data koleksi berhasil tambahkan.</div>';
                     header("Refresh: 3; URL=?p=koleksi&a=koleksi");
                     }
                     else{
-                     $this->oUtil->sErrMsg = 'Data Koleksi gagal ditambahkan.';
+                     // $this->oUtil->sErrMsg = 'Data Koleksi gagal ditambahkan.';
+                    echo '<div class="alert alert-danger">Data koleksi gagal tambahkan.</div>';
                     }
                 // }elseif ($this->oModel->add($aData) && $this->oModel->addthnTerbit($tahun) && $this->oModel->addAlog($aLog)) {
                 //     echo '<div class="alert alert-success">Data klasifikasi berhasil ditambahkan.</div>';
@@ -184,16 +187,19 @@ class Koleksi
                 $aData = array('no_koleksi' => $_POST['no_koleksi'], 'jenis_koleksi' => $_POST['jenis_koleksi']);
 
                 if ($this->oModel->update($aData)){
+                    // echo '<div class="alert alert-success">Data koleksi berhasil diedit.</div>';
+                    // header("Refresh: 3; URL=?p=koleksi&a=koleksi");
                     echo '<div class="alert alert-success">Data koleksi berhasil diedit.</div>';
                     header("Refresh: 3; URL=?p=koleksi&a=koleksi");
                 }
                 else{
-                    $this->oUtil->sErrMsg = 'Data koleksi gagal diedit.';
+                    echo '<div class="alert alert-danger">Data koleksi gagal diedit.</div>';
                 }
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor koleksi harus diisi.';
+                // $this->oUtil->sErrMsg = 'Nomor koleksi harus diisi.';
+                echo '<div class="alert alert-danger">Nomor koleksi harus diisi.</div>';
             }
         }
 
@@ -215,7 +221,9 @@ class Koleksi
 		if (!empty($_POST['delete'])){
 			try{
 				$this->oModel->delete($this->_iId);
-				header('Location: ' . ROOT_URL . '?p=koleksi&a=koleksi');
+				// header('Location: ' . ROOT_URL . '?p=koleksi&a=koleksi');
+                echo '<div class="alert alert-success">Data koleksi berhasil dihapus.</div>';
+                header("Refresh: 3; URL=?p=koleksi&a=koleksi");
 			}
 			catch(Exception $e){
 				echo "<script type='text/javascript'>alert('Maaf, data tidak dapat dihapus karena terdapat data pada katalog'); window.history.back();</script>";
@@ -225,6 +233,7 @@ class Koleksi
         else{
 			exit('klasifikasi tidak bisa dihapus.');	
 		}
+        $this->oUtil->getView('koleksi');
         
     }
     }

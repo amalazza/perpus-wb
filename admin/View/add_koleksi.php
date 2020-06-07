@@ -28,7 +28,7 @@
                     <div class="form-group ">
                       <label for="no_koleksi" class="control-label col-lg-2">No Koleksi <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="no_koleksi" name="no_koleksi" type="text" />
+                        <input class=" form-control" id="no_koleksi" name="no_koleksi" type="text" required/>
                       </div>
                     </div>
 
@@ -36,7 +36,7 @@
 					           <div class="form-group ">
                       <label for="jenis_koleksi" class="control-label col-lg-2">Jenis Koleksi <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="jenis_koleksi" name="jenis_koleksi" type="text" />
+                        <input class=" form-control" id="jenis_koleksi" name="jenis_koleksi" type="text" required/>
                       </div>
                     </div>
 		

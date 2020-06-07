@@ -31,7 +31,7 @@
                     <div class="form-group ">
                       <label for="no_klasifikasi" class="control-label col-lg-2">No Klasifikasi <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="no_klasifikasi" name="no_klasifikasi" type="text" value="<?=$this->oKlasifikasi->no_klasifikasi?>" readonly="true"/>
+                        <input class=" form-control" id="no_klasifikasi" name="no_klasifikasi" type="text" value="<?=$this->oKlasifikasi->no_klasifikasi?>" readonly="true" required/>
                       </div>
                     </div>
 
@@ -74,7 +74,7 @@
 					<div class="form-group ">
                       <label for="judul" class="control-label col-lg-2">Nama Klasifikasi <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" id="nama_klasifikasi" name="nama_klasifikasi" type="text" value="<?=$this->oKlasifikasi->nama_klasifikasi?>"/>
+                        <input class=" form-control" id="nama_klasifikasi" name="nama_klasifikasi" type="text" value="<?=$this->oKlasifikasi->nama_klasifikasi?>" required/>
                       </div>
                     </div>
                     

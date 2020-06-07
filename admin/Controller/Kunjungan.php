@@ -114,7 +114,9 @@ class Kunjungan
 
                 if ($this->oModel->add($aData) && $this->oModel->addAlog($aLog))
                 {
-                    echo '<div class="alert alert-success">Data kunjungan berhasil ditambahkan.</div>';
+                    // echo '<div class="alert alert-success">Data kunjungan berhasil ditambahkan.</div>';
+                    // header("Refresh: 3; URL=?p=kunjungan&a=add");
+                    echo '<div class="alert alert-success">Data kunjungan berhasil tambahkan.</div>';
                     header("Refresh: 3; URL=?p=kunjungan&a=add");
                 }
                 else
