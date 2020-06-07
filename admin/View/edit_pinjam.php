@@ -10,7 +10,7 @@
             <ol class="breadcrumb">
               <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
               <li><i class="icon_document_alt"></i>Transaksi</li>
-              <li><i class="fa fa-files-o"></i>Peminjaman</li>
+              <li><i class="fa fa-files-o"></i>Perpanjangan</li>
             </ol>
           </div>
         </div>
@@ -20,7 +20,7 @@
           <div class="col-lg-12">
             <section class="panel">
               <header class="panel-heading">
-                Peminjaman
+                Perpanjangan
               </header>
               <div class="panel-body">
                 <div class="form">
@@ -46,7 +46,12 @@
                         <input class=" form-control" id="no_katalog" name="no_katalog" type="text" value="<?=$this->oPerpanjang->no_katalog?>" readonly="true"/>
                       </div>
                     </div>
-				  
+				  <div class="form-group ">
+                      <label for="katalog" class="control-label col-lg-2">Perpanjangan ke<span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class=" form-control" id="perpjg" name="perpjg" type="text" value="<?=$this->oPerpanjang->perpanjangan_ke+1?>" readonly="true"/>
+                      </div>
+                    </div>
                     
 					<div class="form-group ">
                       <label for="tgl_pinjam" class="control-label col-lg-2">Tanggal Peminjaman <span class="required">*</span></label>

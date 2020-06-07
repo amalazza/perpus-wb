@@ -182,11 +182,8 @@ class Transaksi
             if (!empty($_POST['no_anggota'])) // Allow a maximum of 50 characters
             {
 				
-                //$idku = $_SESSION['id'];
-                //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
 				$no_katalog = $_POST['no_katalog'];
 				$aData = array('tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali'],'status' => 'dipinjam');
-                //$aLog = array('id_admin' => $idku, 'activity' => $act );
 
                 if ($this->oModel->updatePesanan($aData)){
 					$this->oModel->minusStok($no_katalog);
@@ -226,14 +223,13 @@ class Transaksi
         {
             if (!empty($_POST['no_anggota'])) // Allow a maximum of 50 characters
             {
-				
-                //$idku = $_SESSION['id'];
-                //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
 				$no_katalog = $_POST['no_katalog'];
+                $jdlku = $this->oModel->getJudulku($_POST['no_katalog']);
 				$aData = array('no_peminjaman'=> $_POST['no_peminjaman'], 'tanggal_kembali' => $_POST['tgl_kembali'], 'keterlambatan'=>$_POST['telat'], 'denda'=>$_POST['denda'], 'status' => 'kembali');
-                //$aLog = array('id_admin' => $idku, 'activity' => $act );
+                $log = "Kamu sudah mengembalikan buku ".$jdlku." pada tanggal ".$_POST['tgl_kembali'].", terima kasih sudah meminjam buku diperpus.";
+                $aLog = array('no_anggota' => $_POST['no_anggota'], 'activity' => $log);
 
-                if ($this->oModel->pengembalian($aData)){
+                if ($this->oModel->pengembalian($aData) && $this->oModel->addAngLog($aLog)){
 					$this->oModel->plusStok($no_katalog);
                     $this->oUtil->sSuccMsg = 'Buku berhasil dikembalikan.';
                     header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
@@ -268,11 +264,11 @@ class Transaksi
         {
             if (!empty($_POST['no_anggota'])) // Allow a maximum of 50 characters
             {
-				
-                
+			
+                $jdlku = $this->oModel->getJudulku($_POST['jdl']);
 				$no_katalog = $_POST['no_katalog'];
 				$aData = array('no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali'],'status' => 'dipinjam');
-                $log = "Kamu melakukan peminjaman buku ".$_POST['jdl'].". Jangan lupa batas pengembalian buku pada tanggal <b>".$_POST['batas_kembali']."</b> ya!";
+                $log = "Kamu melakukan peminjaman buku ".$jdlku.". Jangan lupa batas pengembalian buku pada tanggal <b>".$_POST['batas_kembali']."</b> ya!";
                 $aLog = array('no_anggota' => $_POST['no_anggota'], 'activity' => $log);
 
                 if ($this->oModel->pinjamBaru($aData) && $this->oModel->addAngLog($aLog)){
@@ -317,10 +313,13 @@ class Transaksi
                 //$idku = $_SESSION['id'];
                 //$act = $_SESSION['nama'].' menerima kunjungan dari anggota '.$_POST['nAnggota'];
 				$no_katalog = $_POST['no_katalog'];
+                $jdlku = $this->oModel->getJudulku($_POST['no_katalog']);
 				$aData = array('no_peminjaman' => $_POST['no_peminjaman'], 'no_anggota' => $_POST['no_anggota'], 'no_katalog' => $_POST['no_katalog'], 'tanggal_pinjam' => $_POST['tgl_pinjam'],'batas_kembali' => $_POST['batas_kembali']);
                 //$aLog = array('id_admin' => $idku, 'activity' => $act );
+                $log = "Kamu melakukan perpanjangan masa pinjam buku ".$jdlku.". Perpanjangan ini adalah perpanjangan ke ".$_POST['perpjg'].". Jangan lupa batas pengembalian buku pada tanggal <b>".$_POST['batas_kembali']."</b> ya!";
+                $aLog = array('no_anggota' => $_POST['no_anggota'], 'activity' => $log);
 
-                if ($this->oModel->perpanjangan($aData)){
+                if ($this->oModel->perpanjangan($aData) && $this->oModel->addAngLog($aLog)){
                     $this->oUtil->sSuccMsg = 'Buku berhasil dipinjam.';
                     header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
 				}

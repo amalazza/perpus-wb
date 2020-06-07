@@ -177,7 +177,12 @@
         		  <li style="background-color: #294a70;"><a class="" href="<?=ROOT_URL?>?p=transaksi&amp;a=infoDenda"><span>Info Denda</span></a></li>
             </ul>
           </li>
-          
+          <li class="">
+            <a class="" href="<?=ROOT_URL?>?p=dashboard&amp;a=about">
+              <i class="icon_house_alt"></i>
+              <span>About</span>
+            </a>
+          </li>
         </ul>
         <!-- sidebar menu end-->
       </div>

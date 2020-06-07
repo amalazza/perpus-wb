@@ -164,7 +164,15 @@ public function getBatas()
 		$oStmt->bindValue(':status', $aData['status']);
         return $oStmt->execute($aData);
     }
+    public function getJudulku($id)
+    {
+        $oStmt = $this->oDb->prepare('SELECT judul FROM katalog WHERE no_katalog = :no_katalog LIMIT 1');
+        $oStmt->bindValue(':no_katalog', $id, \PDO::PARAM_STR);
+        $oStmt->execute();
+        $oRow = $oStmt->fetch(\PDO::FETCH_OBJ);
 
+        return @$oRow->judul; // Use the PHP 5.5 password function
+    }
     public function getById($iId)
     {
         $oStmt = $this->oDb->prepare('SELECT no_anggota, nama, kelas, alamat, no_telpon, email FROM anggota WHERE no_anggota = :id LIMIT 1');

@@ -40,6 +40,18 @@ class Dashboard
         $this->oUtil->getView('index');
     }
 
+    public function about()
+    {
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+        $this->oUtil->getView('about');
+        }
+    }
+
     public function anggota()
     {
         if (!$this->isLogged())

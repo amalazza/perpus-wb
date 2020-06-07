@@ -216,9 +216,10 @@ class Anggota extends Beranda
 
                 $aData = array('no_anggota' => $_POST['nis'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' =>$p_crypt ,'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
 
+                $log = "Kamu telah membuat akun baru bernama ".$_POST['nama']." pada tanggal ".date('d-m-Y').", selamat menikmati fitur perpustakaan online ini.";
+                $aLog = array('no_anggota' => $_POST['nis'], 'activity' => $log);
 
-
-                if ($this->oModel->add($aData))
+                if ($this->oModel->add($aData) && $this->oModel->addAngLog($aLog))
 
                      header('Location: ' . ROOT_URL  . '?p=anggota&a=login');
 

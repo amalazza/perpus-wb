@@ -23,7 +23,11 @@ class Anggota extends Beranda
 
         return @$oRow->nama; // Use the PHP 5.5 password function
     }
-
+public function addAngLog(array $aLog)
+    {
+        $oStmt = $this->oDb->prepare('INSERT INTO loganggota (no_anggota, activity) VALUES(:no_anggota, :activity)');
+        return $oStmt->execute($aLog);
+    }
     public function ambil_kelas($username)
     {
         $oStmt = $this->oDb->prepare('SELECT no_anggota,kelas FROM anggota WHERE no_anggota = :no_anggota LIMIT 1');
