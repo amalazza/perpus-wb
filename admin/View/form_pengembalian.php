@@ -67,7 +67,13 @@
 					<div class="form-group ">
                       <label for="telat" class="control-label col-lg-2"> Keterlambatan <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class=" form-control" value="0" id="denda" name="telat" type="text" readonly="true" />
+                        <input class=" form-control" value="0" id="telat" name="telat" type="text" readonly="true" />
+                      </div>
+					  </div>
+					  <div class="form-group ">
+                      <label for="denda" class="control-label col-lg-2"> denda <span class="required">*</span></label>
+                      <div class="col-lg-10">
+                        <input class=" form-control" value="0" id="denda" name="denda" type="text" readonly="true" />
                       </div>
                     </div>
 					<?php else: ?>
