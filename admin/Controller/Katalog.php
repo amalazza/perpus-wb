@@ -151,24 +151,31 @@ class Katalog
 
                 if ($dupt !== 0){
                     if ($this->oModel->add($aData) && $this->oModel->addAlog($aLog)){
-                    $this->oUtil->sSuccMsg = 'Data katalog berhasil ditambahkan.';
+                    // $this->oUtil->sSuccMsg = 'Data katalog berhasil ditambahkan.';
+                    // header("Refresh: 3; URL=?p=katalog&a=katalog");
+                    echo '<div class="alert alert-success">Data katalog berhasil ditambahkan.</div>';
                     header("Refresh: 3; URL=?p=katalog&a=katalog");
                     }
                     else{
-                     $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                     // $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                    echo '<div class="alert alert-danger">Data katalog gagal ditambahkan.</div>';
                     }
                 }elseif ($this->oModel->add($aData) && $this->oModel->addthnTerbit($tahun) && $this->oModel->addAlog($aLog)) {
-                    $this->oUtil->sSuccMsg = 'Data katalog berhasil ditambahkan.';
+                    // $this->oUtil->sSuccMsg = 'Data katalog berhasil ditambahkan.';
+                    // header("Refresh: 3; URL=?p=katalog&a=katalog");
+                    echo '<div class="alert alert-success">Data katalog berhasil ditambahkan.</div>';
                     header("Refresh: 3; URL=?p=katalog&a=katalog");
                     }
                     else{
-                     $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                     // $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                    echo '<div class="alert alert-danger">Data katalog gagal ditambahkan.</div>';
                     }
                 }
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                 $this->oUtil->sErrMsg = 'Nomor anggota harus diisi.';
+                // echo '<div class="alert alert-danger">Nomor anggota harus diisi.</div>';
             }
         }
 
@@ -200,11 +207,14 @@ class Katalog
 						$aData = array('no_katalog' => $_POST['no_katalog'], 'no_klasifikasi' => $_POST['klasifikasi'], 'no_koleksi' => $_POST['koleksi'], 'jenis_katalog' => $_POST['jenis_katalog'], 'judul' => $_POST['judul'],'pengarang' => $_POST['pengarang'],'penerbit' => $_POST['penerbit'],'kota_terbit' => $_POST['kota_terbit'],'tahun_terbit' => $_POST['tahun_terbit'],'isbn' => $_POST['isbn'],'lokasi' => $_POST['lokasi'],'absktrak' => $_POST['abstrak'],'tanggal_masuk' => date('Y-m-d H:i:s'),'e_book' => file_get_contents($_FILES['e_book']['tmp_name']),'cover' => addslashes(file_get_contents($_FILES['cover']['tmp_name'])), 'stok'=> $_POST['stok']);
 
 						if ($this->oModel->updateAll($aData)){
-							$this->oUtil->sSuccMsg = 'Data katalog berhasil diubah.';
-							header("Refresh: 3; URL=?p=katalog&a=katalog");
+							// $this->oUtil->sSuccMsg = 'Data katalog berhasil diubah.';
+							// header("Refresh: 3; URL=?p=katalog&a=katalog");
+                            echo '<div class="alert alert-success">Data katalog berhasil diedit.</div>';
+                            header("Refresh: 3; URL=?p=katalog&a=katalog");
 						}
 						else{
-							$this->oUtil->sErrMsg = 'Data katalog gagal diedit.';
+							// $this->oUtil->sErrMsg = 'Data katalog gagal diedit.';
+                            echo '<div class="alert alert-danger">Data katalog gagal diedit.</div>';
 						}
 					}
 					else{
@@ -212,12 +222,15 @@ class Katalog
 						$aData = array('no_katalog' => $_POST['no_katalog'], 'no_klasifikasi' => $_POST['klasifikasi'], 'no_koleksi' => $_POST['koleksi'], 'jenis_katalog' => $_POST['jenis_katalog'], 'judul' => $_POST['judul'],'pengarang' => $_POST['pengarang'],'penerbit' => $_POST['penerbit'],'kota_terbit' => $_POST['kota_terbit'],'tahun_terbit' => $_POST['tahun_terbit'],'isbn' => $_POST['isbn'],'lokasi' => $_POST['lokasi'],'absktrak' => $_POST['abstrak'],'tanggal_masuk' => date('Y-m-d H:i:s'),'cover' => addslashes(file_get_contents($_FILES['cover']['tmp_name'])), 'stok'=> $_POST['stok']);
 
 						if ($this->oModel->updatePic($aData)){
-							$this->oUtil->sSuccMsg = 'Data katalog berhasil diubah.';
-							header("Refresh: 3; URL=?p=katalog&a=katalog");
-						}
-						else{
-							$this->oUtil->sErrMsg = 'Data katalog gagal diedit.';
-						}
+							// $this->oUtil->sSuccMsg = 'Data katalog berhasil diubah.';
+                            // header("Refresh: 3; URL=?p=katalog&a=katalog");
+                            echo '<div class="alert alert-success">Data katalog berhasil diedit.</div>';
+                            header("Refresh: 3; URL=?p=katalog&a=katalog");
+                        }
+                        else{
+                            // $this->oUtil->sErrMsg = 'Data katalog gagal diedit.';
+                            echo '<div class="alert alert-danger">Data katalog gagal diedit.</div>';
+                        }
 					}
 				}
 				else{
@@ -226,30 +239,37 @@ class Katalog
 						$aData = array('no_katalog' => $_POST['no_katalog'], 'no_klasifikasi' => $_POST['klasifikasi'], 'no_koleksi' => $_POST['koleksi'], 'jenis_katalog' => $_POST['jenis_katalog'], 'judul' => $_POST['judul'],'pengarang' => $_POST['pengarang'],'penerbit' => $_POST['penerbit'],'kota_terbit' => $_POST['kota_terbit'],'tahun_terbit' => $_POST['tahun_terbit'],'isbn' => $_POST['isbn'],'lokasi' => $_POST['lokasi'],'absktrak' => $_POST['abstrak'],'tanggal_masuk' => date('Y-m-d H:i:s'),'e_book' => file_get_contents($_FILES['e_book']['tmp_name']), 'stok'=> $_POST['stok']);
 
 						if ($this->oModel->updatePDF($aData)){
-							$this->oUtil->sSuccMsg = 'Data katalog berhasil diubah.';
-							header("Refresh: 3; URL=?p=katalog&a=katalog");
-						}
-						else{
-							$this->oUtil->sErrMsg = 'Data katalog gagal diedit.';
-						}
+							// $this->oUtil->sSuccMsg = 'Data katalog berhasil diubah.';
+                            // header("Refresh: 3; URL=?p=katalog&a=katalog");
+                            echo '<div class="alert alert-success">Data katalog berhasil diedit.</div>';
+                            header("Refresh: 3; URL=?p=katalog&a=katalog");
+                        }
+                        else{
+                            // $this->oUtil->sErrMsg = 'Data katalog gagal diedit.';
+                            echo '<div class="alert alert-danger">Data katalog gagal diedit.</div>';
+                        }
 					}
 					else{
 						//update if pic and pdf NOT update
 						$aData = array('no_katalog' => $_POST['no_katalog'], 'no_klasifikasi' => $_POST['klasifikasi'], 'no_koleksi' => $_POST['koleksi'], 'jenis_katalog' => $_POST['jenis_katalog'], 'judul' => $_POST['judul'],'pengarang' => $_POST['pengarang'],'penerbit' => $_POST['penerbit'],'kota_terbit' => $_POST['kota_terbit'],'tahun_terbit' => $_POST['tahun_terbit'],'isbn' => $_POST['isbn'],'lokasi' => $_POST['lokasi'],'absktrak' => $_POST['abstrak'],'tanggal_masuk' => date('Y-m-d H:i:s'), 'stok'=> $_POST['stok']);
 
 						if ($this->oModel->updateNoPicPDF($aData)){
-							$this->oUtil->sSuccMsg = 'Data katalog berhasil diubah.';
-							header("Refresh: 3; URL=?p=katalog&a=katalog");
-						}
-						else{
-							$this->oUtil->sErrMsg = 'Data katalog gagal diedit.';
-						}
+							// $this->oUtil->sSuccMsg = 'Data katalog berhasil diubah.';
+                            // header("Refresh: 3; URL=?p=katalog&a=katalog");
+                            echo '<div class="alert alert-success">Data katalog berhasil diedit.</div>';
+                            header("Refresh: 3; URL=?p=katalog&a=katalog");
+                        }
+                        else{
+                            // $this->oUtil->sErrMsg = 'Data katalog gagal diedit.';
+                            echo '<div class="alert alert-danger">Data katalog gagal diedit.</div>';
+                        }
 					}
 				}
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor katalog harus diisi.';
+                // $this->oUtil->sErrMsg = 'Nomor katalog harus diisi.';
+                echo '<div class="alert alert-danger">Nomor katalog harus diisi.</div>';
             }
         }
 
@@ -275,12 +295,15 @@ class Katalog
         else{
 
         if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId)){
-			header('Location: ' . ROOT_URL . '?p=katalog&a=katalog');
+			// header('Location: ' . ROOT_URL . '?p=katalog&a=katalog');
+            echo '<div class="alert alert-success">Data katalog berhasil dihapus.</div>';
+            header("Refresh: 3; URL=?p=katalog&a=katalog");
 		}
         else{
 			exit('Katalog tidak bisa dihapus.');	
 		}
     }
+    $this->oUtil->getView('katalog');
     }
 
     protected function isLogged()

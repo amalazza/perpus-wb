@@ -122,7 +122,7 @@ class Anggota
                 }
                 else{
 				// $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
-                echo '<div class="alert alert-danger">Data anggota gagal ditambahkan.</div>';
+                echo '<div class="alert alert-danger">Data siswa gagal ditambahkan.</div>';
             }
 			}
 			
@@ -327,6 +327,7 @@ class Anggota
         else{
 		exit('Anggota tidak bisa dihapus.');}
     }
+    $this->oUtil->getView('anggota');
     }
 
     protected function isLogged()

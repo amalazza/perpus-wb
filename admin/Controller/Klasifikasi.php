@@ -136,11 +136,14 @@ class Klasifikasi
 
                 // if ($dupt !== 0){
                     if ($this->oModel->add($aData) && $this->oModel->addAlog($aLog)){
-                    echo '<div class="alert alert-success">Data klasifikasi berhasil ditambahkan.</div>';
+                    // echo '<div class="alert alert-success">Data klasifikasi berhasil ditambahkan.</div>';
+                    // header("Refresh: 3; URL=?p=klasifikasi&a=klasifikasi");
+                    echo '<div class="alert alert-success">Data klasifikasi berhasil tambahkan.</div>';
                     header("Refresh: 3; URL=?p=klasifikasi&a=klasifikasi");
                     }
                     else{
-                     $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                     // $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                    echo '<div class="alert alert-danger">Data klasifikasi gagal tambahkan.</div>';
                     }
                 // }elseif ($this->oModel->add($aData) && $this->oModel->addthnTerbit($tahun) && $this->oModel->addAlog($aLog)) {
                 //     echo '<div class="alert alert-success">Data klasifikasi berhasil ditambahkan.</div>';
@@ -186,16 +189,20 @@ class Klasifikasi
                 $aData = array('no_klasifikasi' => $_POST['no_klasifikasi'], 'nama_klasifikasi' => $_POST['nama_klasifikasi']);
 
                 if ($this->oModel->update($aData)){
-					echo '<div class="alert alert-success">Data klasifikasi berhasil diedit.</div>';
+					// echo '<div class="alert alert-success">Data klasifikasi berhasil diedit.</div>';
+     //                header("Refresh: 3; URL=?p=klasifikasi&a=klasifikasi");
+                    echo '<div class="alert alert-success">Data klasifikasi berhasil diedit.</div>';
                     header("Refresh: 3; URL=?p=klasifikasi&a=klasifikasi");
 				}
                 else{
-					$this->oUtil->sErrMsg = 'Data klasifikasi gagal diedit.';
+					// $this->oUtil->sErrMsg = 'Data klasifikasi gagal diedit.';
+                    echo '<div class="alert alert-danger">Data klasifikasi gagal diedit.</div>';
 				}
             }
             else
             {
-                $this->oUtil->sErrMsg = 'Nomor klasifikasi harus diisi.';
+                // $this->oUtil->sErrMsg = 'Nomor klasifikasi harus diisi.';
+                echo '<div class="alert alert-danger">Nomor klasifikasi harus diisi.</div>';
             }
         }
 
@@ -222,7 +229,9 @@ class Klasifikasi
         if (!empty($_POST['delete'])){
 			try{
 				$this->oModel->delete($this->_iId);
-				header('Location: ' . ROOT_URL . '?p=klasifikasi&a=klasifikasi');
+				// header('Location: ' . ROOT_URL . '?p=klasifikasi&a=klasifikasi');
+                echo '<div class="alert alert-success">Data klasifikasi berhasil dihapus.</div>';
+                header("Refresh: 3; URL=?p=klasifikasi&a=klasifikasi");
 			}
 			catch(Exception $e){
 				echo "<script type='text/javascript'>alert('Maaf, data tidak dapat dihapus karena terdapat data pada katalog'); window.history.back();</script>";
@@ -232,6 +241,7 @@ class Klasifikasi
         else{
 			exit('klasifikasi tidak bisa dihapus.');	
 		}
+        $this->oUtil->getView('klasifikasi');
     }
     }
 
