@@ -171,7 +171,6 @@ class Admincrud
                 $pass = $_POST['password'];
                 $p_crypt = sha1($pass);
                 $mime = $_FILES['foto']['type'];
-                $foto = file_get_contents($_FILES['foto']['tmp_name']);
                 $oldPass = $_POST['Opassword'];
                 $idku = $_SESSION['id'];
                 $act = $_SESSION['nama'].' mengubah data profile admin '.$_POST['nama'];
@@ -180,20 +179,7 @@ class Admincrud
 
                 if ($compare == 0) { //pass sama dengan oldpass
                     if ($cmpRole == 0) { //kalo yg login master+oldpass
-                        if (!empty($foto)) {//+newFoto
-                            $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => 'master', 'username' => $user, 'password' => $oldPass, 'mime' => $mime, 'foto' => $foto);
-                            $aLog = array('id_admin' => $idku, 'activity' => $act );
-
-                            if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog)){
-                            // header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
-                            echo '<div class="alert alert-success">Data admin berhasil diedit.</div>';
-                            header("Refresh: 3; URL=?p=Admincrud&a=p_admin");
-                            }
-                            else{
-                            // $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
-                            echo '<div class="alert alert-danger">Data admin gagal diedit.</div>';
-                            }
-                        } else {//+oldFoto
+                        if (empty($foto)) {//oldfoto
                             $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => 'master', 'username' => $user, 'password' => $oldPass);
                             $aLog = array('id_admin' => $idku, 'activity' => $act );
 
@@ -206,9 +192,24 @@ class Admincrud
                             // $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
                             echo '<div class="alert alert-danger">Data admin gagal diedit.</div>';
                             }
+                        } else {//+newFoto
+                            $foto = file_get_contents($_FILES['foto']['tmp_name']);
+                            $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => 'master', 'username' => $user, 'password' => $oldPass, 'mime' => $mime, 'foto' => $foto);
+                            $aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                            if ($this->oModel->update($aData) && $this->oModel->addAlog($aLog)){
+                            // header('Location: ' . ROOT_URL  . '?p=Admincrud&a=p_admin');
+                            echo '<div class="alert alert-success">Data admin berhasil diedit.</div>';
+                            header("Refresh: 3; URL=?p=Admincrud&a=p_admin");
+                            }
+                            else{
+                            // $this->oUtil->sErrMsg = 'Data admin gagal diupdate.';
+                            echo '<div class="alert alert-danger">Data admin gagal diedit.</div>';
+                            }
                         }
                     } else { //kalo yg login admin+oldpass
                         if (!empty($foto)) {
+                            $foto = file_get_contents($_FILES['foto']['tmp_name']);
                             $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $oldPass, 'mime' => $mime, 'foto' => $foto);
                             $aLog = array('id_admin' => $idku, 'activity' => $act );
 
@@ -239,6 +240,7 @@ class Admincrud
                 } else {//pass tdk sama oldpass
                     if ($cmpRole == 0) { //input role = master
                         if (!empty($foto)) {
+                            $foto = file_get_contents($_FILES['foto']['tmp_name']);
                             $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => 'master', 'username' => $user, 'password' => $p_crypt, 'mime' => $mime, 'foto' => $foto);
                             $aLog = array('id_admin' => $idku, 'activity' => $act );
 
@@ -267,6 +269,7 @@ class Admincrud
                         }
                     } else {
                         if (!empty($foto)) {//foto tdk kosong
+                            $foto = file_get_contents($_FILES['foto']['tmp_name']);
                             $aData = array('id_admin' => $id_admin,'nama' => $nama, 'notlp' => $notlp,'email' => $email, 'alamat' => $alamat, 'role' => $role, 'username' => $user, 'password' => $p_crypt, 'mime' => $mime, 'foto' => $foto);
                             $aLog = array('id_admin' => $idku, 'activity' => $act );
 

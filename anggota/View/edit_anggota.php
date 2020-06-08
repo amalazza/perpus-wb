@@ -66,13 +66,13 @@
                     <div class="form-group ">
                       <label for="password" class="control-label col-lg-2">Password <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control " id="password" name="password" type="password" value=""/>
+                        <input class="form-control " id="password" name="password" type="password" value="<?=$this->oAnggota->password?>"/>
                       </div>
                     </div>
 					<div class="form-group ">
                       <label for="confirm_password" class="control-label col-lg-2">Confirm Password <span class="required">*</span></label>
                       <div class="col-lg-10">
-                        <input class="form-control " id="confirm_password" name="confirm_password" type="password" />
+                        <input class="form-control " id="confirm_password" name="confirm_password" type="password" value="<?=$this->oAnggota->password?>" />
                       </div>
                     </div>
 					<input class="form-control " placeholder="Password" id="Opassword" name="Opassword" type="hidden" value="<?=$this->oAnggota->password?>"/>

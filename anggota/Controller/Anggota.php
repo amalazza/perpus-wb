@@ -335,131 +335,60 @@ class Anggota extends Beranda
         if (!empty($_POST['edit_submit']))
 
         {
-
-				
-
 				$pass = $_POST['password'];
 
 				$oldPass = $_POST['Opassword'];
 
 				$compare = strcmp($pass, $oldPass);
+                $Log = "Kamu mengubah detail informasi data keanggotaanmu pada tanggal ".date('d-m-Y');
+                $aLog = array('no_anggota' => $_POST['no_anggota'], 'activity' => $Log);
 
-				
-
-				if(!empty($_FILES['foto']['tmp_name'])){
-
-					if ($compare == 0) {
-
+				if(!empty($_FILES['foto']['tmp_name'])){//newfoto
+					if ($compare == 0) {//newfoto+oldpass
 						$aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => $oldPass,'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
 
-
-
-						if ($this->oModel->update($aData)){
-
-						// $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
-
-						// header("Refresh: 3; URL=?p=anggota&a=profile");
+						if ($this->oModel->update($aData) && $this->oModel->addAngLog($aLog)){
                         echo '<div class="alert alert-success">Data berhasil diedit.</div>';
                         header("Refresh: 3; URL=?p=anggota&a=profile");
-                    }
-
-						else{
-
-						// $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                        }else{
                         echo '<div class="alert alert-danger">Data gagal diedit.</div>';
-                    }
-
-					}
-
-					else{
-
+                        }
+					}else{//newfoto+newpass
 						$aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => sha1($pass),'foto' => addslashes(file_get_contents($_FILES['foto']['tmp_name'])));
 
-
-
-						if ($this->oModel->update($aData)){
-
-						// $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
-
-						// header("Refresh: 3; URL=?p=anggota&a=profile");
+                        if ($this->oModel->update($aData) && $this->oModel->addAngLog($aLog)){
                         echo '<div class="alert alert-success">Data berhasil diedit.</div>';
                         header("Refresh: 3; URL=?p=anggota&a=profile");
-                    }
-
-						else{
-
-						// $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                        }else{
                         echo '<div class="alert alert-danger">Data gagal diedit.</div>';
+                        }
                     }
-
-					}
-
-				}
-
-				else{
-
-					if ($compare == 0) {
-
+				}else{//oldfoto
+					if ($compare == 0) {//oldfoto+oldpass
 						$aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => $oldPass);
 
-
-
-						if ($this->oModel->updateNoPic($aData)){
-
-						// $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
-
-						// header("Refresh: 3; URL=?p=anggota&a=profile");
+						if ($this->oModel->updateNoPic($aData) && $this->oModel->addAngLog($aLog)){
                         echo '<div class="alert alert-success">Data berhasil diedit.</div>';
                         header("Refresh: 3; URL=?p=anggota&a=profile");
-                    }
-
-						else{
-
-						// $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                        }else{
                         echo '<div class="alert alert-danger">Data gagal diedit.</div>';
-                    }
-
-					}
-
-					else{
-
+                        }
+					}else{//oldfoto+newpass
 						$aData = array('no_anggota' => $_POST['no_anggota'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => sha1($pass));
-
-
-
-						if ($this->oModel->updateNoPic($aData)){
-
-						// $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
-
-						// header("Refresh: 3; URL=?p=anggota&a=profile");
+                        
+                        if ($this->oModel->updateNoPic($aData) && $this->oModel->addAngLog($aLog)){
                         echo '<div class="alert alert-success">Data berhasil diedit.</div>';
                         header("Refresh: 3; URL=?p=anggota&a=profile");
-                    }
-
-						else{
-
-						// $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                        }else{
                         echo '<div class="alert alert-danger">Data gagal diedit.</div>';
-                    }
-
+                        }
 					}
-
 				}
-
-            
-
         }
-
-
-
         // Get the data of the post 
 
         $this->oUtil->oAnggota = $this->oModel->getById($this->_iId);
-
-
-
         $this->oUtil->getView('edit_anggota');
-
     }
 
     public function dropdown()
