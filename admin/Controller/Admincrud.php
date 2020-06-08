@@ -324,7 +324,8 @@ class Admincrud
         else{
 
         $idku = $_SESSION['id'];
-        $act = $_SESSION['nama'].' menghapus data profile admin '.$_POST['nama'];
+        $name = $this->oModel->getNama($this->_iId);
+        $act = $_SESSION['nama'].' menghapus data profile admin '.$name;
 
         $aLog = array('id_admin' => $idku, 'activity' => $act );
 

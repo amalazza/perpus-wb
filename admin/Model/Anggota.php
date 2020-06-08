@@ -24,7 +24,7 @@ class Anggota
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
-            public function addAlog(array $aLog)
+    public function addAlog(array $aLog)
     {
         $oStmt = $this->oDb->prepare('INSERT INTO logadmin (id_admin, activity) VALUES(:id_admin, :activity)');
         return $oStmt->execute($aLog);
