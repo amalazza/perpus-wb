@@ -319,11 +319,16 @@ class Anggota
         }
         else{
 
-        if (!empty($_POST['delete']) && $this->oModel->delete($this->_iId)){
-      //       $this->oUtil->sSuccMsg = 'Data anggota berhasil dihapus.';
-    		// header("Refresh: 3; URL=?p=anggota&a=anggota");}
-            echo '<div class="alert alert-success">Data anggota berhasil dihapus.</div>';
-            header("Refresh: 3; URL=?p=anggota&a=anggota");}
+        if (!empty($_POST['delete'])){
+			try{
+				$this->oModel->delete($this->_iId)
+				echo '<div class="alert alert-success">Data anggota berhasil dihapus.</div>';
+				header("Refresh: 3; URL=?p=anggota&a=anggota");
+			}
+			catch{
+				echo "<script type='text/javascript'>alert('Maaf, data tidak dapat dihapus karena terdapat data pada peminjaman'); window.history.back();</script>";
+			}
+		}
         else{
 		exit('Anggota tidak bisa dihapus.');}
     }
