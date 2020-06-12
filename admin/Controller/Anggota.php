@@ -318,21 +318,24 @@ class Anggota
            exit; 
         }
         else{
-
-        if (!empty($_POST['delete'])){
+		if (!empty($_POST['delete'])){
 			try{
-				$this->oModel->delete($this->_iId)
-				echo '<div class="alert alert-success">Data anggota berhasil dihapus.</div>';
-				header("Refresh: 3; URL=?p=anggota&a=anggota");
+				$this->oModel->delete($this->_iId);
+				// header('Location: ' . ROOT_URL . '?p=koleksi&a=koleksi');
+                echo '<div class="alert alert-success">Data koleksi berhasil dihapus.</div>';
+                header("Refresh: 3; URL=?p=anggota&a=anggota");
 			}
-			catch{
-				echo "<script type='text/javascript'>alert('Maaf, data tidak dapat dihapus karena terdapat data pada peminjaman'); window.history.back();</script>";
+			catch(\Exception $e){
+				echo "<script type='text/javascript'>alert('Maaf, data tidak dapat dihapus karena terdapat data pada katalog'); window.history.back();</script>";
+				//header('Location: ' . ROOT_URL . '?p=klasifikasi&a=klasifikasi');
 			}
 		}
         else{
-		exit('Anggota tidak bisa dihapus.');}
+			exit('klasifikasi tidak bisa dihapus.');	
+		}
+        $this->oUtil->getView('anggota');
+        
     }
-    $this->oUtil->getView('anggota');
     }
 
     protected function isLogged()

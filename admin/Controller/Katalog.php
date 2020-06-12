@@ -296,11 +296,11 @@ class Katalog
 
         if (!empty($_POST['delete'])){
 			try{
-				$this->oModel->delete($this->_iId)
+				$this->oModel->delete($this->_iId);
 				echo '<div class="alert alert-success">Data katalog berhasil dihapus.</div>';
 				header("Refresh: 3; URL=?p=katalog&a=katalog");
 			}
-            catch{
+            catch(\Exception $e)	{
 				echo "<script type='text/javascript'>alert('Maaf, data tidak dapat dihapus karena terdapat data pada transaksi'); window.history.back();</script>";
 			}
 		}
