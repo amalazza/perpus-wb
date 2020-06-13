@@ -98,6 +98,8 @@ public function filter()
         $this->oUtil->oStatus = $this->oModel->getStatus($aData);
 		$this->oUtil->oPesan = $this->oModel->getStatusPesan($aData);		
         $this->oUtil->dataPerpanjang = $this->oModel->getBatas();
+		$this->oUtil->oDenda = $this->oModel->getDenda();
+		$this->oUtil->oAnggota = $this->oModel->getById($_SESSION['id']);
 
          $this->oUtil->oBuku = $this->oModel->getById($this->_iId); // Get the data of the post
 

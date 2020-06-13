@@ -85,6 +85,13 @@ class Buku
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
+	
+	public function getDenda()
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM denda LIMIT 1');
+		$oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
 
     public function getStatus(array $aData)/**/
     {

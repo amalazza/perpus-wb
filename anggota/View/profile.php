@@ -6,7 +6,7 @@
 
 if (empty($this->oAnggota)): ?>
   <?php else: ?>
-    <?php endif ?>
+    <?php endif; ?>
  
 <!--main sscontent start-->
   <div class="row">
@@ -79,8 +79,8 @@ if (empty($this->oAnggota)): ?>
             <section class="panel" >
               <header class="panel-heading birunavbarwb">
                 <ul class="nav nav-tabs" >
-                  <li>
-                    <a data-toggle="tab" href="#aktifitas">
+                  <li class="active">
+                    <a data-toggle="tab" href="#aktifitas" >
                                           AKTIVITAS
                                       </a>
                   </li>
@@ -106,7 +106,7 @@ if (empty($this->oAnggota)): ?>
                 <div class="tab-content" >
 
                   <!-- aktifitas -->
-                  <div id="aktifitas" class="tab-pane">
+                  <div id="aktifitas" class="tab-pane active">
                     <section>
                       <div class="row">
                         <div class="col-lg-12">

@@ -1,5 +1,7 @@
 <?php require 'inc/header.php' ?>
 
+
+
 <?php if (empty($this->oBuku)): ?>
     <p class="error">The post can't be be found!</p>
 <?php else: ?>
@@ -34,6 +36,9 @@
               </h4>
             </div>
 
+			<?php if (empty($_SESSION['id'])): ?>
+			
+			<?php else: ?>
             <div class="col-lg">
               <div class="col-lg-2 col-sm-6 follow-info weather-category">
                 <div class="follow-info">
@@ -62,6 +67,36 @@
               <?php else: ?>
 
               <?php if($this->oStatus->status == "dipinjam"): ?>
+			  <?php if(strtotime($this->oStatus->batas_kembali) < time()):?>
+			  <?php $now = date_create(date('Y-m-d')); $batas = date_create($this->oStatus->batas_kembali); $diff = date_diff($now,$batas)->days;?>
+			  <?php if ($diff * $this->oDenda->denda_per_hari < $this->oDenda->denda_maks): ?>
+			  <div class="col-lg-2 col-sm-6 follow-info weather-category" id="perpanjang">
+                <div  class="card-box bg-orange" style="border: 1px solid white">
+                    <div class="inner">
+                        <h3> DENDA </h3>
+                        <p><small> Anda Terlambat Mengembalikan Buku </small></p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                    </div>
+                    <button class="card-box-footer" style="border-color: transparent;" type="submit" name="edit" value="1" disabled>Denda: <?php $now = date_create(date('Y-m-d')); $batas = date_create($this->oStatus->batas_kembali); $diff = date_diff($now,$batas)->days; $denda = $this->oDenda->denda_per_hari; $hasil = $diff * $denda; echo $hasil;  ?></button>
+                </div>
+              </div>
+			  <?php else: ?>
+			  <div class="col-lg-2 col-sm-6 follow-info weather-category" id="perpanjang">
+                <div  class="card-box bg-orange" style="border: 1px solid white">
+                    <div class="inner">
+                        <h3> DENDA </h3>
+                        <p><small> Anda Terlambat Mengembalikan Buku </small></p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                    </div>
+                    <button class="card-box-footer" style="border-color: transparent;" type="submit" name="edit" value="1" disabled>Denda: <?= $this->oDenda->denda_maks?> </button>
+                </div>
+              </div>
+			  <?php endif; ?>
+			  <?php else: ?>
               <?php if (empty($this->dataPerpanjang)): ?>
               <?php else: ?>
               <?php if ($this->oStatus->perpanjangan_ke < $this->dataPerpanjang->batas): ?>
@@ -92,6 +127,7 @@
               </div>
               <?php endif ?>
               <?php endif ?>
+			  <?php endif; ?>
               <?php else: ?>
               <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
                 <div class="card-box bg-orange" style="border: 1px solid white;">
@@ -120,7 +156,7 @@
                     <button type="submit" name="pinjam" value="PINJAM" class="card-box-footer" style="border-color: transparent;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=pemesanan&amp;id=<?=$this->oBuku->no_katalog?>'">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
                 </div>
               </div>
-              <?php endif ?>
+              <?php endif; ?>
               <div class="col-lg-2 col-sm-6 follow-info weather-category" >
                 <div  class="card-box bg-red" style="border: 1px solid white">
                     <div class="inner">
@@ -134,6 +170,7 @@
                 </div>
               </div>
             </div>
+			<?php endif; ?>
 
           </div>
         </div>

@@ -119,8 +119,9 @@ class Anggota extends Beranda
         }
 
 
-
+		
         $this->oUtil->getView('login');
+		$this->oModel->updatePesananan();
 
     }
 

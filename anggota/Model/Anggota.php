@@ -13,6 +13,11 @@ class Anggota extends Beranda
 
         return @$oRow->password; // Use the PHP 5.5 password function
     }
+	
+	public function updatePesananan(){
+		$oStmt = $this->oDb->prepare('DELETE FROM pemesanan WHERE batas_pengambilan_buku<=DATE_SUB(NOW(), INTERVAL 1 DAY)');
+		$oStmt->execute();
+	}
 
     public function ambil_nama($username)
     {

@@ -32,7 +32,9 @@ class Admin extends Dashboard
                 $_SESSION['id'] = $idku;
                 $_SESSION['nama'] = $namaku;
                 $_SESSION['role'] = $roleku;
+				$this->oModel->updatePesananan();
                 header('Location: ' . ROOT_URL . '?p=dashboard&a=all');
+				
                 exit;
             }          
             else
@@ -42,8 +44,10 @@ class Admin extends Dashboard
                 header("Refresh: 3; URL=?p=admin&a=login");
             }
         }
-
+		
+		
         $this->oUtil->getView('login');
+		
     }
 
     public function logout()
