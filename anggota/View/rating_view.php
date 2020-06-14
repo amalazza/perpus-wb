@@ -168,50 +168,7 @@
   height: 60px;
 }
 </style>
-
-<?php
-  include 'rating_model.php';
-  $rating = new Rating();
-  $itemDetails = $rating->getItem($_GET['id']);
-  foreach($itemDetails as $item){
-    $average = $rating->getRatingAverage($item["no_katalog"]);
-    
-    $settingClass = $rating->getSetting();
-?> 
-
-<?php } ?>  
-    
-  <?php 
-  $itemRating = $rating->getItemRating($_GET['id']); 
-  $ratingNumber = 0;
-  $count = 0;
-  $fiveStarRating = 0;
-  $fourStarRating = 0;
-  $threeStarRating = 0;
-  $twoStarRating = 0;
-  $oneStarRating = 0; 
-  foreach($itemRating as $rate){
-    $ratingNumber+= $rate['ratingNumber'];
-    $count += 1;
-    if($rate['ratingNumber'] == 5) {
-      $fiveStarRating +=1;
-    } else if($rate['ratingNumber'] == 4) {
-      $fourStarRating +=1;
-    } else if($rate['ratingNumber'] == 3) {
-      $threeStarRating +=1;
-    } else if($rate['ratingNumber'] == 2) {
-      $twoStarRating +=1;
-    } else if($rate['ratingNumber'] == 1) {
-      $oneStarRating +=1;
-    }
-  }
-  $average = 0;
-  if($ratingNumber && $count) {
-    $average = $ratingNumber/$count;
-  }
-
-  $counts = $rating->getRatingTotal($_GET['id']);  
-  ?>    
+   
 <header class="panel-heading tab-bg-info birunavbarwb">
   <ul class="nav nav-tabs">
     <li class="active">
@@ -224,7 +181,8 @@
 </header>
 <div class="panel-body bio-graph-info">
   <div class="col-lg-12" style="margin-top: 2%">    
-    <h1>RATING AND REVIEWS</h1>
+    <h1 style="text-align: center;">RATING AND REVIEWS</h1>
+    <hr style="border-color: #ccc!important">
     <div id="ratingDetails">    
       <div class="row">     
         <div class="col-lg-6" style="margin-top: -2%;"> 
@@ -239,7 +197,7 @@
                 $ratingClass = "btn-warning";
               }
             ?>
-            <button type="button" class="btn btn-sm <?php echo $ratingClass; ?>" aria-label="Left Align">
+            <button type="button" class="btn btn-sm <?php echo $ratingClass; ?>" aria-label="Left Align" style="cursor: default;">
               <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
             </button> 
             <?php } ?>
@@ -335,11 +293,21 @@
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <hr/>
+          <hr style="border-color: #ccc!important">
           <center>
-            <button style="margin-bottom: 2%" type="button" id="rateProduct" class="btn btn-info <?php if(!empty($_SESSION['userid']) && $_SESSION['userid']){ echo 'login';} ?>">Rate this product</button>
-          </center>
 
+            <?php if (empty($_SESSION['id'])): ?>
+              <?php else: ?>
+                <?php if (!empty($_SESSION['is_logged'])): ?>
+                  <?php if (empty($this->oRating)): ?>
+                    <button type="submit" class="tombolbirufooterrwb btn btn-primary btn-lg" style="margin-bottom: 2px;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=rating&amp;id=<?=$this->oBuku->no_katalog?>'">Rate This Book  <i class="fa fa-arrow-circle-right"></i></button>
+                    <p>*NOTE: anda hanya bisa memberikan satu kali rating</p>
+                  <?php endif; ?>
+                <?php endif; ?>
+            <?php endif; ?>
+
+          </center>
+            <br>
           <div class="review-block">    
           <?php
           $itemRating = $rating->getItemRating($_GET['id']);
@@ -353,7 +321,6 @@
           ?>        
             <div class="row">
               <div class="col-sm-2">
-                <!-- <img src= 'data:image/jpeg;base64,".base64_encode(stripslashes($item["cover"]))."' class="img-rounded user-pic"> -->
                 <?php echo "<img class='follow-ava user-pic' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($profilePic))."'/>";?>
                 <div class="review-block-name">By <a href="#"><?php echo $rating['nama']; ?></a></div>
                 <div class="review-block-date"><?php echo $reviewDate; ?></div>
@@ -367,7 +334,7 @@
                       $ratingClass = "btn-warning";
                     }
                   ?>
-                  <button type="button" class="btn btn-xs <?php echo $ratingClass; ?>" aria-label="Left Align">
+                  <button type="button" class="btn btn-xs <?php echo $ratingClass; ?>" aria-label="Left Align" style="cursor: default;">
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                   </button>               
                   <?php } ?>
@@ -382,10 +349,11 @@
         </div>
       </div>  
     </div>
-    <div id="ratingSection" style="display:none;">
+    <div id="ratingSection">
       <div class="row">
         <div class="col-sm-12">
-          <form id="ratingForm" method="POST">          
+          
+          <!-- <form id="ratingForm" method="POST">          
             <div class="form-group">
               <h4>Rate this product</h4>
               <button type="button" class="btn btn-warning btn-sm rateButton" aria-label="Left Align">
@@ -418,11 +386,11 @@
             <div class="form-group">
               <button type="submit" class="btn btn-info" id="saveReview">Save Review</button> <button type="button" class="btn btn-info" id="cancelReview">Cancel</button>
             </div>      
-          </form>
+          </form> -->
         </div>
       </div>    
     </div>
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="loginmodal-container">
           <h1>Login to rate this product</h1><br>
@@ -438,7 +406,7 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div> --> 
   </div>
 </div>
 
@@ -447,7 +415,7 @@
   $('#loginForm').on('submit', function(e){
     $.ajax({
       type: 'POST',
-      url : "View/inc/rating_action.php",
+      url : "View/rating_action.php",
       dataType: "json",     
       data:$(this).serialize(),
       success: function (response) {

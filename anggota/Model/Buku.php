@@ -135,6 +135,27 @@ class Buku
         return $oStmt->execute($aData);
 	}
 
+    public function rating (array $aData){
+        $oStmt = $this->oDb->prepare('INSERT INTO rating (no_anggota, no_katalog, ratingNumber, title, comments, created, modified) VALUES(:no_anggota, :no_katalog, :ratingNumber, :title, :comments, :created, :modified)');
+        $oStmt->bindValue(':no_katalog', $aData['no_katalog']);
+        $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
+        $oStmt->bindValue(':ratingNumber', $aData['ratingNumber']);
+        $oStmt->bindValue(':title', $aData['title']);
+        $oStmt->bindValue(':comments', $aData['comments']);
+        $oStmt->bindValue(':created', $aData['created']);
+        $oStmt->bindValue(':modified', $aData['modified']);
+        return $oStmt->execute($aData);
+    }
+
+    public function getRating(array $aData)/**/
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM rating WHERE no_katalog = :no_katalog AND no_anggota = :no_anggota');
+        $oStmt->bindParam(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
+        $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
     public function getPDFById($iId)
     {
         $oStmt = $this->oDb->prepare('SELECT * FROM katalog WHERE no_katalog = :no_katalog LIMIT 1');

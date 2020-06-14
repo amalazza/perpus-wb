@@ -95,15 +95,16 @@ public function filter()
             $this->oUtil->getView('detail');
         }else{
             $aData = array('no_katalog' => $this->_iId, 'no_anggota' => $_SESSION['id']);
-        $this->oUtil->oStatus = $this->oModel->getStatus($aData);
-		$this->oUtil->oPesan = $this->oModel->getStatusPesan($aData);		
-        $this->oUtil->dataPerpanjang = $this->oModel->getBatas();
-		$this->oUtil->oDenda = $this->oModel->getDenda();
-		$this->oUtil->oAnggota = $this->oModel->getById($_SESSION['id']);
+            $this->oUtil->oStatus = $this->oModel->getStatus($aData);
+    		$this->oUtil->oPesan = $this->oModel->getStatusPesan($aData);		
+            $this->oUtil->dataPerpanjang = $this->oModel->getBatas();
+    		$this->oUtil->oDenda = $this->oModel->getDenda();
+            $this->oUtil->oRating = $this->oModel->getRating($aData);
+    		$this->oUtil->oAnggota = $this->oModel->getById($_SESSION['id']);
 
-         $this->oUtil->oBuku = $this->oModel->getById($this->_iId); // Get the data of the post
+            $this->oUtil->oBuku = $this->oModel->getById($this->_iId); // Get the data of the post
 
-        $this->oUtil->getView('detail');
+            $this->oUtil->getView('detail');
         }
         
     }
@@ -205,6 +206,40 @@ public function filter()
             $this->oUtil->getView('lihatpdf');
             }
     } 
+
+    public function rating()
+    {     
+        if (!$this->isLogged()) exit;
+        //$aData = array('no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
+        $this->oUtil->oBuku = $this->oModel->getById($_GET['id']);
+        //$this->oUtil->oPerpjg = $this->oModel->getBatas();
+
+        if (!empty($_POST['btn_rating']))
+        {
+            $rating = $_POST['rating'];
+            $title = $_POST['title'];
+            $idnya = $_GET['id'];
+            $comment = $_POST['comment'];
+            $jdl = $_POST['jdl'];
+
+            $aData = array('ratingNumber' => $rating, 'title' => $title, 'comments' => $comment, 'created' => date('Y-m-d H:i:s'), 'modified' => date('Y-m-d H:i:s'), 'no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
+
+            $log = "Kamu memberikan rating <b>".$rating."</b> pada buku ".$jdl;
+            $aLog = array('no_anggota' => $_SESSION['id'], 'activity' => $log);
+
+            if ($this->oModel->rating ($aData)&& $this->oModel->addAlog($aLog)){
+                // $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
+                // header("Refresh: 1; URL=?p=buku&a=detail&id=$idnya");
+                echo '<div class="alert alert-success">Pemberian rating buku berhasil.</div>';
+                    header("Refresh: 3; URL=?p=buku&a=detail&id=$idnya");
+            }
+            else{
+                // $this->oUtil->sErrMsg = 'Data anggota gagal diedit.';
+                echo '<div class="alert alert-danger">Pemberian rating buku gagal.</div>';
+            }
+        }
+        $this->oUtil->getView('add_rating');
+    }
 
 
     public function notFound()

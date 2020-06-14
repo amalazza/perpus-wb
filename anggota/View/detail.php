@@ -1,6 +1,48 @@
 <?php require 'inc/header.php' ?>
 
+<?php
+  include 'rating_model.php';
+  $rating = new Rating();
+  $itemDetails = $rating->getItem($_GET['id']);
+  foreach($itemDetails as $item){
+    $average = $rating->getRatingAverage($item["no_katalog"]);
+    
+    $settingClass = $rating->getSetting();
+?> 
 
+<?php } ?>  
+    
+  <?php 
+  $itemRating = $rating->getItemRating($_GET['id']); 
+  $ratingNumber = 0;
+  $count = 0;
+  $fiveStarRating = 0;
+  $fourStarRating = 0;
+  $threeStarRating = 0;
+  $twoStarRating = 0;
+  $oneStarRating = 0; 
+  foreach($itemRating as $rate){
+    $ratingNumber+= $rate['ratingNumber'];
+    $count += 1;
+    if($rate['ratingNumber'] == 5) {
+      $fiveStarRating +=1;
+    } else if($rate['ratingNumber'] == 4) {
+      $fourStarRating +=1;
+    } else if($rate['ratingNumber'] == 3) {
+      $threeStarRating +=1;
+    } else if($rate['ratingNumber'] == 2) {
+      $twoStarRating +=1;
+    } else if($rate['ratingNumber'] == 1) {
+      $oneStarRating +=1;
+    }
+  }
+  $average = 0;
+  if($ratingNumber && $count) {
+    $average = $ratingNumber/$count;
+  }
+
+  $counts = $rating->getRatingTotal($_GET['id']);  
+?>
 
 <?php if (empty($this->oBuku)): ?>
     <p class="error">The post can't be be found!</p>
@@ -14,26 +56,24 @@
           <div class="panel-body">
             <div class="col-lg-2 col-sm-2">
               <div class="follow-ava" style="-webkit-border-radius: 5%;">
-                <!-- <img src="data:<?=$oBuku->mime?>;base64,<?=base64_encode($oBuku->cover); ?>" style="height: 100%; width: 100%; -webkit-border-radius: 0%;"/> -->
-                <!-- <img src="<?=ROOT_URL?>static/img/cover_buku.png" alt="" style="height: 100%; width: 100%; -webkit-border-radius: 0%;"> -->
                 <?php 
                     echo "<img class='avatar' src= 'data:image/jpeg;base64,".base64_encode(stripslashes($this->oBuku->cover))."' style='height: 100%; width: 100%; border-radius: 4%;'/>";
                 ?>
               </div>
             </div>
             <div class="col-lg-4 col-sm-4 follow-info">
-              <h2>
+              <h1>
                 <?=$this->oBuku->judul?>
-              </h2>
-              <h3>
+              </h1>
+              <p style="font-size: 150%;">
                 <i class="fa fa-user"></i>  <?=$this->oBuku->pengarang?>
-              </h3>
-              <h4> 
+              </p>
+              <p style="font-size: 150%;"> 
                 <i class="fa fa-eye"></i>  22 <span>Dibaca</span> *SPRINT3
-              </h4>
-              <h4> 
-                <i class="icon_star"></i>  3,5 <span>/5 Penilaian</span> *SPRINT3
-              </h4>
+              </p>
+              <p style="font-size: 150%;"> 
+                <i class="icon_star"></i>  <?php printf('%.1f', $average); ?> <span>/5 Penilaian</span>
+              </p>
             </div>
 
 			<?php if (empty($_SESSION['id'])): ?>
@@ -237,7 +277,7 @@
                         </div>
                     </div>
                   </div>
-                  <?php require 'inc/rating_view.php' ?>
+                  <?php require 'rating_view.php' ?>
                 </section>
               </div>
             </div>
