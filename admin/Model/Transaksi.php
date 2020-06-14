@@ -22,7 +22,7 @@ class Transaksi
     {
         $from = date('Y-m-d', strtotime($aData['from']));
 		$end = date('Y-m-d', strtotime($aData['end']));
-		$oStmt = $this->oDb->prepare('SELECT a.no_peminjaman, a.tanggal_kembali, a.status, b.no_anggota, b.nama, c.no_katalog, c.judul, a.tanggal_pinjam, a.batas_kembali, a.perpanjangan_ke, a.denda FROM peminjaman a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog WHERE tanggal_pinjam BETWEEN :from AND :end OR');
+		$oStmt = $this->oDb->prepare('SELECT a.no_peminjaman, a.tanggal_kembali, a.status, b.no_anggota, b.nama, c.no_katalog, c.judul, a.tanggal_pinjam, a.batas_kembali, a.perpanjangan_ke, a.denda FROM peminjaman a inner join anggota b on b.no_anggota = a.no_anggota inner join katalog c on c.no_katalog = a.no_katalog WHERE tanggal_pinjam BETWEEN :from AND :end');
         $oStmt->bindValue(':from', $from);
         $oStmt->bindValue(':end', $end);
         $oStmt->execute();

@@ -144,6 +144,7 @@ class Anggota
         {
             if (isset($_POST['nis']) <= 15) // Allow a maximum of 50 characters
             {
+				if(!empty($_FILES['foto']['tmp_name'])){
 				
                 $idku = $_SESSION['id'];
                 $act = 'Admin '.$_SESSION['nama'].' menambahkan '.$_POST['nama'].' kelas '.$_POST['kelas'].' menjadi anggota perpus.';
@@ -160,6 +161,25 @@ class Anggota
                 else{
                     // $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
                     echo '<div class="alert alert-danger">Data anggota gagal ditambahkan.</div>';
+				}
+				}
+				else{
+					$idku = $_SESSION['id'];
+                $act = 'Admin '.$_SESSION['nama'].' menambahkan '.$_POST['nama'].' kelas '.$_POST['kelas'].' menjadi anggota perpus.';
+
+				$aData = array('no_anggota' => $_POST['nis'], 'nama' => $_POST['nama'], 'kelas' => $_POST['kelas'],'alamat' => $_POST['alamat'],'no_telpon' => $_POST['no_telpon'],'email' => $_POST['email'],'password' => sha1($_POST['confirm_password']));
+                $aLog = array('id_admin' => $idku, 'activity' => $act );
+
+                if ($this->oModel->addNoFoto($aData) && $this->oModel->addAlog($aLog)){
+                    // $this->oUtil->sSuccMsg = 'Data anggota berhasil ditambahkan.';
+                    // header("Refresh: 3; URL=?p=anggota&a=anggota");
+                    echo '<div class="alert alert-success">Data anggota berhasil ditambahkan.</div>';
+                    header("Refresh: 3; URL=?p=anggota&a=anggota");
+				}
+                else{
+                    // $this->oUtil->sErrMsg = 'Data Anggota gagal ditambahkan.';
+                    echo '<div class="alert alert-danger">Data anggota gagal ditambahkan.</div>';
+				}
 				}
             }
             else

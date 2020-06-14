@@ -104,7 +104,7 @@
                       </div>
                     </div>
 					<div class="form-group " id="add_lokasi">
-                      <label for="lokasi" class="control-label col-lg-2">Lokasi <span class="required">*</span></label>
+                      <label for="lokasi" class="control-label col-lg-2">Posisi Buku <span class="required">*</span></label>
                       <div class="col-lg-10">
                         <input class=" form-control" id="lokasi" name="lokasi" type="text" value="<?=$this->oKatalog->lokasi?>"/>
                       </div>

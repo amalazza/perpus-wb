@@ -50,6 +50,12 @@ class Anggota
         return $oStmt->execute($aData);
     }
 	
+	public function addNoFoto(array $aData)
+    {
+        $oStmt = $this->oDb->prepare('INSERT INTO anggota (no_anggota, nama, kelas, alamat, no_telpon, email, password) VALUES(:no_anggota, :nama, :kelas, :alamat, :no_telpon, :email, :password)');
+        return $oStmt->execute($aData);
+    }
+	
 	public function addSiswa(array $sData)
     {
         $oStmt = $this->oDb->prepare('REPLACE INTO siswa (nis,nama, jurusan, inisial_jurusan, tahun, kelas, unit) VALUES(:nis, :nama, :jurusan, :inisial_jurusan, :tahun, :kelas, :unit)');
