@@ -97,6 +97,11 @@
                 RIWAYAT PINJAM
             </a>
           </li>
+          <li>
+            <a data-toggle="tab" href="#belum-dinilai">
+                BELUM DINILAI
+            </a>
+          </li>
         </ul>
       </header>
 
@@ -156,7 +161,7 @@
                 <section class="panel">
                   <div class="bio-graph-heading birutopheadwb" style="text-align: center; font-style: normal; margin-top: -5%">
                     <!-- Portfolio Section Heading -->
-                    <h2>Peminjaman Buku</h2>
+                    <h2>Pemesanan Buku</h2>
                     <!-- Icon Divider -->
                     <div class="divider-custom">
                       <div class="divider-custom-line" style="background-color: white"></div>
@@ -369,6 +374,84 @@
                       <?php if (empty($this->oRiwayat)): ?>
                       <?php else: ?>
                           <?php foreach ($this->oRiwayat as $oBuku):
+                          $absktrak = substr($oBuku->absktrak, 0, 250) . '...';
+                          $judul = substr($oBuku->judul, 0, 30) . '...';
+                          $pengarang = substr($oBuku->pengarang, 0, 30);
+                           ?>
+                          <?php require 'inc/card_buku.php' ?>
+                        <?php endforeach ?>
+                      <?php endif ?>
+                    </div>
+                  </div>
+                </section>
+              </section>
+            </div>
+          </div>
+
+          <!-- riwayat pinjam -->
+          <div id="belum-dinilai" class="tab-pane" >
+            <div class="profile-activity">
+              <section class="page-section portfolio" id="portfolio">
+                <section class="panel">
+                  <div class="bio-graph-heading birutopheadwb" style="text-align: center; font-style: normal; margin-top: -5%">
+                    <!-- Portfolio Section Heading -->
+                    <h2>Buku Belum Dinilai</h2>
+                    <!-- Icon Divider -->
+                    <div class="divider-custom">
+                      <div class="divider-custom-line" style="background-color: white"></div>
+                      <div class="divider-custom-icon">
+                        <i class="fas fa-book" style="color: white"></i>
+                      </div>
+                      <div class="divider-custom-line" style="background-color: white"></div>
+                    </div>
+                  </div>
+
+                  <div class="panel-body bio-graph-info">
+                    <div style=" width: 100%; text-align: center;">
+                      <div style=" display: inline;">
+                        <div id="myBtnContainer">
+                        <button class="dropbtn active" id="idAll" value="all" onclick="getAll()"> Show all</button>
+
+                        <select class="dropbtn" id="cbtahun" name="cbtahun" onchange="getTahun()">
+                        <option value="all">- Tahun Terbit -</option>
+                        <?php if (empty($this->oBuku)): ?>
+                        <?php else: ?>
+                        <?php foreach ($this->oTahun as $oTahun): ?>
+                          <option class="opt1" value="<?=$oTahun->thn_terbit?>" ><?=$oTahun->thn_terbit?></option>
+                        <?php endforeach ?>
+                        <?php endif ?>
+                        </select>
+
+                        <select class="dropbtn" id="cbKlasi" name="cbKlasi" onchange="getKlasi()">
+                        <option value="all">- Klasifikasi -</option>
+                        <?php if (empty($this->oBuku)): ?>
+                        <?php else: ?>
+                        <?php foreach ($this->oJenis as $oJenis): ?>
+                          <option class="opt3" value="<?=$oJenis->nama_klasifikasi?>" ><?=$oJenis->nama_klasifikasi?></option>
+                        <?php endforeach ?>
+                        <?php endif ?>
+                        </select>
+
+                        <select class="dropbtn" id="cbKoleksi" name="cbKoleksi" onchange="getKoleksi()">
+                        <option value="all">- Koleksi -</option>
+                        <?php if (empty($this->oKoleksi)): ?>
+                        <?php else: ?>
+                        <?php foreach ($this->oKoleksi as $oKoleksi): ?>
+                          <option class="opt4" value="<?=$oKoleksi->jenis_koleksi?>" ><?=$oKoleksi->jenis_koleksi?></option>
+                        <?php endforeach ?>
+                        <?php endif ?>
+                        </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-footer" style="text-align: center;">
+                    <br>
+                    <!-- Portfolio Grid Items -->
+                    <div class="row">
+                      <?php if (empty($this->oBelumDinilai)): ?>
+                      <?php else: ?>
+                          <?php foreach ($this->oBelumDinilai as $oBuku):
                           $absktrak = substr($oBuku->absktrak, 0, 250) . '...';
                           $judul = substr($oBuku->judul, 0, 30) . '...';
                           $pengarang = substr($oBuku->pengarang, 0, 30);

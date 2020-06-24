@@ -287,6 +287,8 @@ class Anggota extends Beranda
 
         $this->oUtil->oRiwayat = $this->oModel->getRiwayatById($_SESSION['id']);
 
+        $this->oUtil->oBelumDinilai = $this->oModel->getBelumDinilaiById($_SESSION['id']);
+
         $this->oUtil->oAlog = $this->oModel->getLog($_SESSION['id']);
 
         $this->oUtil->oBuku = $this->oModel->getAllBuku(0, self::MAX_POSTS);
