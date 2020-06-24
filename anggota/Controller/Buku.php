@@ -100,6 +100,7 @@ public function filter()
             $this->oUtil->dataPerpanjang = $this->oModel->getBatas();
     		$this->oUtil->oDenda = $this->oModel->getDenda();
             $this->oUtil->oRating = $this->oModel->getRating($aData);
+            $this->oUtil->oKembali = $this->oModel->getKembali($aData);
     		$this->oUtil->oAnggota = $this->oModel->getById($_SESSION['id']);
 
             $this->oUtil->oBuku = $this->oModel->getById($this->_iId); // Get the data of the post
@@ -227,7 +228,10 @@ public function filter()
             $log = "Kamu memberikan rating <b>".$rating."</b> pada buku ".$jdl;
             $aLog = array('no_anggota' => $_SESSION['id'], 'activity' => $log);
 
-            if ($this->oModel->rating ($aData)&& $this->oModel->addAlog($aLog)){
+            $status = "yes";
+            $aStatus = array('no_anggota' => $_SESSION['id'], 'rate' => $status);
+
+            if ($this->oModel->rating ($aData) && $this->oModel->addAlog($aLog) && $this->oModel->addAStatus($aStatus)){
                 // $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
                 // header("Refresh: 1; URL=?p=buku&a=detail&id=$idnya");
                 echo '<div class="alert alert-success">Pemberian rating buku berhasil.</div>';

@@ -121,7 +121,15 @@ public function addAngLog(array $aLog)
 
     public function getBelumDinilaiById($iId)
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE p.status="kembali" and p.no_anggota = :no_anggota');
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE p.status="kembali" and p.rate="not yet" and p.no_anggota = :no_anggota');
+        $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getSudahDinilaiById($iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota WHERE p.status="kembali" and p.rate="yes" and p.no_anggota = :no_anggota');
         $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);

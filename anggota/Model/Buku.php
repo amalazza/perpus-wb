@@ -68,6 +68,14 @@ class Buku
         $oStmt = $this->oDb->prepare('INSERT INTO loganggota (no_anggota, activity) VALUES(:no_anggota, :activity)');
         return $oStmt->execute($aLog);
     }
+
+    public function addAStatus(array $aStatus)
+    {
+        $oStmt = $this->oDb->prepare('UPDATE peminjaman SET rate = :rate WHERE no_anggota = :no_anggota LIMIT 1');
+        $oStmt->bindValue(':rate', $aStatus['rate']);
+        $oStmt->bindValue(':no_anggota', $aStatus['no_anggota']);
+        return $oStmt->execute($aStatus);
+    }
     
     public function getByIdKu($iId)
     {
@@ -149,12 +157,29 @@ class Buku
 
     public function getRating(array $aData)/**/
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM rating WHERE no_katalog = :no_katalog AND no_anggota = :no_anggota');
+        $oStmt = $this->oDb->prepare('SELECT * FROM rating r inner join peminjaman p on p.no_anggota = r.no_anggota inner join katalog k on k.no_katalog = r.no_katalog WHERE r.no_katalog = :no_katalog AND r.no_anggota = :no_anggota ');
         $oStmt->bindParam(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
         $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
+
+    public function getKembali(array $aData)/**/
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p INNER JOIN katalog k on k.no_katalog = p.no_katalog WHERE p.no_anggota = :no_anggota AND p.no_katalog = :no_katalog AND p.status = "kembali" AND p.rate = "not yet"');
+        $oStmt->bindParam(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
+        $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
+    // public function getKembali()
+    // {
+    //     $oStmt = $this->oDb->query('SELECT * FROM peminjaman WHERE status = "kembali" and rate = "not yet"');
+    //     $oStmt->execute();
+
+    //     return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    // }
 
     public function getPDFById($iId)
     {
