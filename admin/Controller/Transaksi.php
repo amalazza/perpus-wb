@@ -301,7 +301,7 @@ class Transaksi
                         echo '<div class="alert alert-danger">Buku gagal dipinjam.</div>';
                     }
                 } else {
-                    if ($this->oModel->pinjamBaru($aData) && $this->oModel->addAngLog($aLogp) ){
+                    if ($this->oModel->pinjamBaru($aData) && $this->oModel->addAngLog($aLog) ){
                     $this->oModel->addAlog($aLogAd);
                     $this->oModel->deletePesanan($this->_iId);
                     $this->oModel->minusStok($no_katalog);

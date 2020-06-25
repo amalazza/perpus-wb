@@ -287,9 +287,9 @@ class Anggota extends Beranda
 
         $this->oUtil->oRiwayat = $this->oModel->getRiwayatById($_SESSION['id']);
 
-        $this->oUtil->oBelumDinilai = $this->oModel->getBelumDinilaiById($_SESSION['id']);
+        //$this->oUtil->oBelumDinilai = $this->oModel->getBelumDinilaiById($_SESSION['id']);
 
-        $this->oUtil->oSudahDinilai = $this->oModel->getSudahDinilaiById($_SESSION['id']);
+        //$this->oUtil->oSudahDinilai = $this->oModel->getSudahDinilaiById($_SESSION['id']);
 
         $this->oUtil->oAlog = $this->oModel->getLog($_SESSION['id']);
 
@@ -302,7 +302,7 @@ class Anggota extends Beranda
         $this->oUtil->oKoleksi = $this->oModel->getKoleksi();
 
 
-        $this->oUtil->getView('profile');
+        $this->oUtil->getView('profile_zka');
     }
 
 	}
