@@ -228,12 +228,14 @@ class Transaksi
             if (!empty($_POST['no_anggota'])) // Allow a maximum of 50 characters
             {
 				$no_katalog = $_POST['no_katalog'];
+                $no_anggota = $_POST['no_anggota'];
                 $jdlku = $this->oModel->getJudulku($_POST['no_katalog']);
 				$aData = array('no_peminjaman'=> $_POST['no_peminjaman'], 'tanggal_kembali' => $_POST['tgl_kembali'], 'keterlambatan'=>$_POST['telat'], 'denda'=>$_POST['denda'], 'status' => 'kembali');
                 $log = "Kamu sudah mengembalikan buku ".$jdlku." pada tanggal ".$_POST['tgl_kembali'].", terima kasih sudah meminjam buku diperpus.";
                 $aLog = array('no_anggota' => $_POST['no_anggota'], 'activity' => $log);
+                $aDataR = array('no_katalog' => $no_katalog, 'no_anggota' => $no_anggota);
 
-                if ($this->oModel->pengembalian($aData) && $this->oModel->addAngLog($aLog)){
+                if ($this->oModel->pengembalian($aData) && $this->oModel->addAngLog($aLog) &&  $this->oModel->ratingAdd ($aDataR)){
 					$this->oModel->plusStok($no_katalog);
                     // $this->oUtil->sSuccMsg = 'Buku berhasil dikembalikan.';
                     // header("Refresh: 3; URL=?p=transaksi&a=peminjaman");

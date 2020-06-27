@@ -153,6 +153,12 @@ class Transaksi
         return $oStmt->execute($aLogAd);
     }
 
+    public function ratingAdd(array $aDataR)
+    {
+        $oStmt = $this->oDb->prepare('INSERT INTO rating (no_anggota, no_katalog) VALUES(:no_anggota, :no_katalog) ON DUPLICATE KEY UPDATE no_anggota=:no_anggota, no_katalog=:no_katalog');
+        return $oStmt->execute($aDataR);
+    }
+
      public function pinjamBaru(array $aData)
     {
         $oStmt = $this->oDb->prepare('INSERT INTO peminjaman (no_anggota, no_katalog, tanggal_pinjam, batas_kembali, status) VALUES(:no_anggota, :no_katalog, :tanggal_pinjam, :batas_kembali, :status)');

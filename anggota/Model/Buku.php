@@ -96,7 +96,7 @@ class Buku
 
     public function ratingAdd(array $aDataR)
     {
-        $oStmt = $this->oDb->prepare('INSERT INTO rating (no_anggota, no_katalog) VALUES(:no_anggota, :no_katalog)');
+        $oStmt = $this->oDb->prepare('INSERT INTO rating (no_anggota, no_katalog) VALUES(:no_anggota, :no_katalog) ON DUPLICATE KEY UPDATE no_anggota=:no_anggota, no_katalog=:no_katalog');
         return $oStmt->execute($aDataR);
     }
 
