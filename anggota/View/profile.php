@@ -166,7 +166,7 @@
                 <section class="panel">
                   <div class="bio-graph-heading birutopheadwb" style="text-align: center; font-style: normal; margin-top: -5%">
                     <!-- Portfolio Section Heading -->
-                    <h2>Pemesanan Buku</h2>
+                    <h2>Peminjaman Buku</h2>
                     <!-- Icon Divider -->
                     <div class="divider-custom">
                       <div class="divider-custom-line" style="background-color: white"></div>
@@ -181,9 +181,9 @@
                     <div style=" width: 100%; text-align: center;">
                       <div style=" display: inline;">
                         <div id="myBtnContainer">
-                        <button class="dropbtn active" id="idAll" value="all" onclick="getAll()"> Show all</button>
+                        <button class="dropbtn active" id="idAll1" value="all" onclick="getAll1()"> Show all</button>
 
-                        <select class="dropbtn" id="cbtahun" name="cbtahun" onchange="getTahun()">
+                        <select class="dropbtn" id="cbtahun1" name="cbtahun" onchange="getTahun1()">
                         <option value="all">- Tahun Terbit -</option>
                         <?php if (empty($this->oBuku)): ?>
                         <?php else: ?>
@@ -193,7 +193,7 @@
                         <?php endif ?>
                         </select>
 
-                        <select class="dropbtn" id="cbKlasi" name="cbKlasi" onchange="getKlasi()">
+                        <select class="dropbtn" id="cbKlasi1" name="cbKlasi" onchange="getKlasi1()">
                         <option value="all">- Klasifikasi -</option>
                         <?php if (empty($this->oBuku)): ?>
                         <?php else: ?>
@@ -203,7 +203,7 @@
                         <?php endif ?>
                         </select>
 
-                        <select class="dropbtn" id="cbKoleksi" name="cbKoleksi" onchange="getKoleksi()">
+                        <select class="dropbtn" id="cbKoleksi" name="cbKoleksi1" onchange="getKoleksi1()">
                         <option value="all">- Koleksi -</option>
                         <?php if (empty($this->oKoleksi)): ?>
                         <?php else: ?>
@@ -259,9 +259,9 @@
                     <div style=" width: 100%; text-align: center;">
                       <div style=" display: inline;">
                         <div id="myBtnContainer">
-                        <button class="dropbtn active" id="idAll" value="all" onclick="getAll()"> Show all</button>
+                        <button class="dropbtn active" id="idAll2" value="all" onclick="getAll2()"> Show all</button>
 
-                        <select class="dropbtn" id="cbtahun" name="cbtahun" onchange="getTahun()">
+                        <select class="dropbtn" id="cbtahun2" name="cbtahun" onchange="getTahun2()">
                         <option value="all">- Tahun Terbit -</option>
                         <?php if (empty($this->oBuku)): ?>
                         <?php else: ?>
@@ -271,7 +271,7 @@
                         <?php endif ?>
                         </select>
 
-                        <select class="dropbtn" id="cbKlasi" name="cbKlasi" onchange="getKlasi()">
+                        <select class="dropbtn" id="cbKlasi2" name="cbKlasi" onchange="getKlasi2()">
                         <option value="all">- Klasifikasi -</option>
                         <?php if (empty($this->oBuku)): ?>
                         <?php else: ?>
@@ -281,7 +281,7 @@
                         <?php endif ?>
                         </select>
 
-                        <select class="dropbtn" id="cbKoleksi" name="cbKoleksi" onchange="getKoleksi()">
+                        <select class="dropbtn" id="cbKoleksi2" name="cbKoleksi" onchange="getKoleksi2()">
                         <option value="all">- Koleksi -</option>
                         <?php if (empty($this->oKoleksi)): ?>
                         <?php else: ?>
@@ -337,9 +337,9 @@
                     <div style=" width: 100%; text-align: center;">
                       <div style=" display: inline;">
                         <div id="myBtnContainer">
-                        <button class="dropbtn active" id="idAll" value="all" onclick="getAll()"> Show all</button>
+                        <button class="dropbtn active" id="idAll3" value="all" onclick="getAll3()"> Show all</button>
 
-                        <select class="dropbtn" id="cbtahun" name="cbtahun" onchange="getTahun()">
+                        <select class="dropbtn" id="cbtahun3" name="cbtahun" onchange="getTahun3()">
                         <option value="all">- Tahun Terbit -</option>
                         <?php if (empty($this->oBuku)): ?>
                         <?php else: ?>
@@ -349,7 +349,7 @@
                         <?php endif ?>
                         </select>
 
-                        <select class="dropbtn" id="cbKlasi" name="cbKlasi" onchange="getKlasi()">
+                        <select class="dropbtn" id="cbKlasi3" name="cbKlasi" onchange="getKlasi3()">
                         <option value="all">- Klasifikasi -</option>
                         <?php if (empty($this->oBuku)): ?>
                         <?php else: ?>
@@ -359,7 +359,7 @@
                         <?php endif ?>
                         </select>
 
-                        <select class="dropbtn" id="cbKoleksi" name="cbKoleksi" onchange="getKoleksi()">
+                        <select class="dropbtn" id="cbKoleksi3" name="cbKoleksi" onchange="getKoleksi3()">
                         <option value="all">- Koleksi -</option>
                         <?php if (empty($this->oKoleksi)): ?>
                         <?php else: ?>
@@ -415,9 +415,9 @@
                     <div style=" width: 100%; text-align: center;">
                       <div style=" display: inline;">
                         <div id="myBtnContainer">
-                        <button class="dropbtn active" id="idAll" value="all" onclick="getAll()"> Show all</button>
+                        <button class="dropbtn active" id="idAll4" value="all" onclick="getAll4()"> Show all</button>
 
-                        <select class="dropbtn" id="cbtahun" name="cbtahun" onchange="getTahun()">
+                        <select class="dropbtn" id="cbtahun4" name="cbtahun" onchange="getTahun4()">
                         <option value="all">- Tahun Terbit -</option>
                         <?php if (empty($this->oBuku)): ?>
                         <?php else: ?>
@@ -427,7 +427,7 @@
                         <?php endif ?>
                         </select>
 
-                        <select class="dropbtn" id="cbKlasi" name="cbKlasi" onchange="getKlasi()">
+                        <select class="dropbtn" id="cbKlasi4" name="cbKlasi" onchange="getKlasi4()">
                         <option value="all">- Klasifikasi -</option>
                         <?php if (empty($this->oBuku)): ?>
                         <?php else: ?>
@@ -437,7 +437,7 @@
                         <?php endif ?>
                         </select>
 
-                        <select class="dropbtn" id="cbKoleksi" name="cbKoleksi" onchange="getKoleksi()">
+                        <select class="dropbtn" id="cbKoleksi4" name="cbKoleksi" onchange="getKoleksi4()">
                         <option value="all">- Koleksi -</option>
                         <?php if (empty($this->oKoleksi)): ?>
                         <?php else: ?>
@@ -450,6 +450,7 @@
                       </div>
                     </div>
                   </div>
+
                   <div class="panel-footer" style="text-align: center;">
                     <br>
                     <!-- Portfolio Grid Items -->
@@ -488,14 +489,14 @@
                       <div class="divider-custom-line" style="background-color: white"></div>
                     </div>
                   </div>
-
+                  
                   <div class="panel-body bio-graph-info">
                     <div style=" width: 100%; text-align: center;">
                       <div style=" display: inline;">
                         <div id="myBtnContainer">
-                        <button class="dropbtn active" id="idAll" value="all" onclick="getAll()"> Show all</button>
+                        <button class="dropbtn active" id="idAll5" value="all" onclick="getAll5()"> Show all</button>
 
-                        <select class="dropbtn" id="cbtahun" name="cbtahun" onchange="getTahun()">
+                        <select class="dropbtn" id="cbtahun5" name="cbtahun" onchange="getTahun5()">
                         <option value="all">- Tahun Terbit -</option>
                         <?php if (empty($this->oBuku)): ?>
                         <?php else: ?>
@@ -505,7 +506,7 @@
                         <?php endif ?>
                         </select>
 
-                        <select class="dropbtn" id="cbKlasi" name="cbKlasi" onchange="getKlasi()">
+                        <select class="dropbtn" id="cbKlasi5" name="cbKlasi" onchange="getKlasi5()">
                         <option value="all">- Klasifikasi -</option>
                         <?php if (empty($this->oBuku)): ?>
                         <?php else: ?>
@@ -515,7 +516,7 @@
                         <?php endif ?>
                         </select>
 
-                        <select class="dropbtn" id="cbKoleksi" name="cbKoleksi" onchange="getKoleksi()">
+                        <select class="dropbtn" id="cbKoleksi5" name="cbKoleksi" onchange="getKoleksi5()">
                         <option value="all">- Koleksi -</option>
                         <?php if (empty($this->oKoleksi)): ?>
                         <?php else: ?>
@@ -528,6 +529,7 @@
                       </div>
                     </div>
                   </div>
+
                   <div class="panel-footer" style="text-align: center;">
                     <br>
                     <!-- Portfolio Grid Items -->
@@ -606,33 +608,138 @@
   </div>
 </div> 
   
-  
 <script>
   filterSelection("all")
-  function getAll(){
-    var x = document.getElementById("idAll").value;
+  function getAll1(){
+    var x = document.getElementById("idAll1").value;
+
     filterSelection(x);
-    document.getElementById("cbtahun").options[0].selected = 'selected';
-    document.getElementById("cbKlasi").options[0].selected = 'selected';
-    document.getElementById("cbKoleksi").options[0].selected = 'selected';
+    document.getElementById("cbtahun1").options[0].selected = 'selected';
+    document.getElementById("cbKlasi1").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi1").options[0].selected = 'selected';
   }
-  function getTahun(){
-    var x = document.getElementById("cbtahun").value;
+  function getTahun1(){
+    var x = document.getElementById("cbtahun1").value;
     filterSelection(x);
-    document.getElementById("cbKlasi").options[0].selected = 'selected';
-    document.getElementById("cbKoleksi").options[0].selected = 'selected';
+    document.getElementById("cbKlasi1").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi1").options[0].selected = 'selected';
   }
-  function getKlasi(){
-    var x = document.getElementById("cbKlasi").value;
+  function getKlasi1(){
+    var x = document.getElementById("cbKlasi1").value;
     filterSelection(x);
-    document.getElementById("cbtahun").options[0].selected = 'selected';
-    document.getElementById("cbKoleksi").options[0].selected = 'selected';
+    document.getElementById("cbtahun1").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi1").options[0].selected = 'selected';
   }
-  function getKoleksi(){
-    var x = document.getElementById("cbKoleksi").value;
+  function getKoleksi1(){
+    var x = document.getElementById("cbKoleksi1").value;
     filterSelection(x);
-    document.getElementById("cbKlasi").options[0].selected = 'selected';
-    document.getElementById("cbtahun").options[0].selected = 'selected';
+    document.getElementById("cbKlasi1").options[0].selected = 'selected';
+    document.getElementById("cbtahun1").options[0].selected = 'selected';
+  }
+  //=========================================================================
+  function getAll2(){
+    var x = document.getElementById("idAll2").value;
+
+    filterSelection(x);
+    document.getElementById("cbtahun2").options[0].selected = 'selected';
+    document.getElementById("cbKlasi2").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi2").options[0].selected = 'selected';
+  }
+  function getTahun2(){
+    var x = document.getElementById("cbtahun2").value;
+    filterSelection(x);
+    document.getElementById("cbKlasi2").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi2").options[0].selected = 'selected';
+  }
+  function getKlasi2(){
+    var x = document.getElementById("cbKlasi2").value;
+    filterSelection(x);
+    document.getElementById("cbtahun2").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi2").options[0].selected = 'selected';
+  }
+  function getKoleksi2(){
+    var x = document.getElementById("cbKoleksi2").value;
+    filterSelection(x);
+    document.getElementById("cbKlasi2").options[0].selected = 'selected';
+    document.getElementById("cbtahunw2").options[0].selected = 'selected';
+  }//=========================================================================
+  function getAll3(){
+    var x = document.getElementById("idAll3").value;
+
+    filterSelection(x);
+    document.getElementById("cbtahun3").options[0].selected = 'selected';
+    document.getElementById("cbKlasi3").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi3").options[0].selected = 'selected';
+  }
+  function getTahun3(){
+    var x = document.getElementById("cbtahun3").value;
+    filterSelection(x);
+    document.getElementById("cbKlasi3").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi3").options[0].selected = 'selected';
+  }
+  function getKlasi3(){
+    var x = document.getElementById("cbKlasi3").value;
+    filterSelection(x);
+    document.getElementById("cbtahun3").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi3").options[0].selected = 'selected';
+  }
+  function getKoleksi3(){
+    var x = document.getElementById("cbKoleksi3").value;
+    filterSelection(x);
+    document.getElementById("cbKlasi3").options[0].selected = 'selected';
+    document.getElementById("cbtahun3").options[0].selected = 'selected';
+  }//=========================================================================
+  function getAll4(){
+    var x = document.getElementById("idAll4").value;
+
+    filterSelection(x);
+    document.getElementById("cbtahun4").options[0].selected = 'selected';
+    document.getElementById("cbKlasi4").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi4").options[0].selected = 'selected';
+  }
+  function getTahun4(){
+    var x = document.getElementById("cbtahun4").value;
+    filterSelection(x);
+    document.getElementById("cbKlasi4").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi4").options[0].selected = 'selected';
+  }
+  function getKlasi4(){
+    var x = document.getElementById("cbKlasi4").value;
+    filterSelection(x);
+    document.getElementById("cbtahun4").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi4").options[0].selected = 'selected';
+  }
+  function getKoleksi4(){
+    var x = document.getElementById("cbKoleksi4").value;
+    filterSelection(x);
+    document.getElementById("cbKlasi4").options[0].selected = 'selected';
+    document.getElementById("cbtahun4").options[0].selected = 'selected';
+    }//=========================================================================
+  function getAll5(){
+    var x = document.getElementById("idAll5").value;
+
+    filterSelection(x);
+    document.getElementById("cbtahun5").options[0].selected = 'selected';
+    document.getElementById("cbKlasi5").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi5").options[0].selected = 'selected';
+  }
+  function getTahun4(){
+    var x = document.getElementById("cbtahun5").value;
+    filterSelection(x);
+    document.getElementById("cbKlasi5").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi5").options[0].selected = 'selected';
+  }
+  function getKlasi4(){
+    var x = document.getElementById("cbKlasi5").value;
+    filterSelection(x);
+    document.getElementById("cbtahun5").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi5").options[0].selected = 'selected';
+  }
+  function getKoleksi4(){
+    var x = document.getElementById("cbKoleksi5").value;
+    filterSelection(x);
+    document.getElementById("cbKlasi5").options[0].selected = 'selected';
+    document.getElementById("cbtahun5").options[0].selected = 'selected';
   }
 
   function filterSelection(c) {

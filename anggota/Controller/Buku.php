@@ -192,6 +192,43 @@ public function filter()
             }
     }
 
+    public function view1()
+    {
+
+        if (!$this->isLogged())
+        {
+           header('Location: ' . ROOT_URL);
+           exit; 
+        }
+        else{
+            $this->oUtil->oView = $this->oModel->getPDFById($this->_iId);
+            $this->oUtil->getView('view');
+
+            $views = 1;
+            $idnya = $_GET['id'];
+
+            if (empty($_SESSION['counter']))
+                $_SESSION['counter'] = 1;
+            else
+                $_SESSION['counter']++;
+
+            $aData = array('view_count' => $views, 'created' => date('Y-m-d H:i:s'), 'no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
+            $aDataU = array('no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
+            $aDataS = array('no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
+        
+            if ($this->oModel->cekStatusView ($aDataS)){
+                $this->oModel->viewCountUpdate ($aDataU);
+                
+            }
+            if (empty($this->oModel->cekStatusView ($aDataS))) {
+                $this->oModel->viewCount ($aData);
+            
+            }
+            
+            
+            }
+    }
+
 
     public function lihatpdf()
     {
@@ -229,7 +266,7 @@ public function filter()
             $aLog = array('no_anggota' => $_SESSION['id'], 'activity' => $log);
 
             $status = "yes";
-            $aStatus = array('no_anggota' => $_SESSION['id'], 'rate' => $status);
+            $aStatus = array('rate' => $status, 'no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
 
             if ($this->oModel->rating ($aData) && $this->oModel->addAlog($aLog) && $this->oModel->addAStatus($aStatus)){
                 // $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';

@@ -71,10 +71,43 @@ class Buku
 
     public function addAStatus(array $aStatus)
     {
-        $oStmt = $this->oDb->prepare('UPDATE peminjaman SET rate = :rate WHERE no_anggota = :no_anggota LIMIT 1');
+        $oStmt = $this->oDb->prepare('UPDATE peminjaman SET rate = :rate WHERE no_anggota = :no_anggota AND no_katalog = :no_katalog LIMIT 1');
         $oStmt->bindValue(':rate', $aStatus['rate']);
+        $oStmt->bindValue(':no_katalog', $aStatus['no_katalog']);
         $oStmt->bindValue(':no_anggota', $aStatus['no_anggota']);
         return $oStmt->execute($aStatus);
+    }
+
+    // public function viewCount(array $aData)
+    // {
+    //     $oStmt = $this->oDb->prepare('INSERT INTO view (no_anggota, no_katalog, view_count, created) VALUES(:no_anggota, :no_katalog, :view_count, :created) ON DUPLICATE KEY UPDATE view_count = :view_count');
+    //     $oStmt->bindValue(':view_count', $aDataU['view_count']);
+    //     $oStmt->bindValue(':no_katalog', $aData['no_katalog']);
+    //     $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
+    //     return $oStmt->execute($aData);
+    // }
+
+    public function viewCount(array $aData)
+    {
+        $oStmt = $this->oDb->prepare('INSERT INTO view (no_anggota, no_katalog, view_count, created) VALUES(:no_anggota, :no_katalog, :view_count, :created)');
+        return $oStmt->execute($aData);
+    }
+
+     public function cekStatusView(array $aDataS)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM view v INNER JOIN anggota a ON a.no_anggota = v.no_anggota INNER JOIN katalog k ON k.no_katalog = v.no_katalog WHERE v.view_count >= 1 AND v.no_katalog = :no_katalog AND v.no_anggota = :no_anggota LIMIT 1');
+        $oStmt->bindParam(':no_katalog', $aDataS['no_katalog'], \PDO::PARAM_INT);
+        $oStmt->bindValue(':no_anggota', $aDataS['no_anggota']);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
+    public function viewCountUpdate(array $aDataU)
+    {
+        $oStmt = $this->oDb->prepare('UPDATE view SET view_count = view_count+1 WHERE view_count >= 1 AND no_anggota = :no_anggota AND no_katalog = :no_katalog LIMIT 1');
+        $oStmt->bindValue(':no_katalog', $aDataU['no_katalog']);
+        $oStmt->bindValue(':no_anggota', $aDataU['no_anggota']);
+        return $oStmt->execute($aDataU);
     }
     
     public function getByIdKu($iId)
