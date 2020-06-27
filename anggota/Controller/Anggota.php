@@ -287,6 +287,8 @@ class Anggota extends Beranda
 
         $this->oUtil->oRiwayat = $this->oModel->getRiwayatById($_SESSION['id']);
 
+        // $this->oUtil->oEbookBelumDinilai = $this->oModel->getEbookBelumDinilaiById($_SESSION['id']);
+
         $this->oUtil->oBelumDinilai = $this->oModel->getBelumDinilaiById($_SESSION['id']);
 
         $this->oUtil->oSudahDinilai = $this->oModel->getSudahDinilaiById($_SESSION['id']);

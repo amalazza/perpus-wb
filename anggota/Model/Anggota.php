@@ -127,9 +127,17 @@ public function addAngLog(array $aLog)
     //     return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     // }
 
+    // public function getEbookBelumDinilaiById($iId)
+    // {
+    //     $oStmt = $this->oDb->prepare('SELECT * FROM rating r INNER JOIN view v ON v.no_katalog = r.no_katalog WHERE r.no_anggota = :no_anggota');
+    //     $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
+    //     $oStmt->execute();
+    //     return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    // }
+
     public function getBelumDinilaiById($iId)
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join rating r on r.no_katalog = p.no_katalog inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota INNER JOIN klasifikasi KL ON KL.no_klasifikasi = K.no_klasifikasi INNER JOIN koleksi KO ON KO.no_koleksi = K.no_koleksi WHERE p.status="kembali" and r.rate="not yet" and p.no_anggota = :no_anggota');
+        $oStmt = $this->oDb->prepare('SELECT * FROM rating r INNER JOIN katalog ka ON ka.no_katalog = r.no_katalog INNER JOIN klasifikasi kla ON kla.no_klasifikasi = ka.no_klasifikasi INNER JOIN koleksi ko ON ko.no_koleksi = ka.no_koleksi WHERE r.no_anggota = :no_anggota AND r.rate = "not yet"');
         $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
@@ -137,7 +145,7 @@ public function addAngLog(array $aLog)
 
     public function getSudahDinilaiById($iId)
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join rating r on r.no_katalog = p.no_katalog inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota INNER JOIN klasifikasi KL ON KL.no_klasifikasi = K.no_klasifikasi INNER JOIN koleksi KO ON KO.no_koleksi = K.no_koleksi WHERE p.status="kembali" and r.rate="yes" and p.no_anggota = :no_anggota');
+        $oStmt = $this->oDb->prepare('SELECT * FROM rating r INNER JOIN katalog ka ON ka.no_katalog = r.no_katalog INNER JOIN klasifikasi kla ON kla.no_klasifikasi = ka.no_klasifikasi INNER JOIN koleksi ko ON ko.no_koleksi = ka.no_koleksi WHERE r.no_anggota = :no_anggota AND r.rate = "yes"');
         $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);

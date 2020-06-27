@@ -447,7 +447,7 @@
                         <?php endif ?>
                         </select>
 
-                        <select class="dropbtn" id="cbJenisBuku4" name="cbJenisBuku" onchange="getJenisBuku4()">
+                        <!-- <select class="dropbtn" id="cbJenisBuku4" name="cbJenisBuku" onchange="getJenisBuku4()">
                         <option value="all">- Jenis Buku -</option>
                         <ul class="nav nav-tabs" >
                           <li>
@@ -458,10 +458,10 @@
                             
                           </li>
                         </ul>
-                        </select>
+                        </select> -->
 
 
-                        <!-- <select class="dropbtn" id="cbJenisBuku4" name="cbJenisBuku" onchange="getJenisBuku4()">
+                        <select class="dropbtn" id="cbJenisBuku4" name="cbJenisBuku" onchange="getJenisBuku4()">
                         <option value="all">- Jenis Buku -</option>
                         <?php if (empty($this->oJenisBuku)): ?>
                         <?php else: ?>
@@ -469,64 +469,26 @@
                           <option class="opt5" value="<?=$oJenisBuku->jenis_katalog?>" ><?=$oJenisBuku->jenis_katalog?></option>
                         <?php endforeach ?>
                         <?php endif ?>
-                        </select> -->
+                        </select>
 
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div id="ebook" class="tab-pane" >
-                    <div class="panel-footer" style="text-align: center;">
-                      <br>
-                      <!-- Portfolio Grid Items -->
-                      <div class="row">
-                        <?php if (empty($this->oBelumDinilai)): ?>
-                        <?php else: ?>
-                            <?php foreach ($this->oBelumDinilai as $oBuku):
-                            $absktrak = substr($oBuku->absktrak, 0, 250) . '...';
-                            $judul = substr($oBuku->judul, 0, 30) . '...';
-                            $pengarang = substr($oBuku->pengarang, 0, 30);
-                             ?>
-                            <?php require 'inc/card_buku.php' ?>
-                          <?php endforeach ?>
-                        <?php endif ?>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="bukufisik" class="tab-pane" >
-                    <div class="panel-footer" style="text-align: center;">
-                      <br>
-                      <!-- Portfolio Grid Items -->
-                      <div class="row">
-                        <?php if (empty($this->oBelumDinilai)): ?>
-                        <?php else: ?>
-                            <?php foreach ($this->oBelumDinilai as $oBuku):
-                            $absktrak = substr($oBuku->absktrak, 0, 250) . '...';
-                            $judul = substr($oBuku->judul, 0, 30) . '...';
-                            $pengarang = substr($oBuku->pengarang, 0, 30);
-                             ?>
-                            <?php require 'inc/card_buku.php' ?>
-                          <?php endforeach ?>
-                        <?php endif ?>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="bukufisikdanebook" class="tab-pane" >
-                    <div class="panel-footer" style="text-align: center;">
-                      <br>
-                      <!-- Portfolio Grid Items -->
-                      <div class="row">
-                        <?php if (empty($this->oBelumDinilai)): ?>
-                        <?php else: ?>
-                            <?php foreach ($this->oBelumDinilai as $oBuku):
-                            $absktrak = substr($oBuku->absktrak, 0, 250) . '...';
-                            $judul = substr($oBuku->judul, 0, 30) . '...';
-                            $pengarang = substr($oBuku->pengarang, 0, 30);
-                             ?>
-                            <?php require 'inc/card_buku.php' ?>
-                          <?php endforeach ?>
-                        <?php endif ?>
-                      </div>
+                  <div class="panel-footer" style="text-align: center;">
+                    <br>
+                    <!-- Portfolio Grid Items -->
+                    <div class="row">
+                      <?php if (empty($this->oBelumDinilai)): ?>
+                      <?php else: ?>
+                          <?php foreach ($this->oBelumDinilai as $oBuku):
+                          $absktrak = substr($oBuku->absktrak, 0, 250) . '...';
+                          $judul = substr($oBuku->judul, 0, 30) . '...';
+                          $pengarang = substr($oBuku->pengarang, 0, 30);
+                           ?>
+                          <?php require 'inc/card_buku.php' ?>
+                        <?php endforeach ?>
+                      <?php endif ?>
                     </div>
                   </div>
                 </section>
@@ -769,32 +731,36 @@
     document.getElementById("cbtahun4").options[0].selected = 'selected';
     document.getElementById("cbKlasi4").options[0].selected = 'selected';
     document.getElementById("cbKoleksi4").options[0].selected = 'selected';
+    document.getElementById("cbJenisBuku4").options[0].selected = 'selected';
   }
   function getTahun4(){
     var x = document.getElementById("cbtahun4").value;
     filterSelection(x);
     document.getElementById("cbKlasi4").options[0].selected = 'selected';
     document.getElementById("cbKoleksi4").options[0].selected = 'selected';
+    document.getElementById("cbJenisBuku4").options[0].selected = 'selected';
   }
   function getKlasi4(){
     var x = document.getElementById("cbKlasi4").value;
     filterSelection(x);
     document.getElementById("cbtahun4").options[0].selected = 'selected';
     document.getElementById("cbKoleksi4").options[0].selected = 'selected';
+    document.getElementById("cbJenisBuku4").options[0].selected = 'selected';
   }
   function getKoleksi4(){
     var x = document.getElementById("cbKoleksi4").value;
     filterSelection(x);
     document.getElementById("cbKlasi4").options[0].selected = 'selected';
     document.getElementById("cbtahun4").options[0].selected = 'selected';
+    document.getElementById("cbJenisBuku4").options[0].selected = 'selected';
   }
   function getJenisBuku4(){
     var x = document.getElementById("cbJenisBuku4").value;
     filterSelection(x);
-    document.getElementById("cbJenisBuku4").options[0].selected = 'selected';
-    document.getElementById("cbJenisBuku4").options[0].selected = 'selected';
-    }//=========================================================================
-
+    document.getElementById("cbtahun4").options[0].selected = 'selected';
+    document.getElementById("cbKlasi4").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi4").options[0].selected = 'selected';
+   }//=========================================================================
   function getAll5(){
     var x = document.getElementById("idAll5").value;
 
@@ -802,30 +768,35 @@
     document.getElementById("cbtahun5").options[0].selected = 'selected';
     document.getElementById("cbKlasi5").options[0].selected = 'selected';
     document.getElementById("cbKoleksi5").options[0].selected = 'selected';
+    document.getElementById("cbJenisBuku5").options[0].selected = 'selected';
   }
   function getTahun5(){
     var x = document.getElementById("cbtahun5").value;
     filterSelection(x);
     document.getElementById("cbKlasi5").options[0].selected = 'selected';
     document.getElementById("cbKoleksi5").options[0].selected = 'selected';
+    document.getElementById("cbJenisBuku5").options[0].selected = 'selected';
   }
   function getKlasi5(){
     var x = document.getElementById("cbKlasi5").value;
     filterSelection(x);
     document.getElementById("cbtahun5").options[0].selected = 'selected';
     document.getElementById("cbKoleksi5").options[0].selected = 'selected';
+    document.getElementById("cbJenisBuku5").options[0].selected = 'selected';
   }
   function getKoleksi5(){
     var x = document.getElementById("cbKoleksi5").value;
     filterSelection(x);
     document.getElementById("cbKlasi5").options[0].selected = 'selected';
     document.getElementById("cbtahun5").options[0].selected = 'selected';
+    document.getElementById("cbJenisBuku5").options[0].selected = 'selected';
   }
   function getJenisBuku5(){
     var x = document.getElementById("cbJenisBuku5").value;
     filterSelection(x);
-    document.getElementById("cbJenisBuku5").options[0].selected = 'selected';
-    document.getElementById("cbJenisBuku5").options[0].selected = 'selected';
+    document.getElementById("cbtahun5").options[0].selected = 'selected';
+    document.getElementById("cbKlasi5").options[0].selected = 'selected';
+    document.getElementById("cbKoleksi5").options[0].selected = 'selected';
     }//=========================================================================
 
   function filterSelection(c) {
