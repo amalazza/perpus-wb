@@ -119,6 +119,14 @@ public function addAngLog(array $aLog)
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
+    //     public function getBelumDinilaiById($iId)
+    // {
+    //     $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota INNER JOIN klasifikasi KL ON KL.no_klasifikasi = K.no_klasifikasi INNER JOIN koleksi KO ON KO.no_koleksi = K.no_koleksi inner join view v on v.no_katalog = k.no_katalog WHERE (p.status="kembali" and p.rate="not yet" and p.no_anggota = :no_anggota) or (v.rate = "not yet" and v.no_anggota = :no_anggota)');
+    //     $oStmt->bindParam(':no_anggota', $iId, \PDO::PARAM_INT);
+    //     $oStmt->execute();
+    //     return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    // }
+
     public function getBelumDinilaiById($iId)
     {
         $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p inner join katalog k on k.no_katalog = p.no_katalog inner join anggota a on a.no_anggota = p.no_anggota INNER JOIN klasifikasi KL ON KL.no_klasifikasi = K.no_klasifikasi INNER JOIN koleksi KO ON KO.no_koleksi = K.no_koleksi WHERE p.status="kembali" and p.rate="not yet" and p.no_anggota = :no_anggota');
@@ -166,6 +174,14 @@ public function addAngLog(array $aLog)
     public function getKoleksi()
     {
         $oStmt = $this->oDb->query('SELECT * FROM koleksi ORDER BY jenis_koleksi ASC');
+        $oStmt->execute();
+
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getJenisBuku()
+    {
+        $oStmt = $this->oDb->query('SELECT * FROM jeniskatalog ORDER BY jenis_katalog ASC');
         $oStmt->execute();
 
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);

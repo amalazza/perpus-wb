@@ -67,7 +67,7 @@ class Rating{
 			SELECT r.ratingId, r.no_katalog, r.no_anggota, u.nama, u.foto, r.ratingNumber, r.title, r.comments, r.created, r.modified
 			FROM ".$this->itemRatingTable." as r
 			LEFT JOIN ".$this->itemUsersTable." as u ON (r.no_anggota = u.no_anggota)
-			WHERE r.no_katalog = '".$itemId."' ORDER BY created DESC";
+			WHERE r.no_katalog = '".$itemId."' AND r.rate = 'yes' ORDER BY created DESC";
 		return  $this->getData($sqlQuery);		
 	}
 	public function getRatingAverage($itemId){
@@ -89,7 +89,7 @@ class Rating{
 
 	 	$sqlQuery = "
 			SELECT *
-			FROM ".$this->itemRatingTable."  WHERE no_katalog = '".$itemId."'";
+			FROM ".$this->itemRatingTable."  WHERE rate = 'yes' AND no_katalog = '".$itemId."'";
 
 	  $count = $this->getNumRows($sqlQuery);
 

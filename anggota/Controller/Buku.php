@@ -101,6 +101,9 @@ public function filter()
     		$this->oUtil->oDenda = $this->oModel->getDenda();
             $this->oUtil->oRating = $this->oModel->getRating($aData);
             $this->oUtil->oKembali = $this->oModel->getKembali($aData);
+            $this->oUtil->oRating = $this->oModel->getRatingView($aData);
+            $this->oUtil->oView = $this->oModel->getView($aData);
+
     		$this->oUtil->oAnggota = $this->oModel->getById($_SESSION['id']);
 
             $this->oUtil->oBuku = $this->oModel->getById($this->_iId); // Get the data of the post
@@ -215,6 +218,7 @@ public function filter()
                 $_SESSION['counter']++;
 
             $aData = array('view_count' => $views, 'created' => date('Y-m-d H:i:s'), 'no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
+            $aDataR = array('no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
             $aDataU = array('no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
             $aDataS = array('no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
         
@@ -223,8 +227,8 @@ public function filter()
                 
             }
             if (empty($this->oModel->cekStatusView ($aDataS))) {
-                $this->oModel->viewCount ($aData);
-            
+                $this->oModel->viewCountAdd ($aData);
+                $this->oModel->ratingAdd ($aDataR);
             }
             
             
@@ -270,7 +274,8 @@ public function filter()
             $status = "yes";
             $aStatus = array('rate' => $status, 'no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
 
-            if ($this->oModel->rating ($aData) && $this->oModel->addAlog($aLog) && $this->oModel->addAStatus($aStatus)){
+            if ($this->oModel->rating ($aData) && $this->oModel->addAlog($aLog)){
+            // if ($this->oModel->rating ($aData) && $this->oModel->addAlog($aLog) && $this->oModel->addAStatus($aStatus)){
                 // $this->oUtil->sSuccMsg = 'Data anggota berhasil diedit.';
                 // header("Refresh: 1; URL=?p=buku&a=detail&id=$idnya");
                 echo '<div class="alert alert-success">Pemberian rating buku berhasil.</div>';

@@ -70,14 +70,14 @@ class Buku
         return $oStmt->execute($aLog);
     }
 
-    public function addAStatus(array $aStatus)
-    {
-        $oStmt = $this->oDb->prepare('UPDATE peminjaman SET rate = :rate WHERE no_anggota = :no_anggota AND no_katalog = :no_katalog LIMIT 1');
-        $oStmt->bindValue(':rate', $aStatus['rate']);
-        $oStmt->bindValue(':no_katalog', $aStatus['no_katalog']);
-        $oStmt->bindValue(':no_anggota', $aStatus['no_anggota']);
-        return $oStmt->execute($aStatus);
-    }
+    // public function addAStatus(array $aStatus)
+    // {
+    //     $oStmt = $this->oDb->prepare('UPDATE peminjaman SET rate = :rate WHERE no_anggota = :no_anggota AND no_katalog = :no_katalog LIMIT 1');
+    //     $oStmt->bindValue(':rate', $aStatus['rate']);
+    //     $oStmt->bindValue(':no_katalog', $aStatus['no_katalog']);
+    //     $oStmt->bindValue(':no_anggota', $aStatus['no_anggota']);
+    //     return $oStmt->execute($aStatus);
+    // }
 
     // public function viewCount(array $aData)
     // {
@@ -88,10 +88,16 @@ class Buku
     //     return $oStmt->execute($aData);
     // }
 
-    public function viewCount(array $aData)
+    public function viewCountAdd(array $aData)
     {
         $oStmt = $this->oDb->prepare('INSERT INTO view (no_anggota, no_katalog, view_count, created) VALUES(:no_anggota, :no_katalog, :view_count, :created)');
         return $oStmt->execute($aData);
+    }
+
+    public function ratingAdd(array $aDataR)
+    {
+        $oStmt = $this->oDb->prepare('INSERT INTO rating (no_anggota, no_katalog) VALUES(:no_anggota, :no_katalog)');
+        return $oStmt->execute($aDataR);
     }
 
     public function cekStatusView(array $aDataS)
@@ -193,8 +199,22 @@ class Buku
         return $oStmt->execute($aData);
 	}
 
-    public function rating (array $aData){
-        $oStmt = $this->oDb->prepare('INSERT INTO rating (no_anggota, no_katalog, ratingNumber, title, comments, created, modified) VALUES(:no_anggota, :no_katalog, :ratingNumber, :title, :comments, :created, :modified)');
+    // public function rating (array $aData){
+    //     $oStmt = $this->oDb->prepare('INSERT INTO rating (no_anggota, no_katalog, ratingNumber, title, comments, created, modified) VALUES(:no_anggota, :no_katalog, :ratingNumber, :title, :comments, :created, :modified)');
+    //     $oStmt->bindValue(':no_katalog', $aData['no_katalog']);
+    //     $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
+    //     $oStmt->bindValue(':ratingNumber', $aData['ratingNumber']);
+    //     $oStmt->bindValue(':title', $aData['title']);
+    //     $oStmt->bindValue(':comments', $aData['comments']);
+    //     $oStmt->bindValue(':created', $aData['created']);
+    //     $oStmt->bindValue(':modified', $aData['modified']);
+    //     return $oStmt->execute($aData);
+    // }
+
+
+    public function rating(array $aData)
+    {
+        $oStmt = $this->oDb->prepare('UPDATE rating SET ratingNumber = :ratingNumber, title = :title, comments = :comments, rate = "yes", created = :created, modified = :modified WHERE no_anggota = :no_anggota AND no_katalog = :no_katalog LIMIT 1');
         $oStmt->bindValue(':no_katalog', $aData['no_katalog']);
         $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
         $oStmt->bindValue(':ratingNumber', $aData['ratingNumber']);
@@ -207,7 +227,7 @@ class Buku
 
     public function getRating(array $aData)/**/
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM rating r inner join peminjaman p on p.no_anggota = r.no_anggota inner join katalog k on k.no_katalog = r.no_katalog WHERE r.no_katalog = :no_katalog AND r.no_anggota = :no_anggota ');
+        $oStmt = $this->oDb->prepare('SELECT * FROM rating WHERE rate = "yes" AND no_katalog = :no_katalog AND no_anggota = :no_anggota');
         $oStmt->bindParam(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
         $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
         $oStmt->execute();
@@ -216,7 +236,25 @@ class Buku
 
     public function getKembali(array $aData)/**/
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p INNER JOIN katalog k on k.no_katalog = p.no_katalog WHERE p.no_anggota = :no_anggota AND p.no_katalog = :no_katalog AND p.status = "kembali" AND p.rate = "not yet"');
+        $oStmt = $this->oDb->prepare('SELECT * FROM peminjaman p INNER JOIN katalog k on k.no_katalog = p.no_katalog INNER JOIN rating r ON r.no_katalog = p.no_katalog WHERE p.no_anggota = :no_anggota AND p.no_katalog = :no_katalog AND p.status = "kembali" AND r.rate = "not yet"');
+        $oStmt->bindParam(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
+        $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
+        public function getRatingView(array $aData)/**/
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM rating r  inner join view v on v.no_anggota = r.no_anggota inner join katalog k on k.no_katalog = r.no_katalog WHERE rate = "not yet" AND r.no_katalog = :no_katalog AND r.no_anggota = :no_anggota ');
+        $oStmt->bindParam(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
+        $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
+    public function getView(array $aData)/**/
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM view v INNER JOIN katalog k on k.no_katalog = v.no_katalog INNER JOIN rating r ON r.no_katalog = v.no_katalog WHERE v.no_anggota = :no_anggota AND v.no_katalog = :no_katalog AND r.rate = "not yet"');
         $oStmt->bindParam(':no_katalog', $aData['no_katalog'], \PDO::PARAM_INT);
         $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
         $oStmt->execute();

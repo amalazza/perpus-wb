@@ -301,6 +301,8 @@ class Anggota extends Beranda
 
         $this->oUtil->oKoleksi = $this->oModel->getKoleksi();
 
+        $this->oUtil->oJenisBuku = $this->oModel->getJenisBuku();
+
 
         $this->oUtil->getView('profile');
     }
