@@ -9,10 +9,9 @@
     
     $settingClass = $rating->getSetting();
 ?> 
-
 <?php } ?>  
     
-  <?php 
+<?php 
   $itemRating = $rating->getItemRating($_GET['id']); 
   $ratingNumber = 0;
   $count = 0;
@@ -69,7 +68,12 @@
                 <i class="fa fa-user"></i>  <?=$this->oBuku->pengarang?>
               </p>
               <p style="font-size: 150%;"> 
-                <i class="fa fa-eye"></i>  22 <span>Dibaca</span> *SPRINT3
+                <i class="fa fa-eye"></i>  
+                  <?php if (empty($this->oView)): ?>
+                      0 <span>Dibaca</span>
+                  <?php else: ?>
+                    <?=$this->oView->view_count?> <span>Dibaca</span>
+                  <?php endif; ?>
               </p>
               <p style="font-size: 150%;"> 
                 <i class="icon_star"></i>  <?php printf('%.1f', $average); ?> <span>/5 Penilaian</span>

@@ -104,6 +104,8 @@ public function filter()
     		$this->oUtil->oAnggota = $this->oModel->getById($_SESSION['id']);
 
             $this->oUtil->oBuku = $this->oModel->getById($this->_iId); // Get the data of the post
+            $iId = array('no_katalog' => $_GET['id']);
+            $this->oUtil->oView = $this->oModel->getViewCountById($iId);
 
             $this->oUtil->getView('detail');
         }

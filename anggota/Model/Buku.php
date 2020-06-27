@@ -63,6 +63,7 @@ class Buku
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
+
     public function addAlog(array $aLog)
     {
         $oStmt = $this->oDb->prepare('INSERT INTO loganggota (no_anggota, activity) VALUES(:no_anggota, :activity)');
@@ -93,7 +94,7 @@ class Buku
         return $oStmt->execute($aData);
     }
 
-     public function cekStatusView(array $aDataS)
+    public function cekStatusView(array $aDataS)
     {
         $oStmt = $this->oDb->prepare('SELECT * FROM view v INNER JOIN anggota a ON a.no_anggota = v.no_anggota INNER JOIN katalog k ON k.no_katalog = v.no_katalog WHERE v.view_count >= 1 AND v.no_katalog = :no_katalog AND v.no_anggota = :no_anggota LIMIT 1');
         $oStmt->bindParam(':no_katalog', $aDataS['no_katalog'], \PDO::PARAM_INT);
@@ -109,6 +110,22 @@ class Buku
         $oStmt->bindValue(':no_anggota', $aDataU['no_anggota']);
         return $oStmt->execute($aDataU);
     }
+
+    public function getViewCountById(array $iId)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM view v inner join katalog k on k.no_katalog = v.no_katalog WHERE v.no_katalog = :no_katalog LIMIT 1');
+        $oStmt->bindParam(':no_katalog', $iId['no_katalog'], \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
+    // public function getViewCountById($iId)
+    // {
+    //     $oStmt = $this->oDb->prepare('SELECT * FROM view v inner join katalog k on k.no_katalog = v.no_katalog WHERE v.no_katalog = :postId LIMIT 1');
+    //     $oStmt->bindParam(':postId', $iId, \PDO::PARAM_INT);
+    //     $oStmt->execute();
+    //     return $oStmt->fetch(\PDO::FETCH_OBJ);
+    // }
     
     public function getByIdKu($iId)
     {
