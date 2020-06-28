@@ -20,9 +20,27 @@ class Beranda
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
-            public function getAllj()
+    public function getAllj()
     {
         $oStmt = $this->oDb->query('SELECT * FROM katalog ORDER BY tanggal_masuk DESC LIMIT 4');
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getAllPopuler()
+    {
+        $oStmt = $this->oDb->query('SELECT *, COUNT(p.no_katalog) FROM peminjaman p INNER JOIN katalog k ON k.no_katalog = p.no_katalog WHERE p.status = "kembali" GROUP BY p.no_katalog HAVING COUNT(p.no_katalog) >= 1 ORDER BY COUNT(p.no_katalog) >= 1 DESC LIMIT 4');
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getAllFavorite()
+    {
+        $oStmt = $this->oDb->query('SELECT *, COUNT(r.no_katalog) FROM rating r INNER JOIN katalog k ON k.no_katalog = r.no_katalog WHERE r.rate = "yes" AND r.ratingNumber>=4 GROUP BY r.no_katalog HAVING COUNT(r.no_katalog) >= 1 ORDER BY r.ratingNumber DESC LIMIT 4');
+        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getAllBacaEbook()
+    {
+        $oStmt = $this->oDb->query('SELECT *, COUNT(v.no_katalog) FROM view v INNER JOIN katalog k ON k.no_katalog = v.no_katalog GROUP BY v.no_katalog HAVING COUNT(v.no_katalog) >= 1 ORDER BY v.view_count DESC LIMIT 4');
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
@@ -36,38 +54,4 @@ class Beranda
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }
 
-    // public function getAll()
-    // {
-    //     $oStmt = $this->oDb->query('SELECT * FROM kunjungan ORDER BY waktu_kunjungan DESC');
-    //     return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-    // }
-
-    // public function add(array $aData)
-    // {
-    //     $oStmt = $this->oDb->prepare('INSERT INTO kunjungan (no_anggota, waktu_kunjungan) VALUES(:no_anggota, :waktu_kunjungan)');
-    //     return $oStmt->execute($aData);
-    // }
-
-    // public function getById($iId)
-    // {
-    //     $oStmt = $this->oDb->prepare('SELECT * FROM kunjungan WHERE no_kunjungan = :no_kunjungan LIMIT 1');
-    //     $oStmt->bindParam(':no_kunjungan', $iId, \PDO::PARAM_INT);
-    //     $oStmt->execute();
-    //     return $oStmt->fetch(\PDO::FETCH_OBJ);
-    // }
-
-    // public function update(array $aData)
-    // {
-    //     $oStmt = $this->oDb->prepare('UPDATE kunjungan SET no_anggota = :no_anggota WHERE no_kunjungan = :no_kunjungan LIMIT 1');
-    //     $oStmt->bindValue(':no_kunjungan', $aData['no_kunjungan'], \PDO::PARAM_INT);
-    //     $oStmt->bindValue(':no_anggota', $aData['no_anggota']);
-    //     return $oStmt->execute();
-    // }
-
-    // public function delete($iId)
-    // {
-    //     $oStmt = $this->oDb->prepare('DELETE FROM kunjungan WHERE no_kunjungan = :no_kunjungan LIMIT 1');
-    //     $oStmt->bindParam(':no_kunjungan', $iId, \PDO::PARAM_INT);
-    //     return $oStmt->execute();
-    // }
 }
