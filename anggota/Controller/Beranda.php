@@ -31,6 +31,9 @@ class Beranda
     public function index()
     {
         $this->oUtil->oBuku = $this->oModel->getAllj(0, self::MAX_POSTS); // Get only the latest X posts
+        $this->oUtil->oBukuP = $this->oModel->getAllPopuler(0, self::MAX_POSTS); // Get only the latest X posts)
+        $this->oUtil->oBukuF = $this->oModel->getAllFavorite(0, self::MAX_POSTS); // Get only the latest X posts
+        $this->oUtil->oBukuB = $this->oModel->getAllBacaEbook(0, self::MAX_POSTS); // Get only the latest X posts
 
         $this->oUtil->getView('beranda');
     }
