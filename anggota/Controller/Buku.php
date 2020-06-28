@@ -95,10 +95,12 @@ public function filter()
             $this->oUtil->getView('detail');
         }else{
             $aData = array('no_katalog' => $this->_iId, 'no_anggota' => $_SESSION['id']);
+            $aDataCekE = array('no_katalog' => $this->_iId);
             $this->oUtil->oStatus = $this->oModel->getStatus($aData);
     		$this->oUtil->oPesan = $this->oModel->getStatusPesan($aData);		
             $this->oUtil->dataPerpanjang = $this->oModel->getBatas();
     		$this->oUtil->oDenda = $this->oModel->getDenda();
+            $this->oUtil->ocekJenisKatalog = $this->oModel->getCekJenisKatalog($aDataCekE);
             $this->oUtil->oRating = $this->oModel->getRating($aData);
             $this->oUtil->oKembali = $this->oModel->getKembali($aData);
             $this->oUtil->oRating = $this->oModel->getRatingView($aData);

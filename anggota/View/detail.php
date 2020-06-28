@@ -201,6 +201,7 @@
                 </div>
               </div>
               <?php endif; ?>
+              <?php if (!empty($this->ocekJenisKatalog)): ?>
               <div class="col-lg-2 col-sm-6 follow-info weather-category" >
                 <div  class="card-box bg-red" style="border: 1px solid white">
                     <div class="inner">
@@ -213,6 +214,7 @@
                     <button class="card-box-footer" style="border-color: transparent;" type="submit" name="pinjam" value="BACA"  onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=view1&amp;id=<?=$this->oBuku->no_katalog?>'">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
                 </div>
               </div>
+              <?php endif; ?>
             </div>
 			<?php endif; ?>
 
