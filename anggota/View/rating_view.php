@@ -299,12 +299,13 @@
             <?php if (empty($_SESSION['id'])): ?>
               <?php else: ?>
                 <?php if (!empty($_SESSION['is_logged'])): ?>
-                  <?php if (empty($this->oRating)): ?>
-                    <?php if (!empty($this->oKembali)): ?>
+                  <?php if (!empty($this->oRating)): ?>
+                    
+                  <?php if (!empty($this->oKembali)): ?>
                       <button type="submit" class="tombolbirufooterrwb btn btn-primary btn-lg" style="margin-bottom: 2px;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=rating&amp;id=<?=$this->oBuku->no_katalog?>'">Rate This Book  <i class="fa fa-arrow-circle-right"></i></button>
                       <p>*NOTE: anda hanya bisa memberikan satu kali rating</p>
                     <?php endif; ?>
-                  <?php else: ?>
+                    
                     <?php if (!empty($this->oView)): ?>
                       <button type="submit" class="tombolbirufooterrwb btn btn-primary btn-lg" style="margin-bottom: 2px;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=rating&amp;id=<?=$this->oBuku->no_katalog?>'">Rate This Book  <i class="fa fa-arrow-circle-right"></i></button>
                       <p>*NOTE: anda hanya bisa memberikan satu kali rating</p>

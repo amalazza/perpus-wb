@@ -95,12 +95,11 @@ public function filter()
             $this->oUtil->getView('detail');
         }else{
             $aData = array('no_katalog' => $this->_iId, 'no_anggota' => $_SESSION['id']);
-            $aDataCekE = array('no_katalog' => $this->_iId);
             $this->oUtil->oStatus = $this->oModel->getStatus($aData);
     		$this->oUtil->oPesan = $this->oModel->getStatusPesan($aData);		
             $this->oUtil->dataPerpanjang = $this->oModel->getBatas();
     		$this->oUtil->oDenda = $this->oModel->getDenda();
-            $this->oUtil->ocekJenisKatalog = $this->oModel->getCekJenisKatalog($aDataCekE);
+            
             $this->oUtil->oRating = $this->oModel->getRating($aData);
             $this->oUtil->oKembali = $this->oModel->getKembali($aData);
             $this->oUtil->oRating = $this->oModel->getRatingView($aData);
@@ -111,6 +110,11 @@ public function filter()
             $this->oUtil->oBuku = $this->oModel->getById($this->_iId); // Get the data of the post
             $iId = array('no_katalog' => $_GET['id']);
             $this->oUtil->oView = $this->oModel->getViewCountById($iId);
+
+            $aDataCekE = array('no_katalog' => $_GET['id']);
+            $this->oUtil->ocekJenisKatalogEbook = $this->oModel->getCekJenisKatalogE($aDataCekE);
+            $aDataCekBE = array('no_katalog' => $_GET['id']);
+            $this->oUtil->ocekJenisKatalogBE = $this->oModel->getCekJenisKatalogBE($aDataCekBE);
 
             $this->oUtil->getView('detail');
         }

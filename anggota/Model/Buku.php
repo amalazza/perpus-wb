@@ -164,10 +164,18 @@ class Buku
     //     return $oStmt->fetch(\PDO::FETCH_OBJ);
     // }
 
-    public function getCekJenisKatalog(array $aDataCekE)/**/
+    public function getCekJenisKatalogE(array $aDataCekE)/**/
     {
-        $oStmt = $this->oDb->prepare('SELECT * FROM katalog WHERE (jenis_katalog = "E-Book" or jenis_katalog = "Buku Fisik dan E-Book") AND no_katalog = :no_katalog');
+        $oStmt = $this->oDb->prepare('SELECT * FROM katalog WHERE jenis_katalog = "E-Book" AND no_katalog = :no_katalog');
         $oStmt->bindParam(':no_katalog', $aDataCekE['no_katalog'], \PDO::PARAM_INT);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
+    public function getCekJenisKatalogBE(array $aDataCekBE)/**/
+    {
+        $oStmt = $this->oDb->prepare('SELECT * FROM katalog WHERE jenis_katalog = "Buku Fisik dan E-Book" AND no_katalog = :no_katalog');
+        $oStmt->bindParam(':no_katalog', $aDataCekBE['no_katalog'], \PDO::PARAM_INT);
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }

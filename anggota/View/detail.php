@@ -94,6 +94,7 @@
               <?php if (!empty($_SESSION['is_logged'])): ?>
                 <?php if (empty($this->oStatus)): ?>
 				<?php if (empty($this->oPesan)): ?>
+          <?php if (empty($this->ocekJenisKatalogEbook)): ?>
               <div class="col-lg-2 col-sm-6 follow-info weather-category" id="fisik">
                 <div class="card-box bg-orange" style="border: 1px solid white;">
                     <div class="inner">
@@ -106,6 +107,7 @@
                     <button type="submit" name="pinjam" value="PINJAM" class="card-box-footer" style="border-color: transparent;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=pemesanan&amp;id=<?=$this->oBuku->no_katalog?>'">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
                 </div>
               </div>
+              <?php endif; ?>
 			  <?php else: ?>
 			  <?php endif; ?>
               <?php else: ?>
@@ -201,7 +203,21 @@
                 </div>
               </div>
               <?php endif; ?>
-              <?php if (!empty($this->ocekJenisKatalog)): ?>
+              <?php if (!empty($this->ocekJenisKatalogEbook)): ?>
+              <div class="col-lg-2 col-sm-6 follow-info weather-category">
+                <div  class="card-box bg-red" style="border: 1px solid white">
+                    <div class="inner">
+                        <h3> BACA </h3>
+                        <p><small> E-book yang bisa dibaca dimana dan kapan saja </small></p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                    </div>
+                    <button class="card-box-footer" style="border-color: transparent;" type="submit" name="pinjam" value="BACA"  onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=view1&amp;id=<?=$this->oBuku->no_katalog?>'">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
+                </div>
+              </div>
+              <?php else: ?>
+              <?php if (!empty($this->ocekJenisKatalogBE)): ?>
               <div class="col-lg-2 col-sm-6 follow-info weather-category" >
                 <div  class="card-box bg-red" style="border: 1px solid white">
                     <div class="inner">
@@ -214,6 +230,7 @@
                     <button class="card-box-footer" style="border-color: transparent;" type="submit" name="pinjam" value="BACA"  onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=view1&amp;id=<?=$this->oBuku->no_katalog?>'">Lebih Lanjut <i class="fa fa-arrow-circle-right"></i></button>
                 </div>
               </div>
+              <?php endif; ?>
               <?php endif; ?>
             </div>
 			<?php endif; ?>
