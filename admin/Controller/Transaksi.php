@@ -234,9 +234,16 @@ class Transaksi
                 $log = "Kamu sudah mengembalikan buku ".$jdlku." pada tanggal ".$_POST['tgl_kembali'].", terima kasih sudah meminjam buku diperpus.";
                 $aLog = array('no_anggota' => $_POST['no_anggota'], 'activity' => $log);
                 $aDataR = array('no_katalog' => $no_katalog, 'no_anggota' => $no_anggota);
+                $aDataEbook = array('no_katalog' => $no_katalog, 'no_anggota' => $no_anggota);
 
-                if ($this->oModel->pengembalian($aData) && $this->oModel->addAngLog($aLog) &&  $this->oModel->ratingAdd ($aDataR)){
+                if ($this->oModel->pengembalian($aData) && $this->oModel->addAngLog($aLog)){
 					$this->oModel->plusStok($no_katalog);
+                    if (empty($this->oModel->cekEbook ($aDataEbook))){
+                    $this->oModel->ratingAdd ($aDataR);
+                    } 
+                    else
+                    {   
+                    }
                     // $this->oUtil->sSuccMsg = 'Buku berhasil dikembalikan.';
                     // header("Refresh: 3; URL=?p=transaksi&a=peminjaman");
                     echo '<div class="alert alert-success">Buku berhasil dikembalikan.</div>';

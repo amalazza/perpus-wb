@@ -159,6 +159,15 @@ class Transaksi
         return $oStmt->execute($aDataR);
     }
 
+        public function cekEbook(array $aDataEbook)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * from rating WHERE no_anggota = :no_anggota AND no_katalog = :no_katalog LIMIT 1');
+        $oStmt->bindParam(':no_katalog', $aDataEbook['no_katalog'], \PDO::PARAM_INT);
+        $oStmt->bindValue(':no_anggota', $aDataEbook['no_anggota']);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
      public function pinjamBaru(array $aData)
     {
         $oStmt = $this->oDb->prepare('INSERT INTO peminjaman (no_anggota, no_katalog, tanggal_pinjam, batas_kembali, status) VALUES(:no_anggota, :no_katalog, :tanggal_pinjam, :batas_kembali, :status)');

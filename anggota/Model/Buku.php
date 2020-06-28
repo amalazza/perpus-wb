@@ -96,7 +96,7 @@ class Buku
 
     public function ratingAdd(array $aDataR)
     {
-        $oStmt = $this->oDb->prepare('INSERT INTO rating (no_anggota, no_katalog) VALUES(:no_anggota, :no_katalog) ON DUPLICATE KEY UPDATE no_anggota=:no_anggota, no_katalog=:no_katalog');
+        $oStmt = $this->oDb->prepare('INSERT INTO rating (no_anggota, no_katalog) VALUES(:no_anggota, :no_katalog)');
         return $oStmt->execute($aDataR);
     }
 
@@ -105,6 +105,15 @@ class Buku
         $oStmt = $this->oDb->prepare('SELECT * FROM view v INNER JOIN anggota a ON a.no_anggota = v.no_anggota INNER JOIN katalog k ON k.no_katalog = v.no_katalog WHERE v.view_count >= 1 AND v.no_katalog = :no_katalog AND v.no_anggota = :no_anggota LIMIT 1');
         $oStmt->bindParam(':no_katalog', $aDataS['no_katalog'], \PDO::PARAM_INT);
         $oStmt->bindValue(':no_anggota', $aDataS['no_anggota']);
+        $oStmt->execute();
+        return $oStmt->fetch(\PDO::FETCH_OBJ);
+    }
+
+    public function cekEbook(array $aDataEbook)
+    {
+        $oStmt = $this->oDb->prepare('SELECT * from rating WHERE no_anggota = :no_anggota AND no_katalog = :no_katalog LIMIT 1');
+        $oStmt->bindParam(':no_katalog', $aDataEbook['no_katalog'], \PDO::PARAM_INT);
+        $oStmt->bindValue(':no_anggota', $aDataEbook['no_anggota']);
         $oStmt->execute();
         return $oStmt->fetch(\PDO::FETCH_OBJ);
     }

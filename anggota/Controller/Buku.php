@@ -227,14 +227,23 @@ public function filter()
             $aDataR = array('no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
             $aDataU = array('no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
             $aDataS = array('no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
+
+            $aDataEbook = array('no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
+            $aDataFisik = array('no_katalog' => $_GET['id']);
+            $aDataEbookFisik = array('no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
         
             if ($this->oModel->cekStatusView ($aDataS)){
                 $this->oModel->viewCountUpdate ($aDataU);
-                
             }
             if (empty($this->oModel->cekStatusView ($aDataS))) {
                 $this->oModel->viewCountAdd ($aData);
-                $this->oModel->ratingAdd ($aDataR);
+                if (empty($this->oModel->cekEbook ($aDataEbook))){
+                    $this->oModel->ratingAdd ($aDataR);
+                } 
+                else
+                {   
+                }  
+                
             }
             
             
