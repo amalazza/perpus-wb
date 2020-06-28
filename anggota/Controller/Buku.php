@@ -101,8 +101,11 @@ public function filter()
     		$this->oUtil->oDenda = $this->oModel->getDenda();
             
             $this->oUtil->oRating = $this->oModel->getRating($aData);
+            $aDataEbook = array('no_katalog' => $_GET['id'], 'no_anggota' => $_SESSION['id']);
+            $this->oUtil->oCekRating = $this->oModel->cekEbook($aDataEbook);
+
             $this->oUtil->oKembali = $this->oModel->getKembali($aData);
-            $this->oUtil->oRating = $this->oModel->getRatingView($aData);
+            // $this->oUtil->oRating = $this->oModel->getRatingView($aData);
             $this->oUtil->oView = $this->oModel->getView($aData);
 
     		$this->oUtil->oAnggota = $this->oModel->getById($_SESSION['id']);
