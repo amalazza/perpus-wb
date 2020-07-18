@@ -32,6 +32,10 @@
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
 
   <style type="text/css">
+    .xx{
+      font-size: 22px;
+      color:#000;
+    }
     .birunavbarwb { 
       background-color: #294a70;
     }

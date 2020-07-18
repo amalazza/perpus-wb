@@ -21,7 +21,38 @@
   <script src="<?=ROOT_URL?>static/js/form-validation-script.js"></script>
   <!--custome script for all page-->
   <script src="<?=ROOT_URL?>static/js/scripts.js"></script>
-  
+  <script type="text/javascript">
+function smooth1(){
+      if($("#show1").is(":visible")){
+        $("#show1").hide("1000");
+      }
+      else{
+        $("#show1").show("1000");
+        $("#show2").hide("1000");
+        $("#show3").hide("1000");
+      }
+    }
+function smooth2(){
+      if($("#show2").is(":visible")){
+        $("#show2").hide("1000");
+      }
+      else{
+        $("#show2").show("1000");
+        $("#show1").hide("1000");
+        $("#show3").hide("1000");
+      }
+    }
+function smooth3(){
+      if($("#show3").is(":visible")){
+        $("#show3").hide("1000");
+      }
+      else{
+        $("#show3").show("1000");
+        $("#show2").hide("1000");
+        $("#show1").hide("1000");
+      }
+    }
+</script>
 
 
 </body>

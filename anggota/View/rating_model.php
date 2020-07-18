@@ -23,7 +23,7 @@ class Rating{
 	private function getData($sqlQuery) {
 		$result = mysqli_query($this->dbConnect, $sqlQuery);
 		if(!$result){
-			die('Error in query: '. mysqli_error());
+			die('<div style="align-text:center;"><h2>Maaf anda harus memiliki akun jika ingin melihat detail buku ini.</h2></div>');
 		}
 		$data= array();
 		while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {

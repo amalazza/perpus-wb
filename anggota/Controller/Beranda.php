@@ -54,7 +54,7 @@ class Beranda
 
     public function about()
     {
-
+        $this->oUtil->oP = $this->oModel->getPerpanjang();
         $this->oUtil->getView('about');
     }
 

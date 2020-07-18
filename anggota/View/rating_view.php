@@ -301,7 +301,7 @@
                 <?php if (!empty($_SESSION['is_logged'])): ?>
                   <?php if (!empty($this->oCekRating)): ?>
                     <?php if (empty($this->oRating)): ?>
-                        <button type="submit" class="tombolbirufooterrwb btn btn-primary btn-lg" style="margin-bottom: 2px;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=rating&amp;id=<?=$this->oBuku->no_katalog?>'">Rate This Book  <i class="fa fa-arrow-circle-right"></i></button>
+                        <button type="submit" class="tombolbirufooterrwb btn btn-primary btn-lg" style="margin-bottom: 2px;" onclick="window.location='<?=ROOT_URL?>?p=buku&amp;a=rating&amp;id=<?=$this->oBuku->no_katalog?>'">Rate This Book  <i class="fa fa-arrow-circle-right"></i></button><!--  -->
                         <p>*NOTE: anda hanya bisa memberikan satu kali rating</p>
                     <?php endif; ?>
                   <?php endif; ?>

@@ -37,6 +37,14 @@ class Beranda
         $oStmt = $this->oDb->query('SELECT *, COUNT(r.no_katalog) FROM rating r INNER JOIN katalog k ON k.no_katalog = r.no_katalog WHERE r.rate = "yes" AND r.ratingNumber>=4 GROUP BY r.no_katalog HAVING COUNT(r.no_katalog) >= 1 ORDER BY r.ratingNumber DESC LIMIT 4');
         return $oStmt->fetchAll(\PDO::FETCH_OBJ);
     }
+    public function getPerpanjang()
+    {
+        $oStmt = $this->oDb->query('SELECT batas FROM perpanjangan');
+        $oStmt->execute(); 
+        $number_of_rows = $oStmt->fetchColumn(); 
+
+        return $number_of_rows;
+    }
 
     public function getAllBacaEbook()
     {
