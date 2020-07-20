@@ -4,6 +4,7 @@
 		<!-- Masthead Heading -->
       <h1 class="page-section-heading text-center text-secondary mb-0"><b>Perpustakaan Online Wira Buana</b></h1>
       <h2 class="page-section-heading text-center text-secondary mb-0" style="margin-top: 7px;"><b>SMK WIRA BUANA 1 | SMK WIRA BUANA 2</b></h2>
+      <hr style="border: 0; height: 5px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));">
 	</center>
 <br>
 <center>
@@ -26,7 +27,7 @@
  	</div>
  </center>
  <!-- Portfolio Section Heading -->
-      <h2 class="page-section-heading text-center text-secondary mb-0">Tutorial</h2>
+      <h2 class="page-section-heading text-center text-secondary mb-0"><b>Tutorial</b></h2>
 
       <!-- Icon Divider -->
       <div class="divider-custom">
@@ -57,7 +58,7 @@
       <h3 style="font-size: 22px; color:#090b24;">
       <b>Setelah itu,</b> kalian bisa mengklik "Lebih Lanjut" yang ada dibagian bawah kotak PESAN seperti dibawah ini:<h3>
       <img style="border-width: 20px solid black;" src="<?=ROOT_URL?>static/img/k.png"><br>
-      <h3 style="font-size: 22px; color:#090b24;"><b>Kemudian,</b> sistem perpustakaan akan mengarahkan kalian ke halaman peminjaman, dan kalian bisa< melihat detail buku yang akan dipinjam dan informasi batas pengambilan buku. Setelah yakin kalian bisa klik tombol "PESAN" dan mengambil buku tersebut diperpustakaan sebelum batas waktu yang ditentukan.<h3>
+      <h3 style="font-size: 22px; color:#090b24;"><b>Kemudian,</b> sistem perpustakaan akan mengarahkan kalian ke halaman peminjaman, dan kalian bisa melihat detail buku yang akan dipinjam dan informasi batas pengambilan buku. Setelah yakin kalian bisa klik tombol "PESAN" dan mengambil buku tersebut diperpustakaan sebelum batas waktu yang ditentukan.<h3>
     </div>
     <div class="divider-custom-line " id="show3" style="display: none; text-align: justify; text-justify: inter-word; width: 85%">
       <h3 style="font-size: 22px; color:#090b24;">Jika kalian belum selesai namun <b>waktu peminjaman akan segera habis,</b> dan untuk menghindari denda dari perpustakaan akibat terlambat mengembalikan buku, kalian dapat dengan mudah memperpanjang waktu peminjaman secara online. <b>Jangan lupa perpanjangan hanya bisa dilakukan beberapa kali</b> sesuai ketentuan yg ditetapkan pihak perpustakaan. Berikut ini cara melakukan perpanjangan waktu pinjam buku secara online.</h3>
